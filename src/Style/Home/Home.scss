@@ -21,7 +21,8 @@ a {
   height: 900px;
   //   background-color: #020b27;
   //   background-color: #051440;
-  background-color: #131e41;
+  // background-color: #131e41;
+  background-color: rgb(94, 163, 190);
 }
 .home {
   width: 1080px;
@@ -52,6 +53,7 @@ a {
   left: -130px;
   font-size: 17px;
   border-radius: 10px;
+  border: 2px solid gray;
 }
 .home_logo > input::placeholder {
   width: 430px;
