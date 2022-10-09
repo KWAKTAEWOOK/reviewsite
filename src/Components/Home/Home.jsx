@@ -8,7 +8,7 @@ const Home = () => {
         <div className="home">
           <div className="home_logo">
             <img src="/images/placeholder.png" />
-            <a href="/">넌 어때?</a>
+            <a href="/main">넌 어때?</a>
             <input
               type="text"
               placeholder="니가 알고싶은 리뷰, 여기 다 있어!"

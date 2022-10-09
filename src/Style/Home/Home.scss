@@ -12,21 +12,20 @@
   font-weight: normal;
   font-style: normal;
 }
+body {
+  background-color: #131e41;
+  height: 100%;
+  margin: 0;
+}
 a {
   text-decoration: none;
   color: inherit;
 }
-.background {
-  width: 100%;
-  height: 900px;
-  //   background-color: #020b27;
-  //   background-color: #051440;
-  background-color: #131e41;
-}
 .home {
+  position: relative;
   width: 1080px;
-  height: 100%;
   margin: 0 auto;
+  margin-top: 15%;
 }
 .home_logo {
   position: relative;

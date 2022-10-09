@@ -1,0 +1,58 @@
+.main {
+  position: absolute;
+  top: 110px;
+  //   height: calc(100% - 110px);
+  height: 100%;
+  width: 100%;
+  //   min-width: 1800px;
+}
+.mainList {
+  position: absolute;
+  display: inline-flex;
+  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  max-height: 100%;
+}
+.searchMenu {
+  background-color: white;
+  min-height: 100%;
+  width: 550px;
+}
+.searchBtn {
+  position: relative;
+  height: 60px;
+  border-bottom: 1px solid black;
+  input:focus {
+    outline: none;
+  }
+}
+.searchBtn_in {
+  display: inline-block;
+  width: 330px;
+  margin-top: 15px;
+}
+.searchBtn_in > input {
+  min-width: 200px;
+  height: 100%;
+  margin-left: 40px;
+  //   border: 0px;
+}
+.category {
+  position: relative;
+  border: 0px;
+  left: 25px;
+  width: 70px;
+  height: 30px;
+  font-size: 14px;
+}
+.search_List {
+  //   border: 1px solid green;
+  min-height: 800px;
+  max-height: 100%;
+}
+.rode_api {
+  background-color: white;
+  border-left: 1px solid black;
+  width: 100%;
+}

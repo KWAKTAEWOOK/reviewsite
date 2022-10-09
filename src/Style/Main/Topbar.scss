@@ -1,0 +1,125 @@
+@font-face {
+  font-family: "HallymGothic-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2204@1.0/HallymGothic-Regular.woff2")
+    format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+body,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+.backbar {
+  position: fixed;
+  width: 100%;
+  height: 110px;
+  // background-color: rgba(219, 219, 219, 0.779);
+  // background-color: #e97341;
+  background-color: #34447a;
+  z-index: 99999;
+}
+.menuBar {
+  border: 1px solid black;
+  position: relative;
+  min-width: 1600px;
+  height: 100%;
+  flex: 1 1 auto;
+  margin: 0 auto;
+  border-top: 0px;
+  border-bottom: 0px;
+}
+.menuBar > div {
+  display: inline-block;
+}
+.siteLogo {
+  position: relative;
+  font-family: "OTEnjoystoriesBA";
+  width: 180px;
+  height: 100%;
+  text-align: center;
+  left: 15px;
+  // border-right: 0.3px solid rgb(198, 198, 198);
+}
+.siteLogo > a {
+  position: relative;
+  font-size: 45px;
+  color: white;
+  top: 25px;
+}
+.menuList {
+  font-family: "HallymGothic-Regular";
+  position: relative;
+  left: 100px;
+}
+.menuList > div > div {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  width: 80px;
+  left: 80px;
+  top: 22px;
+  padding: 0 5px;
+}
+.menuList > div:first-child {
+  position: relative;
+  padding-right: 30px;
+  font-size: 17px;
+  left: -20px;
+  color: white;
+}
+.menu1 > div > a {
+  color: white;
+}
+.menu1 > ul {
+  cursor: pointer;
+  position: absolute;
+  top: 17px;
+  left: 10px;
+  width: 80px;
+}
+
+// 2차 메뉴 아이템
+.menu1 > ul > ul > li {
+  background-color: rgb(255, 255, 255);
+  position: relative;
+  display: none;
+  width: 130px;
+  height: 20px;
+  padding: 6px 0;
+  font-size: 15px;
+  text-align: center;
+  color: black;
+  border: 1px solid gray;
+  border-bottom: 0px;
+}
+.menu1 > ul > ul > li:last-child {
+  border-bottom: 1px solid gray;
+}
+.menu1 > ul:hover ul li {
+  display: block;
+}
+.menu1 > ul ul > li:hover {
+  background-color: gray;
+  color: white;
+}
+// 2차 메뉴아이템 구현 완료
+
+.sign_btn > div {
+  font-size: 14px;
+}
+.TiThMenu {
+  position: absolute;
+  top: 25px;
+  right: 78px;
+}
