@@ -1,10 +1,18 @@
+@font-face {
+  font-family: "MonoplexKR-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_Monoplex-kr@1.0/MonoplexKR-Regular.woff2")
+    format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
 .main {
   position: absolute;
+  display: block;
   top: 110px;
-  //   height: calc(100% - 110px);
   height: 100%;
+  min-height: 100%;
   width: 100%;
-  //   min-width: 1800px;
+  overflow: hidden;
 }
 .mainList {
   position: absolute;
@@ -22,37 +30,82 @@
 .searchBtn {
   position: relative;
   height: 60px;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid gray;
   input:focus {
     outline: none;
   }
 }
 .searchBtn_in {
   display: inline-block;
-  width: 330px;
   margin-top: 15px;
 }
 .searchBtn_in > input {
   min-width: 200px;
   height: 100%;
   margin-left: 40px;
-  //   border: 0px;
+  border: 0px;
+}
+.searchButton {
+  position: relative;
+  background-color: white;
+  font-family: "MonoplexKR-Regular";
+  font-size: 15px;
+  // top: -27px;
+  // left: 320px;
+  border: 0px;
+  cursor: pointer;
 }
 .category {
   position: relative;
+  font-family: "MonoplexKR-Regular";
   border: 0px;
   left: 25px;
   width: 70px;
   height: 30px;
-  font-size: 14px;
+  font-size: 15px;
 }
 .search_List {
-  //   border: 1px solid green;
-  min-height: 800px;
+  // border: 1px solid green;
+  padding-top: 5px;
   max-height: 100%;
+  overflow-y: scroll;
 }
+.menulist img {
+  position: relative;
+  display: block;
+  width: 300px;
+  height: 200px;
+  top: 10px;
+  left: 30px;
+}
+.menulist > li {
+  position: relative;
+  height: 350px;
+  font-weight: bold;
+  border-bottom: 1px solid gray;
+  color: rgb(42, 42, 114);
+}
+.menulist > li:last-child {
+  padding-bottom: 60px;
+}
+.menulist > li > li {
+  position: relative;
+  top: 40px;
+  left: 30px;
+  color: black;
+  font-weight: 100;
+  font-size: 15px;
+}
+.menulist a {
+  position: relative;
+  font-family: "MonoplexKR-Regular";
+  top: 18px;
+  left: 30px;
+  font-size: 1.2rem;
+}
+
 .rode_api {
   background-color: white;
-  border-left: 1px solid black;
+  border-left: 1px solid gray;
   width: 100%;
 }

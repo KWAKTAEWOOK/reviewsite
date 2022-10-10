@@ -4,7 +4,9 @@ import "../../Style/Main/Foot.scss";
 const Foot = () => {
   return (
     <>
-      <div className="footer"></div>
+      <div className="footer">
+        <div className="foot_bar"></div>
+      </div>
     </>
   );
 };
