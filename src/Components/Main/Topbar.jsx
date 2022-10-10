@@ -1,5 +1,6 @@
 import React from "react";
 import { TiThMenu } from "react-icons/ti";
+import { BiCurrentLocation } from "react-icons/bi";
 import "../../Style/Main/Topbar.scss";
 
 const Topbar = () => {
@@ -37,6 +38,10 @@ const Topbar = () => {
                 <a href="#">
                   <h3>회원가입</h3>
                 </a>
+              </div>
+              <div className="now_location">
+                <BiCurrentLocation className="BiCurrentLocation" />
+                <p>대전시 서구 둔산동</p>
               </div>
             </div>
           </div>

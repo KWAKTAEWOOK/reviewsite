@@ -30,7 +30,6 @@ a {
   z-index: 99999;
 }
 .menuBar {
-  border: 1px solid black;
   position: relative;
   min-width: 1600px;
   height: 100%;
@@ -122,4 +121,23 @@ a {
   position: absolute;
   top: 25px;
   right: 78px;
+}
+.BiCurrentLocation {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  left: 550px;
+  top: 13px;
+  color: rgba(243, 243, 243, 0.8);
+}
+.BiCurrentLocation:hover {
+  color: white;
+}
+.now_location p {
+  position: relative;
+  color: rgba(243, 243, 243, 0.8);
+  font-size: 1rem;
+  left: 580px;
+  width: 200px;
+  text-align: left;
 }

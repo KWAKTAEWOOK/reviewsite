@@ -2,7 +2,6 @@
 import React, { useEffect } from "react";
 import Topbar from "./Topbar";
 import "../../Style/Main/Main.scss";
-import Foot from "./Foot";
 
 const { kakao } = window;
 
