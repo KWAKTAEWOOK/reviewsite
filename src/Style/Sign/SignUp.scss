@@ -1,0 +1,33 @@
+.signUpBody {
+  background-color: white;
+  font-family: "MonoplexKR-Regular";
+  position: absolute;
+  height: 100%;
+  margin: 0;
+}
+.signUpBack {
+  width: 1080px;
+  min-height: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+.signUpLogo {
+  font-size: 1.8rem;
+  text-align: center;
+  margin-top: 60px;
+  margin-bottom: 30px;
+  color: navy;
+}
+.signUpForm {
+  display: inline-block;
+  position: relative;
+  font-size: 20px;
+  input {
+    margin-left: 10px;
+  }
+}
+.signUpForm div {
+  position: relative;
+  text-align: right;
+  margin-bottom: 15px;
+}
