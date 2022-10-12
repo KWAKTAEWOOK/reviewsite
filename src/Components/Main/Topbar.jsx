@@ -43,7 +43,7 @@ const Topbar = () => {
                 </a>
               </div>
               <div className="signUpBtn">
-                <a href="#">
+                <a href="/SignUp">
                   <h3>회원가입</h3>
                 </a>
               </div>
