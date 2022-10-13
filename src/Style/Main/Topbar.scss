@@ -59,7 +59,7 @@ a {
 .menuList {
   font-family: "HallymGothic-Regular";
   position: relative;
-  left: 100px;
+  left: 150px;
 }
 .menuList > div > div {
   position: relative;
@@ -126,12 +126,16 @@ a {
   position: absolute;
   width: 28px;
   height: 28px;
-  left: 550px;
+  left: 540px;
   top: 13px;
   color: rgba(243, 243, 243, 0.8);
 }
 .BiCurrentLocation:hover {
   color: white;
+}
+.now_location {
+  position: relative;
+  top: -25px;
 }
 .now_location p {
   position: relative;
