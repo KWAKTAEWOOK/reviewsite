@@ -1,0 +1,41 @@
+.wrap {
+  width: 1000px;
+  margin: 30px auto;
+  display: flex;
+}
+.wrap .left {
+  width: 600px;
+}
+.wrap .left > img {
+  vertical-align: top;
+  width: 1000px;
+  height: 700px;
+}
+.wrap .left ul {
+  display: flex;
+  flex-wrap: wrap;
+  width: 1000px;
+}
+.wrap .left ul li {
+  width: 200px;
+}
+.wrap .left ul li img {
+  width: 200px;
+  vertical-align: top;
+}
+.wrap .right {
+  width: 400px;
+  background: beige;
+  padding: 30px;
+}
+.wrap .right h3 {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+.wrap .right p {
+  font-size: 20px;
+}
+.wrap .desc {
+  position: absolute;
+  display: inline-block;
+}
