@@ -7,7 +7,7 @@ const Home = () => {
       <div className="background">
         <div className="home">
           <div className="home_logo">
-            <img src="/images/placeholder.png" />
+            <img src="/images/placeholder.png" alt="0" />
             <a href="/main">넌 어때?</a>
             <input
               type="text"

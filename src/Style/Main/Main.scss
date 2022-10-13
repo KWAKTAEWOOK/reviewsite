@@ -8,9 +8,8 @@
 .main {
   position: absolute;
   display: block;
-  top: 110px;
-  height: 100%;
-  min-height: 100%;
+  // margin-top: 110px;
+  height: 100vh;
   width: 100%;
   overflow: hidden;
 }
@@ -23,8 +22,8 @@
   max-height: 100%;
 }
 .searchMenu {
-  background-color: white;
-  min-height: 100%;
+  background-color: red;
+  height: 100vh;
   min-width: 430px;
 }
 .searchBtn {
@@ -50,8 +49,6 @@
   background-color: white;
   font-family: "MonoplexKR-Regular";
   font-size: 15px;
-  // top: -27px;
-  // left: 320px;
   border: 0px;
   cursor: pointer;
 }
@@ -65,47 +62,92 @@
   font-size: 15px;
 }
 .search_List {
-  // border: 1px solid green;
-  padding-top: 5px;
-  max-height: 100%;
-  overflow-y: scroll;
+  position: absolute;
+  background-color: yellow;
+  // overflow: hidden;
+  // height: 1000px;
+  width: 430px;
+  max-height: 100vh;
+}
+.search_List_fixed {
+  height: 100vh;
+  overflow-y: auto;
+}
+.menulist {
+  overflow: hidden;
+  min-height: 350px;
+  max-height: 450px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid gray;
 }
 .menulist img {
   position: relative;
   display: block;
-  width: 300px;
+  width: 330px;
   height: 200px;
   top: 10px;
-  left: 30px;
+  left: 32px;
 }
 .menulist > li {
+  display: flex;
+  flex-direction: column;
   position: relative;
   height: 350px;
   font-weight: bold;
-  border-bottom: 1px solid gray;
+
   color: rgb(42, 42, 114);
-}
-.menulist > li:last-child {
-  padding-bottom: 60px;
 }
 .menulist > li > li {
   position: relative;
-  top: 40px;
+  top: 20px;
   left: 30px;
   color: black;
   font-weight: 100;
-  font-size: 15px;
+  font-size: 14px;
+  opacity: 0.5;
 }
 .menulist a {
   position: relative;
   font-family: "MonoplexKR-Regular";
-  top: 18px;
+  top: 0px;
   left: 30px;
   font-size: 1.2rem;
+  width: 330px;
+  word-break: keep-all;
 }
-
+.menuSublist {
+  position: relative;
+  top: 40px;
+  left: 30px;
+  line-height: 22px;
+  font-size: 0.9rem;
+  width: 340px;
+  word-break: keep-all;
+}
+.menuSublist > span {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.searchPagination {
+  margin: auto;
+  bottom: 0;
+  width: 430px;
+  height: 4vh;
+  font-size: 2vh;
+  font-weight: bold;
+  display: flex;
+  line-height: 4.5vh;
+  justify-content: space-evenly;
+  z-index: 99;
+  color: red;
+  position: fixed;
+  border-top: 1px solid grey;
+  background-color: white;
+}
 .rode_api {
   background-color: white;
   border-left: 1px solid gray;
   width: 100%;
+  height: 100vh;
 }
