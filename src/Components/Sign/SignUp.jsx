@@ -28,7 +28,7 @@ const SignUp = () => {
                   e.preventDefault();
                   try {
                     const data = await axios({
-                      url: "http://localhost:8085/api/v1/user/join",
+                      url: `${BACKEND_URL}/user/join`,
                       method: "POST",
                       data: {
                         username,
