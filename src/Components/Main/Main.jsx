@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Topbar from "./Topbar";
 import "../../Style/Main/Main.scss";
+import useGeolocation from "react-hook-geolocation";
 
 const { kakao } = window;
 
@@ -11,6 +12,16 @@ const Main = () => {
   const [Places, setPlaces] = useState([]);
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
+  const [open, setOpen] = useState(false);
+
+  const toggleSearchList = () => {
+    setOpen((open) => !open);
+  };
+
+  const geolocation = useGeolocation();
+
+  const lat = geolocation.latitude;
+  const lng = geolocation.longitude;
 
   const onChange = (e) => {
     setInputText(e.target.value);
@@ -28,8 +39,9 @@ const Main = () => {
     var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
     var markers = [];
     var mapContainer = document.getElementById("map");
+
     var mapOption = {
-      center: new kakao.maps.LatLng(36.349348279760655, 127.3766854960456), // 지도의 중심좌표
+      center: new kakao.maps.LatLng(lat, lng), // 지도의 중심좌표
       level: 2, // 지도의 확대 레벨
     };
 
@@ -95,80 +107,97 @@ const Main = () => {
 
       kakao.maps.event.addListener(marker, "click", function () {
         infowindow.setContent(
-          '<div style="padding:5px;font-size:12px; color:black">' +
-            place.category_name +
-            "<br/>" +
+          '<div style="padding:13px;font-size:12px; color:black; width:300px; height:240px; overflow:hidden">' +
+            `<a href="https://place.map.kakao.com/${place.id}#comment" style="display:block; margin-top:-2px; font-size:16px; font-weight:bold">` +
             place.place_name +
-            "<br/>" +
+            "</a>" +
+            '<img src="https://ldb-phinf.pstatic.net/20211228_153/1640684993923s9vPb_JPEG/KakaoTalk_20211228_093917446_03.jpg" alt="0" style="width:300px; height:150px; margin-top:7px; display:block"/>' +
+            '<div style="opacity:0.5; margin-top:5px; display:block">' +
+            place.category_name +
+            "</div>" +
+            '<div style="margin-top:5px; display:block; padding-bottom:10px">' +
+            place.road_address_name +
+            "</div>" +
+            '<div style="margin-top:-5px; display:block; padding-bottom:10px">' +
             place.phone +
-            "<br/>" +
-            `<a href="https://place.map.kakao.com/${place.id}#comment">/>` +
+            "</div>" +
             "</div>"
         );
         infowindow.open(map, marker);
       });
     }
-  }, [place]);
+  }, [place, lat, lng]);
   return (
     <>
-      {/* <Topbar /> */}
-      <div className="main">
-        <div className="mainList">
-          <div className="searchMenu">
-            <div className="searchBtn">
-              <form className="searchBtn_in" onSubmit={searchSubmit}>
-                <select name="category" className="category">
-                  <option value="All">전체</option>
-                  <option value="food">식당</option>
-                  <option value="cafe">카페</option>
-                </select>
-                <input
-                  className="searchInput"
-                  type="text"
-                  placeholder="서구 둔산동"
-                  value={inputText}
-                  onChange={onChange}
-                />
-                <button className="searchButton" type="submit">
-                  검색
-                </button>
-              </form>
-            </div>
-            <div className="search_List">
-              <div className="search_List_fixed">
-                {Places.slice(offset, offset + limit).map((item, i) => (
-                  <ul className="menulist" key={i}>
-                    <li>
-                      <a href="#!">
-                        {i + 1}. {item.place_name}
-                      </a>
-                      <img
-                        src="https://ldb-phinf.pstatic.net/20211228_153/1640684993923s9vPb_JPEG/KakaoTalk_20211228_093917446_03.jpg"
-                        alt="0"
-                      />
-                      <li>{item.category_name}</li>
-
-                      <div className="menuSublist">
-                        {item.road_address_name ? (
-                          <div>
-                            <span>{item.road_address_name}</span>
-                            <span>{item.address_name}</span>
+      <Topbar />
+      <section>
+        <button className="ShowAndHide" onClick={() => toggleSearchList()}>
+          버튼버튼
+        </button>
+        <div className="main">
+          <div className="mainList">
+            <nav className={open ? "show" : "hide"}>
+              <div className="searchMenu">
+                <div className="searchBtn">
+                  <form className="searchBtn_in" onSubmit={searchSubmit}>
+                    <select name="category" className="category">
+                      <option value="All">전체</option>
+                      <option value="food">식당</option>
+                      <option value="cafe">카페</option>
+                    </select>
+                    <input
+                      className="searchInput"
+                      type="text"
+                      placeholder="장소, 주소 검색"
+                      value={inputText}
+                      onChange={onChange}
+                    />
+                    <button className="searchButton" type="submit" />
+                  </form>
+                </div>
+                <div className="search_List">
+                  <div className="search_List_fixed">
+                    {Places.slice(offset, offset + limit).map((item, i) => (
+                      <ul className="menulist" key={i}>
+                        <li className="searchInfoList">
+                          <a href={item.place_url} className="searchInfoName">
+                            {item.place_name}
+                          </a>
+                          <li className="searchInfoCategory">
+                            {item.category_name}
+                          </li>
+                          <div className="searchInfoImg">
+                            <img
+                              src="https://ldb-phinf.pstatic.net/20211228_153/1640684993923s9vPb_JPEG/KakaoTalk_20211228_093917446_03.jpg"
+                              alt="0"
+                            />
                           </div>
-                        ) : (
-                          <span>{item.address_name}</span>
-                        )}
-                        <li>{item.phone}</li>
-                      </div>
-                    </li>
-                  </ul>
-                ))}
+
+                          <div className="menuSublist">
+                            {item.road_address_name ? (
+                              <div className="searchInfoAddress">
+                                <span>{item.road_address_name}</span>
+                              </div>
+                            ) : (
+                              <span className="searchInfoAddress">
+                                {item.address_name}
+                              </span>
+                            )}
+                            <li className="searchInfoPhone">{item.phone}</li>
+                          </div>
+                        </li>
+                      </ul>
+                    ))}
+                  </div>
+                </div>
+                <div id="pagination" className="searchPagination"></div>
               </div>
-              <div id="pagination" className="searchPagination"></div>
-            </div>
+            </nav>
+
+            <div className="rode_api" id="map"></div>
           </div>
-          <div className="rode_api" id="map"></div>
         </div>
-      </div>
+      </section>
     </>
   );
 };
