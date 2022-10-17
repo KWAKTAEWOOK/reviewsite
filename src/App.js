@@ -27,7 +27,7 @@ const App = () => {
           <Route path={"/Detail"} exact>
             <Detail />
           </Route>
-          <Route path={"/mypage"} exact>
+          <Route path={"/Mypage"} exact>
             <Mypage />
           </Route>
         </Switch>
