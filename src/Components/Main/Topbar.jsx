@@ -38,12 +38,12 @@ const Topbar = () => {
             </div>
             <div className="menu1 sign_btn">
               <div className="loginBtn">
-                <a href="#">
+                <a href="/login">
                   <h3>로그인</h3>
                 </a>
               </div>
               <div className="signUpBtn">
-                <a href="/SignUp">
+                <a href="/signUp">
                   <h3>회원가입</h3>
                 </a>
               </div>
