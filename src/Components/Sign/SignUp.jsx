@@ -39,16 +39,17 @@ const SignUp = () => {
                         email,
                       },
                     });
-                    console.log(data);
+                    setUsername("");
+                    setNickname("");
+                    setUserid("");
+                    setPassword1("");
+                    setPassword2("");
+                    setEmail("");
+                    // alert("회원가입 성공!");
                   } catch (e) {
-                    console.log({
-                      username,
-                      nickname,
-                      userid,
-                      password1,
-                      password2,
-                      email,
-                    });
+                    // e.text().then((msg) => alert(msg));
+                    console.log(e);
+                    // alert("회원가입 실패! 데이터를 확인하세요");
                   }
                 }}
               >
@@ -81,6 +82,7 @@ const SignUp = () => {
                   <br />
                   <input
                     type="text"
+                    placeholder="사용할 ID를 입력해주세요"
                     value={userid}
                     onChange={(e) => {
                       setUserid(e.target.value);
@@ -114,6 +116,7 @@ const SignUp = () => {
                   <br />
                   <input
                     type="text"
+                    placeholder="E-mail을 입력해주세요"
                     value={email}
                     onChange={(e) => {
                       setEmail(e.target.value);
