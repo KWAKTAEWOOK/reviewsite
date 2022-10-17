@@ -29,6 +29,9 @@ const Login = () => {
                   로그인
                 </button>
               </form>
+              <div className="loginButton">
+                <a href="/signUp">회원가입하기</a>
+              </div>
             </div>
           </div>
         </div>
