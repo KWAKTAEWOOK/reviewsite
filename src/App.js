@@ -5,6 +5,7 @@ import Main from "./Components/Main/Main";
 import SignUp from "./Components/Sign/SignUp";
 import Detail from "./Components/Detail/Detail";
 import Login from "./Components/Sign/Login";
+import Mypage from "./Components/Mypage/Mypage";
 
 const App = () => {
   return (
@@ -25,6 +26,9 @@ const App = () => {
           </Route>
           <Route path={"/Detail"} exact>
             <Detail />
+          </Route>
+          <Route path={"/mypage"} exact>
+            <Mypage />
           </Route>
         </Switch>
       </BrowserRouter>
