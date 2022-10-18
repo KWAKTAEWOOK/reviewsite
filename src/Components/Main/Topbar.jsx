@@ -124,11 +124,7 @@ const Topbar = () => {
             </div>
             <div className="menu1 sign_btn">
               <div className="loginBtn">
-<<<<<<< HEAD
-                <a href="#!">
-=======
                 <a href="/login">
->>>>>>> master
                   <h3>로그인</h3>
                 </a>
               </div>
