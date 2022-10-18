@@ -3,7 +3,7 @@ import "../../Style/Home/Home.scss";
 
 const Home = () => {
   return (
-    <>
+    <body className="HomeBody">
       <div className="background">
         <div className="home">
           <div className="home_logo">
@@ -16,7 +16,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-    </>
+    </body>
   );
 };
 

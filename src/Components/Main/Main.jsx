@@ -1,5 +1,6 @@
-/* global kakao */
 import React, { useEffect, useState } from "react";
+import RightArrow from "../../Style/image/right-arrow.png";
+import LeftArrow from "../../Style/image/left-arrow.png";
 import Topbar from "./Topbar";
 import "../../Style/Main/Main.scss";
 import useGeolocation from "react-hook-geolocation";
@@ -12,10 +13,15 @@ const Main = () => {
   const [Places, setPlaces] = useState([]);
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
+  const [arrow, setArrow] = useState(true);
+  const [dropdownVisibility, setDropdownVisibility] = useState(false);
+
+  const CategorySelect = (e) => {};
 
   const toggleSearchList = () => {
     setOpen((open) => !open);
+    setArrow((arrow) => !arrow);
   };
 
   const geolocation = useGeolocation();
@@ -48,7 +54,6 @@ const Main = () => {
     var map = new kakao.maps.Map(mapContainer, mapOption);
 
     const ps = new kakao.maps.services.Places();
-
     ps.keywordSearch(place, placesSearchCB);
 
     function placesSearchCB(data, status, pagination) {
@@ -61,20 +66,17 @@ const Main = () => {
         }
 
         map.setBounds(bounds);
-        // 페이지 목록 보여주는 displayPagination() 추가
         displayPagination(pagination);
         setPlaces(data);
         console.log(data);
       }
     }
 
-    // 검색결과 목록 하단에 페이지 번호 표시
     function displayPagination(pagination) {
       var paginationEl = document.getElementById("pagination"),
         fragment = document.createDocumentFragment(),
         i;
 
-      // 기존에 추가된 페이지 번호 삭제
       while (paginationEl.hasChildNodes()) {
         paginationEl.removeChild(paginationEl.lastChild);
       }
@@ -131,19 +133,26 @@ const Main = () => {
     <>
       <Topbar />
       <section>
-        <button className="ShowAndHide" onClick={() => toggleSearchList()}>
-          버튼버튼
-        </button>
         <div className="main">
           <div className="mainList">
             <nav className={open ? "show" : "hide"}>
+              <button
+                className="ShowAndHide"
+                onClick={() => toggleSearchList()}
+              >
+                <img
+                  className="ShowAndHideBt"
+                  src={arrow ? RightArrow : LeftArrow}
+                  alt="slidebt"
+                />
+              </button>
               <div className="searchMenu">
                 <div className="searchBtn">
                   <form className="searchBtn_in" onSubmit={searchSubmit}>
-                    <select name="category" className="category">
-                      <option value="All">전체</option>
-                      <option value="food">식당</option>
-                      <option value="cafe">카페</option>
+                    <select name="" className="category" id="">
+                      <option value="">전체</option>
+                      <option value="">음식점</option>
+                      <option value="">카페</option>
                     </select>
                     <input
                       className="searchInput"
@@ -193,7 +202,6 @@ const Main = () => {
                 <div id="pagination" className="searchPagination"></div>
               </div>
             </nav>
-
             <div className="rode_api" id="map"></div>
           </div>
         </div>

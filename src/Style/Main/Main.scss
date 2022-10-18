@@ -29,6 +29,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  z-index: 3;
 }
 .searchBtn {
   position: relative;
@@ -79,6 +80,7 @@
   flex-direction: column;
   height: 100%;
   width: 430px;
+  box-shadow: 2px 2px 5px rgb(209, 209, 209);
 }
 .search_List_fixed {
   display: inline-block;
@@ -167,22 +169,36 @@
   // background-color: white;
 }
 .rode_api {
+  position: absolute;
   background-color: white;
   border-left: 1px solid gray;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
+  // margin-left: -460px;
+  z-index: 0;
 }
-
 .ShowAndHide {
   position: absolute;
-  left: 500px;
-  top: 500px;
-  width: 30px;
-  height: 30px;
-  background-color: green;
+  left: 412px;
+  top: 370px;
+  width: 40px;
+  height: 70px;
+  background-color: rgb(252, 252, 252);
   z-index: 99;
-  color: red;
+  color: rgb(97, 97, 97);
   cursor: pointer;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  z-index: 2;
+  box-shadow: 2px 2px 5px rgb(209, 209, 209);
+}
+.ShowAndHideBt {
+  font-size: 15px;
+  margin-left: 18px;
+  width: 13px;
+  height: 20px;
+  opacity: 0.5;
 }
 .show {
   width: 460px;
@@ -191,11 +207,26 @@
   left: 0px;
   transition: 1s;
 }
-
 .hide {
   width: 460px;
   height: 500px;
   position: relative;
-  left: -460px;
+  left: -430px;
   transition: 1s;
+}
+.categoryArticle {
+  position: relative;
+  width: 100px;
+  height: 50px;
+}
+.CategoryList {
+  display: none;
+  position: absolute;
+  width: 100%;
+  top: 49px;
+  left: 0;
+  border: 1px solid #c4c4c4;
+  box-sizing: border-box;
+  box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
 }
