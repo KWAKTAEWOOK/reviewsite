@@ -4,12 +4,10 @@ import { BACKEND_URL } from "../../utils";
 import Topbar from "../Main/Topbar";
 import "../../Style/Sign/SignUp.scss";
 
-const SignUp = () => {
+const Mypage = () => {
   const [username, setUsername] = useState("");
   const [nickname, setNickname] = useState("");
-  const [userid, setUserid] = useState("");
   const [password1, setPassword1] = useState("");
-  const [password2, setPassword2] = useState("");
   const [email, setEmail] = useState("");
 
   return (
@@ -19,7 +17,7 @@ const SignUp = () => {
         <div className="signUpBack">
           <div className="signUptemplate">
             <div className="signUpLogo">
-              Sign-Up
+              내 프로필 변경
               <hr />
             </div>
             <div className="signUpForm">
@@ -31,19 +29,14 @@ const SignUp = () => {
                       url: `${BACKEND_URL}/user/join`,
                       method: "POST",
                       data: {
-                        username,
                         nickname,
-                        userid,
                         password1,
-                        password2,
                         email,
                       },
                     });
                     setUsername("");
                     setNickname("");
-                    setUserid("");
                     setPassword1("");
-                    setPassword2("");
                     setEmail("");
                     // alert("회원가입 성공!");
                   } catch (e) {
@@ -54,18 +47,6 @@ const SignUp = () => {
                 }}
               >
                 <div>
-                  이름
-                  <br />
-                  <input
-                    type="text"
-                    placeholder="이름을 입력해주세요"
-                    value={username}
-                    onChange={(e) => {
-                      setUsername(e.target.value);
-                    }}
-                  />
-                </div>
-                <div>
                   별명
                   <br />
                   <input
@@ -74,18 +55,6 @@ const SignUp = () => {
                     value={nickname}
                     onChange={(e) => {
                       setNickname(e.target.value);
-                    }}
-                  />
-                </div>
-                <div>
-                  ID
-                  <br />
-                  <input
-                    type="text"
-                    placeholder="사용할 ID를 입력해주세요"
-                    value={userid}
-                    onChange={(e) => {
-                      setUserid(e.target.value);
                     }}
                   />
                 </div>
@@ -105,9 +74,9 @@ const SignUp = () => {
                   <br />
                   <input
                     type="password"
-                    value={password2}
+                    value={password1}
                     onChange={(e) => {
-                      setPassword2(e.target.value);
+                      setPassword1(e.target.value);
                     }}
                   />
                 </div>
@@ -124,16 +93,9 @@ const SignUp = () => {
                   />
                 </div>
                 <button type="submit" className="signUpButton">
-                  가입하기
+                  변경하기
                 </button>
               </form>
-              <div className="loginButton">
-<<<<<<< HEAD
-                <a href="#!">로그인하기</a>
-=======
-                <a href="/login">로그인하기</a>
->>>>>>> master
-              </div>
             </div>
           </div>
         </div>
@@ -142,4 +104,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Mypage;

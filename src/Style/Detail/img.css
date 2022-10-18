@@ -1,0 +1,111 @@
+.rod {
+  position: relative;
+  margin-top: 30px;
+}
+.wrap {
+  width: 1000px;
+  margin: 0px auto;
+  display: flex;
+  position: relative;
+}
+.wrap .left {
+  width: 600px;
+}
+.wrap .left > img {
+  vertical-align: top;
+  width: 1000px;
+  height: 700px;
+  margin-top: 110px;
+}
+.wrap .left ul {
+  display: flex;
+  flex-wrap: wrap;
+  width: 1000px;
+}
+.wrap .left ul li {
+  width: 200px;
+}
+.wrap .left ul li img {
+  width: 200px;
+  vertical-align: top;
+  height: 130px;
+}
+.wrap .right {
+  width: 400px;
+  background: beige;
+  padding: 30px;
+}
+.wrap .right h3 {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+.wrap .right p {
+  font-size: 20px;
+}
+.wrap .desc {
+  position: absolute;
+  display: inline-block;
+}
+.body1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Box {
+  text-align: center;
+  border-radius: 5%;
+  width: 1000px;
+  height: 700px;
+  background-color: white;
+  display: inline-block;
+  margin: 0 auto;
+}
+.confont {
+  position: relative;
+  margin: 100px auto;
+  height: 50px;
+}
+.cafe {
+  display: inline-block;
+  font-size: 30px;
+  font-weight: bold;
+}
+.Foods {
+  display: inline-block;
+  font-size: 20px;
+  margin-left: 5px;
+}
+.icon > div > img {
+  width: 60px;
+  position: relative;
+  margin-left: 3%;
+}
+.icon {
+  display: inline-block;
+  width: 100%;
+  height: 50px;
+  margin-left: 37%;
+}
+.star {
+  position: relative;
+  font-size: 2rem;
+  color: #ddd;
+}
+
+.star input {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.star span {
+  width: 0;
+  position: absolute;
+  left: 0;
+  color: red;
+  overflow: hidden;
+  pointer-events: none;
+}

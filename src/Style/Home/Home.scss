@@ -13,8 +13,13 @@
   font-style: normal;
 }
 body {
+  height: 100%;
+}
+.home_body {
+  position: absolute;
   background-color: #131e41;
   height: 100%;
+  width: 100%;
   margin: 0;
 }
 a {
