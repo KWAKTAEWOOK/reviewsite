@@ -150,9 +150,9 @@ const Main = () => {
                 <div className="searchBtn">
                   <form className="searchBtn_in" onSubmit={searchSubmit}>
                     <select name="" className="category" id="">
-                      <option value="">전체</option>
-                      <option value="">음식점</option>
-                      <option value="">카페</option>
+                      <option value="">전체!!!</option>
+                      <option value="">음식점!!@!</option>
+                      <option value="">카페??</option>
                     </select>
                     <input
                       className="searchInput"
