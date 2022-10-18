@@ -128,7 +128,11 @@ const SignUp = () => {
                 </button>
               </form>
               <div className="loginButton">
+<<<<<<< HEAD
+                <a href="#!">로그인하기</a>
+=======
                 <a href="/login">로그인하기</a>
+>>>>>>> master
               </div>
             </div>
           </div>
