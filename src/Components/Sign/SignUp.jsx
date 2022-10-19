@@ -14,10 +14,10 @@ const SignUp = () => {
   const [user, setUser] = useState([]);
 
   useEffect(() => {
-    const getUsers = async (userid) => {
+    const getUser = async (userid) => {
       try {
         const data = await axios({
-          url: `${BACKEND_URL}/user/`,
+          url: `${BACKEND_URL}/user/members`,
           method: "GET",
           data: {
             userid,
@@ -26,9 +26,10 @@ const SignUp = () => {
           },
         });
         setUser(data.data);
+        console.log(data.data);
       } catch (e) {}
     };
-    getUsers(userid);
+    getUser(userid);
   }, [userid]);
 
   return (
@@ -59,7 +60,6 @@ const SignUp = () => {
                       },
                     });
                   } catch (e) {
-                    console.log(e);
                     alert("회원가입 실패! 데이터를 확인하세요");
                   }
                 }}
@@ -91,10 +91,10 @@ const SignUp = () => {
                     className="confirm"
                     onClick={() => {
                       console.log(nickname);
-                      // if (nickname === user.nickname) {
-                      document.getElementById("alert").innerHTML =
-                        "이미 존재하는 별명입니다.";
-                      // }
+                      if (nickname(this.state.email)) {
+                        document.getElementById("alert").innerHTML =
+                          "이미 존재하는 별명입니다.";
+                      }
                     }}
                   >
                     중복확인
