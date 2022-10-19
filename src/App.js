@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./Components/Home/Home";
 import Main from "./Components/Main/Main";
@@ -9,6 +9,20 @@ import Mypage from "./Components/Mypage/Mypage";
 import { RecoilRoot } from "recoil";
 
 const App = () => {
+  const [inputText, setInputText] = useState("");
+  const [place, setPlace] = useState(sessionStorage.getItem("search"));
+
+  const onChange = (e) => {
+    setInputText(e.target.value);
+    sessionStorage.setItem("search", e.target.value);
+  };
+
+  const searchSubmit = (e) => {
+    e.preventDefault();
+    setPlace(inputText);
+    setInputText("");
+  };
+
   return (
     <>
       {/* RecoilRoot : 로그인상태 유지 */}
@@ -16,10 +30,23 @@ const App = () => {
         <BrowserRouter>
           <Switch>
             <Route path={"/"} exact>
-              <Home />
+              <Home
+                place={place}
+                setPlace={setPlace}
+                inputText={inputText}
+                setInputText={setInputText}
+                onChange={onChange}
+              />
             </Route>
             <Route path={"/main"} exact>
-              <Main />
+              <Main
+                place={place}
+                setPlace={setPlace}
+                inputText={inputText}
+                setInputText={setInputText}
+                onChange={onChange}
+                searchSubmit={searchSubmit}
+              />
             </Route>
             <Route path={"/signUp"} exact>
               <SignUp />
