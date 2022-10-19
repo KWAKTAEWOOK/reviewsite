@@ -7,6 +7,7 @@ import Detail from "./Components/Detail/Detail";
 import Login from "./Components/Sign/Login";
 import Mypage from "./Components/Mypage/Mypage";
 import { RecoilRoot } from "recoil";
+import MyReview from "./Components/Mypage/MyReview";
 
 const App = () => {
   return (
@@ -32,6 +33,9 @@ const App = () => {
             </Route>
             <Route path={"/Mypage"} exact>
               <Mypage />
+            </Route>
+            <Route path={"/MyReview"} exact>
+              <MyReview />
             </Route>
           </Switch>
         </BrowserRouter>
