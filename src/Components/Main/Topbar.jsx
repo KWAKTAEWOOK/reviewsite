@@ -65,7 +65,9 @@ const Topbar = () => {
               </div>
               <div className="now_location">
                 <BiCurrentLocation className="BiCurrentLocation" />
-                <p>대전시 서구 둔산동</p>
+                <p>
+                  <span id="centerAddr"></span>
+                </p>
               </div>
             </div>
           </div>
