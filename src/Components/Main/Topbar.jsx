@@ -1,9 +1,14 @@
 import React from "react";
+import "../../Style/Main/Topbar.scss";
 import { TiThMenu } from "react-icons/ti";
 import { BiCurrentLocation } from "react-icons/bi";
-import "../../Style/Main/Topbar.scss";
+import { useRecoilState } from "recoil";
+import { userState } from "../../recoil/user";
 
 const Topbar = () => {
+  const [user, setUser] = useRecoilState(userState);
+  // console.log(user);
+
   return (
     <>
       <div className="backbar">
@@ -39,12 +44,23 @@ const Topbar = () => {
             <div className="menu1 sign_btn">
               <div className="loginBtn">
                 <a href="/login">
-                  <h3>로그인</h3>
+                  <h3>{!user && "로그인"}</h3>
                 </a>
+                <h3
+                  className="logoutBtn"
+                  onClick={() => {
+                    if (window.confirm("로그아웃하시겠습니까?")) {
+                      setUser(null);
+                      window.location.href = "/main";
+                    }
+                  }}
+                >
+                  {user && "로그아웃"}
+                </h3>
               </div>
               <div className="signUpBtn">
                 <a href="/signUp">
-                  <h3>회원가입</h3>
+                  <h3>{!user && "회원가입"}</h3>
                 </a>
               </div>
               <div className="now_location">
@@ -52,6 +68,12 @@ const Topbar = () => {
                 <p>대전시 서구 둔산동</p>
               </div>
             </div>
+          </div>
+          <div className="username">
+            <a href="/Mypage">{user && `${user.nickname}`}</a>
+          </div>
+          <div className="username usernameback">
+            {user && "님 환영합니다."}
           </div>
         </div>
       </div>

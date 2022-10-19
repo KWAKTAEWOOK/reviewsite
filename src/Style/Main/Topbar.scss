@@ -48,7 +48,6 @@ a {
   height: 100%;
   text-align: center;
   left: 15px;
-  // border-right: 0.3px solid rgb(198, 198, 198);
 }
 .siteLogo > a {
   position: relative;
@@ -79,6 +78,10 @@ a {
 }
 .menu1 > div > a {
   color: white;
+}
+.logoutBtn {
+  color: white;
+  cursor: pointer;
 }
 .menu1 > ul {
   cursor: pointer;
@@ -144,4 +147,22 @@ a {
   left: 580px;
   width: 200px;
   text-align: left;
+}
+.username {
+  position: relative;
+  top: 25px;
+  left: 400px;
+  font-family: "HallymGothic-Regular";
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  text-decoration: underline;
+  // text-underline-position: under;
+}
+.usernameback {
+  text-decoration: none;
+  position: relative;
+  margin-left: 5px;
+  color: rgba(243, 243, 243, 0.8);
+  font-weight: lighter;
 }

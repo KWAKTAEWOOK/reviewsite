@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BACKEND_URL } from "../../utils";
 import Topbar from "../Main/Topbar";
 import "../../Style/Sign/SignUp.scss";
@@ -11,6 +11,25 @@ const SignUp = () => {
   const [password1, setPassword1] = useState("");
   const [password2, setPassword2] = useState("");
   const [email, setEmail] = useState("");
+  const [user, setUser] = useState([]);
+
+  useEffect(() => {
+    const getUsers = async (userid) => {
+      try {
+        const data = await axios({
+          url: `${BACKEND_URL}/user/`,
+          method: "GET",
+          data: {
+            userid,
+            nickname,
+            email,
+          },
+        });
+        setUser(data.data);
+      } catch (e) {}
+    };
+    getUsers(userid);
+  }, [userid]);
 
   return (
     <>
@@ -19,7 +38,7 @@ const SignUp = () => {
         <div className="signUpBack">
           <div className="signUptemplate">
             <div className="signUpLogo">
-              Sign-Up
+              <p>Sign-Up</p>
               <hr />
             </div>
             <div className="signUpForm">
@@ -39,17 +58,9 @@ const SignUp = () => {
                         email,
                       },
                     });
-                    setUsername("");
-                    setNickname("");
-                    setUserid("");
-                    setPassword1("");
-                    setPassword2("");
-                    setEmail("");
-                    // alert("회원가입 성공!");
                   } catch (e) {
-                    // e.text().then((msg) => alert(msg));
                     console.log(e);
-                    // alert("회원가입 실패! 데이터를 확인하세요");
+                    alert("회원가입 실패! 데이터를 확인하세요");
                   }
                 }}
               >
@@ -76,6 +87,19 @@ const SignUp = () => {
                       setNickname(e.target.value);
                     }}
                   />
+                  <button
+                    className="confirm"
+                    onClick={() => {
+                      console.log(nickname);
+                      // if (nickname === user.nickname) {
+                      document.getElementById("alert").innerHTML =
+                        "이미 존재하는 별명입니다.";
+                      // }
+                    }}
+                  >
+                    중복확인
+                  </button>
+                  <p id="alert" className="alert"></p>
                 </div>
                 <div>
                   ID
@@ -88,6 +112,16 @@ const SignUp = () => {
                       setUserid(e.target.value);
                     }}
                   />
+                  <button
+                    className="confirm"
+                    onClick={() => {
+                      document.getElementById("alert2").innerHTML =
+                        "이미 존재하는 ID입니다.";
+                    }}
+                  >
+                    중복확인
+                  </button>
+                  <p id="alert2" className="alert"></p>
                 </div>
                 <div>
                   password
@@ -110,6 +144,7 @@ const SignUp = () => {
                       setPassword2(e.target.value);
                     }}
                   />
+                  {/* <p className="alert">비밀번호를 확인해주세요.</p> */}
                 </div>
                 <div>
                   E-mail
@@ -122,8 +157,33 @@ const SignUp = () => {
                       setEmail(e.target.value);
                     }}
                   />
+                  <button
+                    className="confirm"
+                    onClick={() => {
+                      document.getElementById("alert3").innerHTML =
+                        "이미 존재하는 E-mail입니다.";
+                    }}
+                  >
+                    중복확인
+                  </button>
+                  <p id="alert3" className="alert"></p>
                 </div>
-                <button type="submit" className="signUpButton">
+                <button
+                  type="submit"
+                  className="signUpButton"
+                  onClick={() => {
+                    if (window.confirm("가입하시겠습니까?")) {
+                      alert("회원가입 성공!");
+                      setUsername("");
+                      setNickname("");
+                      setUserid("");
+                      setPassword1("");
+                      setPassword2("");
+                      setEmail("");
+                      window.location.href = "/main";
+                    }
+                  }}
+                >
                   가입하기
                 </button>
               </form>
