@@ -14,7 +14,7 @@ const Topbar = () => {
       <div className="backbar">
         <div className="menuBar">
           <div className="siteLogo">
-            <a href="/main">넌 어때?</a>
+            <a href="/">넌 어때?</a>
           </div>
           <div className="menuList">
             <div className="menu1">

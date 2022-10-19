@@ -7,9 +7,14 @@ import useGeolocation from "react-hook-geolocation";
 
 const { kakao } = window;
 
-const Main = () => {
-  const [inputText, setInputText] = useState("");
-  const [place, setPlace] = useState("");
+const Main = ({
+  place,
+  setPlace,
+  inputText,
+  setIntpuText,
+  onChange,
+  searchSubmit,
+}) => {
   const [Places, setPlaces] = useState([]);
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
@@ -28,16 +33,6 @@ const Main = () => {
 
   const lat = geolocation.latitude;
   const lng = geolocation.longitude;
-
-  const onChange = (e) => {
-    setInputText(e.target.value);
-  };
-
-  const searchSubmit = (e) => {
-    e.preventDefault();
-    setPlace(inputText);
-    setInputText("");
-  };
 
   const offset = (page - 1) * limit;
 
@@ -223,6 +218,7 @@ const Main = () => {
                       type="text"
                       placeholder="장소, 주소 검색"
                       value={inputText}
+                      defaultValue={sessionStorage.getItem("search")}
                       onChange={onChange}
                     />
                     <button className="searchButton" type="submit" />
