@@ -55,14 +55,14 @@
   text-align: center;
   border-radius: 5%;
   width: 1000px;
-  height: 700px;
+  height: auto;
   background-color: white;
-  display: inline-block;
-  margin: 0 auto;
+  display: block;
+  margin: 150px auto;
 }
 .confont {
   position: relative;
-  margin: 100px auto;
+  margin-bottom: 50px;
   height: 50px;
 }
 .cafe {
@@ -85,27 +85,124 @@
   width: 100%;
   height: 50px;
   margin-left: 37%;
-}
-.star {
-  position: relative;
-  font-size: 2rem;
-  color: #ddd;
+  margin-top: 100px;
 }
 
-.star input {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  opacity: 0;
+.icon > div {
+  display: block;
+  text-align: center;
+  align-items: flex-start;
+}
+.NavGroup {
+  position: fixed;
+  margin: 20px;
+  display: block;
+  margin-top: -600px;
+  margin-left: 90%;
+}
+.NavGroup > button {
+  display: block;
+  margin: 20px 0px;
+  font-family: OTEnjoystoriesBA;
+  font-size: 2rem;
+  min-width: 100px;
+}
+.group {
+  width: auto;
+  height: 100px;
+  display: inline-block;
+  font-size: 1.3rem;
+}
+.left {
+  text-align: right;
+  margin-right: 2%;
+}
+.right {
+  text-align: left;
+}
+.group > div {
+  margin: 10px;
+}
+
+.rode_api1 {
+  background-color: white;
+  border-left: 1px solid gray;
+  width: 1000px;
+  height: 500px;
+}
+.maptext {
+  font-size: 30px;
+  text-align: center;
+}
+.likeImg {
+  background-image: url(/public/images/like2.png);
+  width: 60px;
+  height: 60px;
+  position: relative;
+  margin-left: 10px;
+  background-size: cover;
+}
+
+.EmptylinkeImg {
+  background-image: url(/public/images/like1.png);
+  width: 60px;
+  height: 60px;
+  position: relative;
+  margin-left: 10px;
+  background-size: cover;
+}
+.EmptyHeartImg {
+  background-image: url(/public/images/heart.png);
+  width: 60px;
+  height: 60px;
+  position: relative;
+  margin-left: 10px;
+  background-size: cover;
+}
+.HeartImg {
+  background-image: url(/public/images/heart1.png);
+  width: 60px;
+  height: 60px;
+  position: relative;
+  margin-left: 10px;
+  background-size: cover;
+}
+.iconbut:hover {
+  cursor: pointer;
+  transition: transform 300ms ease;
+  transform: scale(1.1);
+}
+button {
+  background: inherit;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+  overflow: visible;
   cursor: pointer;
 }
 
-.star span {
-  width: 0;
-  position: absolute;
-  left: 0;
-  color: red;
-  overflow: hidden;
-  pointer-events: none;
+/**/
+@keyframes ball {
+  0% {
+    width: 50px;
+    height: 50px;
+  }
+  95% {
+    width: 60px;
+    height: 60px;
+  }
+  to {
+    width: 60px;
+    height: 60px;
+  }
+}
+.liketext > div {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  font-family: OTEnjoystoriesBA;
+  font-size: 2rem;
+  font-weight: bolder;
+  margin-left: 10px;
 }
