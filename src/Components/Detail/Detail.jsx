@@ -4,18 +4,19 @@ import GalleryList from "./GalleryList";
 import data from "./Image";
 import "../../Style/Detail/img.css";
 import Topbar from "../Main/Topbar";
-import useMoveScrool from "./useMoveScroll";
 import "../../Style/Main/Main.scss";
-import { Link } from "react-router-dom";
+
 const { kakao } = window;
 
-const Detail = ({}) => {
+const Detail = () => {
   const [datas, setData] = useState(data);
   const [currItem, setCurrItem] = useState(datas[0]);
   const [heart, setheart] = useState(false);
-  const [modal, setModal] = useState(false);
-  const { element, onMoveToElement } = useMoveScrool();
   const [like, setlike] = useState(false);
+  const photosRef = useRef();
+  const detailRef = useRef();
+  const mappgRef = useRef();
+  const reviewRef = useRef();
 
   const HeartImg = "/images/heart.png";
   const EmptyHeartImg = "/images/heart1.png";
@@ -46,42 +47,54 @@ const Detail = ({}) => {
 
     var map = new window.kakao.maps.Map(mapContainer, mapOption);
   }, []);
-  const goodsTabs = {
-    0: useMoveScrool("사진"),
-    1: useMoveScrool("상세정보"),
-    2: useMoveScrool("지도/위치"),
-    3: useMoveScrool("리뷰"),
-  };
+  const photos = () =>
+    photosRef.current.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  const detail = () =>
+    detailRef.current.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    });
+  const mappg = () =>
+    mappgRef.current.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    });
+  const review = () =>
+    reviewRef.current.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
   return (
     <>
       <Topbar />
       <div>
-        <div className="wrap">
+        <div className="wrap" ref={photosRef}>
           <GalleryList datas={datas} onView={onView} currItem={currItem} />
         </div>
-        <hr width="1000px" />
+
         <nav class="styled__TopNav-sc-1tkfz70-1 eUocsG">
           <div>
             <div class="NavGroup">
-              {Array.from(goodsTabs).map((tab, index) => {
-                <div onClick={tab.onMoveToElement}>{tab.name}</div>;
-              })}
-              <button>사진</button>
-              <button>상세정보</button>
-              <button>지도/위치</button>
-              <button>리뷰</button>
+              <button onClick={photos}>사진</button>
+              <button onClick={detail}>상세정보</button>
+              <button onClick={mappg}>지도/위치</button>
+              <button onClick={review}>리뷰</button>
             </div>
           </div>
         </nav>
         <div className="body1">
           <div className="magin-side">
+            <hr width="1000px" />
             <div className="Box">
               <div className="confont">
                 <div className="cafe">고깃리 88번지</div>
                 <div className="Foods">돼지고기구이</div>
               </div>
 
-              <div className="group left">
+              <div className="group left" ref={detailRef}>
                 <div>평점</div>
                 <div>주소</div>
 
@@ -121,7 +134,17 @@ const Detail = ({}) => {
             </div>
             <hr width="1000px" />
             <div className="maptext">위치정보</div>
-            <div className="rode_api1" id="map"></div>
+            <div className="rode_api1" id="map" ref={mappgRef}></div>
+            <hr width="1000px" />
+            <hr width="1000px" />
+            <hr width="1000px" />
+            <div className="사용자" ref={reviewRef}>
+              <div className="usercon">
+                <img className="userimg" src="/images/3.jpg" alt="" />
+                <div>닉네임</div>
+              </div>
+              <textarea id="" cols="100" rows="10"></textarea>
+            </div>
           </div>
         </div>
       </div>
