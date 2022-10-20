@@ -216,6 +216,7 @@ button {
 .userimg {
   display: inline-block;
   height: 150px;
+  width: 200px;
   position: relative;
 }
 .사용자 > textarea {
