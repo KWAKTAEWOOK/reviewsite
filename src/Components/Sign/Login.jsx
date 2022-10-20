@@ -20,7 +20,6 @@ const Login = () => {
           <div className="loginTemplate">
             <div className="signUpLogo">
               <p>Login</p>
-              <hr />
             </div>
             <div className="signUpForm">
               <form

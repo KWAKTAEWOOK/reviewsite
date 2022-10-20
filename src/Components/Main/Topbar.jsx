@@ -23,20 +23,23 @@ const Topbar = () => {
                   <TiThMenu className="TiThMenu" />
                   <h3>&nbsp;&nbsp;메뉴</h3>
                 </li>
-                <ul>
+                {/* <ul>
                   <li>
-                    <a href="/main">내 주변 찾기</a>
+                    <a href="/detail">내 주변 찾기</a>
                   </li>
                   <li>
                     <a href="/main">카테고리별 찾기</a>
                   </li>
-                </ul>
+                </ul> */}
                 <ul>
                   <li>
                     <a href="/main">내가 찜한 가게</a>
                   </li>
                   <li>
                     <a href="/main">내가 작성한 리뷰</a>
+                  </li>
+                  <li>
+                    <a href="/detail">상세페이지</a>
                   </li>
                 </ul>
               </ul>

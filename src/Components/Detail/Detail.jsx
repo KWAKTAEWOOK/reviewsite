@@ -75,9 +75,9 @@ const Detail = () => {
           <GalleryList datas={datas} onView={onView} currItem={currItem} />
         </div>
 
-        <nav class="styled__TopNav-sc-1tkfz70-1 eUocsG">
+        <nav className="styled__TopNav-sc-1tkfz70-1 eUocsG">
           <div>
-            <div class="NavGroup">
+            <div className="NavGroup">
               <button onClick={photos}>사진</button>
               <button onClick={detail}>상세정보</button>
               <button onClick={mappg}>지도/위치</button>
@@ -141,7 +141,14 @@ const Detail = () => {
             <div className="사용자" ref={reviewRef}>
               <div className="usercon">
                 <img className="userimg" src="/images/3.jpg" alt="" />
-                <div>닉네임</div>
+                <div>비둘기</div>
+              </div>
+              <textarea id="" cols="100" rows="10"></textarea>
+              <br />
+              <br />
+              <div className="usercon">
+                <img className="userimg" src="/images/6.jpg" alt="" />
+                <div>멧밭쥐</div>
               </div>
               <textarea id="" cols="100" rows="10"></textarea>
             </div>
