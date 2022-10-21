@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BACKEND_URL } from "../../utils";
 import "../../Style/Sign/SignUp.scss";
 import TopbarV2 from "../Main/TopbarV2";
@@ -11,7 +11,52 @@ const SignUp = () => {
   const [password1, setPassword1] = useState("");
   const [password2, setPassword2] = useState("");
   const [email, setEmail] = useState("");
-  const [user, setUser] = useState([]);
+
+  async function checkNickname() {
+    const res = await axios
+      .get(`${BACKEND_URL}/user/${nickname}/nickname`)
+      .catch((err) => {
+        console.log(err);
+      });
+
+    if (res.data == true) {
+      document.getElementById("alert").innerHTML = "이미 존재하는 별명입니다.";
+    } else {
+      document.getElementById("alert").innerHTML =
+        "<font color='green'>사용가능한 별명입니다.";
+    }
+  }
+
+  async function checkId() {
+    const res = await axios
+      .get(`${BACKEND_URL}/user/${userid}/userid`)
+      .catch((err) => {
+        console.log(err);
+      });
+
+    if (res.data == true) {
+      document.getElementById("alert2").innerHTML = "이미 존재하는 ID입니다.";
+    } else {
+      document.getElementById("alert2").innerHTML =
+        "<font color='green'>사용가능한 ID입니다.";
+    }
+  }
+
+  async function checkEmail() {
+    const res = await axios
+      .get(`${BACKEND_URL}/user/${email}/email`)
+      .catch((err) => {
+        console.log(err);
+      });
+
+    if (res.data == true) {
+      document.getElementById("alert3").innerHTML =
+        "이미 존재하는 이메일입니다.";
+    } else {
+      document.getElementById("alert3").innerHTML =
+        "<font color='green'>사용가능한 이메일입니다.";
+    }
+  }
 
   return (
     <>
@@ -39,6 +84,7 @@ const SignUp = () => {
                         email,
                       },
                     });
+                    // console.log(data);
                   } catch (e) {
                     alert("회원가입 실패! 데이터를 확인하세요");
                   }
@@ -65,18 +111,12 @@ const SignUp = () => {
                     value={nickname}
                     onChange={(e) => {
                       setNickname(e.target.value);
+                      if (e.target.value.length == 0) {
+                        document.getElementById("alert").innerHTML = "";
+                      }
                     }}
                   />
-                  <button
-                    className="confirm"
-                    onClick={async (e) => {
-                      try {
-                        await axios.get(
-                          `${BACKEND_URL}/user/user-id/${userid}/exists`
-                        );
-                      } catch {}
-                    }}
-                  >
+                  <button className="confirm" onClick={checkNickname}>
                     중복확인
                   </button>
                   <p id="alert" className="alert"></p>
@@ -90,15 +130,12 @@ const SignUp = () => {
                     value={userid}
                     onChange={(e) => {
                       setUserid(e.target.value);
+                      if (e.target.value.length == 0) {
+                        document.getElementById("alert2").innerHTML = "";
+                      }
                     }}
                   />
-                  <button
-                    className="confirm"
-                    onClick={() => {
-                      document.getElementById("alert2").innerHTML =
-                        "이미 존재하는 ID입니다.";
-                    }}
-                  >
+                  <button className="confirm" onClick={checkId}>
                     중복확인
                   </button>
                   <p id="alert2" className="alert"></p>
@@ -122,9 +159,19 @@ const SignUp = () => {
                     value={password2}
                     onChange={(e) => {
                       setPassword2(e.target.value);
+                      if (e.target.value == password1) {
+                        document.getElementById("pwalert").innerHTML =
+                          "<font color='green'>패스워드 일치";
+                      } else {
+                        document.getElementById("pwalert").innerHTML =
+                          "올바른 패스워드를 입력하세요";
+                      }
+                      if (e.target.value.length == 0) {
+                        document.getElementById("pwalert").innerHTML = "";
+                      }
                     }}
                   />
-                  {/* <p className="alert">비밀번호를 확인해주세요.</p> */}
+                  <p id="pwalert" className="alert"></p>
                 </div>
                 <div>
                   E-mail
@@ -135,15 +182,12 @@ const SignUp = () => {
                     value={email}
                     onChange={(e) => {
                       setEmail(e.target.value);
+                      if (e.target.value.length == 0) {
+                        document.getElementById("alert3").innerHTML = "";
+                      }
                     }}
                   />
-                  <button
-                    className="confirm"
-                    onClick={() => {
-                      document.getElementById("alert3").innerHTML =
-                        "이미 존재하는 E-mail입니다.";
-                    }}
-                  >
+                  <button className="confirm" onClick={checkEmail}>
                     중복확인
                   </button>
                   <p id="alert3" className="alert"></p>
@@ -153,14 +197,25 @@ const SignUp = () => {
                   className="signUpButton"
                   onClick={() => {
                     if (window.confirm("가입하시겠습니까?")) {
-                      alert("회원가입 성공!");
-                      setUsername("");
-                      setNickname("");
-                      setUserid("");
-                      setPassword1("");
-                      setPassword2("");
-                      setEmail("");
-                      window.location.href = "/main";
+                      if (
+                        username == "" ||
+                        nickname == "" ||
+                        userid == "" ||
+                        password1 == "" ||
+                        password2 == "" ||
+                        email == ""
+                      ) {
+                        alert("회원가입 정보를 모두 입력해주세요.");
+                      } else {
+                        alert("회원가입 성공!");
+                        setUsername("");
+                        setNickname("");
+                        setUserid("");
+                        setPassword1("");
+                        setPassword2("");
+                        setEmail("");
+                        window.location.href = "/main";
+                      }
                     }
                   }}
                 >
