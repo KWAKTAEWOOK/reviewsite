@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { BACKEND_URL } from "../../utils";
-import Topbar from "../Main/Topbar";
 import "../../Style/Sign/SignUp.scss";
+import TopbarV2 from "../Main/TopbarV2";
 
 const SignUp = () => {
   const [username, setUsername] = useState("");
@@ -15,7 +15,7 @@ const SignUp = () => {
 
   return (
     <>
-      <Topbar />
+      <TopbarV2 />
       <div className="signUpBody">
         <div className="signUpBack">
           <div className="signUptemplate">

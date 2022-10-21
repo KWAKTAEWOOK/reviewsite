@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import Topbar from "../Main/Topbar";
+
 import "../../Style/Sign/Login.scss";
 import axios from "axios";
 import { BACKEND_URL } from "../../utils";
 import { useRecoilState } from "recoil";
 import { userState } from "../../recoil/user";
 import { useHistory } from "react-router-dom";
+import TopbarV2 from "../Main/TopbarV2";
 
 const Login = () => {
   const [userid, setUserid] = useState("");
@@ -14,7 +15,7 @@ const Login = () => {
 
   return (
     <>
-      <Topbar />
+      <TopbarV2 />
       <div className="signUpBody">
         <div className="signUpBack">
           <div className="loginTemplate">
