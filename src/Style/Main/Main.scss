@@ -5,6 +5,13 @@
   font-weight: 400;
   font-style: normal;
 }
+.searchNull {
+  font-size: 25px;
+  color: grey;
+  z-index: 99;
+  position: relative;
+  opacity: 0.5;
+}
 .main {
   position: relative;
   display: block;
