@@ -36,10 +36,13 @@ const Topbar = () => {
                     <a href="/main">내가 찜한 가게</a>
                   </li>
                   <li>
-                    <a href="/main">내가 작성한 리뷰</a>
+                    <a href="/MyReview">내가 작성한 리뷰</a>
                   </li>
                   <li>
                     <a href="/detail">상세페이지</a>
+                  </li>
+                  <li>
+                    <a href="/Mypage">프로필 수정</a>
                   </li>
                 </ul>
               </ul>
