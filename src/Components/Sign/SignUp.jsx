@@ -13,13 +13,13 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
 
   async function checkNickname() {
-    const res1 = await axios
+    const res = await axios
       .get(`${BACKEND_URL}/user/${nickname}/nickname`)
       .catch((err) => {
         console.log(err);
       });
 
-    if (res1.data == true) {
+    if (res.data == true) {
       document.getElementById("alert").innerHTML = "이미 존재하는 별명입니다.";
     } else {
       document.getElementById("alert").innerHTML =
@@ -84,6 +84,7 @@ const SignUp = () => {
                         email,
                       },
                     });
+                    // console.log(data);
                   } catch (e) {
                     alert("회원가입 실패! 데이터를 확인하세요");
                   }
@@ -110,6 +111,9 @@ const SignUp = () => {
                     value={nickname}
                     onChange={(e) => {
                       setNickname(e.target.value);
+                      if (e.target.value.length == 0) {
+                        document.getElementById("alert").innerHTML = "";
+                      }
                     }}
                   />
                   <button className="confirm" onClick={checkNickname}>
@@ -126,6 +130,9 @@ const SignUp = () => {
                     value={userid}
                     onChange={(e) => {
                       setUserid(e.target.value);
+                      if (e.target.value.length == 0) {
+                        document.getElementById("alert2").innerHTML = "";
+                      }
                     }}
                   />
                   <button className="confirm" onClick={checkId}>
@@ -159,6 +166,9 @@ const SignUp = () => {
                         document.getElementById("pwalert").innerHTML =
                           "올바른 패스워드를 입력하세요";
                       }
+                      if (e.target.value.length == 0) {
+                        document.getElementById("pwalert").innerHTML = "";
+                      }
                     }}
                   />
                   <p id="pwalert" className="alert"></p>
@@ -172,6 +182,9 @@ const SignUp = () => {
                     value={email}
                     onChange={(e) => {
                       setEmail(e.target.value);
+                      if (e.target.value.length == 0) {
+                        document.getElementById("alert3").innerHTML = "";
+                      }
                     }}
                   />
                   <button className="confirm" onClick={checkEmail}>
@@ -184,14 +197,25 @@ const SignUp = () => {
                   className="signUpButton"
                   onClick={() => {
                     if (window.confirm("가입하시겠습니까?")) {
-                      alert("회원가입 성공!");
-                      setUsername("");
-                      setNickname("");
-                      setUserid("");
-                      setPassword1("");
-                      setPassword2("");
-                      setEmail("");
-                      window.location.href = "/main";
+                      if (
+                        username == "" ||
+                        nickname == "" ||
+                        userid == "" ||
+                        password1 == "" ||
+                        password2 == "" ||
+                        email == ""
+                      ) {
+                        alert("회원가입 정보를 모두 입력해주세요.");
+                      } else {
+                        alert("회원가입 성공!");
+                        setUsername("");
+                        setNickname("");
+                        setUserid("");
+                        setPassword1("");
+                        setPassword2("");
+                        setEmail("");
+                        window.location.href = "/main";
+                      }
                     }
                   }}
                 >
