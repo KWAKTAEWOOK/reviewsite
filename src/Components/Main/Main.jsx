@@ -25,25 +25,39 @@ const Main = ({
   const [limit, setLimit] = useState(10);
   const [open, setOpen] = useState(true);
   const [arrow, setArrow] = useState(true);
+  const [searchNull, setSearchNull] = useState("");
 
   const onChangeCategory = (e) => {
     if (e.target.value === "FD6") {
+      setSearchNull("");
       var filterFD6 = backupFD6.filter(
         (value) => value.category_group_code === "FD6"
       );
       setPlaces(filterFD6);
+      if (filterFD6.length === 0) {
+        setSearchNull("음식점 검색결과 없음");
+      }
     } else if (e.target.value === "all") {
+      setSearchNull("");
       setPlaces(backupAll);
     } else if (e.target.value === "CE7") {
+      setSearchNull("");
       var filterCE7 = backupCE7.filter(
         (value) => value.category_group_code === "CE7"
       );
       setPlaces(filterCE7);
+      if (filterCE7.length === 0) {
+        setSearchNull("카페 검색결과 없음");
+      }
     } else if (e.target.value === "CS2") {
+      setSearchNull("");
       var filterCS2 = backupCS2.filter(
         (value) => value.category_group_code === "CS2"
       );
       setPlaces(filterCS2);
+      if (filterCS2.length === 0) {
+        setSearchNull("편의점 검색결과 없음");
+      }
     }
   };
 
@@ -250,6 +264,7 @@ const Main = ({
                 </div>
                 <div className="search_List">
                   <div className="search_List_fixed">
+                    <span className="searchNull">{searchNull}</span>
                     {Places.slice(offset, offset + limit).map((item, i) => (
                       <Link
                         to={{
