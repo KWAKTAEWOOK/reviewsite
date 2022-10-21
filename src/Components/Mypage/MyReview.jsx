@@ -1,11 +1,12 @@
 import React from "react";
 import Topbar from "../Main/Topbar";
 import "../../Style/Mypage/MyReview.scss";
+import TopbarV2 from "../Main/TopbarV2";
 
 const MyReview = () => {
   return (
     <>
-      <Topbar />
+      <TopbarV2 />
       <div className="con">
         <ul>
           {" "}

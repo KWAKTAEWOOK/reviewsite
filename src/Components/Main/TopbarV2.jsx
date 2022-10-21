@@ -5,7 +5,7 @@ import { BiCurrentLocation } from "react-icons/bi";
 import { useRecoilState } from "recoil";
 import { userState } from "../../recoil/user";
 
-const Topbar = () => {
+const TopbarV2 = () => {
   const [user, setUser] = useRecoilState(userState);
   // console.log(user);
 
@@ -36,13 +36,10 @@ const Topbar = () => {
                     <a href="/main">내가 찜한 가게</a>
                   </li>
                   <li>
-                    <a href="/MyReview">내가 작성한 리뷰</a>
+                    <a href="/main">내가 작성한 리뷰</a>
                   </li>
                   <li>
                     <a href="/detail">상세페이지</a>
-                  </li>
-                  <li>
-                    <a href="/Mypage">프로필 수정</a>
                   </li>
                 </ul>
               </ul>
@@ -69,12 +66,12 @@ const Topbar = () => {
                   <h3>{!user && "회원가입"}</h3>
                 </a>
               </div>
-              <div className="now_location">
+              {/* <div className="now_location">
                 <BiCurrentLocation className="BiCurrentLocation" />
                 <p>
                   <span id="centerAddr"></span>
                 </p>
-              </div>
+              </div> */}
             </div>
           </div>
           <div className="username">
@@ -89,4 +86,4 @@ const Topbar = () => {
   );
 };
 
-export default Topbar;
+export default TopbarV2;
