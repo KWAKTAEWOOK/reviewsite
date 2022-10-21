@@ -3,8 +3,8 @@ import React, { useState, useEffect, useRef } from "react";
 import GalleryList from "./GalleryList";
 import data from "./Image";
 import "../../Style/Detail/img.css";
-import Topbar from "../Main/Topbar";
 import "../../Style/Main/Main.scss";
+import TopbarV2 from "../Main/TopbarV2";
 
 const { kakao } = window;
 
@@ -69,7 +69,7 @@ const Detail = () => {
     });
   return (
     <>
-      <Topbar />
+      <TopbarV2 />
       <div>
         <div className="wrap" ref={photosRef}>
           <GalleryList datas={datas} onView={onView} currItem={currItem} />
