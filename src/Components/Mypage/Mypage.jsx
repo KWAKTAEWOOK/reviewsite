@@ -39,7 +39,6 @@ const SignUp = () => {
           <div className="signUptemplate">
             <div className="signUpLogo">
               <p>내 프로필 변경</p>
-              <hr />
             </div>
             <div className="signUpForm">
               <form

@@ -58,6 +58,14 @@ const SignUp = () => {
     }
   }
 
+  // 이메일 유효성검사
+  const chkEmail = function (str) {
+    var regExp =
+      /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+    return regExp.test(str) ? true : false;
+  };
+  //
+
   return (
     <>
       <TopbarV2 />
@@ -84,7 +92,6 @@ const SignUp = () => {
                         email,
                       },
                     });
-                    // console.log(data);
                   } catch (e) {
                     alert("회원가입 실패! 데이터를 확인하세요");
                   }
@@ -113,10 +120,19 @@ const SignUp = () => {
                       setNickname(e.target.value);
                       if (e.target.value.length == 0) {
                         document.getElementById("alert").innerHTML = "";
+                      } else if (e.target.value.length > 15) {
+                        document.getElementById("alert").innerHTML =
+                          "15자 이내로 입력해주세요.";
+                      } else {
+                        document.getElementById("alert").innerHTML = "";
                       }
                     }}
                   />
-                  <button className="confirm" onClick={checkNickname}>
+                  <button
+                    type="button"
+                    className="confirm"
+                    onClick={checkNickname}
+                  >
                     중복확인
                   </button>
                   <p id="alert" className="alert"></p>
@@ -132,10 +148,15 @@ const SignUp = () => {
                       setUserid(e.target.value);
                       if (e.target.value.length == 0) {
                         document.getElementById("alert2").innerHTML = "";
+                      } else if (e.target.value.length > 15) {
+                        document.getElementById("alert2").innerHTML =
+                          "15자 이내로 입력해주세요.";
+                      } else {
+                        document.getElementById("alert2").innerHTML = "";
                       }
                     }}
                   />
-                  <button className="confirm" onClick={checkId}>
+                  <button type="button" className="confirm" onClick={checkId}>
                     중복확인
                   </button>
                   <p id="alert2" className="alert"></p>
@@ -187,7 +208,11 @@ const SignUp = () => {
                       }
                     }}
                   />
-                  <button className="confirm" onClick={checkEmail}>
+                  <button
+                    type="button"
+                    className="confirm"
+                    onClick={checkEmail}
+                  >
                     중복확인
                   </button>
                   <p id="alert3" className="alert"></p>
@@ -206,6 +231,12 @@ const SignUp = () => {
                         email == ""
                       ) {
                         alert("회원가입 정보를 모두 입력해주세요.");
+                      } else if (nickname.length > 15 || userid.length > 15) {
+                        alert(
+                          "글자수를 초과한 데이터가 있습니다. 확인해주세요."
+                        );
+                      } else if (chkEmail(email) === false) {
+                        alert("이메일 형식이 유효하지않습니다.");
                       } else {
                         alert("회원가입 성공!");
                         setUsername("");
@@ -214,7 +245,7 @@ const SignUp = () => {
                         setPassword1("");
                         setPassword2("");
                         setEmail("");
-                        window.location.href = "/main";
+                        // window.location.href = "/main";
                       }
                     }
                   }}
