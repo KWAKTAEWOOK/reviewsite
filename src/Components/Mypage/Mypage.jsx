@@ -76,10 +76,7 @@ const SignUp = () => {
                     }}
                   />
                 </div>
-                <div className="My_picute">
-                  사진
-                  <input type="file" />
-                </div>
+
                 <div>
                   별명
                   <br />
@@ -177,6 +174,7 @@ const SignUp = () => {
                   </button>
                   <p id="alert3" className="alert"></p>
                 </div>
+
                 <button
                   type="submit"
                   className="signUpButton"

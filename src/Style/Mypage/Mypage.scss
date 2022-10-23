@@ -116,12 +116,16 @@
 .input_Email {
   width: 600px;
 }
-
 .My_picute {
-  //   display: none;
+  float: right;
   position: absolute;
-  right: 50%;
+  top: -50%;
 }
 .confirm1 {
   left: 38%;
+}
+.img_box {
+  width: 200px;
+  height: 200px;
+  border: solid 1px gray;
 }

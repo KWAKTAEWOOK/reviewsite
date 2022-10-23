@@ -42,7 +42,7 @@ const Topbar = () => {
                     <a href="/detail">상세페이지</a>
                   </li>
                   <li>
-                    <a href="/Mypage">프로필 수정</a>
+                    <a href="/Mypage2">프로필 수정</a>
                   </li>
                 </ul>
               </ul>
@@ -78,7 +78,16 @@ const Topbar = () => {
             </div>
           </div>
           <div className="username">
-            <a href="/Mypage">{user && `${user.nickname}`}</a>
+            {/* <a href="/Mypage2">{`${user.nickname}`}</a> */}
+            <a
+              href=""
+              onClick={(e, id) => {
+                e.preventdefualt();
+                window.location.href = "/Mypage2";
+              }}
+            >
+              {`${user.nickname}`}
+            </a>
           </div>
           <div className="username usernameback">
             {user && "님 환영합니다."}
