@@ -1,35 +1,38 @@
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
 import { BACKEND_URL } from "../../utils";
+import { useRecoilState } from "recoil";
+import { userState } from "../../recoil/user";
 import "../../Style/Mypage/Mypage.scss";
 import TopbarV2 from "../Main/TopbarV2";
 
-const SignUp = () => {
-  const [username, setUsername] = useState("");
+const Mypage3 = () => {
+  const [user, setUser] = useRecoilState(userState);
   const [nickname, setNickname] = useState("");
+  const [username, setUsername] = useState("");
   const [userid, setUserid] = useState("");
-  const [password1, setPassword1] = useState("");
-  const [password2, setPassword2] = useState("");
+  const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [user, setUser] = useState([]);
+
+  function setting() {
+    setNickname(user.nickname);
+    setUsername(user.username);
+    setUserid(user.userid);
+    setPassword(user.password);
+    setEmail(user.email);
+    // console.log(user.nickname);
+    // console.log("출력");
+  }
 
   useEffect(() => {
-    const getUsers = async (userid) => {
-      try {
-        const data = await axios({
-          url: `${BACKEND_URL}/user/`,
-          method: "GET",
-          data: {
-            userid,
-            nickname,
-            email,
-          },
-        });
-        setUser(data.data);
-      } catch (e) {}
-    };
-    getUsers(userid);
-  }, [userid]);
+    setting();
+    console.log("useEffect  출력");
+    console.log(`${nickname}`);
+  }, []);
+
+  function changeNickname(e) {
+    setNickname(e.target.value);
+  }
 
   return (
     <>
@@ -38,162 +41,73 @@ const SignUp = () => {
         <div className="signUpBack">
           <div className="signUptemplate">
             <div className="signUpLogo">
-              <p>내 프로필 변경</p>
+              <p>프로필 수정</p>
             </div>
             <div className="signUpForm">
-              <form
-                onSubmit={async (e) => {
+              <div>
+                이름
+                <br />
+                <div className="gray_box">{`${username}`}</div>
+              </div>
+              <div>
+                별명
+                <br />
+                <input
+                  className="input_nickname"
+                  type="text"
+                  onChange={changeNickname}
+                  value={nickname}
+                ></input>
+              </div>
+              <div>
+                ID
+                <br />
+                <div className="gray_box">{`${userid}`}</div>
+              </div>
+              <div>
+                Password
+                <br />
+                <div className="gray_box"></div>
+              </div>
+              <div>
+                Confirm password
+                <br />
+                <div className="gray_box"></div>
+              </div>
+              <div>
+                E-mail
+                <br />
+                <input type="text" value={email} />
+              </div>
+              <button
+                className="signUpButton"
+                onClick={async (e) => {
                   e.preventDefault();
                   try {
                     const data = await axios({
-                      url: `${BACKEND_URL}/user/join`,
+                      url: `${BACKEND_URL}/user/modify`,
                       method: "POST",
                       data: {
+                        userid,
                         username,
                         nickname,
-                        userid,
-                        password1,
-                        password2,
+                        password,
                         email,
                       },
                     });
+                    setUser(data.data);
+                    alert("수정 성공!");
+                    window.location.href = "/main";
                   } catch (e) {
+                    // e.text().then((msg) => alert(msg));
                     console.log(e);
-                    alert("회원가입 실패! 데이터를 확인하세요");
+                    alert("수정 실패");
+                    // setPassword("");
                   }
                 }}
               >
-                <div>
-                  이름
-                  <br />
-                  <input
-                    className="input_name"
-                    type="text"
-                    placeholder="이름을 입력해주세요"
-                    value={username}
-                    onChange={(e) => {
-                      setUsername(e.target.value);
-                    }}
-                  />
-                </div>
-
-                <div>
-                  별명
-                  <br />
-                  <input
-                    className="input_nickname"
-                    type="text"
-                    placeholder="사용할 별명을 입력해주세요"
-                    value={nickname}
-                    onChange={(e) => {
-                      setNickname(e.target.value);
-                    }}
-                  />
-                  <button
-                    className="confirm confirm1"
-                    onClick={() => {
-                      console.log(nickname);
-                      // if (nickname === user.nickname) {
-                      document.getElementById("alert").innerHTML =
-                        "이미 존재하는 별명입니다.";
-                      // }
-                    }}
-                  >
-                    중복확인
-                  </button>
-                  <p id="alert" className="alert"></p>
-                </div>
-                <div>
-                  ID
-                  <br />
-                  <input
-                    className="input_ID"
-                    type="text"
-                    placeholder="사용할 ID를 입력해주세요"
-                    value={userid}
-                    onChange={(e) => {
-                      setUserid(e.target.value);
-                    }}
-                  />
-                  {/* <button
-                    className="confirm"
-                    onClick={() => {
-                      document.getElementById("alert2").innerHTML =
-                        "이미 존재하는 ID입니다.";
-                    }}
-                  >
-                    중복확인
-                  </button> */}
-                  <p id="alert2" className="alert"></p>
-                </div>
-                <div>
-                  password
-                  <br />
-                  <input
-                    className="input_password"
-                    type="password"
-                    value={password1}
-                    onChange={(e) => {
-                      setPassword1(e.target.value);
-                    }}
-                  />
-                </div>
-                <div>
-                  Confirm password
-                  <br />
-                  <input
-                    className="input_password2"
-                    type="password"
-                    value={password2}
-                    onChange={(e) => {
-                      setPassword2(e.target.value);
-                    }}
-                  />
-                  {/* <p className="alert">비밀번호를 확인해주세요.</p> */}
-                </div>
-                <div>
-                  E-mail
-                  <br />
-                  <input
-                    className="input_Email"
-                    type="text"
-                    placeholder="E-mail을 입력해주세요"
-                    value={email}
-                    onChange={(e) => {
-                      setEmail(e.target.value);
-                    }}
-                  />
-                  <button
-                    className="confirm"
-                    onClick={() => {
-                      document.getElementById("alert3").innerHTML =
-                        "이미 존재하는 E-mail입니다.";
-                    }}
-                  >
-                    중복확인
-                  </button>
-                  <p id="alert3" className="alert"></p>
-                </div>
-
-                <button
-                  type="submit"
-                  className="signUpButton"
-                  onClick={() => {
-                    if (window.confirm("가입하시겠습니까?")) {
-                      alert("회원가입 성공!");
-                      setUsername("");
-                      setNickname("");
-                      setUserid("");
-                      setPassword1("");
-                      setPassword2("");
-                      setEmail("");
-                      window.location.href = "/main";
-                    }
-                  }}
-                >
-                  변경
-                </button>
-              </form>
+                수정
+              </button>
             </div>
           </div>
         </div>
@@ -202,4 +116,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Mypage3;

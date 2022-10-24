@@ -84,17 +84,7 @@ const Topbar = () => {
             </div>
           </div>
           <div className="username">
-            {/* <a href="/Mypage2">{`${user.nickname}`}</a> */}
-            <a
-              href="/Mypage3"
-              // onClick={(e) => {
-              //   e.preventdefualt();
-              //   window.location.href = "/Mypage2";
-              // }}
-              //  onClick={navigateToPurchase}
-            >
-              {`${user.nickname}`}
-            </a>
+            <a href="/Mypage">{user && `${user.nickname}`}</a>
           </div>
           <div className="username usernameback">
             {user && "님 환영합니다."}
