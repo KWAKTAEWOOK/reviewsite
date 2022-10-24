@@ -4,10 +4,16 @@ import { TiThMenu } from "react-icons/ti";
 import { BiCurrentLocation } from "react-icons/bi";
 import { useRecoilState } from "recoil";
 import { userState } from "../../recoil/user";
+import { useNavigate } from "react-router-dom";
 
 const Topbar = () => {
   const [user, setUser] = useRecoilState(userState);
+
   // console.log(user);
+  // const navigate = useNavigate();
+
+  // const navigateToPurchase = () => {
+  //   navigate("/Mypage2");
 
   return (
     <>
@@ -41,9 +47,9 @@ const Topbar = () => {
                   <li>
                     <a href="/detail">상세페이지</a>
                   </li>
-                  <li>
+                  {/* <li>
                     <a href="/Mypage2">프로필 수정</a>
-                  </li>
+                  </li> */}
                 </ul>
               </ul>
             </div>
@@ -80,11 +86,12 @@ const Topbar = () => {
           <div className="username">
             {/* <a href="/Mypage2">{`${user.nickname}`}</a> */}
             <a
-              href=""
-              onClick={(e, id) => {
-                e.preventdefualt();
-                window.location.href = "/Mypage2";
-              }}
+              href="/Mypage3"
+              // onClick={(e) => {
+              //   e.preventdefualt();
+              //   window.location.href = "/Mypage2";
+              // }}
+              //  onClick={navigateToPurchase}
             >
               {`${user.nickname}`}
             </a>

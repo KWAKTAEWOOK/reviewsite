@@ -24,7 +24,6 @@ const Mypage2 = () => {
 
   return (
     <>
-      <div>ㅇㄹㄴㅇㄹㄴㅇㄹ</div>
       <div
         className="abc"
         style={{ border: "1px solid black", width: "100px", height: "100px" }}
@@ -52,7 +51,7 @@ const Mypage2 = () => {
               // e.text().then((msg) => alert(msg));
               console.log(e);
               alert("수정 실패");
-              setPassword("");
+              // setPassword("");
             }
           }}
         >
