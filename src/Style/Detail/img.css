@@ -99,6 +99,7 @@
   display: block;
   margin-top: -600px;
   margin-left: 90%;
+  z-index: 800;
 }
 .NavGroup > button {
   display: block;
