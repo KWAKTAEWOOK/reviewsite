@@ -6,11 +6,15 @@
   font-style: normal;
 }
 .searchNull {
+  text-align: center;
+  width: 250px;
   font-size: 25px;
   color: grey;
-  z-index: 99;
-  position: relative;
+  position: absolute;
   opacity: 0.5;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .main {
   position: relative;
@@ -196,13 +200,12 @@
   width: 40px;
   height: 70px;
   background-color: rgb(252, 252, 252);
-  z-index: 99;
+  z-index: 2;
   color: rgb(97, 97, 97);
   cursor: pointer;
   border: none;
   outline: none;
   border-radius: 5px;
-  z-index: 2;
   box-shadow: 2px 2px 5px rgb(209, 209, 209);
 }
 .ShowAndHideBt {
