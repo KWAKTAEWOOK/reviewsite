@@ -28,8 +28,8 @@ const Main = ({
   const [searchNull, setSearchNull] = useState("");
 
   const onChangeCategory = (e) => {
+    setSearchNull("");
     if (e.target.value === "FD6") {
-      setSearchNull("");
       var filterFD6 = backupFD6.filter(
         (value) => value.category_group_code === "FD6"
       );
@@ -38,10 +38,11 @@ const Main = ({
         setSearchNull("음식점 검색결과 없음");
       }
     } else if (e.target.value === "all") {
-      setSearchNull("");
       setPlaces(backupAll);
+      if (backupAll.length === 0) {
+        setSearchNull("검색 결과 없음");
+      }
     } else if (e.target.value === "CE7") {
-      setSearchNull("");
       var filterCE7 = backupCE7.filter(
         (value) => value.category_group_code === "CE7"
       );
@@ -50,7 +51,6 @@ const Main = ({
         setSearchNull("카페 검색결과 없음");
       }
     } else if (e.target.value === "CS2") {
-      setSearchNull("");
       var filterCS2 = backupCS2.filter(
         (value) => value.category_group_code === "CS2"
       );
@@ -105,7 +105,7 @@ const Main = ({
 
           var content =
             '<div class="bAddr">' +
-            '<span class="title">법정동 주소정보</span>' +
+            '<span class="title">[주소정보]</span>' +
             detailAddr +
             "</div>";
 
@@ -144,6 +144,14 @@ const Main = ({
     }
 
     function placesSearchCB(data, status, pagination) {
+      if (data.length === 0) {
+        setSearchNull("검색 결과 없음");
+        setPlaces([]);
+        setBackupAll([]);
+        setBackupCE7([]);
+        setBackupCS2([]);
+        setBackupFD6([]);
+      }
       if (status === kakao.maps.services.Status.OK) {
         let bounds = new kakao.maps.LatLngBounds();
 
@@ -154,6 +162,7 @@ const Main = ({
 
         map.setBounds(bounds);
         displayPagination(pagination);
+        setSearchNull("");
         setPlaces(data);
         setBackupAll(data);
         setBackupCE7(data);
