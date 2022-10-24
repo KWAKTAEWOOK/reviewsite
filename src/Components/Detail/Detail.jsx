@@ -26,6 +26,7 @@ const Detail = () => {
   const Address = location.state.Address;
   const place_name = location.state.place_name;
   const CategoryName = location.state.CategoryName;
+  const id = location.state.id;
   //-----------------------------------------------
   //업종별 카테고리 문자열 원하는것만 출력
   var str = CategoryName;
@@ -167,17 +168,18 @@ const Detail = () => {
             <hr width="1000px" />
             <div className="사용자" ref={reviewRef}>
               <div className="usercon">
-                <img className="userimg" src="/images/3.jpg" alt="" />
+                <img className="userimg" src="/images/3.jpg" />
                 <div>비둘기</div>
               </div>
               <textarea id="" cols="100" rows="10"></textarea>
-              <br />
-              <br />
+            </div>
+            <br />
+            <div className="사용자">
               <div className="usercon">
                 <img className="userimg" src="/images/6.jpg" alt="" />
                 <div>멧밭쥐</div>
               </div>
-              <textarea id="" cols="100" rows="10"></textarea>
+              <div className="contant">고기 촵촵촵 냠냠냠 마이쪙~!!</div>
             </div>
           </div>
         </div>
