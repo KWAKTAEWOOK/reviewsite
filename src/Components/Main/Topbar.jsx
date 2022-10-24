@@ -4,10 +4,16 @@ import { TiThMenu } from "react-icons/ti";
 import { BiCurrentLocation } from "react-icons/bi";
 import { useRecoilState } from "recoil";
 import { userState } from "../../recoil/user";
+import { useNavigate } from "react-router-dom";
 
 const Topbar = () => {
   const [user, setUser] = useRecoilState(userState);
+
   // console.log(user);
+  // const navigate = useNavigate();
+
+  // const navigateToPurchase = () => {
+  //   navigate("/Mypage2");
 
   return (
     <>
@@ -36,11 +42,14 @@ const Topbar = () => {
                     <a href="/main">내가 찜한 가게</a>
                   </li>
                   <li>
-                    <a href="/main">내가 작성한 리뷰</a>
+                    <a href="/MyReview">내가 작성한 리뷰</a>
                   </li>
                   <li>
                     <a href="/detail">상세페이지</a>
                   </li>
+                  {/* <li>
+                    <a href="/Mypage2">프로필 수정</a>
+                  </li> */}
                 </ul>
               </ul>
             </div>
@@ -75,7 +84,17 @@ const Topbar = () => {
             </div>
           </div>
           <div className="username">
-            <a href="/Mypage">{user && `${user.nickname}`}</a>
+            {/* <a href="/Mypage2">{`${user.nickname}`}</a> */}
+            <a
+              href="/Mypage3"
+              // onClick={(e) => {
+              //   e.preventdefualt();
+              //   window.location.href = "/Mypage2";
+              // }}
+              //  onClick={navigateToPurchase}
+            >
+              {`${user.nickname}`}
+            </a>
           </div>
           <div className="username usernameback">
             {user && "님 환영합니다."}

@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { BACKEND_URL } from "../../utils";
-import "../../Style/Sign/SignUp.scss";
+import "../../Style/Mypage/Mypage.scss";
 import TopbarV2 from "../Main/TopbarV2";
 
 const SignUp = () => {
@@ -67,6 +67,7 @@ const SignUp = () => {
                   이름
                   <br />
                   <input
+                    className="input_name"
                     type="text"
                     placeholder="이름을 입력해주세요"
                     value={username}
@@ -75,10 +76,12 @@ const SignUp = () => {
                     }}
                   />
                 </div>
+
                 <div>
                   별명
                   <br />
                   <input
+                    className="input_nickname"
                     type="text"
                     placeholder="사용할 별명을 입력해주세요"
                     value={nickname}
@@ -87,7 +90,7 @@ const SignUp = () => {
                     }}
                   />
                   <button
-                    className="confirm"
+                    className="confirm confirm1"
                     onClick={() => {
                       console.log(nickname);
                       // if (nickname === user.nickname) {
@@ -104,6 +107,7 @@ const SignUp = () => {
                   ID
                   <br />
                   <input
+                    className="input_ID"
                     type="text"
                     placeholder="사용할 ID를 입력해주세요"
                     value={userid}
@@ -111,7 +115,7 @@ const SignUp = () => {
                       setUserid(e.target.value);
                     }}
                   />
-                  <button
+                  {/* <button
                     className="confirm"
                     onClick={() => {
                       document.getElementById("alert2").innerHTML =
@@ -119,13 +123,14 @@ const SignUp = () => {
                     }}
                   >
                     중복확인
-                  </button>
+                  </button> */}
                   <p id="alert2" className="alert"></p>
                 </div>
                 <div>
                   password
                   <br />
                   <input
+                    className="input_password"
                     type="password"
                     value={password1}
                     onChange={(e) => {
@@ -137,6 +142,7 @@ const SignUp = () => {
                   Confirm password
                   <br />
                   <input
+                    className="input_password2"
                     type="password"
                     value={password2}
                     onChange={(e) => {
@@ -149,6 +155,7 @@ const SignUp = () => {
                   E-mail
                   <br />
                   <input
+                    className="input_Email"
                     type="text"
                     placeholder="E-mail을 입력해주세요"
                     value={email}
@@ -167,6 +174,7 @@ const SignUp = () => {
                   </button>
                   <p id="alert3" className="alert"></p>
                 </div>
+
                 <button
                   type="submit"
                   className="signUpButton"
