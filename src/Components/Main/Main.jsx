@@ -277,13 +277,14 @@ const Main = ({
                     {Places.slice(offset, offset + limit).map((item, i) => (
                       <Link
                         to={{
-                          pathname: "/Detail",
+                          pathname: `/Detail/${item.id}`,
                           state: {
                             place_name: item.place_name,
                             CategoryName: item.category_name,
                             Address: item.road_address_name,
                             posX: item.x,
                             posY: item.y,
+                            id: item.id,
                           },
                         }}
                       >

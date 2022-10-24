@@ -228,16 +228,30 @@ button {
   position: relative;
   margin-left: 30px;
 }
-.사용자 > div {
+.사용자 > .usercon {
+  display: inline-block;
+}
+.사용자 > .contant {
   display: inline-block;
 }
 .usercon {
-  display: block;
-  text-align: center;
   width: auto;
+  border-radius: 15px;
+  border: 2px solid rgb(233, 233, 233);
+  overflow: hidden;
 }
+.usercon > div {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.usercon > img {
+  object-fit: cover;
+}
+
 .사용자 {
-  display: inline-block;
+  display: inline-flex;
   width: 100%;
   height: auto;
 }
@@ -247,9 +261,32 @@ textarea {
   border: 0;
   border-radius: 15px;
   outline: none;
-  padding-left: 10px;
+  padding: 10px;
   background-color: rgb(233, 233, 233);
 }
 hr {
   margin: 200px 0;
+}
+
+.contant {
+  position: relative;
+  width: 740px;
+  font-size: 15px;
+  border: 0;
+  border-radius: 15px;
+  background-color: rgb(233, 233, 233);
+  display: block;
+  padding: 10px;
+  min-height: 174px;
+  margin-left: 30px;
+}
+.사용자 {
+  margin: 10px;
+}
+.left > img {
+  object-fit: contain;
+}
+li > img:hover {
+  transition: transform 300ms ease;
+  transform: scale(1.1);
 }
