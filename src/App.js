@@ -8,7 +8,6 @@ import Login from "./Components/Sign/Login";
 import Mypage from "./Components/Mypage/Mypage";
 import { RecoilRoot } from "recoil";
 import MyReview from "./Components/Mypage/MyReview";
-import Mypage3 from "./Components/Mypage/Mypage3";
 
 const App = () => {
   const [inputText, setInputText] = useState("");
@@ -59,8 +58,8 @@ const App = () => {
             <Route path={"/Detail"} exact>
               <Detail />
             </Route>
-            <Route path={"/Mypage3"} exact>
-              <Mypage3 />
+            <Route path={"/Mypage"} exact>
+              <Mypage />
             </Route>
             <Route path={"/MyReview"} exact>
               <MyReview />
