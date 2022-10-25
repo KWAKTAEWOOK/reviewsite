@@ -12,6 +12,7 @@ import MyReview from "./Components/Mypage/MyReview";
 const App = () => {
   const [inputText, setInputText] = useState("");
   const [place, setPlace] = useState(sessionStorage.getItem("search"));
+  const [searchVisible, setSearchVisible] = useState(true);
 
   const onChange = (e) => {
     setInputText(e.target.value);
@@ -20,8 +21,9 @@ const App = () => {
 
   const searchSubmit = (e) => {
     e.preventDefault();
-    setPlace(inputText);
+    setPlace(sessionStorage.getItem("search"));
     setInputText("");
+    setSearchVisible(true);
   };
 
   return (
@@ -47,6 +49,8 @@ const App = () => {
                 setInputText={setInputText}
                 onChange={onChange}
                 searchSubmit={searchSubmit}
+                searchVisible={searchVisible}
+                setSearchVisible={setSearchVisible}
               />
             </Route>
             <Route path={"/signUp"} exact>
