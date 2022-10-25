@@ -8,6 +8,7 @@ import TopbarV2 from "../Main/TopbarV2";
 
 const Mypage3 = () => {
   const [user, setUser] = useRecoilState(userState);
+  const [id, setId] = useState("");
   const [nickname, setNickname] = useState("");
   const [username, setUsername] = useState("");
   const [userid, setUserid] = useState("");
@@ -15,23 +16,24 @@ const Mypage3 = () => {
   const [email, setEmail] = useState("");
 
   function setting() {
+    setId(user.id);
     setNickname(user.nickname);
     setUsername(user.username);
     setUserid(user.userid);
     setPassword(user.password);
     setEmail(user.email);
-    // console.log(user.nickname);
-    // console.log("출력");
   }
 
   useEffect(() => {
     setting();
-    console.log("useEffect  출력");
-    console.log(`${nickname}`);
   }, []);
 
   function changeNickname(e) {
     setNickname(e.target.value);
+  }
+
+  function changeEmail(e) {
+    setEmail(e.target.value);
   }
 
   return (
@@ -77,7 +79,7 @@ const Mypage3 = () => {
               <div>
                 E-mail
                 <br />
-                <input type="text" value={email} />
+                <input type="text" value={email} onChange={changeEmail} />
               </div>
               <button
                 className="signUpButton"
@@ -88,6 +90,7 @@ const Mypage3 = () => {
                       url: `${BACKEND_URL}/user/modify`,
                       method: "POST",
                       data: {
+                        id,
                         userid,
                         username,
                         nickname,

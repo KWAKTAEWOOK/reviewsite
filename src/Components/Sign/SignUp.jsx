@@ -239,13 +239,13 @@ const SignUp = () => {
                         alert("이메일 형식이 유효하지않습니다.");
                       } else {
                         alert("회원가입 성공!");
-                        setUsername("");
-                        setNickname("");
-                        setUserid("");
-                        setPassword1("");
-                        setPassword2("");
-                        setEmail("");
-                        // window.location.href = "/main";
+                        // setUsername("");
+                        // setNickname("");
+                        // setUserid("");
+                        // setPassword1("");
+                        // setPassword2("");
+                        // setEmail("");
+                        window.location.href = "/main";
                       }
                     }
                   }}
