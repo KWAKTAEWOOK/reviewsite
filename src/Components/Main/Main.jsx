@@ -15,6 +15,8 @@ const Main = ({
   setInputText,
   onChange,
   searchSubmit,
+  searchVisible,
+  setSearchVisible,
 }) => {
   const [Places, setPlaces] = useState([]);
   const [backupAll, setBackupAll] = useState([]);
@@ -26,7 +28,7 @@ const Main = ({
   const [open, setOpen] = useState(true);
   const [arrow, setArrow] = useState(true);
   const [searchNull, setSearchNull] = useState("");
-  const [searchVisible, setSearchVisible] = useState(false);
+
   const [keywords, setKeywords] = useState(
     JSON.parse(localStorage.getItem("keywords") || "[]")
   );
