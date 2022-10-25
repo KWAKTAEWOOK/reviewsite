@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../../Style/Main/Topbar.scss";
 import { TiThMenu } from "react-icons/ti";
 import { BiCurrentLocation } from "react-icons/bi";
@@ -8,12 +8,6 @@ import { useNavigate } from "react-router-dom";
 
 const Topbar = () => {
   const [user, setUser] = useRecoilState(userState);
-
-  // console.log(user);
-  // const navigate = useNavigate();
-
-  // const navigateToPurchase = () => {
-  //   navigate("/Mypage2");
 
   return (
     <>
@@ -85,7 +79,6 @@ const Topbar = () => {
           </div>
           <div className="username">
             <a href="/Mypage">{user && `${user.nickname}`}</a>
-            <a href="/Mypage3">{user && `${user.nickname}`}</a>
           </div>
           <div className="username usernameback">
             {user && "님 환영합니다."}
