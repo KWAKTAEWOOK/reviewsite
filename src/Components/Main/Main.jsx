@@ -12,7 +12,7 @@ const Main = ({
   place,
   setPlace,
   inputText,
-  setIntpuText,
+  setInputText,
   onChange,
   searchSubmit,
 }) => {
@@ -26,6 +26,64 @@ const Main = ({
   const [open, setOpen] = useState(true);
   const [arrow, setArrow] = useState(true);
   const [searchNull, setSearchNull] = useState("");
+  const [searchVisible, setSearchVisible] = useState(false);
+  const [keywords, setKeywords] = useState(
+    JSON.parse(localStorage.getItem("keywords") || "[]")
+  );
+
+  const onClickSearchData = (text) => {
+    setInputText(text);
+  };
+
+  const onClickSearchVisible = () => {
+    setSearchVisible((searchVisible) => !searchVisible);
+  };
+
+  const onClickSearchClose = () => {
+    setSearchVisible(true);
+  };
+
+  const onClickSearch = () => {
+    if (inputText) {
+      onAddKeyWord(inputText);
+      setInputText("");
+    }
+  };
+
+  useEffect(() => {
+    localStorage.setItem("keywords", JSON.stringify(keywords));
+  }, [keywords]);
+
+  const getDate = () => {
+    const today = new Date();
+    const month = String(today.getMonth() + 1).padStart(2, "0");
+    const day = String(today.getDate()).padStart(2, "0");
+
+    return `${month}.${day}`;
+  };
+
+  const onAddKeyWord = (text) => {
+    const newKeyword = {
+      id: Date.now(),
+      text,
+      date: getDate(),
+    };
+
+    setKeywords([newKeyword, ...keywords]);
+  };
+
+  const onRemoveKeyword = (id) => {
+    setKeywords(
+      keywords.filter((keyword) => {
+        return keyword.id !== id;
+      })
+    );
+    setSearchVisible(false);
+  };
+
+  const onRemoveAllKeyword = () => {
+    setKeywords([]);
+  };
 
   const onChangeCategory = (e) => {
     setSearchNull("");
@@ -267,12 +325,58 @@ const Main = ({
                       value={inputText}
                       defaultValue={sessionStorage.getItem("search")}
                       onChange={onChange}
+                      onKeyDown={(e) => {
+                        if (e.keyCode === 13) onClickSearch();
+                      }}
+                      onClick={() => onClickSearchVisible()}
                     />
                     <button className="searchButton" type="submit" />
                   </form>
+                  <div
+                    className={
+                      searchVisible
+                        ? "TopSearchDataListNone"
+                        : "TopSearchDataList"
+                    }
+                  >
+                    <div className="TopSearchHeader">
+                      <div className="TopSearchHeader01">최근 검색어</div>
+                      <div
+                        className="TopSearchHeader02"
+                        onClick={() => onRemoveAllKeyword()}
+                      >
+                        전체 삭제
+                      </div>
+                      <div className="TopSearchLine" />
+                    </div>
+                    <div>
+                      {keywords.map(({ id, text, date }) => (
+                        <section className="TopSearchData">
+                          <div
+                            className="SearchDataText"
+                            onClick={() => {
+                              onClickSearchData(text);
+                            }}
+                          >
+                            {text}
+                          </div>
+                          <div className="SearchDataDate">{date}</div>
+                          <button
+                            className="SearchDataDelete"
+                            onClick={() => onRemoveKeyword(id)}
+                          >
+                            삭제
+                          </button>
+                        </section>
+                      ))}
+                    </div>
+                  </div>
                 </div>
                 <div className="search_List">
-                  <div className="search_List_fixed">
+                  <div
+                    className="search_List_fixed"
+                    onClick={() => onClickSearchClose()}
+                  >
                     <span className="searchNull">{searchNull}</span>
                     {Places.slice(offset, offset + limit).map((item, i) => (
                       <Link
