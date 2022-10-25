@@ -4,7 +4,6 @@ import { TiThMenu } from "react-icons/ti";
 import { BiCurrentLocation } from "react-icons/bi";
 import { useRecoilState } from "recoil";
 import { userState } from "../../recoil/user";
-import { useNavigate } from "react-router-dom";
 
 const Topbar = () => {
   const [user, setUser] = useRecoilState(userState);
