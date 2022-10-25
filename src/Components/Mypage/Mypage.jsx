@@ -79,7 +79,12 @@ const Mypage3 = () => {
               <div>
                 E-mail
                 <br />
-                <input type="text" value={email} onChange={changeEmail} />
+                <input
+                  className="input_email"
+                  type="text"
+                  value={email}
+                  onChange={changeEmail}
+                />
               </div>
               <button
                 className="signUpButton"
@@ -100,7 +105,7 @@ const Mypage3 = () => {
                     });
                     setUser(data.data);
                     alert("수정 성공!");
-                    window.location.href = "/main";
+                    // window.location.href = "/main";
                   } catch (e) {
                     // e.text().then((msg) => alert(msg));
                     console.log(e);
