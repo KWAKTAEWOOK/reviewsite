@@ -1,12 +1,32 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../../Style/Main/Topbar.scss";
 import { TiThMenu } from "react-icons/ti";
 import { BiCurrentLocation } from "react-icons/bi";
 import { useRecoilState } from "recoil";
 import { userState } from "../../recoil/user";
+import Login from "../Sign/Login";
+import SignUp from "../Sign/SignUp";
 
 const Topbar = () => {
   const [user, setUser] = useRecoilState(userState);
+  const [modal, setModal] = useState(false);
+  const [signUpModal, setSignUpModal] = useState(false);
+
+  const openModal = () => {
+    setModal(true);
+  };
+
+  const openModal2 = () => {
+    setSignUpModal(true);
+  };
+
+  const closeModal = () => {
+    setModal(false);
+  };
+
+  const closeModal2 = () => {
+    setSignUpModal(false);
+  };
 
   return (
     <>
@@ -22,14 +42,6 @@ const Topbar = () => {
                   <TiThMenu className="TiThMenu" />
                   <h3>&nbsp;&nbsp;메뉴</h3>
                 </li>
-                {/* <ul>
-                  <li>
-                    <a href="/detail">내 주변 찾기</a>
-                  </li>
-                  <li>
-                    <a href="/main">카테고리별 찾기</a>
-                  </li>
-                </ul> */}
                 <ul>
                   <li>
                     <a href="/main">내가 찜한 가게</a>
@@ -40,17 +52,15 @@ const Topbar = () => {
                   <li>
                     <a href="/detail">상세페이지</a>
                   </li>
-                  {/* <li>
-                    <a href="/Mypage2">프로필 수정</a>
-                  </li> */}
                 </ul>
               </ul>
             </div>
             <div className="menu1 sign_btn">
               <div className="loginBtn">
-                <a href="/login">
-                  <h3>{!user && "로그인"}</h3>
-                </a>
+                <h3 onClick={openModal}>{!user && "로그인"}</h3>
+                <div className="openModal">
+                  {modal ? <Login closeModal={closeModal} /> : null}
+                </div>
                 <h3
                   className="logoutBtn"
                   onClick={() => {
@@ -64,9 +74,10 @@ const Topbar = () => {
                 </h3>
               </div>
               <div className="signUpBtn">
-                <a href="/signUp">
-                  <h3>{!user && "회원가입"}</h3>
-                </a>
+                <h3 onClick={openModal2}>{!user && "회원가입"}</h3>
+                <div className="openModal">
+                  {signUpModal ? <SignUp closeModal2={closeModal2} /> : null}
+                </div>
               </div>
               <div className="now_location">
                 <BiCurrentLocation className="BiCurrentLocation" />
