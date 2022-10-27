@@ -20,7 +20,7 @@ const Topbar = () => {
     setSignUpModal(true);
   };
 
-  const closeModal = () => {
+  const closeModal = (e) => {
     setModal(false);
   };
 

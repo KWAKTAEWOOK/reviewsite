@@ -5,6 +5,7 @@ import { useRecoilState } from "recoil";
 import { userState } from "../../recoil/user";
 import "../../Style/Mypage/Mypage.scss";
 import TopbarV2 from "../Main/TopbarV2";
+import Delete from "../Sign/DeleteUser";
 
 const Mypage = () => {
   const [user, setUser] = useRecoilState(userState);
@@ -108,7 +109,7 @@ const Mypage = () => {
                     // window.location.href = "/main";
                   } catch (e) {
                     // e.text().then((msg) => alert(msg));
-                    console.log(e);
+                    // console.log(e);
                     alert("수정 실패");
                     // setPassword("");
                   }
@@ -117,7 +118,31 @@ const Mypage = () => {
                 수정
               </button>
             </div>
-            <div className="deleteUser">회원탈퇴하기</div>
+            <div
+              className="deleteUser"
+              onClick={async (e) => {
+                if (window.confirm("탈퇴하시겠습니까? 😭")) {
+                  e.preventDefault();
+                  try {
+                    const data = await axios({
+                      url: `${BACKEND_URL}/user/delete/${id}`,
+                      method: "DELETE",
+                      data: {
+                        id,
+                      },
+                    });
+                    alert("탈퇴 실패! 다시 시도해주세요.");
+                  } catch (e) {
+                    // console.log(e);
+                    alert("탈퇴되었습니다.😊");
+                    setUser(null);
+                    window.location.href = "/main";
+                  }
+                }
+              }}
+            >
+              회원탈퇴하기
+            </div>
           </div>
         </div>
       </div>
