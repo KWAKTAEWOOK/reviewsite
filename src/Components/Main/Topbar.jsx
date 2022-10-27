@@ -53,7 +53,7 @@ const Topbar = () => {
                     <a href="/MyReview">내가 작성한 리뷰</a>
                   </li>
                   <li>
-                    <a href="/detail">상세페이지</a>
+                    <a href="/detail/{id}">상세페이지</a>
                   </li>
                 </ul>
               </ul>
