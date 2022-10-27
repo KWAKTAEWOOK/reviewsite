@@ -5,7 +5,7 @@ import { BACKEND_URL } from "../../utils";
 import { useRecoilState } from "recoil";
 import { userState } from "../../recoil/user";
 
-const Login = ({ closeModal }) => {
+const Login = ({ closeModal, openModal2 }) => {
   const [userid, setUserid] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useRecoilState(userState);
@@ -15,7 +15,8 @@ const Login = ({ closeModal }) => {
       <div className="login_body" onClick={closeModal}>
         <div className="loginTemplate" onClick={(e) => e.stopPropagation()}>
           <div className="signUpLogo">
-            <p>Login</p>
+            {/* <p>Login</p> */}
+            <p>로그인</p>
           </div>
           <div className="signUpForm">
             <form
@@ -33,7 +34,7 @@ const Login = ({ closeModal }) => {
                   setUserid("");
                   setPassword("");
                   setUser(data.data);
-                  alert("로그인 성공!");
+                  alert("로그인 성공!😊");
                   window.location.href = "/main";
                 } catch (e) {
                   // e.text().then((msg) => alert(msg));
@@ -69,8 +70,14 @@ const Login = ({ closeModal }) => {
                 로그인
               </button>
             </form>
-            <div className="loginButton">
-              {/* <a href="/signUp">회원가입하기</a> */}
+            <div
+              className="loginButton"
+              onClick={() => {
+                closeModal();
+                openModal2();
+              }}
+            >
+              회원가입하기
             </div>
           </div>
         </div>

@@ -6,7 +6,7 @@ import { userState } from "../../recoil/user";
 import "../../Style/Mypage/Mypage.scss";
 import TopbarV2 from "../Main/TopbarV2";
 
-const Mypage3 = () => {
+const Mypage = () => {
   const [user, setUser] = useRecoilState(userState);
   const [id, setId] = useState("");
   const [nickname, setNickname] = useState("");
@@ -39,13 +39,13 @@ const Mypage3 = () => {
   return (
     <>
       <TopbarV2 />
-      <div className="signUpBody">
-        <div className="signUpBack">
-          <div className="signUptemplate">
-            <div className="signUpLogo">
+      <div className="mypageBody">
+        <div className="mypageBack">
+          <div className="mypageEdit">
+            <div className="mypageLogo">
               <p>프로필 수정</p>
             </div>
-            <div className="signUpForm">
+            <div className="editForm">
               <div>
                 이름
                 <br />
@@ -87,7 +87,7 @@ const Mypage3 = () => {
                 />
               </div>
               <button
-                className="signUpButton"
+                className="editButton"
                 onClick={async (e) => {
                   e.preventDefault();
                   try {
@@ -117,6 +117,7 @@ const Mypage3 = () => {
                 수정
               </button>
             </div>
+            <div className="deleteUser">회원탈퇴하기</div>
           </div>
         </div>
       </div>
@@ -124,4 +125,4 @@ const Mypage3 = () => {
   );
 };
 
-export default Mypage3;
+export default Mypage;

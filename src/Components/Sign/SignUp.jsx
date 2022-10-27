@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { BACKEND_URL } from "../../utils";
 import "../../Style/Sign/SignUp.scss";
 
-const SignUp = ({ closeModal2 }) => {
+const SignUp = ({ openModal, closeModal2 }) => {
   const [username, setUsername] = useState("");
   const [nickname, setNickname] = useState("");
   const [userid, setUserid] = useState("");
@@ -69,7 +69,8 @@ const SignUp = ({ closeModal2 }) => {
       <div className="signUpbody" onClick={closeModal2}>
         <div className="signUptemplate" onClick={(e) => e.stopPropagation()}>
           <div className="signUpLogo">
-            <p>Sign-Up</p>
+            {/* <p>Sign-Up</p> */}
+            <p>회원가입</p>
           </div>
           <div className="signUpForm">
             <form
@@ -238,8 +239,14 @@ const SignUp = ({ closeModal2 }) => {
                 가입하기
               </button>
             </form>
-            <div className="loginButton">
-              <a href="/login">로그인하기</a>
+            <div
+              className="loginButton"
+              onClick={() => {
+                closeModal2();
+                openModal();
+              }}
+            >
+              로그인하기
             </div>
           </div>
         </div>

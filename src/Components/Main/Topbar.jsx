@@ -44,6 +44,9 @@ const Topbar = () => {
                 </li>
                 <ul>
                   <li>
+                    <a href="/main">메인페이지</a>
+                  </li>
+                  <li>
                     <a href="/main">내가 찜한 가게</a>
                   </li>
                   <li>
@@ -59,7 +62,9 @@ const Topbar = () => {
               <div className="loginBtn">
                 <h3 onClick={openModal}>{!user && "로그인"}</h3>
                 <div className="openModal">
-                  {modal ? <Login closeModal={closeModal} /> : null}
+                  {modal ? (
+                    <Login closeModal={closeModal} openModal2={openModal2} />
+                  ) : null}
                 </div>
                 <h3
                   className="logoutBtn"
@@ -76,7 +81,9 @@ const Topbar = () => {
               <div className="signUpBtn">
                 <h3 onClick={openModal2}>{!user && "회원가입"}</h3>
                 <div className="openModal">
-                  {signUpModal ? <SignUp closeModal2={closeModal2} /> : null}
+                  {signUpModal ? (
+                    <SignUp openModal={openModal} closeModal2={closeModal2} />
+                  ) : null}
                 </div>
               </div>
               <div className="now_location">

@@ -56,9 +56,6 @@ const App = () => {
             <Route path={"/signUp"} exact>
               <SignUp />
             </Route>
-            <Route path={"/login"} exact>
-              {/* <Login /> */}
-            </Route>
             <Route path={"/Detail/:id"} exact>
               <Detail />
             </Route>
