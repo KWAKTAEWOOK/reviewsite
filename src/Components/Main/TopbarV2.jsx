@@ -23,15 +23,10 @@ const TopbarV2 = () => {
                   <TiThMenu className="TiThMenu" />
                   <h3>&nbsp;&nbsp;메뉴</h3>
                 </li>
-                {/* <ul>
-                  <li>
-                    <a href="/detail">내 주변 찾기</a>
-                  </li>
-                  <li>
-                    <a href="/main">카테고리별 찾기</a>
-                  </li>
-                </ul> */}
                 <ul>
+                  <li>
+                    <a href="/main">메인페이지</a>
+                  </li>
                   <li>
                     <a href="/main">내가 찜한 가게</a>
                   </li>
@@ -66,18 +61,12 @@ const TopbarV2 = () => {
                   <h3>{!user && "회원가입"}</h3>
                 </a>
               </div>
-              {/* <div className="now_location">
-                <BiCurrentLocation className="BiCurrentLocation" />
-                <p>
-                  <span id="centerAddr"></span>
-                </p>
-              </div> */}
             </div>
           </div>
-          <div className="username">
+          <div className="username2">
             <a href="/Mypage">{user && `${user.nickname}`}</a>
           </div>
-          <div className="username usernameback">
+          <div className="username2 usernameback2">
             {user && "님 환영합니다."}
           </div>
         </div>
