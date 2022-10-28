@@ -69,7 +69,6 @@ const SignUp = ({ openModal, closeModal2 }) => {
       <div className="signUpbody" onClick={closeModal2}>
         <div className="signUptemplate" onClick={(e) => e.stopPropagation()}>
           <div className="signUpLogo">
-            {/* <p>Sign-Up</p> */}
             <p>회원가입</p>
           </div>
           <div className="signUpForm">

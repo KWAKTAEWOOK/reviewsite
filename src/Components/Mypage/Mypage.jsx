@@ -5,7 +5,6 @@ import { useRecoilState } from "recoil";
 import { userState } from "../../recoil/user";
 import "../../Style/Mypage/Mypage.scss";
 import TopbarV2 from "../Main/TopbarV2";
-import Delete from "../Sign/DeleteUser";
 
 const Mypage = () => {
   const [user, setUser] = useRecoilState(userState);
@@ -131,12 +130,12 @@ const Mypage = () => {
                         id,
                       },
                     });
-                    alert("탈퇴 실패! 다시 시도해주세요.");
-                  } catch (e) {
-                    // console.log(e);
-                    alert("탈퇴되었습니다.😊");
+                    alert("탈퇴완료");
                     setUser(null);
                     window.location.href = "/main";
+                  } catch (e) {
+                    // console.log(e);
+                    alert("탈퇴 실패! 다시 시도해주세요.");
                   }
                 }
               }}
