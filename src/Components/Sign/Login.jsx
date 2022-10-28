@@ -1,15 +1,38 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../../Style/Sign/Login.scss";
 import axios from "axios";
 import { BACKEND_URL } from "../../utils";
 import { useRecoilState } from "recoil";
 import { userState } from "../../recoil/user";
-import e from "cors";
 
 const Login = ({ closeModal, openModal2 }) => {
   const [userid, setUserid] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useRecoilState(userState);
+
+  const loginUser = async (e) => {
+    e.preventDefault();
+    try {
+      const data = await axios({
+        url: `${BACKEND_URL}/user/login`,
+        method: "POST",
+        data: {
+          userid,
+          password,
+        },
+      });
+      setUserid("");
+      setPassword("");
+      setUser(data.data);
+      alert("로그인 성공!😊");
+      // console.log(data.data.userRole);
+      window.location.href = "/main";
+    } catch (e) {
+      console.log(e);
+      alert("로그인 실패! 아이디 또는 비밀번호를 확인하세요.");
+      setPassword("");
+    }
+  };
 
   return (
     <>
@@ -19,30 +42,7 @@ const Login = ({ closeModal, openModal2 }) => {
             <p>로그인</p>
           </div>
           <div className="signUpForm">
-            <form
-              onSubmit={async (e) => {
-                e.preventDefault();
-                try {
-                  const data = await axios({
-                    url: `${BACKEND_URL}/user/login`,
-                    method: "POST",
-                    data: {
-                      userid,
-                      password,
-                    },
-                  });
-                  setUserid("");
-                  setPassword("");
-                  setUser(data.data);
-                  alert("로그인 성공!😊");
-                  window.location.href = "/main";
-                } catch (e) {
-                  console.log(e);
-                  alert("로그인 실패! 아이디 또는 비밀번호를 확인하세요.");
-                  setPassword("");
-                }
-              }}
-            >
+            <form onSubmit={loginUser}>
               <div>
                 ID
                 <br />

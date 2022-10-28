@@ -7,7 +7,6 @@ import Detail from "./Components/Detail/Detail";
 import Mypage from "./Components/Mypage/Mypage";
 import { RecoilRoot } from "recoil";
 import MyReview from "./Components/Mypage/MyReview";
-import Delete from "./Components/Sign/DeleteUser";
 
 const App = () => {
   const [inputText, setInputText] = useState("");
@@ -55,9 +54,6 @@ const App = () => {
             </Route>
             <Route path={"/signUp"} exact>
               <SignUp />
-            </Route>
-            <Route path={"/deleteuser"} exact>
-              <Delete />
             </Route>
             <Route path={"/Detail/:id"} exact>
               <Detail />
