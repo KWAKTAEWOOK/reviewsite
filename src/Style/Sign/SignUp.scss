@@ -8,6 +8,7 @@
   z-index: 999999;
   animation: modal-show 0.4s;
   background-color: rgba(0, 0, 0, 0.4);
+  overflow: auto;
 }
 .signUptemplate {
   position: relative;
@@ -88,8 +89,14 @@
 }
 .loginButton {
   position: relative;
+  display: inline-block;
   text-decoration: underline;
   cursor: pointer;
+  top: -10px;
+  right: 200px;
+}
+.loginButton:hover {
+  font-weight: bolder;
 }
 .alert {
   font-size: 12px;

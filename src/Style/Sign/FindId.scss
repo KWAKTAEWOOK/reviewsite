@@ -1,0 +1,80 @@
+.findIdTemplate {
+  font-family: "HallymGothic-Regular";
+  position: relative;
+  top: 120px;
+  width: 1000px;
+  margin: 0 auto;
+  text-align: left;
+}
+.findSubject {
+  position: relative;
+  font-size: 25px;
+  font-weight: bold;
+  color: rgb(54, 54, 54);
+  top: 100px;
+  left: 20px;
+}
+.findHr {
+  position: relative;
+  top: -88px;
+}
+.findP {
+  font-size: 18px;
+  left: 25px;
+  top: 10px;
+}
+.findBody {
+  border: 1px solid rgb(228, 228, 228);
+  position: absolute;
+  top: 200px;
+  left: 100px;
+  width: 80%;
+  height: 300px;
+  margin: 0 auto;
+}
+.findInput > form {
+  position: relative;
+  top: -270px;
+  left: 220px;
+  display: inline-block;
+  text-align: right;
+}
+.findInput > form > div {
+  margin-bottom: 15px;
+  input {
+    position: absolute;
+    height: 30px;
+    width: 340px;
+    margin-left: 20px;
+  }
+}
+.findidImg {
+  scale: 0.3;
+  top: -90px;
+  left: -145px;
+}
+.findBtn {
+  position: absolute;
+  border: 1px solid rgb(173, 173, 173);
+  border-radius: 0px;
+  padding: 15px 30px;
+  top: 230px;
+  right: 30px;
+  font-family: "HallymGothic-Regular";
+}
+.findBtn:active {
+  position: absolute;
+  font-weight: bold;
+  top: 232px;
+  right: 28px;
+  box-shadow: 2px 2px 0 rgba(122, 122, 122, 0.2);
+}
+.changePwBtn {
+  text-decoration: underline;
+  position: relative;
+  display: inline-block;
+  color: gray;
+  cursor: pointer;
+  top: 30px;
+  left: 115px;
+}

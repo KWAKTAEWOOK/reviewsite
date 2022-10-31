@@ -70,13 +70,21 @@ const Login = ({ closeModal, openModal2 }) => {
               </button>
             </form>
             <div
-              className="loginButton"
+              className="loginButton loginButton2"
               onClick={() => {
                 closeModal();
                 openModal2();
               }}
             >
               회원가입하기
+            </div>
+            <div
+              className="loginButton idSearchBtn"
+              onClick={() => {
+                window.location.href = "/help";
+              }}
+            >
+              ID / PW 찾기
             </div>
           </div>
         </div>

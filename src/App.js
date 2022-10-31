@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import "./Style/App.css";
 import Home from "./Components/Home/Home";
 import Main from "./Components/Main/Main";
 import SignUp from "./Components/Sign/SignUp";
@@ -7,6 +8,9 @@ import Detail from "./Components/Detail/Detail";
 import Mypage from "./Components/Mypage/Mypage";
 import { RecoilRoot } from "recoil";
 import MyReview from "./Components/Mypage/MyReview";
+import Help from "./Components/Sign/Help";
+import FindId from "./Components/Sign/FindId";
+import FindPw from "./Components/Sign/FindPw";
 
 const App = () => {
   const [inputText, setInputText] = useState("");
@@ -87,6 +91,15 @@ const App = () => {
             </Route>
             <Route path={"/MyReview"} exact>
               <MyReview />
+            </Route>
+            <Route path={"/help/"} exact>
+              <Help />
+            </Route>
+            <Route path={"/help/findId"} exact>
+              <FindId />
+            </Route>
+            <Route path={"/help/findPw"} exact>
+              <FindPw />
             </Route>
           </Switch>
         </BrowserRouter>
