@@ -1,16 +1,21 @@
 import React from "react";
 import "../../Style/Home/Home.scss";
 
-const Home = ({ place, setPlace, inputText, setInputText, onChange }) => {
+const Home = ({
+  place,
+  setPlace,
+  inputText,
+  setInputText,
+  onChange,
+  setKeywords,
+  keywords,
+  setHomekeyword,
+}) => {
   const homeSearchSubmit = (e) => {
     e.preventDefault();
-    searchPage();
-    setPlace(inputText);
-    setInputText("");
-  };
-  const searchPage = () => {
     window.location.href = "http://localhost:3000/main";
   };
+
   return (
     <>
       <div className="home_body">
@@ -24,7 +29,7 @@ const Home = ({ place, setPlace, inputText, setInputText, onChange }) => {
                   className="HomeInput"
                   type="text"
                   placeholder="니가 알고싶은 리뷰, 여기 다 있어!"
-                  value={inputText}
+                  // value={inputText}
                   onChange={onChange}
                 />
                 <button className="HomeSearchbt" type="submit"></button>

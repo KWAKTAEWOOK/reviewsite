@@ -107,6 +107,20 @@
   position: absolute;
   bottom: 0;
 }
+.search_List_fixed::-webkit-scrollbar {
+  width: 10px;
+}
+.search_List_fixed::-webkit-scrollbar-thumb {
+  background-color: #b6b6b6;
+  border-radius: 10px;
+  background-clip: padding-box;
+  border: 1px solid transparent;
+}
+.search_List_fixed::-webkit-scrollbar-track {
+  background-color: rgb(228, 228, 228);
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 5px white;
+}
 .menulist {
   height: auto;
   overflow: hidden;
@@ -246,11 +260,13 @@
   border-radius: 10px;
 }
 .TopSearchDataList {
-  overflow-y: hidden;
-  width: 428px;
-  min-height: 200px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  width: 426px;
+  min-height: 100px;
+  max-height: 300px;
   height: auto;
-  background-color: white;
+  background-color: rgb(248, 248, 248);
   position: absolute;
   top: 56px;
   left: 0;
@@ -260,6 +276,20 @@
 }
 .TopSearchDataListNone {
   display: none;
+}
+.TopSearchDataList::-webkit-scrollbar {
+  width: 10px;
+}
+.TopSearchDataList::-webkit-scrollbar-thumb {
+  background-color: rgb(228, 228, 228);
+  border-radius: 10px;
+  background-clip: padding-box;
+  border: 1px solid transparent;
+}
+.TopSearchDataList::-webkit-scrollbar-track {
+  background-color: #b6b6b6;
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 5px white;
 }
 .TopSearchLine {
   height: 1px;
@@ -316,4 +346,69 @@
   width: 70px;
   opacity: 0.5;
   margin-top: 1px;
+}
+.customoverlay {
+  width: auto;
+  height: 100%;
+  overflow: hidden;
+  background-color: transparent;
+}
+.customoverlayBack {
+  width: 300px;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: #34447a;
+  border: 10px solid #7786b3;
+  padding: 15px 25px 15px 25px;
+  font-size: 15px;
+  color: white;
+}
+.customoverlayPlaceName {
+  width: auto;
+  height: auto;
+  overflow: hidden;
+  position: relative;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+.customoverlayImg {
+  width: 250px;
+  height: 150px;
+  border: 5px solid white;
+}
+.customoverlayCategory {
+  width: auto;
+  height: auto;
+  overflow: hidden;
+  position: relative;
+  font-size: 13px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  opacity: 0.7;
+}
+.customoverlayAddress {
+  position: relative;
+  margin-bottom: 5px;
+  width: auto;
+  height: auto;
+  overflow: hidden;
+}
+.customoverlayPhone {
+  position: relative;
+  width: auto;
+  height: auto;
+  overflow: hidden;
+}
+.customoverlayEtc {
+  width: auto;
+  height: auto;
+  overflow: hidden;
+  position: relative;
+  font-weight: bold;
+  top: -1px;
 }

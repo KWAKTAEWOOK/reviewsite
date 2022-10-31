@@ -12,16 +12,34 @@ const App = () => {
   const [inputText, setInputText] = useState("");
   const [place, setPlace] = useState(sessionStorage.getItem("search"));
   const [searchVisible, setSearchVisible] = useState(true);
+  const [keywords, setKeywords] = useState(
+    JSON.parse(localStorage.getItem("keywords") || "[]")
+  );
 
   const onChange = (e) => {
     setInputText(e.target.value);
     sessionStorage.setItem("search", e.target.value);
   };
 
+  const onAddKeyWord = (text) => {
+    const newKeyword = {
+      id: Date.now(),
+      text,
+      date: getDate(),
+    };
+
+    setKeywords([newKeyword, ...keywords]);
+  };
+  const getDate = () => {
+    const today = new Date();
+    const month = String(today.getMonth() + 1).padStart(2, "0");
+    const day = String(today.getDate()).padStart(2, "0");
+
+    return `${month}.${day}`;
+  };
+
   const searchSubmit = (e) => {
     e.preventDefault();
-    setPlace(sessionStorage.getItem("search"));
-    setInputText("");
     setSearchVisible(true);
   };
 
@@ -38,6 +56,9 @@ const App = () => {
                 inputText={inputText}
                 setInputText={setInputText}
                 onChange={onChange}
+                keywords={keywords}
+                setKeywords={setKeywords}
+                onAddKeyWord={onAddKeyWord}
               />
             </Route>
             <Route path={"/main"} exact>
@@ -49,7 +70,10 @@ const App = () => {
                 onChange={onChange}
                 searchSubmit={searchSubmit}
                 searchVisible={searchVisible}
+                keywords={keywords}
+                setKeywords={setKeywords}
                 setSearchVisible={setSearchVisible}
+                onAddKeyWord={onAddKeyWord}
               />
             </Route>
             <Route path={"/signUp"} exact>
