@@ -8,6 +8,7 @@
   animation: modal-show 0.4s;
   z-index: 999999;
   background-color: rgba(0, 0, 0, 0.4);
+  overflow: auto;
 }
 .loginTemplate {
   position: relative;
@@ -19,6 +20,15 @@
   height: 270px;
   background-color: white;
   cursor: default;
+}
+.loginButton2 {
+  left: -130px;
+}
+.idSearchBtn {
+  position: absolute;
+  left: 160px;
+  // top: -40px;
+  text-decoration: underline;
 }
 @keyframes modal-show {
   from {
