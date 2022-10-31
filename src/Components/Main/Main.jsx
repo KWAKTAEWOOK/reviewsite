@@ -17,6 +17,9 @@ const Main = ({
   searchSubmit,
   searchVisible,
   setSearchVisible,
+  setKeywords,
+  keywords,
+  onAddKeyWord,
 }) => {
   const [Places, setPlaces] = useState([]);
   const [backupAll, setBackupAll] = useState([]);
@@ -24,17 +27,14 @@ const Main = ({
   const [backupCE7, setBackupCE7] = useState([]);
   const [backupCS2, setBackupCS2] = useState([]);
   const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(10);
+  const [limit, setLimit] = useState(100);
   const [open, setOpen] = useState(true);
   const [arrow, setArrow] = useState(true);
   const [searchNull, setSearchNull] = useState("");
-
-  const [keywords, setKeywords] = useState(
-    JSON.parse(localStorage.getItem("keywords") || "[]")
-  );
-
+  const [imgAddress, setImgAddress] = useState("");
   const onClickSearchData = (text) => {
     setInputText(text);
+    sessionStorage.setItem("search", text);
   };
 
   const onClickSearchVisible = () => {
@@ -55,24 +55,6 @@ const Main = ({
   useEffect(() => {
     localStorage.setItem("keywords", JSON.stringify(keywords));
   }, [keywords]);
-
-  const getDate = () => {
-    const today = new Date();
-    const month = String(today.getMonth() + 1).padStart(2, "0");
-    const day = String(today.getDate()).padStart(2, "0");
-
-    return `${month}.${day}`;
-  };
-
-  const onAddKeyWord = (text) => {
-    const newKeyword = {
-      id: Date.now(),
-      text,
-      date: getDate(),
-    };
-
-    setKeywords([newKeyword, ...keywords]);
-  };
 
   const onRemoveKeyword = (id) => {
     setKeywords(
@@ -148,47 +130,57 @@ const Main = ({
 
     var geocoder = new kakao.maps.services.Geocoder();
 
+    var imageSrc = imgAddress,
+      imageSize = new kakao.maps.Size(60, 60),
+      imageOption = { offset: new kakao.maps.Point(28, 50) };
+
+    var markerImage = new kakao.maps.MarkerImage(
+      imageSrc,
+      imageSize,
+      imageOption
+    );
+
     var marker = new kakao.maps.Marker(),
       infowindow = new kakao.maps.InfoWindow({ zindex: 1 });
     searchAddrFromCoords(map.getCenter(), displayCenterInfo);
 
-    kakao.maps.event.addListener(map, "click", function (mouseEvent) {
-      searchDetailAddrFromCoords(mouseEvent.latLng, function (result, status) {
-        if (status === kakao.maps.services.Status.OK) {
-          var detailAddr = !!result[0].road_address
-            ? "<div>도로명주소 : " +
-              result[0].road_address.address_name +
-              "</div>"
-            : "";
-          detailAddr +=
-            "<div>지번 주소 : " + result[0].address.address_name + "</div>";
+    // kakao.maps.event.addListener(map, "click", function (mouseEvent) {
+    //   searchDetailAddrFromCoords(mouseEvent.latLng, function (result, status) {
+    //     if (status === kakao.maps.services.Status.OK) {
+    //       var detailAddr = !!result[0].road_address
+    //         ? "<div>도로명주소 : " +
+    //           result[0].road_address.address_name +
+    //           "</div>"
+    //         : "";
+    //       detailAddr +=
+    //         "<div>지번 주소 : " + result[0].address.address_name + "</div>";
 
-          var content =
-            '<div class="bAddr">' +
-            '<span class="title">[주소정보]</span>' +
-            detailAddr +
-            "</div>";
+    //       var content =
+    //         '<div class="bAddr">' +
+    //         '<span class="title">[주소정보]</span>' +
+    //         detailAddr +
+    //         "</div>";
 
-          marker.setPosition(mouseEvent.latLng);
-          marker.setMap(map);
+    //       marker.setPosition(mouseEvent.latLng);
+    //       marker.setMap(map);
 
-          infowindow.setContent(content);
-          infowindow.open(map, marker);
-        }
-      });
-    });
+    //       infowindow.setContent(content);
+    //       infowindow.open(map, marker);
+    //     }
+    //   });
+    // });
 
-    kakao.maps.event.addListener(map, "idle", function () {
-      searchAddrFromCoords(map.getCenter(), displayCenterInfo);
-    });
+    // kakao.maps.event.addListener(map, "idle", function () {
+    //   searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+    // });
 
     function searchAddrFromCoords(coords, callback) {
       geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);
     }
 
-    function searchDetailAddrFromCoords(coords, callback) {
-      geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
-    }
+    // function searchDetailAddrFromCoords(coords, callback) {
+    //   geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
+    // }
 
     function displayCenterInfo(result, status) {
       if (status === kakao.maps.services.Status.OK) {
@@ -228,7 +220,6 @@ const Main = ({
         setBackupCE7(data);
         setBackupCS2(data);
         setBackupFD6(data);
-        console.log(data);
       }
     }
 
@@ -262,33 +253,57 @@ const Main = ({
     }
 
     function displayMarker(place) {
+      if (place.category_group_code === "FD6") {
+        setImgAddress("https://i.imgur.com/J4YtIyK.png");
+      } else if (place.category_group_code === "CE7") {
+        setImgAddress("https://i.imgur.com/jkiEdF1.png");
+      } else if (place.category_group_code === "CS2") {
+        setImgAddress("https://i.imgur.com/RPJ6WIA.png");
+      } else {
+        setImgAddress("https://i.imgur.com/ICPDozz.png");
+      }
       let marker = new kakao.maps.Marker({
         map: map,
+        image: markerImage,
         position: new kakao.maps.LatLng(place.y, place.x),
       });
 
       kakao.maps.event.addListener(marker, "click", function () {
         infowindow.setContent(
-          '<div style="padding:13px;font-size:12px; color:black; width:300px; height:240px; overflow:hidden">' +
-            `<a href="http://localhost:3000/Detail" style="display:block; margin-top:-2px; font-size:16px; font-weight:bold">` +
+          '<div class="customoverlay">' +
+            '<div class="customoverlayBack">' +
+            `<div class="customoverlayPlaceName">` +
+            '<span clss="customoverlayEtc">' +
+            "[ " +
+            "</span>" +
             place.place_name +
+            '<span clss="customoverlayEtc">' +
+            " ]" +
+            "</span>" +
+            `<a href="#!" >` +
+            "  →" +
             "</a>" +
-            '<img src="https://ldb-phinf.pstatic.net/20211228_153/1640684993923s9vPb_JPEG/KakaoTalk_20211228_093917446_03.jpg" alt="0" style="width:300px; height:150px; margin-top:7px; display:block"/>' +
-            '<div style="opacity:0.5; margin-top:5px; display:block">' +
+            "</div>" +
+            '<img src="https://ldb-phinf.pstatic.net/20211228_153/1640684993923s9vPb_JPEG/KakaoTalk_20211228_093917446_03.jpg" alt="0" class="customoverlayImg"/>' +
+            '<div class="customoverlayCategory">' +
             place.category_name +
             "</div>" +
-            '<div style="margin-top:5px; display:block; padding-bottom:10px">' +
+            '<div class="customoverlayAddress">' +
             place.road_address_name +
             "</div>" +
-            '<div style="margin-top:-5px; display:block; padding-bottom:10px">' +
+            '<div clss="customoverlayPhone">' +
+            '<span class="customoverlayEtc">' +
+            "☎ " +
+            "</span>" +
             place.phone +
+            "</div>" +
             "</div>" +
             "</div>"
         );
         infowindow.open(map, marker);
       });
     }
-  }, [place, lat, lng]);
+  }, [place, lat, lng, imgAddress]);
   return (
     <>
       <Topbar />
@@ -308,7 +323,7 @@ const Main = ({
               </button>
               <div className="searchMenu">
                 <div className="searchBtn">
-                  <form className="searchBtn_in" onSubmit={searchSubmit}>
+                  <form className="searchBtn_in">
                     <select
                       name="category"
                       className="category"
@@ -332,7 +347,11 @@ const Main = ({
                       }}
                       onClick={() => onClickSearchVisible()}
                     />
-                    <button className="searchButton" type="submit" />
+                    <button
+                      className="searchButton"
+                      type="submit"
+                      onSubmit={searchSubmit}
+                    />
                   </form>
                   <div
                     className={
