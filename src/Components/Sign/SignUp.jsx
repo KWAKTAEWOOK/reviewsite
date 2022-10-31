@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { BACKEND_URL } from "../../utils";
 import "../../Style/Sign/SignUp.scss";
+import closeModalBtn from "../../Style/image/close.png";
 
 const SignUp = ({ openModal, closeModal2 }) => {
   const [username, setUsername] = useState("");
@@ -66,10 +67,15 @@ const SignUp = ({ openModal, closeModal2 }) => {
 
   return (
     <>
-      <div className="signUpbody" onClick={closeModal2}>
-        <div className="signUptemplate" onClick={(e) => e.stopPropagation()}>
+      <div className="signUpbody">
+        <div className="signUptemplate">
           <div className="signUpLogo">
             <p>회원가입</p>
+            <img
+              src={closeModalBtn}
+              className="closeModal closeModal2"
+              onClick={closeModal2}
+            />
           </div>
           <div className="signUpForm">
             <form

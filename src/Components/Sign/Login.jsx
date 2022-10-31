@@ -4,6 +4,7 @@ import axios from "axios";
 import { BACKEND_URL } from "../../utils";
 import { useRecoilState } from "recoil";
 import { userState } from "../../recoil/user";
+import closeModalBtn from "../../Style/image/close.png";
 
 const Login = ({ closeModal, openModal2 }) => {
   const [userid, setUserid] = useState("");
@@ -36,11 +37,17 @@ const Login = ({ closeModal, openModal2 }) => {
 
   return (
     <>
-      <div className="login_body" onClick={closeModal}>
-        <div className="loginTemplate" onClick={(e) => e.stopPropagation()}>
+      <div className="login_body">
+        <div className="loginTemplate">
           <div className="signUpLogo">
             <p>로그인</p>
+            <img
+              src={closeModalBtn}
+              className="closeModal"
+              onClick={closeModal}
+            />
           </div>
+
           <div className="signUpForm">
             <form onSubmit={loginUser}>
               <div>

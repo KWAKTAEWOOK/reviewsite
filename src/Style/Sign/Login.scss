@@ -38,3 +38,12 @@
     opacity: 1;
   }
 }
+.closeModal {
+  position: relative;
+  display: inline-block;
+  top: -300px;
+  left: 280px;
+  color: black;
+  cursor: pointer;
+  scale: 0.05;
+}

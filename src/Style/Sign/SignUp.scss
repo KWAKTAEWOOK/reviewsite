@@ -25,7 +25,7 @@
 .signUpLogo {
   position: absolute;
   text-align: left;
-  width: 99.9%;
+  width: 97%;
   left: 10px;
   top: 5px;
   height: 68px;
@@ -100,5 +100,10 @@
 }
 .alert {
   font-size: 12px;
+  position: relative;
+  top: 0px;
   color: red;
+}
+.closeModal2 {
+  left: 297px;
 }
