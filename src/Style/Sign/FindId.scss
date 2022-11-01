@@ -32,15 +32,12 @@
   height: 300px;
   margin: 0 auto;
 }
-.findInput > form {
+.findInput > div {
   position: relative;
-  top: -270px;
-  left: 220px;
-  display: inline-block;
-  text-align: right;
-}
-.findInput > form > div {
+  right: 530px;
+  bottom: 270px;
   margin-bottom: 15px;
+  text-align: right;
   input {
     position: absolute;
     height: 30px;

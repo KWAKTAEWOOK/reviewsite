@@ -13,8 +13,8 @@ const FindPw = () => {
           <hr className="findHr" />
           <div className="findBody">
             <img className="idImg findidImg findPwImg" src={password} alt="" />
-            <div className="findInput findInput_2">
-              <form action="">
+            <form action="">
+              <div className="findInput findInput_2">
                 <div>
                   이름
                   <input type="text" />
@@ -29,9 +29,9 @@ const FindPw = () => {
                   이메일
                   <input type="text" />
                 </div>
-              </form>
-            </div>
-            <button className="findBtn findBtn2">비밀번호 변경하기</button>
+              </div>
+              <button className="findBtn findBtn2">비밀번호 변경하기</button>
+            </form>
           </div>
           <div
             className="changePwBtn"
