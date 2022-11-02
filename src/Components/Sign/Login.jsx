@@ -26,7 +26,6 @@ const Login = ({ closeModal, openModal2 }) => {
       setPassword("");
       setUser(data.data);
       alert("로그인 성공!😊");
-      // console.log(data.data.userRole);
       window.location.href = "/main";
     } catch (e) {
       console.log(e);
