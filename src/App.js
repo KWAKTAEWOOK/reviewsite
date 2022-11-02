@@ -83,7 +83,7 @@ const App = () => {
             <Route path={"/signUp"} exact>
               <SignUp />
             </Route>
-            <Route path={"/Detail/:id"} exact>
+            <Route path={"/Detail/:place_name/:id"} exact>
               <Detail />
             </Route>
             <Route path={"/Mypage"} exact>

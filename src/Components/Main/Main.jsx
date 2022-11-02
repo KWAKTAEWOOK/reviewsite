@@ -4,7 +4,6 @@ import LeftArrow from "../../Style/image/left-arrow.png";
 import Topbar from "./Topbar";
 import "../../Style/Main/Main.scss";
 import useGeolocation from "react-hook-geolocation";
-import { Link } from "react-router-dom";
 
 const { kakao } = window;
 
@@ -43,6 +42,11 @@ const Main = ({
 
   const onClickSearchClose = () => {
     setSearchVisible(true);
+  };
+
+  const onClickDetailDB = (placeDB) => {
+    window.location.href = `http://localhost:3000/Detail/${placeDB.place_name}/${placeDB.id}`;
+    sessionStorage.setItem("detail", JSON.stringify(placeDB));
   };
 
   const onClickSearch = () => {
@@ -400,42 +404,34 @@ const Main = ({
                   >
                     <span className="searchNull">{searchNull}</span>
                     {Places.slice(offset, offset + limit).map((item, i) => (
-                      <Link
-                        to={{
-                          pathname: `/Detail/${item.id}`,
-                          state: {
-                            place_name: item.place_name,
-                            CategoryName: item.category_name,
-                            Address: item.road_address_name,
-                            posX: item.x,
-                            posY: item.y,
-                            id: item.id,
-                          },
+                      <ul
+                        className="menulist"
+                        key={i}
+                        onClick={() => {
+                          onClickDetailDB(item);
                         }}
                       >
-                        <ul className="menulist" key={i}>
-                          <li className="searchInfoList">
-                            <a href={item.place_url} className="searchInfoName">
-                              {item.place_name}
-                            </a>
-                            <li className="searchInfoCategory">
-                              {item.category_name}
-                            </li>
-                            <div className="menuSublist">
-                              {item.road_address_name ? (
-                                <div className="searchInfoAddress">
-                                  <span>{item.road_address_name}</span>
-                                </div>
-                              ) : (
-                                <span className="searchInfoAddress">
-                                  {item.address_name}
-                                </span>
-                              )}
-                              <li className="searchInfoPhone">{item.phone}</li>
-                            </div>
+                        <li className="searchInfoList">
+                          <a href="#!" className="searchInfoName">
+                            {item.place_name}
+                          </a>
+                          <li className="searchInfoCategory">
+                            {item.category_name}
                           </li>
-                        </ul>
-                      </Link>
+                          <div className="menuSublist">
+                            {item.road_address_name ? (
+                              <div className="searchInfoAddress">
+                                <span>{item.road_address_name}</span>
+                              </div>
+                            ) : (
+                              <span className="searchInfoAddress">
+                                {item.address_name}
+                              </span>
+                            )}
+                            <li className="searchInfoPhone">{item.phone}</li>
+                          </div>
+                        </li>
+                      </ul>
                     ))}
                   </div>
                 </div>

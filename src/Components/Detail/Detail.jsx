@@ -5,9 +5,10 @@ import data from "./Image";
 import "../../Style/Detail/img.css";
 import "../../Style/Main/Main.scss";
 import TopbarV2 from "../Main/TopbarV2";
-import { useLocation } from "react-router-dom";
 import StarRating from "./StarRating";
 import StarRate from "./StarRate";
+import { useParams } from "react-router-dom";
+import KakaoSearchDB from "../Hook/KakaoSearch";
 
 const { kakao } = window;
 
@@ -22,14 +23,15 @@ const Detail = () => {
   const reviewRef = useRef();
   //----------------------------------------------
   //link로 데이터전달 useLocation hook
-  const location = useLocation();
-  const Address = location.state.Address;
-  const place_name = location.state.place_name;
-  const CategoryName = location.state.CategoryName;
-  const id = location.state.id;
+  const outputdata = sessionStorage.getItem("detail");
+  const dataildata = JSON.parse(outputdata);
+  const { place_name } = useParams();
+  const { id } = useParams();
+  const detailsearch = place_name;
+  const [detailData] = KakaoSearchDB(detailsearch);
   //-----------------------------------------------
   //업종별 카테고리 문자열 원하는것만 출력
-  var str = CategoryName;
+  var str = dataildata.category_name;
   var words = str.split(">"); // ">" 구분으로 배열로 변환
   var word1 = str.substring(0, str.indexOf(">"));
   var word2 = str.substring(
@@ -37,7 +39,9 @@ const Detail = () => {
     str.indexOf(">", str.indexOf(">") + 1)
   );
   var word3 = str.substring(str.lastIndexOf(">") + 1);
-  const count = CategoryName.match(/>/g).filter((item) => item !== "").length; // ">"겟수 카운터
+  const count = dataildata.category_name
+    .match(/>/g)
+    .filter((item) => item !== "").length; // ">"겟수 카운터
   var keystr; // ">"갯수에 따라 출력
   if (count == 2) {
     keystr = word2;
@@ -136,7 +140,7 @@ const Detail = () => {
                 <div>
                   <StarRate />
                 </div>
-                <div>{Address}</div>
+                <div>{detailData.road_address_name}</div>
 
                 <div>가능</div>
                 <div>11:00~21:00</div>

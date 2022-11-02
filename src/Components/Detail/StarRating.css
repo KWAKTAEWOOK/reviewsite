@@ -1,17 +1,20 @@
-button {
+.on {
+  color: rgba(239, 30, 30, 0.922);
   background-color: transparent;
   border: none;
   outline: none;
   cursor: pointer;
   font-size: 20px;
-
   margin: auto;
-}
-.on {
-  color: rgba(239, 30, 30, 0.922);
 }
 .off {
   color: #ccc;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 20px;
+  margin: auto;
 }
 .plugin {
   vertical-align: middle;
