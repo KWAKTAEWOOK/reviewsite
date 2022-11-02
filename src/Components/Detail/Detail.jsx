@@ -6,14 +6,14 @@ import "../../Style/Detail/img.css";
 import "../../Style/Main/Main.scss";
 import TopbarV2 from "../Main/TopbarV2";
 import { useLocation } from "react-router-dom";
+import StarRating from "./StarRating";
+import StarRate from "./StarRate";
 
 const { kakao } = window;
 
 const Detail = () => {
   const [datas, setData] = useState(data);
   const [currItem, setCurrItem] = useState(datas[0]);
-  const [heart, setheart] = useState(false);
-  const [like, setlike] = useState(false);
   //-------------------------------------------
   // 스크롤 오브젝트 Ref
   const photosRef = useRef();
@@ -37,7 +37,6 @@ const Detail = () => {
     str.indexOf(">", str.indexOf(">") + 1)
   );
   var word3 = str.substring(str.lastIndexOf(">") + 1);
-  console.log(word3);
   const count = CategoryName.match(/>/g).filter((item) => item !== "").length; // ">"겟수 카운터
   var keystr; // ">"갯수에 따라 출력
   if (count == 2) {
@@ -46,6 +45,9 @@ const Detail = () => {
     keystr = word3;
   }
   //-----------------------------------------------------------
+  const [heart, setheart] = useState(false);
+  const [like, setlike] = useState(false);
+
   const HeartImg = "/images/heart.png";
   const EmptyHeartImg = "/images/heart1.png";
 
@@ -131,7 +133,9 @@ const Detail = () => {
               </div>
 
               <div className="group right">
-                <div>★★★★★</div>
+                <div>
+                  <StarRate />
+                </div>
                 <div>{Address}</div>
 
                 <div>가능</div>
@@ -166,6 +170,7 @@ const Detail = () => {
             <hr width="1000px" />
             <hr width="1000px" />
             <hr width="1000px" />
+            <StarRating />
             <div className="사용자" ref={reviewRef}>
               <div className="usercon">
                 <img className="userimg" src="/images/3.jpg" />
