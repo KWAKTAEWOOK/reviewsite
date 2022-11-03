@@ -1,39 +1,36 @@
-import React from "react";
-import Topbar from "../Main/Topbar";
+import React, { useState } from "react";
 import "../../Style/Mypage/MyReview.scss";
 import TopbarV2 from "../Main/TopbarV2";
 
 const MyReview = () => {
+  const [search_word, setSearch_word] = useState("");
+  const onChange = (e) => {
+    setSearch_word(e.target.value);
+  };
+
   return (
     <>
       <TopbarV2 />
-      <div className="con">
-        <ul>
-          {" "}
-          <div>
-            (유저 이미지)
-            <img src="" alt="" />
+      <div className="MyReview_con">
+        <div className="MyReview_title">
+          <h3>내가 작성한 리뷰</h3>
+        </div>
+        <div className="MyReview_body">
+          <div className="MyReview_search_con">
+            <div className="MyReview_search_box">
+              <input
+                className="input_seach"
+                size={10}
+                type="text"
+                value={search_word}
+                onChange={onChange}
+                placeholder="검색어를 입력해주세요."
+              ></input>
+              <button className="button_search">검색</button>
+            </div>
           </div>
-          <a href="#">(닉네임 누르면 작성한 리뷰 목록 보이게)</a>
-          <br />
-          <li>작성한 리뷰 갯수 : (리뷰갯수)</li>
-        </ul>
-        <div className="cotent">
-          <ul>
-            {" "}
-            <a href="#">(식당 또는 카페 이름 클릭 시 해당 식당(카페)로 이동)</a>
-            <li>
-              (Localdate 표시)
-              <div>
-                (사진 있으면 저장된 사진 불어오고 없으면 없는대로)
-                <img src="" alt="" />
-                <br />
-              </div>{" "}
-              (리뷰 작성)
-            </li>
-          </ul>
-          <div>
-            <a href="#">(메뉴 표시 및 클릭 시 해당 식당 카페로 이동)</a>
+          <div className="MyReview_subject_list">
+            <form action="" method="GET"></form>
           </div>
         </div>
       </div>

@@ -1,7 +1,41 @@
-.con {
+.MyReview_con {
+  font-family: "MonoplexKR-Regular";
   width: 100%;
+}
+
+.MyReview_title {
+  font-size: 2rem;
   text-align: center;
-  border: solid red 1px;
   position: absolute;
   margin-top: 200px;
+  left: 10%;
+  letter-spacing: -8px;
+}
+.MyReview_body {
+  position: absolute;
+  text-align: center;
+  height: 50%;
+  width: 100%;
+  border: solid black 3px;
+  margin-top: 300px;
+}
+.MyReview_search_con {
+  position: relative;
+  width: 1000px;
+  height: 80px;
+  border: solid green 1px;
+  margin: auto;
+  background-color: red;
+}
+.MyReview_search_box {
+  position: relative;
+  top: 20%;
+}
+.input_seach {
+  // font-size: 1rem;
+  width: 600px;
+  height: 35px;
+}
+.button_search {
+  margin-left: 20px;
 }
