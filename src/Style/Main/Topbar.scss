@@ -115,7 +115,7 @@ a {
   width: 28px;
   height: 28px;
   left: 540px;
-  top: 13px;
+  top: -15px;
   color: rgba(243, 243, 243, 0.8);
 }
 .BiCurrentLocation:hover {
@@ -124,14 +124,6 @@ a {
 .now_location {
   position: relative;
   top: -25px;
-}
-.now_location p {
-  position: relative;
-  color: rgba(243, 243, 243, 0.8);
-  font-size: 1rem;
-  left: 580px;
-  width: 300px;
-  text-align: left;
 }
 .username {
   position: relative;
@@ -167,4 +159,8 @@ a {
   margin-left: 5px;
   color: rgba(243, 243, 243, 0.8);
   font-weight: lighter;
+}
+.CenterAddr {
+  color: red;
+  z-index: 99;
 }

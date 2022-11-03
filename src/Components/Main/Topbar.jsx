@@ -92,9 +92,6 @@ const Topbar = () => {
               </div>
               <div className="now_location">
                 <BiCurrentLocation className="BiCurrentLocation" />
-                <p>
-                  <span id="centerAddr"></span>
-                </p>
               </div>
             </div>
           </div>

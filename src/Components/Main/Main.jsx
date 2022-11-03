@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect, useState } from "react";
 import RightArrow from "../../Style/image/right-arrow.png";
 import LeftArrow from "../../Style/image/left-arrow.png";
@@ -31,6 +32,7 @@ const Main = ({
   const [arrow, setArrow] = useState(true);
   const [searchNull, setSearchNull] = useState("");
   const [imgAddress, setImgAddress] = useState("");
+
   const onClickSearchData = (text) => {
     setInputText(text);
     sessionStorage.setItem("search", text);
@@ -57,7 +59,7 @@ const Main = ({
   };
 
   useEffect(() => {
-    localStorage.setItem("keywords", JSON.stringify(keywords));
+    sessionStorage.setItem("keywords", JSON.stringify(keywords));
   }, [keywords]);
 
   const onRemoveKeyword = (id) => {
@@ -132,8 +134,6 @@ const Main = ({
     const ps = new kakao.maps.services.Places();
     ps.keywordSearch(place, placesSearchCB, { useMapBounds: true });
 
-    var geocoder = new kakao.maps.services.Geocoder();
-
     var imageSrc = imgAddress,
       imageSize = new kakao.maps.Size(60, 60),
       imageOption = { offset: new kakao.maps.Point(28, 50) };
@@ -144,47 +144,23 @@ const Main = ({
       imageOption
     );
 
+    var geocoder = new kakao.maps.services.Geocoder();
+
     var marker = new kakao.maps.Marker(),
       infowindow = new kakao.maps.InfoWindow({ zindex: 1 });
     searchAddrFromCoords(map.getCenter(), displayCenterInfo);
 
-    // kakao.maps.event.addListener(map, "click", function (mouseEvent) {
-    //   searchDetailAddrFromCoords(mouseEvent.latLng, function (result, status) {
-    //     if (status === kakao.maps.services.Status.OK) {
-    //       var detailAddr = !!result[0].road_address
-    //         ? "<div>도로명주소 : " +
-    //           result[0].road_address.address_name +
-    //           "</div>"
-    //         : "";
-    //       detailAddr +=
-    //         "<div>지번 주소 : " + result[0].address.address_name + "</div>";
-
-    //       var content =
-    //         '<div class="bAddr">' +
-    //         '<span class="title">[주소정보]</span>' +
-    //         detailAddr +
-    //         "</div>";
-
-    //       marker.setPosition(mouseEvent.latLng);
-    //       marker.setMap(map);
-
-    //       infowindow.setContent(content);
-    //       infowindow.open(map, marker);
-    //     }
-    //   });
-    // });
-
-    // kakao.maps.event.addListener(map, "idle", function () {
-    //   searchAddrFromCoords(map.getCenter(), displayCenterInfo);
-    // });
+    kakao.maps.event.addListener(map, "idle", function () {
+      searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+    });
 
     function searchAddrFromCoords(coords, callback) {
       geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);
     }
 
-    // function searchDetailAddrFromCoords(coords, callback) {
-    //   geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
-    // }
+    function searchDetailAddrFromCoords(coords, callback) {
+      geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
+    }
 
     function displayCenterInfo(result, status) {
       if (status === kakao.maps.services.Status.OK) {
@@ -238,7 +214,6 @@ const Main = ({
 
       for (i = 1; i <= pagination.last; i++) {
         var el = document.createElement("a");
-        el.href = "#";
         el.innerHTML = i;
 
         if (i === pagination.current) {
@@ -314,6 +289,7 @@ const Main = ({
       <section>
         <div className="main">
           <div className="mainList">
+            <span id="centerAddr" className="TestCenter"></span>
             <nav className={open ? "show" : "hide"}>
               <button
                 className="ShowAndHide"
@@ -325,6 +301,7 @@ const Main = ({
                   alt="slidebt"
                 />
               </button>
+
               <div className="searchMenu">
                 <div className="searchBtn">
                   <form className="searchBtn_in">
@@ -435,7 +412,9 @@ const Main = ({
                     ))}
                   </div>
                 </div>
-                <div id="pagination" className="searchPagination"></div>
+                <div className="paginationPos">
+                  <div id="pagination" className="searchPagination"></div>
+                </div>
               </div>
             </nav>
             <div className="rode_api" id="map"></div>

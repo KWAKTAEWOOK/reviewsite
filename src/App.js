@@ -17,7 +17,7 @@ const App = () => {
   const [place, setPlace] = useState(sessionStorage.getItem("search"));
   const [searchVisible, setSearchVisible] = useState(true);
   const [keywords, setKeywords] = useState(
-    JSON.parse(localStorage.getItem("keywords") || "[]")
+    JSON.parse(sessionStorage.getItem("keywords") || "[]")
   );
 
   const onChange = (e) => {
@@ -55,14 +55,9 @@ const App = () => {
           <Switch>
             <Route path={"/"} exact>
               <Home
-                place={place}
-                setPlace={setPlace}
-                inputText={inputText}
-                setInputText={setInputText}
                 onChange={onChange}
-                keywords={keywords}
+                inputText={inputText}
                 setKeywords={setKeywords}
-                onAddKeyWord={onAddKeyWord}
               />
             </Route>
             <Route path={"/main"} exact>
