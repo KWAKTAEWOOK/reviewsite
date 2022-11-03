@@ -9,4 +9,4 @@ root.render(
   </React.StrictMode>
 );
 
-// localStorage.clear();
+// sessionStorage.clear();

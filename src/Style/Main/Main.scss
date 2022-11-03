@@ -175,21 +175,30 @@
   position: relative;
   height: 25px;
 }
-.searchPagination {
-  margin: auto;
-  bottom: 110px;
+.paginationPos {
   width: 430px;
-  height: 30px;
-  line-height: 32px;
-  font-size: 16px;
+  position: relative;
+  height: 50px;
+  background-color: white;
+  margin-top: -200px;
+  border-top: 0.5px solid rgb(209, 209, 209);
+}
+.searchPagination {
+  display: flex;
+  justify-content: center;
+  top: 0;
+  width: 250px;
+  margin-left: 80px;
+  margin-top: 3px;
   font-weight: bold;
-  z-index: 99;
   color: black;
   position: absolute;
+}
+.searchPagination > a {
   display: flex;
-  justify-content: space-evenly;
-  border-top: 0.5px solid rgb(209, 209, 209);
-  // background-color: white;
+  margin: auto;
+  font-size: 15px;
+  cursor: pointer;
 }
 .rode_api {
   position: absolute;
@@ -404,4 +413,12 @@
   position: relative;
   font-weight: bold;
   top: -1px;
+}
+.TestCenter {
+  z-index: 9999999;
+  position: absolute;
+  font-size: 1rem;
+  color: rgba(243, 243, 243, 0.8);
+  margin-top: -61px;
+  margin-left: 1170px;
 }

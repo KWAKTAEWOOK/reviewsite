@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useState, useEffect } from "react";
 import useGeolocation from "react-hook-geolocation";
 import { useParams } from "react-router-dom";
@@ -114,6 +115,6 @@ export default function KakaoSearchDB(search2) {
         infowindow.open(map, marker);
       });
     }
-  }, [place2, lat, lng, imgAddress]);
+  }, [place2, lat, lng, imgAddress, id]);
   return [detailData];
 }
