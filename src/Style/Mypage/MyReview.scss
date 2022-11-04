@@ -1,41 +1,89 @@
 .MyReview_con {
-  font-family: "MonoplexKR-Regular";
   width: 100%;
+  position: absolute;
+  font-family: "MonoplexKR-Regular";
+  font-size: 0;
+  margin: 0;
+  padding: 0;
+  margin-top: 110px;
+  overflow: hidden;
 }
 
-.MyReview_title {
-  font-size: 2rem;
+.MyReview_title_div {
+  width: 100%;
+  height: 80px;
+  position: relative;
   text-align: center;
-  position: absolute;
-  margin-top: 200px;
-  left: 10%;
-  letter-spacing: -8px;
+}
+.MyReview_title_div_h3 {
+  font-size: 4rem;
+  font-family: "OTEnjoystoriesBA";
+  font-weight: bold;
+}
+
+.MyReview_title_div2 {
+  position: relative;
+  left: 25%;
+}
+.MyReview_title_div2_h3 {
+  font-size: 1.2rem;
+  letter-spacing: -3px;
+  word-spacing: -3px;
 }
 .MyReview_body {
-  position: absolute;
+  position: relative;
   text-align: center;
-  height: 50%;
+  height: 500px;
   width: 100%;
-  border: solid black 3px;
-  margin-top: 300px;
 }
 .MyReview_search_con {
   position: relative;
   width: 1000px;
   height: 80px;
-  border: solid green 1px;
   margin: auto;
-  background-color: red;
+  background-color: #f9f7f9;
 }
 .MyReview_search_box {
   position: relative;
   top: 20%;
 }
 .input_seach {
-  // font-size: 1rem;
   width: 600px;
-  height: 35px;
+  height: 36px;
+  border: solid 1px #555;
+  outline: none;
+  // font-size: 1.2rem;
 }
 .button_search {
-  margin-left: 20px;
+  position: relative;
+  font-size: 1rem;
+  width: 108px;
+  background-color: #555;
+  padding: 8.3px 0;
+  color: white;
+  border-bottom: 2.2px solid #555;
+  top: 1.1px;
+}
+.MyReview_subject_list {
+  font-size: 1rem;
+  position: relative;
+  height: 420px;
+  width: 1000px;
+  margin: 0 auto;
+  border-top: 1px solid #e7e7e7;
+  // border-bottom: 1px solid #e7e7e7;
+}
+.MyReview_table_th-num,
+.MyReview_table_th-date,
+.MyReview_table_th_star_score,
+.MyReview_table_th_views {
+  width: 100px;
+}
+.MyReview_table_th-title {
+  width: 600px;
+}
+.MyReview_table th,
+.MyReview_table td {
+  height: 48px;
+  border-bottom: solid 1px #e7e7e7;
 }
