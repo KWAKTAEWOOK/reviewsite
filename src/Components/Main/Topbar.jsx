@@ -54,9 +54,6 @@ const Topbar = () => {
                       <a href="/MyReview">내가 작성한 리뷰</a>
                     </li>
                   )}
-                  <li>
-                    <a href="/MyReview">내가 작성한 리뷰</a>
-                  </li>
                   {user && user.userRole === "ADMIN" ? (
                     <li>
                       <a href="/main" className="admin_site">
