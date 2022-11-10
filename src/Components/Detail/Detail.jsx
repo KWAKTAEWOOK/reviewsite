@@ -9,6 +9,10 @@ import StarRating from "./StarRating";
 import StarRate from "./StarRate";
 import { useParams } from "react-router-dom";
 import KakaoSearchDB from "../Hook/KakaoSearch";
+import axios from "axios";
+import { BACKEND_URL } from "../../utils";
+import { useRecoilState } from "recoil";
+import { userState } from "../../recoil/user";
 
 const { kakao } = window;
 
@@ -101,6 +105,28 @@ const Detail = () => {
       behavior: "smooth",
       block: "start",
     });
+  const post = async (e) => {
+    e.preventDefault();
+    try {
+      const data = await axios({
+        url: `${BACKEND_URL}/user/star`,
+        method: "POST",
+        data: {
+          // userid,
+        },
+      });
+
+      alert("로그인 성공!😊");
+    } catch (e) {
+      alert("로그인 실패! 아이디 또는 비밀번호를 확인하세요.");
+    }
+  };
+  //------------------------------------------------------------------
+  const [user, setUser] = useRecoilState(userState);
+  const userid = user.id;
+  const nickname = user.nickname;
+  const username = user.username;
+  const email = user.email;
   return (
     <>
       <TopbarV2 />
@@ -121,7 +147,6 @@ const Detail = () => {
         </nav>
         <div className="body1">
           <div className="magin-side">
-            <hr width="1000px" />
             <div className="Box">
               <div className="confont">
                 <div className="cafe">{place_name}</div>
@@ -168,22 +193,14 @@ const Detail = () => {
                 </div>
               </div>
             </div>
-            <hr width="1000px" />
+
             <div className="maptext">위치정보</div>
             <div className="rode_api1" id="map" ref={mappgRef}></div>
-            <hr width="1000px" />
-            <hr width="1000px" />
-            <hr width="1000px" />
+
             <StarRating />
-            <div className="사용자" ref={reviewRef}>
-              <div className="usercon">
-                <img className="userimg" src="/images/3.jpg" />
-                <div>비둘기</div>
-              </div>
-              <textarea id="" cols="100" rows="10"></textarea>
-            </div>
+
             <br />
-            <div className="사용자">
+            <div className="사용자" ref={reviewRef}>
               <div className="usercon">
                 <img className="userimg" src="/images/6.jpg" alt="" />
                 <div>멧밭쥐</div>
