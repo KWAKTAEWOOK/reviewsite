@@ -16,11 +16,23 @@
   font-size: 20px;
   margin: auto;
 }
+.star-rating {
+  margin-left: 25%;
+}
+
 .plugin {
   vertical-align: middle;
   position: relative;
+  margin-left: 75%;
+  bottom: -1px;
+}
+.buttt {
+  margin-left: 75%;
+  position: relative;
+  height: 0.1;
+  width: 0.1;
+}
+.plugin > img {
   height: 30px;
   width: 30px;
-  bottom: -1px;
-  margin-left: 1870%;
 }

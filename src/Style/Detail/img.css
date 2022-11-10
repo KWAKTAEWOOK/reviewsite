@@ -145,6 +145,7 @@
   text-align: center;
   height: 50px;
   margin-bottom: 0;
+  background-color: transparent;
 }
 .likeImg {
   background-image: url(/public/images/like2.png);
@@ -290,7 +291,15 @@ li > img:hover {
   transition: transform 300ms ease;
   transform: scale(1.1);
 }
-.star-rating {
-  position: relative;
-  left: 25%;
+
+.replyContent {
+  position: absolute;
+  width: 1000px;
+  /* border: 1px solid red; */
+}
+.rode_api1 {
+  margin-bottom: 12vh;
+}
+.magin-side {
+  width: 1000px;
 }
