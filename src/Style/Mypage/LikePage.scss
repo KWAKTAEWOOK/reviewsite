@@ -1,0 +1,24 @@
+.likebackground {
+  font-family: "MonoplexKR-Regular";
+  position: absolute;
+  min-height: 1100px;
+  width: 100%;
+  height: 100%;
+}
+.liketemplate {
+  position: relative;
+  top: 120px;
+  width: 1080px;
+  margin: 0 auto;
+  text-align: center;
+  height: 200px;
+}
+.like_wrap {
+  position: relative;
+  top: 200px;
+  text-align: left;
+  left: 100px;
+}
+.like_wrap > p {
+  display: inline-block;
+}

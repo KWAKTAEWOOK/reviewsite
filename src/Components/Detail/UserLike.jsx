@@ -25,7 +25,7 @@ const UserLike = () => {
     const getData = async () => {
       try {
         const data = await axios({
-          url: `${BACKEND_URL}/heart/${user.userid}/${id}`,
+          url: `${BACKEND_URL}/heart/${user && user.userid}/${id}`,
           method: "GET",
         });
         setUserLike(data.data);
@@ -39,7 +39,7 @@ const UserLike = () => {
   // 클릭시 좋아요 생성 / 취소
   const likeClick = async (e) => {
     if (!user) {
-      alert("로그인을 해주세요");
+      alert("로그인 후 이용해주세요 😊");
     } else {
       try {
         e.preventDefault();
@@ -61,32 +61,32 @@ const UserLike = () => {
     }
   };
 
-  const clickHeart = () => {
-    setheart((heart) => !heart);
-    console.log("하트눌림");
-  };
+  // const clickHeart = () => {
+  //   setheart((heart) => !heart);
+  //   console.log("하트눌림");
+  // };
 
   return (
     <>
       <div className="icon">
         <div>
-          <button onClick={likeClick} className="iconbut">
+          {/* <button onClick={likeClick} className="iconbut">
             <img
               className={userLike ? "likeImg" : "EmptylinkeImg"}
               src={userLike ? EmptylinkeImg : likeImg}
             />
-          </button>
+          </button> */}
 
-          <button onClick={clickHeart} className="iconbut">
+          <button onClick={likeClick} className="iconbut">
             <img
-              className={heart ? "HeartImg" : "EmptyHeartImg"}
-              src={heart ? EmptyHeartImg : HeartImg}
+              className={userLike ? "HeartImg" : "EmptyHeartImg"}
+              src={userLike ? EmptyHeartImg : HeartImg}
             />
           </button>
         </div>
         <div className="liketext">
-          <div>좋아요</div>
-          <div>찜콩!!</div>
+          {/* <div>좋아요</div> */}
+          <div>찜하기</div>
         </div>
       </div>
     </>

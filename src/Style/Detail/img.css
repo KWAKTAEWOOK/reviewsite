@@ -171,6 +171,8 @@
   position: relative;
   margin-left: 10px;
   background-size: cover;
+  filter: invert(38%) sepia(34%) saturate(1612%) hue-rotate(323deg)
+    brightness(96%) contrast(106%);
 }
 .HeartImg {
   background-image: url(/public/images/heart1.png);
@@ -179,6 +181,8 @@
   position: relative;
   margin-left: 10px;
   background-size: cover;
+  filter: invert(38%) sepia(34%) saturate(1612%) hue-rotate(323deg)
+    brightness(96%) contrast(106%);
 }
 .iconbut:hover {
   cursor: pointer;
@@ -214,8 +218,8 @@ button {
   display: inline-block;
   width: 60px;
   height: 60px;
-  font-family: OTEnjoystoriesBA;
-  font-size: 2rem;
+  font-family: "MonoplexKR-Regular";
+  font-size: 1rem;
   font-weight: bolder;
   margin-left: 10px;
 }
@@ -292,11 +296,9 @@ li > img:hover {
   transition: transform 300ms ease;
   transform: scale(1.1);
 }
-
 .replyContent {
   position: absolute;
   width: 1000px;
-  /* border: 1px solid red; */
 }
 .rode_api1 {
   margin-bottom: 12vh;
@@ -322,7 +324,6 @@ li > img:hover {
   position: relative;
   top: 5px;
   left: 15%;
-  /* border-top: 1px solid rgb(74, 77, 63, 0.3); */
   border-radius: 10%;
   margin-left: 10px;
 }
@@ -371,7 +372,6 @@ li > img:hover {
 }
 .userdiv {
   border-top: rgba(74, 77, 63, 0.3) 1.5px solid;
-
   margin-bottom: 10px;
   width: 1010px;
   border-radius: 10px;
