@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "../../Style/Mypage/MyReview.scss";
 import TopbarV2 from "../Main/TopbarV2";
-
 const MyReview = () => {
   const [search_word, setSearch_word] = useState("");
   const onChange = (e) => {
