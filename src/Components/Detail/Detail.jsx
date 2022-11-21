@@ -35,7 +35,7 @@ const Detail = () => {
   const [email, setEmail] = useState("");
 
   function setting() {
-    setNickname(user.nickname);
+    setNickname(user && user.nickname);
   }
 
   useEffect(() => {
@@ -75,27 +75,7 @@ const Detail = () => {
   } else {
     keystr = word3;
   }
-  //-----------------------------------------------------------
-  // 추천 찜 항목
-  const [heart, setheart] = useState(false);
-  const [like, setlike] = useState(false);
 
-  const HeartImg = "/images/heart.png";
-  const EmptyHeartImg = "/images/heart1.png";
-
-  const likeImg = "/images/like1.png";
-  const EmptylinkeImg = "/images/like2.png";
-
-  const heartClick = () => {
-    setheart((heart) => !heart);
-    console.log("하트눌림");
-  };
-
-  const likeClick = () => {
-    setlike((like) => !like);
-    console.log("좋아요눌림");
-  };
-  //--------------------------------------------------------
   //지도 로직
   useEffect(() => {
     var mapContainer = document.getElementById("map");
@@ -165,10 +145,9 @@ const Detail = () => {
     };
     get();
   }, []);
-  //-----------------------------------------------
 
   //----------------------------------------------------
-  //리뷰 컨텐트 map 펑션으로 뿌려준로직
+  //리뷰 컨텐트 map 펑션으로 뿌려준 로직
   function Reviewlist({ reviewlist }) {
     //-- 리뷰 삭제 로직-----------------------------------
     const onSubmoit = (e) => {
@@ -227,7 +206,6 @@ const Detail = () => {
                 <button className="textbut">
                   <span>수정</span>
                 </button>
-
                 <button className="textbut" onClick={onSubmoit}>
                   <span>삭제</span>
                 </button>
@@ -256,7 +234,6 @@ const Detail = () => {
         <div className="wrap" ref={photosRef}>
           <GalleryList datas={datas} onView={onView} currItem={currItem} />
         </div>
-
         <nav className="styled__TopNav-sc-1tkfz70-1 eUocsG">
           <div>
             <div className="NavGroup">
@@ -274,31 +251,25 @@ const Detail = () => {
                 <div className="cafe">{place_name}</div>
                 <div className="Foods">{keystr}</div>
               </div>
-
               <div className="group left" ref={detailRef}>
                 <div>평점</div>
                 <div>주소</div>
-
                 <div>주차</div>
                 <div>영업시간</div>
               </div>
-
               <div className="group right">
                 <div>
                   <StarRate />
                 </div>
                 <div>{detailData.road_address_name}</div>
-
                 <div>가능</div>
                 <div>11:00~21:00</div>
               </div>
               <UserLike />
             </div>
-
             <div className="maptext">위치정보</div>
             <div className="rode_api1" id="map" ref={mappgRef}></div>
             {user && <StarRating />}
-
             <br />
             <div>
               {reversedgetdata.map((reviewlist, index) => (

@@ -11,6 +11,7 @@ import MyReview from "./Components/Mypage/MyReview";
 import Help from "./Components/Sign/Help";
 import FindId from "./Components/Sign/FindId";
 import FindPw from "./Components/Sign/FindPw";
+import LikePage from "./Components/Mypage/LikePage";
 
 const App = () => {
   const [inputText, setInputText] = useState("");
@@ -95,6 +96,9 @@ const App = () => {
             </Route>
             <Route path={"/help/findPw"} exact>
               <FindPw />
+            </Route>
+            <Route path={"/mylike"} exact>
+              <LikePage />
             </Route>
           </Switch>
         </BrowserRouter>
