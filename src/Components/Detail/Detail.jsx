@@ -13,6 +13,7 @@ import axios from "axios";
 import { BACKEND_URL } from "../../utils";
 import { useRecoilState } from "recoil";
 import { userState } from "../../recoil/user";
+import UserLike from "./UserLike";
 
 const { kakao } = window;
 
@@ -291,28 +292,7 @@ const Detail = () => {
                 <div>가능</div>
                 <div>11:00~21:00</div>
               </div>
-
-              <div className="icon">
-                <div>
-                  <button onClick={likeClick} className="iconbut">
-                    <img
-                      className={like ? "likeImg" : "EmptylinkeImg"}
-                      src={like ? EmptylinkeImg : likeImg}
-                    />
-                  </button>
-
-                  <button onClick={heartClick} className="iconbut">
-                    <img
-                      className={heart ? "HeartImg" : "EmptyHeartImg"}
-                      src={heart ? EmptyHeartImg : HeartImg}
-                    />
-                  </button>
-                </div>
-                <div className="liketext">
-                  <div>좋아요</div>
-                  <div>찜콩!!</div>
-                </div>
-              </div>
+              <UserLike />
             </div>
 
             <div className="maptext">위치정보</div>
