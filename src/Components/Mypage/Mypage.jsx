@@ -83,7 +83,7 @@ const Mypage = () => {
                   className="input_email"
                   type="text"
                   value={email}
-                  onChange={changeEmail}
+                  onClick={changeEmail}
                 />
               </div>
               <button

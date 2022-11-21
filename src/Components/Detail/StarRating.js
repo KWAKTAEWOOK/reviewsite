@@ -5,6 +5,7 @@ import { useRecoilState } from "recoil";
 import { userState } from "../../recoil/user";
 import "../Detail/StarRating.css";
 import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 
 const StarRating = () => {
   const { id } = useParams();
@@ -12,26 +13,42 @@ const StarRating = () => {
   const [hover, setHover] = useState(0);
   const [user, setUser] = useRecoilState(userState);
   const [content, setContent] = useState("");
+
+  //-----------------------------------------------
+  const [nickname, setNickname] = useState("");
+
+  function setting() {
+    setNickname(user.nickname);
+  }
+  useEffect(() => {
+    setting();
+  }, []);
+
   const star = rating;
   const detail_id = id;
   const post = async (e) => {
-    e.preventDefault();
     try {
       const data = await axios({
-        url: `${BACKEND_URL}/user/star`,
+        url: `${BACKEND_URL}/answer/create/post`,
         method: "POST",
+
         data: {
           content,
           detail_id,
           star,
+          nickname,
         },
       });
 
-      alert("값 입력 성공");
+      window.location.reload();
     } catch (e) {
       alert("값 입력 실패");
     }
   };
+  const onChange = (e) => {
+    setContent(e.target.value);
+  };
+
   return (
     <div>
       <div className="star-rating">
@@ -63,9 +80,9 @@ const StarRating = () => {
       <div className="사용자">
         <div className="usercon">
           <img className="userimg" src="/images/3.jpg" />
-          <div>{user.nickname}</div>
+          <div>{user && user.nickname}</div>
         </div>
-        <textarea onSubmit={setContent} id="" cols="100" rows="10"></textarea>
+        <textarea onChange={onChange} id="" cols="100" rows="10"></textarea>
       </div>
     </div>
   );
