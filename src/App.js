@@ -12,6 +12,7 @@ import Help from "./Components/Sign/Help";
 import FindId from "./Components/Sign/FindId";
 import FindPw from "./Components/Sign/FindPw";
 import LikePage from "./Components/Mypage/LikePage";
+import MypageTest from "./Components/Mypage/MypageTest";
 
 const App = () => {
   const [inputText, setInputText] = useState("");
@@ -99,6 +100,9 @@ const App = () => {
             </Route>
             <Route path={"/mylike"} exact>
               <LikePage />
+            </Route>
+            <Route path={"/mypagetest"} exact>
+              <MypageTest />
             </Route>
           </Switch>
         </BrowserRouter>
