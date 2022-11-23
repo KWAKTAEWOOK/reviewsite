@@ -48,7 +48,15 @@ const StarRating = () => {
   const onChange = (e) => {
     setContent(e.target.value);
   };
-
+  const message = () => {
+    if (content == "") {
+      alert("내용을 입력해주세요");
+    } else if (star == 0) {
+      alert("평점을 입력해주세요");
+    } else {
+      post();
+    }
+  };
   return (
     <div>
       <div className="star-rating">
@@ -71,7 +79,7 @@ const StarRating = () => {
         <button
           className="plugin"
           onClick={() => {
-            post();
+            message();
           }}
         >
           <img src="/images/입력.png" />
