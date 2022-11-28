@@ -10,14 +10,14 @@
   top: 200px;
   width: 100%;
   height: 100%;
-  border: 1px solid black;
+  // border: 1px solid black;
   font-size: 1rem;
 }
 .MypageEditBox {
   position: relative;
   width: 500px;
   height: 500px;
-  border: 1px solid black;
+  // border: 1px solid black;
   margin: 0;
   padding: 0;
   font-size: 1rem;
@@ -37,11 +37,30 @@ MypageEditBox > div > *div {
   position: relative;
   height: 50px;
 }
-.MypageEdit_usernamebox_subject {
-  position: relative;
-  font-size: 0.9rem;
+
+.MypageEdit_nicknamebox_nickname > input {
+  position: absolute;
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid #f0f0f0;
+  outline: none;
+  size: 1rem;
 }
-.MypageEdit_usernamebox_username {
+.MypageEdit_passwordbox {
+  position: relative;
+  font-size: 1.2rem;
+  font-weight: bold;
+  top: 45px;
+}
+
+.MyPageEdit_box_subject {
+  position: relative;
+  font-size: 0.7rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-top: 15px;
+}
+.MyPageEdit_box_content {
   position: relative;
   color: #999;
   border-bottom: 1px solid #f0f0f0;
