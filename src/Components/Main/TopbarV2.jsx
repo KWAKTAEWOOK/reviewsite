@@ -53,6 +53,11 @@ const Topbar = () => {
                       <a href="/MyReview">내가 작성한 리뷰</a>
                     </li>
                   )}
+                  {user && (
+                    <li>
+                      <a href="/MypageTest">마이페이지</a>
+                    </li>
+                  )}
                   {user && user.userRole === "ADMIN" ? (
                     <li>
                       <a href="/main" className="admin_site">
@@ -94,7 +99,7 @@ const Topbar = () => {
             </div>
           </div>
           <div className="username">
-            <a href="/Mypage">{user && `${user.nickname}`}</a>
+            <a href="/MypageTest">{user && `${user.nickname}`}</a>
           </div>
           <div className="username usernameback">
             {user && "님 환영합니다."}

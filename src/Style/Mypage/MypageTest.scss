@@ -1,0 +1,89 @@
+.MypageEditTitle {
+  text-align: center;
+  top: 130px;
+  position: relative;
+  font-size: 1.5rem;
+}
+
+.MypageEditBoxContainer {
+  position: relative;
+  top: 170px;
+  width: 100%;
+  height: 100%;
+  font-size: 1rem;
+}
+.MypageEditBox {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.MypageEdit_passwordbox {
+  position: relative;
+  font-size: 1.2rem;
+  font-weight: bold;
+  top: 60px;
+}
+
+.MyPageEdit_box_subject {
+  position: relative;
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-top: 40px;
+}
+.MyPageEdit_box_content {
+  position: relative;
+  color: #999;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.input_common_properties {
+  position: absolute;
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid #f0f0f0;
+  outline: none;
+  size: 1rem;
+}
+
+.MypageEdit_cansel_button {
+  border: 1px solid #bfbfbf;
+}
+.MypageEdit_confirm_button {
+  background-color: #34447a;
+  color: white;
+  margin-left: 20px;
+}
+.MyPageEdit_button_common_properties {
+  position: relative;
+  top: 100px;
+  padding: 20px 80px;
+  border-radius: 50px;
+  padding: 15px 80px;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.MypageEidit_deleteUser {
+  position: relative;
+  top: 110px;
+  font-size: 0.7rem;
+  color: red;
+  padding: 1px;
+  margin-left: 20px;
+}
+
+.MypageEdit_confirm_common_properties {
+  display: inline-block;
+  position: absolute;
+  top: -10px;
+  margin-left: 430px;
+  font-size: 0.8rem;
+}
