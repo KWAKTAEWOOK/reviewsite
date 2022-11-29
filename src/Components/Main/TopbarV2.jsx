@@ -99,7 +99,7 @@ const Topbar = () => {
             </div>
           </div>
           <div className="username">
-            <a href="/Mypage">{user && `${user.nickname}`}</a>
+            <a href="/MypageTest">{user && `${user.nickname}`}</a>
           </div>
           <div className="username usernameback">
             {user && "님 환영합니다."}
