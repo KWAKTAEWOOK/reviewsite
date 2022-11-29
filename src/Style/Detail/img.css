@@ -270,6 +270,9 @@ textarea {
   padding: 10px;
   background-color: rgb(233, 233, 233);
 }
+.editcontent {
+  background-color: rgb(212, 237, 205);
+}
 hr {
   margin: 200px 0;
 }
@@ -327,7 +330,9 @@ li > img:hover {
   border-radius: 10%;
   margin-left: 10px;
 }
-
+textarea {
+  font-family: "Malgun Gothic";
+}
 .textbut:hover {
   transition: transform 400ms ease;
   transform: scale(1.1);

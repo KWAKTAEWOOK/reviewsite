@@ -1,13 +1,21 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
+import { BACKEND_URL } from "../../utils";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 function StarRate() {
-  const AVR_RATE = 86;
+  //
+  useEffect(() => {}, []);
+  const { id } = useParams();
+  const detail_id = id;
+  const [getdata, setGetdata] = useState([]);
+  const AVR_RATE = getdata.star;
   const STAR_IDX_ARR = ["first", "second", "third", "fourth", "last"];
   const [ratesResArr, setRatesResArr] = useState([0, 0, 0, 0, 0]);
   const calcStarRates = () => {
     let tempStarRatesArr = [0, 0, 0, 0, 0];
-    let starVerScore = (AVR_RATE * 70) / 100;
+    let starVerScore = (AVR_RATE * 70) / 5;
     let idx = 0;
     while (starVerScore > 14) {
       tempStarRatesArr[idx] = 14;
@@ -17,9 +25,25 @@ function StarRate() {
     tempStarRatesArr[idx] = starVerScore;
     return tempStarRatesArr;
   };
+
   useEffect(() => {
-    setRatesResArr(calcStarRates);
-  }, []);
+    const get = async (e) => {
+      try {
+        const data = await axios({
+          url: `${BACKEND_URL}/staravg`,
+          method: "GET",
+          params: {
+            detailId: detail_id,
+          },
+        });
+        setGetdata(data.data);
+        setRatesResArr(calcStarRates);
+      } catch (e) {
+        alert("값 입력 실패");
+      }
+    };
+    get();
+  }, [getdata.star]);
   return (
     <StarRateWrap>
       {STAR_IDX_ARR.map((item, idx) => {
@@ -49,7 +73,7 @@ function StarRate() {
           </span>
         );
       })}
-      <span>({AVR_RATE})</span>
+      <span>({getdata.count})</span>
     </StarRateWrap>
   );
 }
