@@ -14,18 +14,47 @@ import { BACKEND_URL } from "../../utils";
 import { useRecoilState } from "recoil";
 import { userState } from "../../recoil/user";
 import UserLike from "./UserLike";
-
-const { kakao } = window;
+import Comment from "./Comment";
+import Detailmap from "./Detailmap";
 
 const Detail = () => {
   const [datas, setData] = useState(data);
   const [getids, setGetid] = useState();
   const [currItem, setCurrItem] = useState(datas[0]);
-
+  //-------------------------------------------------------------------
+  //지도 map에 필요한 변수들
+  const { place_name } = useParams();
+  const outputdata = sessionStorage.getItem("detail");
+  const detailsearch = place_name;
+  const { id } = useParams();
+  const dataildata = JSON.parse(outputdata);
+  const [detailData] = KakaoSearchDB(detailsearch);
+  //-----------------------------------
+  //사진 클릭네이션
   const onView = (id) => {
     //고유번호인 id를 받아서 사진을 찾아라
     setCurrItem(datas.find((item) => item.id === id)); //배열함수중 해당값만 찾아주는 find함수를 쓴다
   };
+  //--------------------
+  //업종별 카테고리 문자열 원하는것만 출력
+  var str = dataildata.category_name;
+  var words = str.split(">"); // ">" 구분으로 배열로 변환
+  var word1 = str.substring(0, str.indexOf(">"));
+  var word2 = str.substring(
+    str.indexOf(">") + 1,
+    str.indexOf(">", str.indexOf(">") + 1)
+  );
+  var word3 = str.substring(str.lastIndexOf(">") + 1);
+  const count = dataildata.category_name
+    .match(/>/g)
+    .filter((item) => item !== "").length; // ">"겟수 카운터
+  var keystr; // ">"갯수에 따라 출력
+  if (count == 2) {
+    keystr = word2;
+  } else {
+    keystr = word3;
+  }
+
   //--------------------------------------------
 
   const [nickname, setNickname] = useState("");
@@ -48,44 +77,6 @@ const Detail = () => {
   const detailRef = useRef();
   const mappgRef = useRef();
   const reviewRef = useRef();
-  //----------------------------------------------
-  //link로 데이터전달 useLocation hook
-  const outputdata = sessionStorage.getItem("detail");
-  const dataildata = JSON.parse(outputdata);
-  const { place_name } = useParams();
-  const { id } = useParams();
-  const detailsearch = place_name;
-  const [detailData] = KakaoSearchDB(detailsearch);
-  //-----------------------------------------------
-  //업종별 카테고리 문자열 원하는것만 출력
-  var str = dataildata.category_name;
-  var words = str.split(">"); // ">" 구분으로 배열로 변환
-  var word1 = str.substring(0, str.indexOf(">"));
-  var word2 = str.substring(
-    str.indexOf(">") + 1,
-    str.indexOf(">", str.indexOf(">") + 1)
-  );
-  var word3 = str.substring(str.lastIndexOf(">") + 1);
-  const count = dataildata.category_name
-    .match(/>/g)
-    .filter((item) => item !== "").length; // ">"겟수 카운터
-  var keystr; // ">"갯수에 따라 출력
-  if (count == 2) {
-    keystr = word2;
-  } else {
-    keystr = word3;
-  }
-
-  //지도 로직
-  useEffect(() => {
-    var mapContainer = document.getElementById("map");
-    var mapOption = {
-      center: new kakao.maps.LatLng(36.349348279760655, 127.3766854960456), // 지도의 중심좌표
-      level: 2, // 지도의 확대 레벨
-    };
-
-    var map = new window.kakao.maps.Map(mapContainer, mapOption);
-  }, []);
   const photos = () =>
     photosRef.current.scrollIntoView({
       behavior: "smooth",
@@ -107,20 +98,6 @@ const Detail = () => {
       block: "start",
     });
 
-  //----------------------------------------------------------
-  // useEffect(() => {
-  //   (async () => {
-  //     const getid = await axios({
-  //       url: `${BACKEND_URL}/detail/post`,
-  //       method: "POST",
-  //       data: {
-  //         detail_id,
-  //       },
-  //     });
-  //     setGetid(id);
-  //   })();
-  // }, []);
-
   //------------------------------------------------------------------
   const [user, setUser] = useRecoilState(userState);
 
@@ -138,6 +115,7 @@ const Detail = () => {
             detailId: detail_id,
           },
         });
+
         setGetdata(data.data);
       } catch (e) {
         alert("값 입력 실패");
@@ -145,87 +123,7 @@ const Detail = () => {
     };
     get();
   }, []);
-
   //----------------------------------------------------
-  //리뷰 컨텐트 map 펑션으로 뿌려준 로직
-  function Reviewlist({ reviewlist }) {
-    //-- 리뷰 삭제 로직-----------------------------------
-    const onSubmoit = (e) => {
-      e.preventDefault(); //동작때마다 새로고침 중지
-      if (window.confirm("삭제하시겠습니까?") == true) {
-        deletecontent();
-        console.log("삭제가 완료되었습니다.");
-      } else {
-        // false는 취소버튼을 눌렀을 때, 취소됨
-        console.log("취소되었습니다");
-      }
-    };
-    const deletecontent = async (e) => {
-      try {
-        const data = await axios({
-          url: `${BACKEND_URL}/delete/${reviewlist.id}`,
-          method: "DELETE",
-          params: {
-            id: reviewlist.id,
-          },
-        });
-
-        window.location.reload();
-      } catch (e) {
-        alert("값 입력 실패");
-      }
-    };
-
-    return (
-      <div ref={reviewRef} className="userdiv">
-        <div className="starcreatedate">
-          {/* 별점 ---------------------------------- */}
-          <div className="star-rating">
-            평점 :　
-            {[...Array(5)].map((star, index) => {
-              index += 1;
-              return (
-                <button
-                  type="button"
-                  key={index}
-                  className={index <= reviewlist.star ? "on" : "off"}
-                >
-                  <span className="star">&#9733;</span>
-                </button>
-              );
-            })}
-          </div>
-          {/* 별점끝------------------------------------ */}
-          {/* 날짜 -------------------------------------- */}
-          <div className="createDate">
-            {reviewlist.createDate.substring(0, 10)}
-            &nbsp;
-            {reviewlist.createDate.substring(11, 16)}
-            {nickname == reviewlist.nickname && (
-              <>
-                <button className="textbut">
-                  <span>수정</span>
-                </button>
-                <button className="textbut" onClick={onSubmoit}>
-                  <span>삭제</span>
-                </button>
-              </>
-            )}
-          </div>
-          {/* 리뷰 content--------------------------------- */}
-        </div>
-        <div className="사용자">
-          <div className="usercon">
-            <img className="userimg" src="/images/6.jpg" alt="" />
-            <div>{reviewlist.nickname}</div>
-          </div>
-          <div className="contant">
-            <div> {reviewlist.content}</div>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <>
@@ -267,13 +165,17 @@ const Detail = () => {
               </div>
               <UserLike />
             </div>
-            <div className="maptext">위치정보</div>
-            <div className="rode_api1" id="map" ref={mappgRef}></div>
+            <Detailmap place_name={place_name} mappgRef={mappgRef} />
             {user && <StarRating />}
             <br />
             <div>
               {reversedgetdata.map((reviewlist, index) => (
-                <Reviewlist reviewlist={reviewlist} key={index} />
+                <Comment
+                  reviewlist={reviewlist}
+                  key={index}
+                  nickname={nickname}
+                  reviewRef={reviewRef}
+                />
               ))}
             </div>
           </div>
