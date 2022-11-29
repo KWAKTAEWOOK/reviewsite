@@ -16,7 +16,7 @@ const StarRating = () => {
 
   //-----------------------------------------------
   const [nickname, setNickname] = useState("");
-
+  const [Click, setClick] = useState(false);
   function setting() {
     setNickname(user.nickname);
   }
