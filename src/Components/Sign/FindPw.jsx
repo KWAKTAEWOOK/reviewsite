@@ -30,7 +30,7 @@ const FindPw = () => {
       setUserId("");
       setEmail("");
       setId(data.data.id);
-      setUserPw(data.data.password);
+      setUserPw(data.data.password1);
     } catch (e) {
       alert("등록된 정보가 없습니다.");
     }

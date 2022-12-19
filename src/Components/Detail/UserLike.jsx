@@ -10,13 +10,13 @@ const UserLike = () => {
   const { id } = useParams();
   const [user, setUser] = useRecoilState(userState);
   const [postid, setPostId] = useState(id);
-  const [userid, setUserid] = useState(user && user.userid);
+  const [userid, setUserid] = useState(user && user.id);
   const [like, setLike] = useState(false);
-  const [heart, setheart] = useState(false);
+  // const [heart, setheart] = useState(false);
   const [userLike, setUserLike] = useState("");
 
-  const likeImg = "/images/like1.png";
-  const EmptylinkeImg = "/images/like2.png";
+  // const likeImg = "/images/like1.png";
+  // const EmptylinkeImg = "/images/like2.png";
   const HeartImg = "/images/heart.png";
   const EmptyHeartImg = "/images/heart1.png";
 
@@ -25,7 +25,7 @@ const UserLike = () => {
     const getData = async () => {
       try {
         const data = await axios({
-          url: `${BACKEND_URL}/heart/${user && user.userid}/${id}`,
+          url: `${BACKEND_URL}/heart/${id}?userId=${userid}`,
           method: "GET",
         });
         setUserLike(data.data);
@@ -44,14 +44,12 @@ const UserLike = () => {
       try {
         e.preventDefault();
         const data = await axios({
-          url: `${BACKEND_URL}/heart`,
+          url: `${BACKEND_URL}/heart?userId=${user.id}`,
           method: "POST",
           data: {
-            userid,
             postid,
           },
         });
-        setUserid(user.userid);
         setPostId(id);
         setLike(!like);
         window.location.reload();
@@ -61,22 +59,10 @@ const UserLike = () => {
     }
   };
 
-  // const clickHeart = () => {
-  //   setheart((heart) => !heart);
-  //   console.log("하트눌림");
-  // };
-
   return (
     <>
       <div className="icon">
         <div>
-          {/* <button onClick={likeClick} className="iconbut">
-            <img
-              className={userLike ? "likeImg" : "EmptylinkeImg"}
-              src={userLike ? EmptylinkeImg : likeImg}
-            />
-          </button> */}
-
           <button onClick={likeClick} className="iconbut">
             <img
               className={userLike ? "HeartImg" : "EmptyHeartImg"}
@@ -85,7 +71,6 @@ const UserLike = () => {
           </button>
         </div>
         <div className="liketext">
-          {/* <div>좋아요</div> */}
           <div>찜하기</div>
         </div>
       </div>

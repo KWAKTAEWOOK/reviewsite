@@ -39,11 +39,13 @@ function StarRate() {
         setGetdata(data.data);
         setRatesResArr(calcStarRates);
       } catch (e) {
-        alert("값 입력 실패");
+        // console.log(e);
+        // alert("값 입력 실패");
       }
     };
     get();
   }, [getdata.star]);
+
   return (
     <StarRateWrap>
       {STAR_IDX_ARR.map((item, idx) => {

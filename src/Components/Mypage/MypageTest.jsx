@@ -210,7 +210,7 @@ const MypageTest = () => {
                   setUser(null);
                   window.location.href = "/main";
                 } catch (e) {
-                  // console.log(e);
+                  console.log(e);
                   alert("탈퇴 실패! 다시 시도해주세요.");
                 }
               }

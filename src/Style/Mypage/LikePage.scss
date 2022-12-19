@@ -15,10 +15,35 @@
 }
 .like_wrap {
   position: relative;
-  top: 200px;
+  top: 10px;
   text-align: left;
   left: 100px;
 }
 .like_wrap > p {
   display: inline-block;
+  position: inherit;
+  top: 0;
+  margin-bottom: 50px;
+}
+.like_post_map {
+  min-height: 500px;
+}
+
+// list
+.postList_wrap {
+  display: inline-block;
+}
+.postList_wrap:nth-child(n) {
+  margin-left: 50px;
+  margin-bottom: 20px;
+}
+.post_photo {
+  // border: 1px solid red;
+  width: 200px;
+  height: 200px;
+}
+.list_info_wrap {
+  font-size: 20px;
+  text-align: center;
+  margin-top: 5px;
 }

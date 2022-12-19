@@ -75,7 +75,6 @@ const Comment = ({ reviewlist, nickname, reviewRef }) => {
   useEffect(() => {
     setting();
     setRating(reviewlist.star);
-    console.log(rating);
   }, []);
 
   return (

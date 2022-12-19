@@ -115,7 +115,6 @@ const Detail = () => {
             detailId: detail_id,
           },
         });
-
         setGetdata(data.data);
       } catch (e) {
         alert("값 입력 실패");
@@ -123,6 +122,7 @@ const Detail = () => {
     };
     get();
   }, []);
+
   //----------------------------------------------------
 
   return (
