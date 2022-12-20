@@ -5,6 +5,8 @@ import LeftArrow from "../../Style/image/left-arrow.png";
 import Topbar from "./Topbar";
 import "../../Style/Main/Main.scss";
 import useGeolocation from "react-hook-geolocation";
+import { BACKEND_URL } from "../../utils";
+import axios from "axios";
 
 const { kakao } = window;
 
@@ -32,6 +34,8 @@ const Main = ({
   const [arrow, setArrow] = useState(true);
   const [searchNull, setSearchNull] = useState("");
   const [imgAddress, setImgAddress] = useState("");
+  const [detail_id, setDetail_id] = useState("");
+  const [detail_name, setDetail_name] = useState("");
 
   const onClickSearchData = (text) => {
     setInputText(text);
@@ -46,9 +50,23 @@ const Main = ({
     setSearchVisible(true);
   };
 
-  const onClickDetailDB = (placeDB) => {
-    window.location.href = `http://localhost:3000/Detail/${placeDB.place_name}/${placeDB.id}`;
-    sessionStorage.setItem("detail", JSON.stringify(placeDB));
+  // 장소 클릭 시 db에 id, 이름 저장
+  const onClickDetailDB = async (placeDB) => {
+    try {
+      const data = await axios({
+        url: `${BACKEND_URL}/getDetail`,
+        method: "POST",
+        data: {
+          detail_id: placeDB.id,
+          detail_name: placeDB.place_name,
+        },
+      });
+      sessionStorage.setItem("detail", JSON.stringify(placeDB));
+      window.location.href = `http://localhost:3000/Detail/${placeDB.place_name}/${placeDB.id}`;
+    } catch (e) {
+      window.location.href = `http://localhost:3000/Detail/${placeDB.place_name}/${placeDB.id}`;
+      // console.log(e);
+    }
   };
 
   const onClickSearch = () => {

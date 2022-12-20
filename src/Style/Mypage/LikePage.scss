@@ -1,5 +1,5 @@
 .likebackground {
-  font-family: "MonoplexKR-Regular";
+  font-family: "NanumSquareNeo-Variable";
   position: absolute;
   min-height: 1100px;
   width: 100%;
@@ -34,16 +34,32 @@
   display: inline-block;
 }
 .postList_wrap:nth-child(n) {
-  margin-left: 50px;
-  margin-bottom: 20px;
+  margin-left: 45px;
+  margin-bottom: 30px;
 }
 .post_photo {
-  // border: 1px solid red;
-  width: 200px;
-  height: 200px;
+  border-radius: 20px;
+  width: 180px;
+  height: 180px;
+  cursor: pointer;
+  margin-bottom: 10px;
 }
 .list_info_wrap {
-  font-size: 20px;
+  font-size: 18px;
   text-align: center;
-  margin-top: 5px;
+  margin-top: 3px;
+}
+.post_Name {
+  cursor: pointer;
+}
+.post_Name:hover {
+  text-decoration: underline;
+}
+
+.notFoundUserPage {
+  font-size: 23px;
+  color: rgba(92, 92, 92, 0.6);
+  position: relative;
+  display: inline-block;
+  top: 100px;
 }

@@ -1,15 +1,29 @@
 import React from "react";
-import { useParams } from "react-router-dom";
-import KakaoSearchDB from "../Hook/KakaoSearch";
 
 const LikePageList = ({ likePost }) => {
+  const id = likePost.postid;
+  const name = likePost.postName;
+
   return (
     <>
       <div className="postList_wrap">
-        <img src="/images/pizza.JPG" alt="" className="post_photo" />
+        <img
+          src="/images/pizza.JPG"
+          alt=""
+          className="post_photo"
+          onClick={() => {
+            window.location.href = `http://localhost:3000/Detail/${name}/${id}`;
+          }}
+        />
         <div className="list_info_wrap">
-          <div className="post_Number">{likePost.postid}</div>
-          <div className="post_Name">가게 이름</div>
+          <div
+            className="post_Name"
+            onClick={() => {
+              window.location.href = `http://localhost:3000/Detail/${name}/${id}`;
+            }}
+          >
+            {name}
+          </div>
         </div>
       </div>
     </>

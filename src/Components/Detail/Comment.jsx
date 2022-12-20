@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { BACKEND_URL } from "../../utils";
+import "../../Style/Detail/Comment.scss";
 
 const Comment = ({ reviewlist, nickname, reviewRef }) => {
   const onSubmoit = (e) => {
@@ -154,7 +155,6 @@ const Comment = ({ reviewlist, nickname, reviewRef }) => {
             <img className="userimg" src="/images/6.jpg" alt="" />
             <div>{reviewlist.nickname}</div>
           </div>
-
           <textarea
             className="editcontent"
             cols="100"

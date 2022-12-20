@@ -1,0 +1,84 @@
+.starcreatedate {
+  display: inline-flex;
+  width: 100%;
+}
+.createDate {
+  text-align: right;
+  display: inline-block;
+  margin-left: 30%;
+}
+
+// 수정 삭제 버튼
+.textbut {
+  font-family: "NanumSquareNeo-Variable";
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 5px;
+  display: inline-flex;
+  position: relative;
+  top: 5px;
+  left: 15%;
+  border-radius: 10%;
+  margin-left: 10px;
+}
+.textbut:hover {
+  transition: transform 400ms ease;
+  transform: scale(1.1);
+}
+.textbut::after {
+  transform: translateY(1.1);
+}
+.textbut {
+  border: none;
+  background: rgb(74, 77, 63, 0.3);
+  background: linear-gradient(
+    0deg,
+    rgba(74, 77, 63, 0.3) 0%,
+    rgba(74, 77, 63, 0.3) 100%
+  );
+  color: #fff;
+  overflow: hidden;
+}
+.textbut:hover {
+  text-decoration: none;
+  color: #fff;
+}
+.textbut:before {
+  position: absolute;
+  content: "";
+  display: inline-block;
+  top: -180px;
+  left: 0;
+  width: 30px;
+  height: 100%;
+  background-color: #fff;
+  animation: shiny-btn1 3s ease-in-out infinite;
+}
+.textbut:hover {
+  opacity: 0.7;
+}
+.textbut:active {
+  box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.3),
+    -4px -4px 6px 0 rgba(116, 125, 136, 0.2),
+    inset -4px -4px 6px 0 rgba(255, 255, 255, 0.2),
+    inset 4px 4px 6px 0 rgba(0, 0, 0, 0.2);
+}
+.userdiv {
+  border-top: rgba(74, 77, 63, 0.3) 1.5px solid;
+  margin-bottom: 10px;
+  width: 1010px;
+  border-radius: 10px;
+}
+.detail_comment {
+  margin-bottom: 200px;
+  margin-top: -40px;
+}
+.detail_comment p {
+  display: inline-block;
+  position: relative;
+  color: rgb(46, 46, 110);
+  left: 20px;
+  bottom: 300px;
+  font-size: 22px;
+}

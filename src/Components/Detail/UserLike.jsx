@@ -5,18 +5,18 @@ import { useParams } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { userState } from "../../recoil/user";
 import { BACKEND_URL } from "../../utils";
+import "../../Style/Detail/UserLike.scss";
 
 const UserLike = () => {
   const { id } = useParams();
+  const { place_name } = useParams();
   const [user, setUser] = useRecoilState(userState);
   const [postid, setPostId] = useState(id);
+  const [postName, setPostName] = useState(place_name);
   const [userid, setUserid] = useState(user && user.id);
   const [like, setLike] = useState(false);
-  // const [heart, setheart] = useState(false);
   const [userLike, setUserLike] = useState("");
 
-  // const likeImg = "/images/like1.png";
-  // const EmptylinkeImg = "/images/like2.png";
   const HeartImg = "/images/heart.png";
   const EmptyHeartImg = "/images/heart1.png";
 
@@ -48,6 +48,7 @@ const UserLike = () => {
           method: "POST",
           data: {
             postid,
+            postName,
           },
         });
         setPostId(id);
@@ -61,7 +62,7 @@ const UserLike = () => {
 
   return (
     <>
-      <div className="icon">
+      <div className="like_icon">
         <div>
           <button onClick={likeClick} className="iconbut">
             <img

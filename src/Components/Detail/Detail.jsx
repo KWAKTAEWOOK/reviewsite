@@ -21,6 +21,7 @@ const Detail = () => {
   const [datas, setData] = useState(data);
   const [getids, setGetid] = useState();
   const [currItem, setCurrItem] = useState(datas[0]);
+
   //-------------------------------------------------------------------
   //지도 map에 필요한 변수들
   const { place_name } = useParams();
@@ -29,6 +30,7 @@ const Detail = () => {
   const { id } = useParams();
   const dataildata = JSON.parse(outputdata);
   const [detailData] = KakaoSearchDB(detailsearch);
+
   //-----------------------------------
   //사진 클릭네이션
   const onView = (id) => {
@@ -58,10 +60,6 @@ const Detail = () => {
   //--------------------------------------------
 
   const [nickname, setNickname] = useState("");
-  const [username, setUsername] = useState("");
-  const [userid, setUserid] = useState("");
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
 
   function setting() {
     setNickname(user && user.nickname);
@@ -103,8 +101,8 @@ const Detail = () => {
 
   const detail_id = id;
   const [getdata, setGetdata] = useState([]);
-  const [rating, setRating] = useState(0);
   const reversedgetdata = getdata.map((getdatas) => getdatas).reverse();
+
   useEffect(() => {
     const get = async (e) => {
       try {
@@ -128,7 +126,7 @@ const Detail = () => {
   return (
     <>
       <TopbarV2 />
-      <div>
+      <div className="detail_back">
         <div className="wrap" ref={photosRef}>
           <GalleryList datas={datas} onView={onView} currItem={currItem} />
         </div>
@@ -152,7 +150,7 @@ const Detail = () => {
               <div className="group left" ref={detailRef}>
                 <div>평점</div>
                 <div>주소</div>
-                <div>주차</div>
+                <div>연락처</div>
                 <div>영업시간</div>
               </div>
               <div className="group right">
@@ -160,7 +158,7 @@ const Detail = () => {
                   <StarRate />
                 </div>
                 <div>{detailData.road_address_name}</div>
-                <div>가능</div>
+                <div>{detailData.phone}</div>
                 <div>11:00~21:00</div>
               </div>
               <UserLike />
@@ -168,7 +166,8 @@ const Detail = () => {
             <Detailmap place_name={place_name} mappgRef={mappgRef} />
             {user && <StarRating />}
             <br />
-            <div>
+            <div className="detail_comment">
+              <p>🦾 댓글달기</p>
               {reversedgetdata.map((reviewlist, index) => (
                 <Comment
                   reviewlist={reviewlist}

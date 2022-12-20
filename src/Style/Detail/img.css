@@ -1,3 +1,6 @@
+.detail_back {
+  font-family: "NanumSquareNeo-Variable";
+}
 .rod {
   position: relative;
   margin-top: 30px;
@@ -58,41 +61,26 @@
   height: auto;
   background-color: white;
   display: block;
-  margin: 150px auto;
+  margin: 100px auto;
 }
 .confont {
   position: relative;
-  margin-bottom: 50px;
   height: 50px;
 }
-.cafe {
+.confont div {
   display: inline-block;
+  position: relative;
+  top: 5px;
+}
+.cafe {
   font-size: 30px;
   font-weight: bold;
 }
 .Foods {
-  display: inline-block;
-  font-size: 20px;
-  margin-left: 5px;
-}
-.icon > div > img {
-  width: 60px;
-  position: relative;
-  margin-left: 3%;
-}
-.icon {
-  display: inline-block;
-  width: 100%;
-  height: 50px;
-  margin-left: 37%;
-  margin-top: 100px;
+  font-size: 18px;
+  margin-left: 15px;
 }
 
-.icon > div {
-  display: block;
-  text-align: center;
-  align-items: flex-start;
-}
 .NavGroup {
   position: fixed;
   margin: 20px;
@@ -116,10 +104,9 @@
   color: white;
   background-color: black;
 }
-
 .group {
-  width: auto;
-  height: 100px;
+  /* width: auto; */
+  /* height: 100px; */
   display: inline-block;
   font-size: 1.3rem;
 }
@@ -129,16 +116,18 @@
 }
 .right {
   text-align: left;
+  margin-top: -30px;
 }
 .group > div {
-  margin: 10px;
+  margin-bottom: 20px;
+  margin-right: 10px;
 }
 
 .rode_api1 {
-  background-color: white;
-  border-left: 1px solid gray;
-  width: 1000px;
-  height: 500px;
+  position: relative;
+  left: 25px;
+  width: 950px;
+  height: 450px;
 }
 .maptext {
   font-size: 30px;
@@ -276,7 +265,6 @@ textarea {
 hr {
   margin: 200px 0;
 }
-
 .contant {
   position: relative;
   width: 740px;
@@ -308,76 +296,4 @@ li > img:hover {
 }
 .magin-side {
   width: 1000px;
-}
-.createDate {
-  text-align: right;
-  margin-left: 30%;
-}
-.starcreatedate {
-  display: inline-flex;
-  width: 100%;
-}
-.textbut {
-  font-family: "MonoplexKR-Regular";
-  text-align: center;
-  font-size: 20px;
-  font-weight: bold;
-  padding: 5px;
-  display: inline-flex;
-  position: relative;
-  top: 5px;
-  left: 15%;
-  border-radius: 10%;
-  margin-left: 10px;
-}
-textarea {
-  font-family: "Malgun Gothic";
-}
-.textbut:hover {
-  transition: transform 400ms ease;
-  transform: scale(1.1);
-}
-.textbut::after {
-  transform: translateY(1.1);
-}
-.textbut {
-  border: none;
-  background: rgb(74, 77, 63, 0.3);
-  background: linear-gradient(
-    0deg,
-    rgba(74, 77, 63, 0.3) 0%,
-    rgba(74, 77, 63, 0.3) 100%
-  );
-  color: #fff;
-  overflow: hidden;
-}
-.textbut:hover {
-  text-decoration: none;
-  color: #fff;
-}
-.textbut:before {
-  position: absolute;
-  content: "";
-  display: inline-block;
-  top: -180px;
-  left: 0;
-  width: 30px;
-  height: 100%;
-  background-color: #fff;
-  animation: shiny-btn1 3s ease-in-out infinite;
-}
-.textbut:hover {
-  opacity: 0.7;
-}
-.textbut:active {
-  box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.3),
-    -4px -4px 6px 0 rgba(116, 125, 136, 0.2),
-    inset -4px -4px 6px 0 rgba(255, 255, 255, 0.2),
-    inset 4px 4px 6px 0 rgba(0, 0, 0, 0.2);
-}
-.userdiv {
-  border-top: rgba(74, 77, 63, 0.3) 1.5px solid;
-  margin-bottom: 10px;
-  width: 1010px;
-  border-radius: 10px;
 }

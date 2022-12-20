@@ -31,11 +31,17 @@ const LikePage = () => {
         <div className="liketemplate">
           <div className="like_wrap">
             <p>✨ 내가 찜한 가게 ✨</p>
-            <div className="like_post_map">
-              {likePosts.map((likePost, index) => (
-                <LikePageList key={index} likePost={likePost} />
-              ))}
-            </div>
+            {user ? (
+              <div className="like_post_map">
+                {likePosts.map((likePost, index) => (
+                  <LikePageList key={index} likePost={likePost} />
+                ))}
+              </div>
+            ) : (
+              <div className="notFoundUserPage">
+                로그인 후에 내가 찜한 가게가 보여집니다.
+              </div>
+            )}
           </div>
         </div>
       </div>
