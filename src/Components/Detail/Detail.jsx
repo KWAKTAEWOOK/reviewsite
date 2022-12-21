@@ -115,6 +115,7 @@ const Detail = () => {
         });
         setGetdata(data.data);
       } catch (e) {
+        console.log(e);
         alert("값 입력 실패");
       }
     };

@@ -9,6 +9,7 @@ import { useEffect } from "react";
 
 const StarRating = () => {
   const { id } = useParams();
+  const { place_name } = useParams();
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
   const [user, setUser] = useRecoilState(userState);
@@ -26,24 +27,26 @@ const StarRating = () => {
 
   const star = rating;
   const detail_id = id;
+  const detail_name = place_name;
   const post = async (e) => {
-    try {
-      const data = await axios({
-        url: `${BACKEND_URL}/answer/create/post`,
-        method: "POST",
-
-        data: {
-          content,
-          detail_id,
-          star,
-          nickname,
-        },
-      });
-
-      window.location.reload();
-    } catch (e) {
-      alert("값 입력 실패");
-    }
+    if (window.confirm("등록하시겠습니까?"))
+      try {
+        const data = await axios({
+          url: `${BACKEND_URL}/answer/create/post?userId=${user.id}`,
+          method: "POST",
+          data: {
+            content,
+            detail_id,
+            detail_name,
+            star,
+            nickname,
+          },
+        });
+        window.location.reload();
+      } catch (e) {
+        console.log(e);
+        alert("값 입력 실패");
+      }
   };
   const onChange = (e) => {
     setContent(e.target.value);
@@ -57,6 +60,7 @@ const StarRating = () => {
       post();
     }
   };
+
   return (
     <div>
       <div className="star-rating">

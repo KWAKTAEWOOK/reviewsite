@@ -51,6 +51,11 @@ const Main = ({
   };
 
   // 장소 클릭 시 db에 id, 이름 저장
+  // const onClickDetailDB = (placeDB) => {
+  //   window.location.href = `http://localhost:3000/Detail/${placeDB.place_name}/${placeDB.id}`;
+  //   sessionStorage.setItem("detail", JSON.stringify(placeDB));
+  // };
+
   const onClickDetailDB = async (placeDB) => {
     try {
       const data = await axios({

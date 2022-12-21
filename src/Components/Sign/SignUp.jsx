@@ -70,7 +70,7 @@ const SignUp = ({ openModal, closeModal2 }) => {
       <div className="signUpbody">
         <div className="signUptemplate">
           <div className="signUpLogo">
-            <p>회원가입</p>
+            <p className="signUpP">회원가입</p>
             <img
               src={closeModalBtn}
               className="closeModal closeModal2"

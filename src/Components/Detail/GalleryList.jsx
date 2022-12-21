@@ -4,6 +4,8 @@ import GalleryItem from "./GalleryItem";
 const GalleryList = ({ datas, currItem, onView }) => {
   const { image, title } = currItem;
 
+  if (currItem.id === 5) {
+  }
   return (
     <article className="left">
       <img src={image} alt={title} />

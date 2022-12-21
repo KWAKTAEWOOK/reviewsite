@@ -79,6 +79,7 @@
 .Foods {
   font-size: 18px;
   margin-left: 15px;
+  color: gray;
 }
 
 .NavGroup {
@@ -240,6 +241,7 @@ button {
   text-align: center;
   align-items: center;
   justify-content: center;
+  margin-top: 5px;
 }
 .usercon > img {
   object-fit: cover;

@@ -42,7 +42,7 @@ a {
   top: 25px;
 }
 .menuList {
-  font-family: "HallymGothic-Regular";
+  font-family: "SUIT-Regular";
   position: relative;
   left: 150px;
 }
@@ -59,13 +59,14 @@ a {
   position: relative;
   padding-right: 30px;
   font-size: 17px;
-  left: -20px;
+  left: -15px;
   color: white;
 }
 .sign_btn > div {
   color: white;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 15px;
+  margin-left: 10px;
 }
 .logoutBtn {
   color: white;
@@ -129,31 +130,13 @@ a {
   position: relative;
   top: 25px;
   left: 450px;
-  font-family: "HallymGothic-Regular";
+  font-family: "SUIT-Regular";
   font-size: 18px;
   font-weight: bold;
   color: white;
   text-decoration: underline;
 }
 .usernameback {
-  text-decoration: none;
-  position: relative;
-  margin-left: 5px;
-  color: rgba(243, 243, 243, 0.8);
-  font-weight: lighter;
-}
-
-.username2 {
-  position: relative;
-  top: 25px;
-  left: 540px;
-  font-family: "HallymGothic-Regular";
-  font-size: 18px;
-  font-weight: bold;
-  color: white;
-  text-decoration: underline;
-}
-.usernameback2 {
   text-decoration: none;
   position: relative;
   margin-left: 5px;

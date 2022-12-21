@@ -71,7 +71,6 @@
   width: 1000px;
   margin: 0 auto;
   border-top: 1px solid #e7e7e7;
-  // border-bottom: 1px solid #e7e7e7;
 }
 .MyReview_table_th-num,
 .MyReview_table_th-date,
@@ -79,11 +78,23 @@
 .MyReview_table_th_views {
   width: 100px;
 }
+.MyReview_table_th_place {
+  width: 200px;
+}
 .MyReview_table_th-title {
-  width: 600px;
+  width: 500px;
 }
 .MyReview_table th,
 .MyReview_table td {
   height: 48px;
   border-bottom: solid 1px #e7e7e7;
+}
+
+// review_list
+.review_place_name > p {
+  cursor: pointer;
+  font-size: 16px;
+}
+.review_place_name > p:hover {
+  text-decoration: underline;
 }
