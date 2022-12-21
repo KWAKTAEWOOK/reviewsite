@@ -1,11 +1,36 @@
+import axios from "axios";
 import React, { useState } from "react";
+import { useEffect } from "react";
+import { useRecoilState } from "recoil";
+import { userState } from "../../recoil/user";
 import "../../Style/Mypage/MyReview.scss";
+import { BACKEND_URL } from "../../utils";
 import TopbarV2 from "../Main/TopbarV2";
+import MyReviewList from "./MyReviewList";
 const MyReview = () => {
+  const [user, setUser] = useRecoilState(userState);
   const [search_word, setSearch_word] = useState("");
+  const [comments, setComments] = useState([]);
+  const reverseComment = comments.map((comments) => comments).reverse();
+
   const onChange = (e) => {
     setSearch_word(e.target.value);
   };
+
+  useEffect(() => {
+    const getData = async (e) => {
+      try {
+        const data = await axios({
+          url: `${BACKEND_URL}/comment/user?userId=${user.id}`,
+          method: "GET",
+        });
+        setComments(data.data);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    getData();
+  }, []);
 
   return (
     <>
@@ -37,88 +62,26 @@ const MyReview = () => {
             <table className="MyReview_table">
               <thead>
                 <tr>
-                  <th scope="col" class="MyReview_table_th-num">
+                  <th scope="col" className="MyReview_table_th-num">
                     번호
                   </th>
-                  <th scope="col" class="MyReview_table_th-title">
-                    제목
+                  <th scope="col" className="MyReview_table_th_place">
+                    장소
                   </th>
-                  <th scope="col" class="MyReview_table_th-date">
+                  <th scope="col" className="MyReview_table_th-title">
+                    내용
+                  </th>
+                  <th scope="col" className="MyReview_table_th-date">
                     작성일
                   </th>
-                  <th scope="col" class="MyReview_table_th_star_score">
+                  <th scope="col" className="MyReview_table_th_star_score">
                     별점
-                  </th>
-                  <th scope="col" class="MyReview_table_th_views">
-                    조회수
                   </th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <th>
-                    <a href="#">JMT</a>
-                  </th>
-                  <td>2022-11-01</td>
-                  <td>별점</td>
-                  <td>views</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <th>
-                    <a href="#!">JMT2</a>
-                  </th>
-                  <td>2022-11-02</td>
-                  <td>별점</td>
-                  <td>views</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <th>
-                    <a href="#!">JMT3</a>
-                  </th>
-                  <td>2022-11-03</td>
-                  <td>별점</td>
-                  <td>views</td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <th>
-                    <a href="#!">JMT3</a>
-                  </th>
-                  <td>2022-11-03</td>
-                  <td>별점</td>
-                  <td>views</td>
-                </tr>
-                <tr>
-                  <td>5</td>
-                  <th>
-                    <a href="#!">JMT3</a>
-                  </th>
-                  <td>2022-11-03</td>
-                  <td>별점</td>
-                  <td>views</td>
-                </tr>
-                <tr>
-                  <td>6</td>
-                  <th>
-                    <a href="#!">JMT3</a>
-                  </th>
-                  <td>2022-11-03</td>
-                  <td>별점</td>
-                  <td>views</td>
-                </tr>
-                <tr>
-                  <td>7</td>
-                  <th>
-                    <a href="#!">JMT3</a>
-                  </th>
-                  <td>2022-11-03</td>
-                  <td>별점</td>
-                  <td>views</td>
-                </tr>
-              </tbody>
+              {reverseComment.map((comment, index) => (
+                <MyReviewList key={index} index={index} comment={comment} />
+              ))}
             </table>
           </div>
         </div>
