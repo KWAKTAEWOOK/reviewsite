@@ -3,7 +3,7 @@ import axios from "axios";
 import { BACKEND_URL } from "../../utils";
 import { useRecoilState } from "recoil";
 import { userState } from "../../recoil/user";
-import "../Detail/StarRating.css";
+import "../../Style/Detail/StarRating.css";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 
@@ -94,7 +94,12 @@ const StarRating = () => {
           <img className="userimg" src="/images/3.jpg" />
           <div>{user && user.nickname}</div>
         </div>
-        <textarea onChange={onChange} id="" cols="100" rows="10"></textarea>
+        <textarea
+          className="comment_textarea"
+          onChange={onChange}
+          cols="100"
+          rows="10"
+        ></textarea>
       </div>
     </div>
   );

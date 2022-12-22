@@ -84,3 +84,82 @@
   bottom: 300px;
   font-size: 22px;
 }
+
+.liketext > div {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  font-family: "MonoplexKR-Regular";
+  font-size: 1rem;
+  font-weight: bolder;
+  margin-left: 10px;
+}
+.userimg {
+  display: inline-block;
+  height: 150px;
+  width: 200px;
+  position: relative;
+}
+.사용자 > textarea {
+  position: relative;
+  margin-left: 30px;
+}
+.사용자 > .usercon {
+  display: inline-block;
+}
+.사용자 > .contant {
+  display: inline-block;
+}
+.usercon {
+  width: auto;
+  max-height: 200px;
+  border-radius: 15px;
+  border: 2px solid rgb(233, 233, 233);
+  overflow: hidden;
+}
+.usercon > div {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+}
+.usercon > img {
+  object-fit: cover;
+}
+
+.사용자 {
+  display: inline-flex;
+  width: 100%;
+  height: auto;
+}
+textarea {
+  width: 740px;
+  font-size: 15px;
+  border: 0;
+  border-radius: 15px;
+  outline: none;
+  padding: 10px;
+  background-color: rgb(233, 233, 233);
+}
+.editcontent {
+  background-color: rgb(212, 237, 205);
+}
+hr {
+  margin: 200px 0;
+}
+.contant {
+  position: relative;
+  width: 740px;
+  font-size: 15px;
+  border: 0;
+  border-radius: 15px;
+  background-color: rgb(233, 233, 233);
+  display: block;
+  padding: 10px;
+  min-height: 174px;
+  margin-left: 30px;
+}
+.사용자 {
+  margin: 10px;
+}
