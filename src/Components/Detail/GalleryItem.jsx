@@ -5,8 +5,12 @@ const GalleryItem = ({ item, onView }) => {
 
   if (id <= 5)
     return (
-      <li onClick={() => onView(id)}>
-        <img src={image} alt={title} />
+      <li
+        className={id === 5 ? `Viewmore` : `offView`}
+        onClick={() => onView(id)}
+      >
+        <img src={image} />
+        {id === 5 && <span>+60</span>}
       </li>
     );
 };

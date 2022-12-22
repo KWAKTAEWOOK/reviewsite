@@ -16,8 +16,12 @@ import { userState } from "../../recoil/user";
 import UserLike from "./UserLike";
 import Comment from "./Comment";
 import Detailmap from "./Detailmap";
-
+import Modal from "./Modal";
 const Detail = () => {
+  const [modal, setModal] = useState(false);
+  const outSection = useRef();
+
+  //
   const [datas, setData] = useState(data);
   const [getids, setGetid] = useState();
   const [currItem, setCurrItem] = useState(datas[0]);
@@ -36,6 +40,9 @@ const Detail = () => {
   const onView = (id) => {
     //고유번호인 id를 받아서 사진을 찾아라
     setCurrItem(datas.find((item) => item.id === id)); //배열함수중 해당값만 찾아주는 find함수를 쓴다
+    if (id === 5) {
+      setModal(true);
+    }
   };
   //--------------------
   //업종별 카테고리 문자열 원하는것만 출력
@@ -121,12 +128,44 @@ const Detail = () => {
     };
     get();
   }, []);
+  //------------------------------------------------------------------
+  useEffect(() => {
+    const clickOutside = (e) => {
+      // 모달이 열려 있고 모달의 바깥쪽을 눌렀을 때 창 닫기
+      if (
+        modal &&
+        outSection.current &&
+        !outSection.current.contains(e.target)
+      ) {
+        setModal(false);
+      }
+    };
 
+    document.addEventListener("mousedown", clickOutside);
+
+    return () => {
+      // Cleanup the event listener
+      document.removeEventListener("mousedown", clickOutside);
+    };
+  }, [modal]);
+
+  //----------------------------------------------------
   //----------------------------------------------------
 
   return (
     <>
       <TopbarV2 />
+      {modal ? (
+        <div
+          onClick={(e) => {
+            if (outSection.current == e.target) {
+              setModal(false);
+            }
+          }}
+        >
+          <Modal outSection={outSection} />
+        </div>
+      ) : null}
       <div className="detail_back">
         <div className="wrap" ref={photosRef}>
           <GalleryList datas={datas} onView={onView} currItem={currItem} />
