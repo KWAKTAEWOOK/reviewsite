@@ -50,29 +50,29 @@ const Main = ({
     setSearchVisible(true);
   };
 
-  // 장소 클릭 시 db에 id, 이름 저장
-  // const onClickDetailDB = (placeDB) => {
-  //   window.location.href = `http://localhost:3000/Detail/${placeDB.place_name}/${placeDB.id}`;
-  //   sessionStorage.setItem("detail", JSON.stringify(placeDB));
-  // };
-
-  const onClickDetailDB = async (placeDB) => {
-    try {
-      const data = await axios({
-        url: `${BACKEND_URL}/getDetail`,
-        method: "POST",
-        data: {
-          detail_id: placeDB.id,
-          detail_name: placeDB.place_name,
-        },
-      });
-      sessionStorage.setItem("detail", JSON.stringify(placeDB));
-      window.location.href = `http://localhost:3000/Detail/${placeDB.place_name}/${placeDB.id}`;
-    } catch (e) {
-      window.location.href = `http://localhost:3000/Detail/${placeDB.place_name}/${placeDB.id}`;
-      // console.log(e);
-    }
+  //장소 클릭 시 db에 id, 이름 저장
+  const onClickDetailDB = (placeDB) => {
+    window.location.href = `http://localhost:3000/Detail/${placeDB.place_name}/${placeDB.id}`;
+    sessionStorage.setItem("detail", JSON.stringify(placeDB));
   };
+
+  // const onClickDetailDB = async (placeDB) => {
+  //   try {
+  //     const data = await axios({
+  //       url: `${BACKEND_URL}/getDetail`,
+  //       method: "POST",
+  //       data: {
+  //         detail_id: placeDB.id,
+  //         detail_name: placeDB.place_name,
+  //       },
+  //     });
+  //     sessionStorage.setItem("detail", JSON.stringify(placeDB));
+  //     window.location.href = `http://localhost:3000/Detail/${placeDB.place_name}/${placeDB.id}`;
+  //   } catch (e) {
+  //     window.location.href = `http://localhost:3000/Detail/${placeDB.place_name}/${placeDB.id}`;
+  //     // console.log(e);
+  //   }
+  // };
 
   const onClickSearch = () => {
     if (inputText) {
