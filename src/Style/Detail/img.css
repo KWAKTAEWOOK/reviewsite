@@ -137,57 +137,6 @@
   margin-bottom: 0;
   background-color: transparent;
 }
-.likeImg {
-  background-image: url(/public/images/like2.png);
-  width: 60px;
-  height: 60px;
-  position: relative;
-  margin-left: 10px;
-  background-size: cover;
-}
-
-.EmptylinkeImg {
-  background-image: url(/public/images/like1.png);
-  width: 60px;
-  height: 60px;
-  position: relative;
-  margin-left: 10px;
-  background-size: cover;
-}
-.EmptyHeartImg {
-  background-image: url(/public/images/heart.png);
-  width: 60px;
-  height: 60px;
-  position: relative;
-  margin-left: 10px;
-  background-size: cover;
-  filter: invert(38%) sepia(34%) saturate(1612%) hue-rotate(323deg)
-    brightness(96%) contrast(106%);
-}
-.HeartImg {
-  background-image: url(/public/images/heart1.png);
-  width: 60px;
-  height: 60px;
-  position: relative;
-  margin-left: 10px;
-  background-size: cover;
-  filter: invert(38%) sepia(34%) saturate(1612%) hue-rotate(323deg)
-    brightness(96%) contrast(106%);
-}
-.iconbut:hover {
-  cursor: pointer;
-  transition: transform 300ms ease;
-  transform: scale(1.1);
-}
-button {
-  background: inherit;
-  border: none;
-  box-shadow: none;
-  border-radius: 0;
-  padding: 0;
-  overflow: visible;
-  cursor: pointer;
-}
 
 /**/
 @keyframes ball {

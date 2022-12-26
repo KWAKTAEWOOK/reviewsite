@@ -201,7 +201,7 @@ const Detail = () => {
                 <div>{detailData.phone}</div>
                 <div>11:00~21:00</div>
               </div>
-              <UserLike />
+              <UserLike detailData={detailData} />
             </div>
             <Detailmap place_name={place_name} mappgRef={mappgRef} />
             {user && <StarRating />}

@@ -32,11 +32,25 @@ const LikePage = () => {
           <div className="like_wrap">
             <p>✨ 내가 찜한 가게 ✨</p>
             {user ? (
-              <div className="like_post_map">
-                {likePosts.map((likePost, index) => (
-                  <LikePageList key={index} likePost={likePost} />
-                ))}
-              </div>
+              likePosts.length != 0 ? (
+                <div className="like_post_map">
+                  {likePosts.map((likePost, index) => (
+                    <LikePageList key={index} likePost={likePost} />
+                  ))}
+                </div>
+              ) : (
+                <>
+                  <div className="nothing_to_like">찜한 가게가 없습니다.</div>
+                  <button
+                    className="go_like"
+                    onClick={() => {
+                      window.location.href = "/main";
+                    }}
+                  >
+                    찜하러가기 →
+                  </button>
+                </>
+              )
             ) : (
               <div className="notFoundUserPage">
                 로그인 후에 내가 찜한 가게가 보여집니다.

@@ -13,6 +13,7 @@ import FindPw from "./Components/Sign/FindPw";
 import LikePage from "./Components/Mypage/LikePage";
 import MypageTest from "./Components/Mypage/MypageTest";
 import MypageUserConfirm from "./Components/Mypage/MypageUserConfirm";
+import MyPlace from "./Components/MyPlace/MyPlace";
 
 const App = () => {
   const [inputText, setInputText] = useState("");
@@ -83,9 +84,6 @@ const App = () => {
             <Route path={"/Detail/:place_name/:id"} exact>
               <Detail />
             </Route>
-            {/* <Route path={"/Mypage"} exact>
-              <Mypage />
-            </Route> */}
             <Route path={"/MyReview"} exact>
               <MyReview />
             </Route>
@@ -106,6 +104,9 @@ const App = () => {
             </Route>
             <Route path={"/MypageUserConfirm"} exact>
               <MypageUserConfirm />
+            </Route>
+            <Route path={"/myplace"} exact>
+              <MyPlace />
             </Route>
           </Switch>
         </BrowserRouter>

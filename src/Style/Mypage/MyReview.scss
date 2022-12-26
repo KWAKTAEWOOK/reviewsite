@@ -98,3 +98,8 @@
 .review_place_name > p:hover {
   text-decoration: underline;
 }
+
+.not_found_review {
+  border: 1px solid red;
+  // width: 200px;
+}
