@@ -1,0 +1,73 @@
+.MypageUserConfirmTest_Title {
+  position: relative;
+  text-align: center;
+  top: 130px;
+  position: relative;
+  font-size: 1.5rem;
+}
+.MypageUserConfirmTest_Container {
+  position: relative;
+  top: 170px;
+  width: 100%;
+  height: 100%;
+  font-size: 1rem;
+}
+
+.MypageUserConfirmTest_Box {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.MypageUserConfirmTest_Box > h5 {
+  font-weight: normal;
+  color: #666;
+}
+.MypageUserConfirmTest_password_subject {
+  position: relative;
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.MypageUserConfirmTest_password_content {
+  position: absolute;
+  outline: none;
+  height: 30px;
+  width: 100%;
+  border: solid 1px #d9d9d9;
+  padding-left: 10px;
+}
+.MypageUserConfirmTest_CheckBox {
+  position: relative;
+  top: 50px;
+}
+
+.MypageUserConfirmTest_Cansel_button {
+  border: 1px solid #bfbfbf;
+}
+.MypageUserConfirmTest_Confirm_button {
+  background-color: #34447a;
+  color: white;
+  margin-left: 20px;
+}
+
+.MypageUserConfirmTest_FindByPassword {
+  position: relative;
+  margin-left: 12px;
+  top: 5px;
+  font-size: 0.7rem;
+}
+
+.MyPageUserConfirmTest_button_common_properties {
+  position: relative;
+  border-radius: 50px;
+  padding: 10px 80px;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 1rem;
+}

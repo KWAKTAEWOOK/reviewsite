@@ -55,7 +55,7 @@ const Topbar = () => {
                   )}
                   {user && (
                     <li>
-                      <a href="/MypageTest">마이페이지</a>
+                      <a href="/MypageUserConfirm">마이페이지</a>
                     </li>
                   )}
                   {user && user.userRole === "ADMIN" ? (
@@ -99,7 +99,7 @@ const Topbar = () => {
             </div>
           </div>
           <div className="username">
-            <a href="/MypageTest">{user && `${user.nickname}`}</a>
+            <a href="/MypageUserConfirm">{user && `${user.nickname}`}</a>
           </div>
           <div className="username usernameback">
             {user && "님 환영합니다."}
