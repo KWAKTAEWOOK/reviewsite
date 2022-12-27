@@ -16,6 +16,7 @@
 }
 .showMyList {
   position: relative;
+  display: inline-block;
   top: -130px;
 }
 .list_column {
@@ -36,7 +37,7 @@
   position: relative;
   color: gray;
   left: 270px;
-  top: -23px;
+  top: -20px;
 }
 .place_edit_btn:hover {
   color: black;
@@ -79,9 +80,9 @@
 
 // 오른쪽에 보여지는 지도
 .right_fixed_menu {
-  position: relative;
-  top: -450px;
-  left: 650px;
+  position: absolute;
+  top: -60px;
+  left: 550px;
   width: 600px;
   min-height: 650px;
 }
@@ -90,11 +91,14 @@
   height: 400px;
 }
 .map_list {
+  width: 600px;
   height: 350px;
   overflow-y: auto;
+  border: 1px solid rgba(177, 177, 177, 0.795);
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+
 .map_list::-webkit-scrollbar {
   display: none;
 }
@@ -103,5 +107,31 @@
 .place_map {
   width: 600px;
   height: 400px;
+}
+
+// 리스트
+.place_bmlist {
   border-bottom: 1px solid rgba(177, 177, 177, 0.795);
+  height: 65px;
+}
+.place_bmlist_title {
+  position: relative;
+  text-align: left;
+  margin-left: 10px;
+  top: 20px;
+}
+.place_bmlist_title > span {
+  cursor: pointer;
+}
+.place_bmlist_title > span:hover {
+  text-decoration: underline;
+}
+.place_bmlist_delete {
+  font-family: "NanumSquareNeo-Variable";
+  position: relative;
+  left: 255px;
+  margin-top: 5px;
+}
+.place_bmlist_delete:hover {
+  font-weight: bold;
 }

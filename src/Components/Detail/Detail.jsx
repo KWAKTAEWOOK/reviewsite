@@ -82,6 +82,7 @@ const Detail = () => {
   const detailRef = useRef();
   const mappgRef = useRef();
   const reviewRef = useRef();
+
   const photos = () =>
     photosRef.current.scrollIntoView({
       behavior: "smooth",
