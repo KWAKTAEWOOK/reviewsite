@@ -9,7 +9,7 @@
 .liketemplate {
   position: relative;
   top: 120px;
-  width: 1080px;
+  width: 1250px;
   margin: 0 auto;
   text-align: center;
   height: 200px;
@@ -28,6 +28,27 @@
 }
 .like_post_map {
   min-height: 500px;
+}
+.nothing_to_like {
+  position: relative;
+  left: 30px;
+  font-size: 1.2rem;
+}
+.go_like {
+  background-color: rgba(1, 1, 116, 0.589);
+  font-family: "NanumSquareNeo-Variable";
+  position: relative;
+  font-size: 1rem;
+  color: white;
+  width: 130px;
+  height: 30px;
+  top: -27px;
+  left: 220px;
+}
+.go_like:hover {
+  position: relative;
+  transition: transform 200ms;
+  transform: scale(1.1);
 }
 
 // list

@@ -1,15 +1,71 @@
-.like_icon > div > img {
-  width: 60px;
-  position: relative;
+// button 값 노멀라이징
+button {
+  background: inherit;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+  overflow: visible;
+  cursor: pointer;
 }
+
+// 찜하기 아이콘
 .like_icon {
   display: inline-block;
   position: relative;
   top: 150px;
-  left: 180px;
+  left: 110px;
 }
-.like_icon > div {
-  display: block;
-  text-align: center;
-  align-items: flex-start;
+.liketext > div {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  font-size: 1rem;
+  margin-left: 10px;
+}
+.EmptyHeartImg {
+  width: 60px;
+  height: 60px;
+  position: relative;
+  margin-left: 10px;
+  background-size: cover;
+  filter: invert(38%) sepia(34%) saturate(1612%) hue-rotate(323deg)
+    brightness(96%) contrast(106%);
+}
+.HeartImg {
+  width: 60px;
+  height: 60px;
+  position: relative;
+  margin-left: 10px;
+  background-size: cover;
+  filter: invert(38%) sepia(34%) saturate(1612%) hue-rotate(323deg)
+    brightness(96%) contrast(106%);
+}
+
+// 북마크 아이콘
+.bookmark_icon {
+  display: inline-block;
+  position: relative;
+  top: 151px;
+  left: 140px;
+}
+.bookMark {
+  width: 60px;
+  height: 60px;
+  position: relative;
+  filter: invert(48%) sepia(1%) saturate(1903%) hue-rotate(149deg)
+    brightness(86%) contrast(87%);
+}
+.EmptyBookMark {
+  width: 60px;
+  height: 60px;
+  position: relative;
+  filter: invert(48%) sepia(1%) saturate(1903%) hue-rotate(149deg)
+    brightness(86%) contrast(87%);
+}
+
+.iconbut:hover {
+  cursor: pointer;
+  transition: transform 300ms ease;
+  transform: scale(1.1);
 }

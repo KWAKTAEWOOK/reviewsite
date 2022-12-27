@@ -47,6 +47,9 @@ const Topbar = () => {
                     <a href="/main">메인페이지</a>
                   </li>
                   <li>
+                    <a href="/myplace">🔰 MY PLACE</a>
+                  </li>
+                  <li>
                     <a href="/likePage">내가 찜한 가게</a>
                   </li>
                   {user && (

@@ -5,8 +5,6 @@ import LeftArrow from "../../Style/image/left-arrow.png";
 import Topbar from "./Topbar";
 import "../../Style/Main/Main.scss";
 import useGeolocation from "react-hook-geolocation";
-import { BACKEND_URL } from "../../utils";
-import axios from "axios";
 
 const { kakao } = window;
 
