@@ -14,6 +14,7 @@ import LikePage from "./Components/Mypage/LikePage";
 import MypageTest from "./Components/Mypage/MypageTest";
 import MypageUserConfirm from "./Components/Mypage/MypageUserConfirm";
 import MyPlace from "./Components/MyPlace/MyPlace";
+import Slick from "./Components/Detail/slick/CenterMode";
 
 const App = () => {
   const [inputText, setInputText] = useState("");
@@ -86,6 +87,9 @@ const App = () => {
             </Route>
             <Route path={"/MyReview"} exact>
               <MyReview />
+            </Route>
+            <Route path={"/slick"} exact>
+              <Slick />
             </Route>
             <Route path={"/help/"} exact>
               <Help />
