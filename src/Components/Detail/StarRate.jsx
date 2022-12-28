@@ -6,7 +6,6 @@ import { useParams } from "react-router-dom";
 
 function StarRate() {
   //
-  useEffect(() => {}, []);
   const { id } = useParams();
   const detail_id = id;
   const [getdata, setGetdata] = useState([]);

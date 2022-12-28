@@ -1,17 +1,23 @@
 import React from "react";
 import GalleryItem from "./GalleryItem";
 
-const GalleryList = ({ datas, currItem, onView }) => {
-  const { image, title } = currItem;
+const GalleryList = ({ imgs, currItem, onView }) => {
+  const { title, image } = currItem;
 
   if (currItem.id === 5) {
   }
   return (
     <article className="left">
-      <img src={image} alt={title} />
+      {/* <img src={image} /> */}
       <ul>
-        {datas.map((item) => (
-          <GalleryItem key={item.id} item={item} onView={onView} />
+        {imgs.map((item) => (
+          <GalleryItem
+            key={item.id}
+            item={item}
+            onView={onView}
+            imgs={imgs}
+            currItem={currItem}
+          />
         ))}
       </ul>
     </article>

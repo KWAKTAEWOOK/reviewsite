@@ -18,6 +18,7 @@ const StarRating = () => {
   //-----------------------------------------------
   const [nickname, setNickname] = useState("");
   const [Click, setClick] = useState(false);
+
   function setting() {
     setNickname(user.nickname);
   }
@@ -28,18 +29,23 @@ const StarRating = () => {
   const star = rating;
   const detail_id = id;
   const detail_name = place_name;
+
+  const formData = new FormData();
+  formData.append("content", content);
+  formData.append("detail_id", detail_id);
+  formData.append("detail_name", detail_name);
+  formData.append("star", star);
+  formData.append("nickname", nickname);
+
   const post = async (e) => {
     if (window.confirm("등록하시겠습니까?"))
       try {
         const data = await axios({
           url: `${BACKEND_URL}/answer/create/post?userId=${user.id}`,
           method: "POST",
-          data: {
-            content,
-            detail_id,
-            detail_name,
-            star,
-            nickname,
+          data: formData,
+          headers: {
+            "Content-Type": "multipart/form-data",
           },
         });
         window.location.reload();
@@ -47,9 +53,6 @@ const StarRating = () => {
         console.log(e);
         alert("값 입력 실패");
       }
-  };
-  const onChange = (e) => {
-    setContent(e.target.value);
   };
   const message = () => {
     if (content == "") {
@@ -80,6 +83,17 @@ const StarRating = () => {
             </button>
           );
         })}
+        <input
+          className="fileupload"
+          type="file"
+          multiple
+          onChange={(e) => {
+            console.log(e.target.files);
+            for (let i = 0; i < e.target.files.length; i++) {
+              formData.append("files", e.target.files[i]);
+            }
+          }}
+        />
         <button
           className="plugin"
           onClick={() => {
@@ -96,7 +110,9 @@ const StarRating = () => {
         </div>
         <textarea
           className="comment_textarea"
-          onChange={onChange}
+          onChange={(e) => {
+            setContent(e.target.value);
+          }}
           cols="100"
           rows="10"
         ></textarea>

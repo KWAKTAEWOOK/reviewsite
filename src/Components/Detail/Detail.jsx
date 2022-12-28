@@ -1,7 +1,6 @@
 /*global kakao*/
 import React, { useState, useEffect, useRef } from "react";
-import GalleryList from "./GalleryList";
-import data from "./Image";
+
 import "../../Style/Detail/img.css";
 import "../../Style/Main/Main.scss";
 import TopbarV2 from "../Main/TopbarV2";
@@ -17,14 +16,12 @@ import UserLike from "./UserLike";
 import Comment from "./Comment";
 import Detailmap from "./Detailmap";
 import Modal from "./Modal";
+import GalleryBig from "./GalleryBig";
 const Detail = () => {
   const [modal, setModal] = useState(false);
   const outSection = useRef();
 
   //
-  const [datas, setData] = useState(data);
-  const [getids, setGetid] = useState();
-  const [currItem, setCurrItem] = useState(datas[0]);
 
   //-------------------------------------------------------------------
   //지도 map에 필요한 변수들
@@ -37,13 +34,68 @@ const Detail = () => {
 
   //-----------------------------------
   //사진 클릭네이션
-  const onView = (id) => {
-    //고유번호인 id를 받아서 사진을 찾아라
-    setCurrItem(datas.find((item) => item.id === id)); //배열함수중 해당값만 찾아주는 find함수를 쓴다
-    if (id === 5) {
-      setModal(true);
-    }
-  };
+  /*
+  const imgList = [
+    {
+      id: 1,
+      image:
+        "https://file-upload-ktw.s3.ap-northeast-2.amazonaws.com/noimg_fac.gif",
+      title: "고양이 사랑1",
+    },
+    {
+      id: 2,
+      image:
+        "https://file-upload-ktw.s3.ap-northeast-2.amazonaws.com/noimg_fac.gif",
+      title: "고양이 사랑2",
+    },
+    {
+      id: 3,
+      image:
+        "https://file-upload-ktw.s3.ap-northeast-2.amazonaws.com/noimg_fac.gif",
+      title: "고양이 사랑3",
+    },
+    {
+      id: 4,
+      image:
+        "https://file-upload-ktw.s3.ap-northeast-2.amazonaws.com/noimg_fac.gif",
+      title: "고양이 사랑4",
+    },
+    {
+      id: 5,
+      image:
+        "https://file-upload-ktw.s3.ap-northeast-2.amazonaws.com/noimg_fac.gif",
+      title: "고양이 사랑5",
+    },
+  ];
+
+  const Gallery = () => {
+    const getimg = async (e) => {
+      const data = await axios({
+        url: `${BACKEND_URL}/answer/image?detailId=${detail_id}`,
+        method: "GET",
+        params: {
+          detailId: detail_id,
+        },
+      });
+      setimgs(data.data);
+    };
+    const [imgs, setimgs] = useState(imgList); //이미지 데이터배열
+    const [currItem, setCurrItem] = useState(imgs[0]); //선택한 이미지 사진상태 설정
+
+    const onView = (id) => {
+      //해당 id의 사진을 찾아라
+      setCurrItem(imgs.find((item) => item.id === id)); //find() : 배열함수중 해당값만 찾아줌
+      if (id === 5) {
+        setModal(true);
+      }
+    };
+    return (
+      <div className="Gallery">
+        <GalleryBig imgs={imgs} currItem={currItem} onView={onView} />
+        <GalleryList imgs={imgs} currItem={currItem} onView={onView} />
+      </div>
+    );
+  };*/
   //--------------------
   //업종별 카테고리 문자열 원하는것만 출력
   var str = dataildata.category_name;
@@ -169,7 +221,8 @@ const Detail = () => {
       ) : null}
       <div className="detail_back">
         <div className="wrap" ref={photosRef}>
-          <GalleryList datas={datas} onView={onView} currItem={currItem} />
+          {/* <Gallery /*getimgs={getimgs}*/}
+          {/* <GalleryList datas={datas} currItem={currItem} onView={onView} /> */}
         </div>
         <nav className="styled__TopNav-sc-1tkfz70-1 eUocsG">
           <div>

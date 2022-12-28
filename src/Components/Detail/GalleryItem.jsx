@@ -1,12 +1,12 @@
 import React from "react";
 
-const GalleryItem = ({ item, onView }) => {
-  const { image, title, id } = item;
+const GalleryItem = ({ item, onView, currItem }) => {
+  const { image, id } = item;
 
   if (id <= 5)
     return (
       <li
-        className={id === 5 ? `Viewmore` : `offView`}
+        className={currItem.id === 5 ? `Viewmore` : `offView`}
         onClick={() => onView(id)}
       >
         <img src={image} />
