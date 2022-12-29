@@ -15,12 +15,71 @@
 .MypageEditBox {
   position: relative;
   width: 500px;
-  height: 500px;
+  height: 800px;
   margin: 0;
   padding: 0;
   font-size: 1rem;
   margin-left: auto;
   margin-right: auto;
+  top: 20px;
+}
+.MypageEdit_Common_Style {
+  width: 280px;
+}
+.MypageEdit_profilepicturebox {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border: 1px solid black;
+  top: -20px;
+  right: 0;
+  border-radius: 50%;
+}
+.MypageEgit_profilepicture_button {
+  position: relative;
+  width: 100%;
+  top: 190px;
+  ////////////////////////////////
+  border: none;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  outline: none;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  background-color: #34447a;
+  padding: 12px 6px;
+  margin: 0 auto;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+.MypageEgit_profilepicture_button > span {
+  position: relative;
+  z-index: 1;
+}
+.MypageEgit_profilepicture_button::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 490%;
+  width: 140%;
+  background: #78c7d2;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-transform: translateX(-98%) translateY(-25%) rotate(45deg);
+  transform: translateX(-98%) translateY(-25%) rotate(45deg);
+}
+.MypageEgit_profilepicture_button:hover::after {
+  -webkit-transform: translateX(-9%) translateY(-25%) rotate(45deg);
+  transform: translateX(-9%) translateY(-25%) rotate(45deg);
+}
+
+.MypageEdit_profilepicture_content {
+  display: none;
 }
 
 .MypageEdit_passwordbox {

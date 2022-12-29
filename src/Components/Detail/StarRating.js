@@ -37,6 +37,8 @@ const StarRating = () => {
   formData.append("star", star);
   formData.append("nickname", nickname);
 
+  console.log(user.id);
+
   const post = async (e) => {
     if (window.confirm("등록하시겠습니까?"))
       try {
