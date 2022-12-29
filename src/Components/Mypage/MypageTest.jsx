@@ -5,6 +5,9 @@ import { useRecoilState } from "recoil";
 import { userState } from "../../recoil/user";
 import TopbarV2 from "../Main/TopbarV2";
 import "../../Style/Mypage/MypageTest.scss";
+import { useRef } from "react";
+import { useCallback } from "react";
+import { type } from "@testing-library/user-event/dist/type";
 
 const MypageTest = () => {
   const [user, setUser] = useRecoilState(userState);
@@ -67,6 +70,29 @@ const MypageTest = () => {
     setEmail(e.target.value);
   }
 
+  // const formData = new FormData();
+  // formData.append("file", data.file);
+  // formData.append(
+  //   "key",
+  //   new Blob([JSON.stringify(data.info)], {type: "application/json"})
+  // );
+  // try {
+  //   await axios
+  //   .post('${SERVER_URL}/something/endpoint', formData, {
+  //     headers: {
+  //       "X-AUTH-TOKEN": token,
+  //       "Content-Type": `multipart/form-data`,
+  //     },
+  //   })
+  //   .then((res) => console.log(res));
+  // } catch(e) {
+  //   dispatch({
+  //     type: type.WRITE_SALE_POST_FAILURE,
+  //     error: e,
+
+  //   });
+  // }
+
   return (
     <div>
       <TopbarV2 />
@@ -75,17 +101,34 @@ const MypageTest = () => {
         <div className="MypageEditBox">
           {/* <FontAwesomeIcon icon={faUserSecret} className="Usericon" /> */}
           <h3>기본정보 수정</h3>
-          <div className="MypageEdit_userIdbox">
+          <div className="MypageEdit_userIdbox MypageEdit_Common_Style">
             <div className="MypageEdit_userIdbox_subject MyPageEdit_box_subject">
               ID
             </div>
             <div className="MypageEdit_userIdbox_ID MyPageEdit_box_content">{`${userid}`}</div>
           </div>
-          <div className="MypageEdit_usernamebox">
+          <div className="MypageEdit_usernamebox MypageEdit_Common_Style">
             <div className="MypageEdit_usernamebox_subject MyPageEdit_box_subject">
               이름
             </div>
             <div className="MypageEdit_usernamebox_username MyPageEdit_box_content">{`${username}`}</div>
+          </div>
+          <div className="MypageEdit_profilepicturebox">
+            <input
+              className="MypageEdit_profilepicture_content"
+              type="file"
+              // ref={inputRef}
+              // onChange={onUploadinImage}
+              // style={{ display: "none" }}
+              accept="image/*"
+            />
+            <button
+              className="MypageEgit_profilepicture_button"
+              label="이미지 업로드"
+              //  onClick={onUploadinImageButtonClick}
+            >
+              <span>파일 업로드</span>
+            </button>
           </div>
           <div className="MypageEdit_nicknamebox">
             <div className="MypageEdit_nicknamebox_subject MyPageEdit_box_subject">
