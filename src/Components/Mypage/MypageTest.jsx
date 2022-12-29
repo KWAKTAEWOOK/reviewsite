@@ -66,9 +66,6 @@ const MypageTest = () => {
   function changeEmail(e) {
     setEmail(e.target.value);
   }
-  function changePassword(e) {
-    setPassword(e.target.value);
-  }
 
   return (
     <div>
@@ -141,7 +138,6 @@ const MypageTest = () => {
                 type="text"
                 onChange={changePassword}
                 placeholder="비밀번호를 입력해주세요(8 - 12자리)"
-                // value={""}
               ></input>
             </div>
             <div className="MypageEdit_passwordbox_newpasswordbox2_subject MyPageEdit_box_subject">
@@ -152,7 +148,6 @@ const MypageTest = () => {
                 className="MypageEdit_passwordbox_newpasswordbox2_input input_common_properties"
                 type="text"
                 onChange={changePassword}
-                // value={""}
               ></input>
             </div>
           </div>
@@ -168,8 +163,8 @@ const MypageTest = () => {
               if (window.confirm("수정하시겠습니까?")) {
                 try {
                   const data = await axios({
-                    url: `${BACKEND_URL}/user/modify`,
-                    method: "POST",
+                    url: `${BACKEND_URL}/user/editprofile`,
+                    method: "PUT",
                     data: {
                       id,
                       userid,
