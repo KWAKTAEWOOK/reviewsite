@@ -141,7 +141,9 @@ const Comment = ({ reviewlist, nickname, reviewRef }) => {
       {Click == false && (
         <div className="사용자">
           <div className="usercon">
-            <img className="userimg" src="/images/6.jpg" alt="" />
+            <div className="userimg">
+              <img className="usersimg" src="/images/user.png" alt="" />
+            </div>
             <div>{reviewlist.nickname}</div>
           </div>
           <div className="contant">
@@ -152,7 +154,9 @@ const Comment = ({ reviewlist, nickname, reviewRef }) => {
       {Click == true && (
         <div className="사용자">
           <div className="usercon">
-            <img className="userimg" src="/images/6.jpg" alt="" />
+            <div className="userimg">
+              <img className="usersimg" src="/images/user.png" alt="" />
+            </div>
             <div>{reviewlist.nickname}</div>
           </div>
           <textarea
