@@ -103,9 +103,9 @@
   position: absolute;
   bottom: -25px;
 
-  display: block;
+  display: inline-block;
 
-  width: 100%;
+  width: 1000px;
   padding: 0;
   margin: 0;
 
@@ -118,12 +118,15 @@
 
   display: inline-block;
 
-  width: 20px;
-  height: 20px;
+  width: 100px;
+  height: 50px;
   margin: 0 5px;
   padding: 0;
 
   cursor: pointer;
+}
+.slick-dots ul {
+  overflow: scroll;
 }
 .slick-dots li button {
   font-size: 0;
@@ -153,13 +156,13 @@
 .slick-dots li button:before {
   font-family: "slick";
   font-size: 6px;
-  line-height: 20px;
+  line-height: 100px;
 
   position: absolute;
   top: 0;
   left: 0;
 
-  width: 20px;
+  width: 200px;
   height: 20px;
 
   content: "•";
@@ -177,26 +180,32 @@
 }
 .SlickItems {
   width: 100%;
-  height: 400px;
+  height: 600px;
   text-align: center;
 }
 .SlickItems > img {
-  max-width: 100%;
-  height: 100%;
+  width: 1000px;
+  height: 600px;
   vertical-align: top;
 }
 .PagingAnchor {
   display: block;
-  width: 50px;
-  height: 50px;
+  width: auto;
+  height: auto;
 }
 .PagingAnchor > img {
-  width: 100%;
+  width: 100px;
   height: 100%;
+  margin-left: 0;
 }
 .Paging {
   display: inline-block;
-  width: 100%;
+  width: 100px;
   height: 100%;
   vertical-align: middle;
+}
+.test {
+  width: 100%;
+  height: 600px;
+  display: inline-block;
 }

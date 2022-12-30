@@ -17,12 +17,8 @@ import Comment from "./Comment";
 import Detailmap from "./Detailmap";
 import Modal from "./Modal";
 import GalleryBig from "./GalleryBig";
+import CenterMode from "./slick/CenterMode";
 const Detail = () => {
-  const [modal, setModal] = useState(false);
-  const outSection = useRef();
-
-  //
-
   //-------------------------------------------------------------------
   //지도 map에 필요한 변수들
   const { place_name } = useParams();
@@ -32,71 +28,6 @@ const Detail = () => {
   const dataildata = JSON.parse(outputdata);
   const [detailData] = KakaoSearchDB(detailsearch);
 
-  //-----------------------------------
-  //사진 클릭네이션
-  /*
-  const imgList = [
-    {
-      id: 1,
-      image:
-        "https://file-upload-ktw.s3.ap-northeast-2.amazonaws.com/noimg_fac.gif",
-      title: "고양이 사랑1",
-    },
-    {
-      id: 2,
-      image:
-        "https://file-upload-ktw.s3.ap-northeast-2.amazonaws.com/noimg_fac.gif",
-      title: "고양이 사랑2",
-    },
-    {
-      id: 3,
-      image:
-        "https://file-upload-ktw.s3.ap-northeast-2.amazonaws.com/noimg_fac.gif",
-      title: "고양이 사랑3",
-    },
-    {
-      id: 4,
-      image:
-        "https://file-upload-ktw.s3.ap-northeast-2.amazonaws.com/noimg_fac.gif",
-      title: "고양이 사랑4",
-    },
-    {
-      id: 5,
-      image:
-        "https://file-upload-ktw.s3.ap-northeast-2.amazonaws.com/noimg_fac.gif",
-      title: "고양이 사랑5",
-    },
-  ];
-
-  const Gallery = () => {
-    const getimg = async (e) => {
-      const data = await axios({
-        url: `${BACKEND_URL}/answer/image?detailId=${detail_id}`,
-        method: "GET",
-        params: {
-          detailId: detail_id,
-        },
-      });
-      setimgs(data.data);
-    };
-    const [imgs, setimgs] = useState(imgList); //이미지 데이터배열
-    const [currItem, setCurrItem] = useState(imgs[0]); //선택한 이미지 사진상태 설정
-
-    const onView = (id) => {
-      //해당 id의 사진을 찾아라
-      setCurrItem(imgs.find((item) => item.id === id)); //find() : 배열함수중 해당값만 찾아줌
-      if (id === 5) {
-        setModal(true);
-      }
-    };
-    return (
-      <div className="Gallery">
-        <GalleryBig imgs={imgs} currItem={currItem} onView={onView} />
-        <GalleryList imgs={imgs} currItem={currItem} onView={onView} />
-      </div>
-    );
-  };*/
-  //--------------------
   //업종별 카테고리 문자열 원하는것만 출력
   var str = dataildata.category_name;
   var words = str.split(">"); // ">" 구분으로 배열로 변환
@@ -126,7 +57,24 @@ const Detail = () => {
 
   useEffect(() => {
     setting();
+    getimg();
+    get();
   }, []);
+  //-------------------------------------------------
+  const [images, setimages] = useState(() => []);
+
+  const getimg = async (e) => {
+    try {
+      const data = await axios({
+        url: `${BACKEND_URL}/answer/image?detailId=${id}`,
+        method: "GET",
+      });
+      setimages(data.data);
+    } catch (e) {
+      console.log(e);
+      alert("값 입력 실패");
+    }
+  };
 
   //-------------------------------------------
   // 스크롤 오브젝트 Ref
@@ -163,66 +111,37 @@ const Detail = () => {
   const [getdata, setGetdata] = useState([]);
   const reversedgetdata = getdata.map((getdatas) => getdatas).reverse();
 
-  useEffect(() => {
-    const get = async (e) => {
-      try {
-        const data = await axios({
-          url: `${BACKEND_URL}/get`,
-          method: "GET",
-          params: {
-            detailId: detail_id,
-          },
-        });
-        setGetdata(data.data);
-      } catch (e) {
-        console.log(e);
-        alert("값 입력 실패");
-      }
-    };
-    get();
-  }, []);
+  const get = async (e) => {
+    try {
+      const data = await axios({
+        url: `${BACKEND_URL}/get`,
+        method: "GET",
+        params: {
+          detailId: detail_id,
+        },
+      });
+      setGetdata(data.data);
+    } catch (e) {
+      console.log(e);
+      alert("값 입력 실패");
+    }
+  };
+
   //------------------------------------------------------------------
-  useEffect(() => {
-    const clickOutside = (e) => {
-      // 모달이 열려 있고 모달의 바깥쪽을 눌렀을 때 창 닫기
-      if (
-        modal &&
-        outSection.current &&
-        !outSection.current.contains(e.target)
-      ) {
-        setModal(false);
-      }
-    };
-
-    document.addEventListener("mousedown", clickOutside);
-
-    return () => {
-      // Cleanup the event listener
-      document.removeEventListener("mousedown", clickOutside);
-    };
-  }, [modal]);
-
-  //----------------------------------------------------
   //----------------------------------------------------
 
   return (
     <>
       <TopbarV2 />
-      {modal ? (
-        <div
-          onClick={(e) => {
-            if (outSection.current == e.target) {
-              setModal(false);
-            }
-          }}
-        >
-          <Modal outSection={outSection} />
-        </div>
-      ) : null}
+
       <div className="detail_back">
         <div className="wrap" ref={photosRef}>
-          {/* <Gallery /*getimgs={getimgs}*/}
-          {/* <GalleryList datas={datas} currItem={currItem} onView={onView} /> */}
+          {images.length === 0 ? null : <CenterMode images={images} />}
+          {images.length === 0 ? (
+            <div className="noimg">
+              <img src="/images/noimg_fac.gif" alt="" />
+            </div>
+          ) : null}
         </div>
         <nav className="styled__TopNav-sc-1tkfz70-1 eUocsG">
           <div>

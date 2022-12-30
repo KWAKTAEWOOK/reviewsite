@@ -10,6 +10,7 @@
   margin: 0px auto;
   display: flex;
   position: relative;
+  margin-top: 110px;
 }
 .wrap .left {
   width: 600px;
@@ -61,7 +62,7 @@
   height: auto;
   background-color: white;
   display: block;
-  margin: 100px auto;
+  margin: 200px auto 200px auto;
 }
 .confont {
   position: relative;
@@ -258,4 +259,21 @@ li > img:hover {
   height: 10%; /* 스크롤바의 길이 */
   background: #b8c6d9; /* 스크롤바의 색상 */
   border-radius: 10px;
+}
+textarea {
+  resize: none;
+}
+.noimg {
+  position: relative;
+  width: 1000px;
+  height: 600px;
+}
+.noimg > img {
+  display: block;
+  width: 800px;
+  height: 500px;
+  margin: auto;
+}
+.imgsee {
+  height: 50px;
 }

@@ -14,6 +14,7 @@ const StarRating = () => {
   const [hover, setHover] = useState(0);
   const [user, setUser] = useRecoilState(userState);
   const [content, setContent] = useState("");
+  const [flies, setFlies] = useState([]);
 
   //-----------------------------------------------
   const [nickname, setNickname] = useState("");
@@ -31,15 +32,17 @@ const StarRating = () => {
   const detail_name = place_name;
 
   const formData = new FormData();
-  formData.append("content", content);
-  formData.append("detail_id", detail_id);
-  formData.append("detail_name", detail_name);
-  formData.append("star", star);
-  formData.append("nickname", nickname);
-
-  console.log(user.id);
 
   const post = async (e) => {
+    formData.append("content", content);
+    formData.append("detail_id", detail_id);
+    formData.append("detail_name", detail_name);
+    formData.append("star", star);
+    formData.append("nickname", nickname);
+    for (let i = 0; i < flies.length; i++) {
+      formData.append("files", flies[i]);
+    }
+
     if (window.confirm("등록하시겠습니까?"))
       try {
         const data = await axios({
@@ -65,7 +68,12 @@ const StarRating = () => {
       post();
     }
   };
-
+  const onSubmit = (e) => {
+    setFlies(e.target.files);
+  };
+  const onContent = (e) => {
+    setContent(e.target.value);
+  };
   return (
     <div>
       <div className="star-rating">
@@ -89,12 +97,7 @@ const StarRating = () => {
           className="fileupload"
           type="file"
           multiple
-          onChange={(e) => {
-            console.log(e.target.files);
-            for (let i = 0; i < e.target.files.length; i++) {
-              formData.append("files", e.target.files[i]);
-            }
-          }}
+          onChange={onSubmit}
         />
         <button
           className="plugin"
@@ -107,17 +110,23 @@ const StarRating = () => {
       </div>
       <div className="사용자">
         <div className="usercon">
-          <img className="userimg" src="/images/3.jpg" />
+          <div className="userimg">
+            <img className="usersimg" src="/images/페페.gif" alt="" />
+          </div>
           <div>{user && user.nickname}</div>
         </div>
         <textarea
           className="comment_textarea"
-          onChange={(e) => {
-            setContent(e.target.value);
-          }}
+          onChange={onContent}
           cols="100"
           rows="10"
         ></textarea>
+      </div>
+      <div className="imgsee">
+        <div className="imgcons"></div>
+        <div className="imgcontent">
+          <img src="" alt="" />
+        </div>{" "}
       </div>
     </div>
   );
