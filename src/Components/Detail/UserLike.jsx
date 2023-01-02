@@ -19,6 +19,8 @@ const UserLike = ({ detailData }) => {
   const [userBookmark, setUserBookmark] = useState("");
   const xData = detailData.x;
   const yData = detailData.y;
+  const phone = detailData.phone;
+  const address = detailData.road_address_name;
 
   const HeartImg = "/images/heart.png";
   const EmptyHeartImg = "/images/heart1.png";
@@ -88,11 +90,13 @@ const UserLike = ({ detailData }) => {
       try {
         e.preventDefault();
         const data = await axios({
-          url: `${BACKEND_URL}/bookmark?userId=${user.id}`,
+          url: `${BACKEND_URL}/bookmark/list?userId=${user.id}`,
           method: "POST",
           data: {
             postId: postid,
             postName,
+            phone,
+            address,
             locationX: xData,
             locationY: yData,
           },

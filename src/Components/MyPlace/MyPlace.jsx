@@ -7,13 +7,17 @@ import { useRecoilState } from "recoil";
 import { useEffect } from "react";
 import { BACKEND_URL } from "../../utils";
 import axios from "axios";
+import MarkName from "./MarkName";
 
 const MyPlace = () => {
   const [user, setUser] = useRecoilState(userState);
   const [bookmarks, setBookmarks] = useState([]);
   const [bookmarkX, setBookmarkX] = useState([]);
   const [bookmarkY, setBookmarkY] = useState([]);
+  const [bookmarkName, setBookmarkName] = useState([]);
+  const [name, setName] = useState("");
 
+  // 유저의 북마크 가져오기
   useEffect(() => {
     const getData = async (e) => {
       const data = await axios({
@@ -23,6 +27,38 @@ const MyPlace = () => {
       setBookmarks(data.data);
       setBookmarkX(data.data[0]?.locationX);
       setBookmarkY(data.data[0]?.locationY);
+    };
+    getData();
+  }, []);
+
+  // 북마크 이름 생성
+  const createBookmark = async (e) => {
+    if (name.length === 0) {
+      alert("이름을 입력해주세요.");
+      e.preventDefault();
+    }
+    if (name.length > 9) {
+      alert("10자 이내로 작성해주세요.");
+      e.preventDefault();
+    } else {
+      const data = await axios({
+        url: `${BACKEND_URL}/bookmark?userId=${user?.id}`,
+        method: "POST",
+        data: {
+          bookmarkName: name,
+        },
+      });
+    }
+  };
+
+  // 생성한 북마크 가져오기
+  useEffect(() => {
+    const getData = async (e) => {
+      const data = await axios({
+        url: `${BACKEND_URL}/bookmark?userId=${user?.id}`,
+        method: "GET",
+      });
+      setBookmarkName(data.data);
     };
     getData();
   }, []);
@@ -37,42 +73,32 @@ const MyPlace = () => {
               👀 넌 어때 회원님들의 맛집 정보를 구경하고, 나의 리스트도
               자랑해보세요!
             </p>
-            <p className="myList_list">🌈 나의 북마크</p>
+            <p className="myList_list">📚 나의 북마크</p>
             <div className="showMyList">
-              <div className="list_column">
-                <div className="place_list">· 목록1</div>
-                <button className="place_edit_btn">이름수정</button>
-              </div>
-              {/* <div className="list_column">
-                <div className="place_list">· 목록2</div>
-                <button className="place_edit_btn">수정</button>
-              </div>
-              <div className="list_column">
-                <div className="place_list">· 목록3</div>
-                <button className="place_edit_btn">수정</button>
-              </div>
-              <div className="list_column">
-                <div className="place_list">· 목록4</div>
-                <button className="place_edit_btn">수정</button>
-              </div>
-              <div className="list_column">
-                <div className="place_list">· 목록5</div>
-                <button className="place_edit_btn">수정</button>
-              </div> */}
-              {/* <div className="myList_add">
+              {bookmarkName.map((markname, index) => (
+                <MarkName key={index} markname={markname} />
+              ))}
+              <div className="myList_add">
                 <p className="add_list">➕ 추가하기 </p>
-                <input
-                  className="myList_listname_input"
-                  type="text"
-                  placeholder="10자 이내로 작성해주세요."
-                />
-                <button className="myList_addBtn"> + </button>
-              </div> */}
+                <form onSubmit={createBookmark}>
+                  <input
+                    className="myList_listname_input"
+                    type="text"
+                    placeholder="10자 이내로 작성해주세요."
+                    value={name}
+                    onChange={(e) => {
+                      setName(e.target.value);
+                    }}
+                  />
+                  <button className="myList_addBtn"> + </button>
+                </form>
+              </div>
             </div>
           </div>
           <div className="right_fixed_menu">
             <div className="marked_map">
               <SavePlaceMap
+                bookmarkName={bookmarkName}
                 bookmarks={bookmarks}
                 bookmarkX={bookmarkX}
                 bookmarkY={bookmarkY}
