@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import MyPlaceList from "./MyPlaceList";
 
-const SavePlaceMap = ({ bookmarks, bookmarkX, bookmarkY }) => {
+const SavePlaceMap = ({ bookmarkName, bookmarks, bookmarkX, bookmarkY }) => {
   const { kakao } = window;
 
   const showMap = () => {
@@ -9,15 +9,20 @@ const SavePlaceMap = ({ bookmarks, bookmarkX, bookmarkY }) => {
 
     var mapOption = {
       center: new kakao.maps.LatLng(bookmarkY, bookmarkX),
-      level: 3,
+      level: 5,
     };
 
     var map = new window.kakao.maps.Map(mapContainer, mapOption);
 
     for (let l = 0; l < bookmarks.length; l++) {
+      const id = bookmarks[l].postId;
+      const name = bookmarks[l].postName;
+
       var positions = [
         {
           title: bookmarks[l].postName,
+          phone: bookmarks[l].phone,
+          address: bookmarks[l].address,
           latlng: new kakao.maps.LatLng(
             bookmarks[l].locationY,
             bookmarks[l].locationX
@@ -43,9 +48,38 @@ const SavePlaceMap = ({ bookmarks, bookmarkX, bookmarkY }) => {
           clickable: true, // 마커의 클릭이벤트
         });
 
-        kakao.maps.event.addListener(marker, "click", function () {
-          console.log(bookmarks[l]);
+        marker.setMap(map);
+
+        // 마커 클릭시 보여지는 창 구현
+        var iwContent = `<div style="min-width:250px; min-height:120px; padding:17px;">
+        <div style="font-weight:bold; font-size:20px;">
+        <a href="/detail/${name}/${id}"
+        style="text-decoration:underline"
+        >${positions[i].title}</a>
+        </div>
+        <div style="margin:20px; margin-bottom:0px; min-width:250px">
+        주소 : ${positions[i].address}
+        </div>
+        <div style="margin-top:15px; min-width:250px">📞 ${positions[i].phone}</div>
+        </div>`,
+          iwRemoveable = true;
+
+        var infowindow = new kakao.maps.InfoWindow({
+          content: iwContent,
+          removable: iwRemoveable,
         });
+
+        kakao.maps.event.addListener(
+          marker,
+          "click",
+          makeClickListener(map, marker, infowindow)
+        );
+
+        function makeClickListener(map, marker, infowindow) {
+          return function () {
+            infowindow.open(map, marker);
+          };
+        }
       }
     }
   };
@@ -71,7 +105,13 @@ const SavePlaceMap = ({ bookmarks, bookmarkX, bookmarkY }) => {
       <div className="place_map" id="map"></div>
       <div className="map_list">
         {bookmarks.map((bookmark, index) => (
-          <MyPlaceList key={index} bookmark={bookmark} />
+          <MyPlaceList
+            key={index}
+            index={index}
+            bookmarkName={bookmarkName}
+            bookmarks={bookmarks}
+            bookmark={bookmark}
+          />
         ))}
       </div>
     </>

@@ -265,8 +265,10 @@ textarea {
 }
 .noimg {
   position: relative;
+  margin-bottom: -80px;
   width: 1000px;
   height: 600px;
+  top: 100px;
 }
 .noimg > img {
   display: block;

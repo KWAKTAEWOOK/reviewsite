@@ -21,6 +21,7 @@
 }
 .list_column {
   margin-left: 20px;
+  margin-bottom: 5px;
   height: 30px;
 }
 .place_list {
@@ -39,9 +40,22 @@
   left: 270px;
   top: -20px;
 }
+.place_edit_btn2 {
+  position: relative;
+  left: 294px;
+}
 .place_edit_btn:hover {
   color: black;
 }
+.place_del_btn {
+  margin-left: 8px;
+}
+.cancel_btn {
+  position: relative;
+  top: -41px;
+  left: 325px;
+}
+
 .add_list {
   position: relative;
   top: 0px;
@@ -82,7 +96,7 @@
 .right_fixed_menu {
   position: absolute;
   top: -60px;
-  left: 550px;
+  left: 570px;
   width: 600px;
   min-height: 650px;
 }
@@ -91,7 +105,7 @@
   height: 400px;
 }
 .map_list {
-  width: 600px;
+  width: 598px;
   height: 350px;
   overflow-y: auto;
   border: 1px solid rgba(177, 177, 177, 0.795);
@@ -120,18 +134,43 @@
   margin-left: 10px;
   top: 20px;
 }
-.place_bmlist_title > span {
+.place_bmlist_index {
+  margin-right: 10px;
+  margin-left: 5px;
+}
+.clickLocation {
   cursor: pointer;
 }
-.place_bmlist_title > span:hover {
+.clickLocation:hover {
   text-decoration: underline;
 }
 .place_bmlist_delete {
   font-family: "NanumSquareNeo-Variable";
   position: relative;
-  left: 255px;
+  left: 200px;
   margin-top: 5px;
 }
 .place_bmlist_delete:hover {
   font-weight: bold;
+}
+
+// MarkName.jsx
+.edit_name_input {
+  font-family: "NanumSquareNeo-Variable";
+  position: relative;
+  left: 15px;
+  height: 15px;
+}
+.edit_name_input:focus {
+  outline: none;
+}
+.selectMark {
+  font-family: "NanumSquareNeo-Variable";
+  position: relative;
+  left: 150px;
+  width: 140px;
+  height: 25px;
+}
+.selectMark:focus {
+  outline: none;
 }
