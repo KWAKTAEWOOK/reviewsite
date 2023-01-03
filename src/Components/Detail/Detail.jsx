@@ -106,7 +106,6 @@ const Detail = () => {
 
   //------------------------------------------------------------------
   const [user, setUser] = useRecoilState(userState);
-  console.log(user);
   const detail_id = id;
   const [getdata, setGetdata] = useState([]);
   const reversedgetdata = getdata.map((getdatas) => getdatas).reverse();
@@ -161,7 +160,7 @@ const Detail = () => {
             }
           }}
         >
-          <Modal outSection={outSection} />
+          <Modal outSection={outSection} images={images} />
         </div>
       ) : null}
       <div className="detail_back">

@@ -193,7 +193,7 @@ li > img:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  max-width: 700px;
+  max-width: 1000px;
   width: auto;
   align-items: center;
   justify-content: center;
@@ -230,36 +230,14 @@ li > img:hover {
   width: 100%;
   max-height: 700px;
 }
-.modalbox ul li > img {
-  width: 138px;
-  height: 100px;
 
-  vertical-align: top;
-}
 .modalbox > img {
-  width: 700px;
+  width: 1000px;
   height: 400px;
   object-fit: cover;
   top: 0;
 }
-.modalbox ul {
-  display: flex;
-  flex-wrap: wrap;
-  align-content: flex-start;
-  min-height: 100px;
-  max-height: 300px;
-  height: auto;
-  overflow-y: scroll;
-  overflow-x: hidden;
-}
-.modalbox ul::-webkit-scrollbar {
-  width: 8px; /* 스크롤바의 너비 */
-}
-.modalbox ul::-webkit-scrollbar-thumb {
-  height: 10%; /* 스크롤바의 길이 */
-  background: #b8c6d9; /* 스크롤바의 색상 */
-  border-radius: 10px;
-}
+
 textarea {
   resize: none;
 }

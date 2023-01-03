@@ -1,84 +1,90 @@
-import React, { useState, useEffect } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import data from "./Image";
 import Slider from "react-slick";
+import "../../Style/Detail/slick/slick.css";
+import "../../Style/Detail/slick/slick-theme.css";
 
+const Modal = ({ outSection, images }) => {
+  const getimg = images.map((getimages) => getimages).reverse();
+  console.log(getimg);
+  const [mainSlick, setMainSlick] = useState(null);
+  const [pagingSlick, setPagingSlick] = useState(null);
+  const mainSlickRef = useRef(null);
+  const pagingSlickRef = useRef(null);
 
-constructor(props) {
-  super(props);
-  this.state = {
-    nav1: null,
-    nav2: null
+  useEffect(() => {
+    setMainSlick(mainSlickRef.current);
+    setPagingSlick(pagingSlickRef.current);
+  }, []);
+
+  const mainSettings = {
+    dots: false,
+    arrows: false,
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
   };
-}
 
-componentDidMount() {
-  this.setState({
-    nav1: this.slider1,
-    nav2: this.slider2
-  });
-}
-
-const Modal = ({ outSection }) => {
-
+  const pagingSettings = {
+    dots: false,
+    arrows: false,
+    centerMode: true,
+    slidesToShow: 5,
+    swipeToSlide: true,
+    focusOnSelect: true,
+  };
+  console.log(getimg);
+  const onClickPrev = useCallback((ref) => () => ref.current.slickPrev(), []);
+  const onClickNext = useCallback((ref) => () => ref.current.slickNext(), []);
   return (
     <div className="modalcontainer" ref={outSection}>
       <div className="modal">
         <article className="modalbox">
           <div>
-            <h2>Slider Syncing (AsNavFor)</h2>
-            <h4>First Slider</h4>
-            <Slider
-            // asNavFor={this.state.nav2}
-            // ref={(slider) => (this.slider1 = slider)}
-            >
-              <div>
-                <h3>1</h3>
-              </div>
-              <div>
-                <h3>2</h3>
-              </div>
-              <div>
-                <h3>3</h3>
-              </div>
-              <div>
-                <h3>4</h3>
-              </div>
-              <div>
-                <h3>5</h3>
-              </div>
-              <div>
-                <h3>6</h3>
-              </div>
+            <Slider ref={mainSlickRef} asNavFor={pagingSlick} {...mainSettings}>
+              {getimg.map((v) => {
+                return (
+                  <div className="SlickItems">
+                    <img src={v.imgUrl} />
+                  </div>
+                );
+              })}
             </Slider>
-            <h4>Second Slider</h4>
+
             <Slider
-              // asNavFor={this.state.nav1}
-              // ref={(slider) => (this.slider2 = slider)}
-              slidesToShow={3}
+              ref={pagingSlickRef}
+              asNavFor={mainSlick}
+              {...pagingSettings}
+              slidesToShow={getimg.length < 7 ? 5 : 7}
               swipeToSlide={true}
               focusOnSelect={true}
             >
-              <div>
-                <h3>1</h3>
-              </div>
-              <div>
-                <h3>2</h3>
-              </div>
-              <div>
-                <h3>3</h3>
-              </div>
-              <div>
-                <h3>4</h3>
-              </div>
-              <div>
-                <h3>5</h3>
-              </div>
-              <div>
-                <h3>6</h3>
-              </div>
+              {getimg.map((v) => {
+                return (
+                  <div className="PagingAnchor">
+                    <img src={v.imgUrl} />
+                  </div>
+                );
+              })}
             </Slider>
           </div>
         </article>
+        <Slider
+          ref={pagingSlickRef}
+          // asNavFor={mainSlick}
+          arrows={false}
+          slidesToShow={1}
+          swipeToSlide={false}
+        >
+          {getimg.map((v) => {
+            return (
+              <div className="vbox">
+                <div>닉네임 : {v.nickname}</div>
+                <span> 리뷰 내용 :{v.content}</span>
+              </div>
+            );
+          })}
+        </Slider>
       </div>
     </div>
   );

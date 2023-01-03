@@ -113,6 +113,13 @@ li {
   position: relative;
   display: inline-block;
 }
-&.slick-active > span {
+.slick-active > span {
   filter: none;
+}
+.vbox {
+  height: 100px;
+  width: 500px;
+  display: block;
+  background: rgba(0, 0, 0, 0.3);
+  text-align: center;
 }
