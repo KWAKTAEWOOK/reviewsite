@@ -72,7 +72,7 @@ const Detail = () => {
       setimages(data.data);
     } catch (e) {
       console.log(e);
-      alert("값 입력 실패");
+      alert("이미지 불러오기 실패");
     }
   };
 
@@ -106,7 +106,7 @@ const Detail = () => {
 
   //------------------------------------------------------------------
   const [user, setUser] = useRecoilState(userState);
-
+  console.log(user);
   const detail_id = id;
   const [getdata, setGetdata] = useState([]);
   const reversedgetdata = getdata.map((getdatas) => getdatas).reverse();
@@ -123,20 +123,52 @@ const Detail = () => {
       setGetdata(data.data);
     } catch (e) {
       console.log(e);
-      alert("값 입력 실패");
+      alert("리뷰 불러오기 실패");
     }
   };
-
   //------------------------------------------------------------------
+  const [modal, setModal] = useState(false);
+  const outSection = useRef();
+  useEffect(() => {
+    const clickOutside = (e) => {
+      // 모달이 열려 있고 모달의 바깥쪽을 눌렀을 때 창 닫기
+      if (
+        modal &&
+        outSection.current &&
+        !outSection.current.contains(e.target)
+      ) {
+        setModal(false);
+      }
+    };
+
+    document.addEventListener("mousedown", clickOutside);
+
+    return () => {
+      // Cleanup the event listener
+      document.removeEventListener("mousedown", clickOutside);
+    };
+  }, [modal]);
   //----------------------------------------------------
 
   return (
     <>
       <TopbarV2 />
-
+      {modal === true ? (
+        <div
+          onClick={(e) => {
+            if (outSection.current == e.target) {
+              setModal(false);
+            }
+          }}
+        >
+          <Modal outSection={outSection} />
+        </div>
+      ) : null}
       <div className="detail_back">
         <div className="wrap" ref={photosRef}>
-          {images.length === 0 ? null : <CenterMode images={images} />}
+          {images.length === 0 ? null : (
+            <CenterMode images={images} setModal={setModal} modal={modal} />
+          )}
           {images.length === 0 ? (
             <div className="noimg">
               <img src="/images/noimg_fac.gif" alt="" />

@@ -1,44 +1,87 @@
 import React, { useState, useEffect } from "react";
 import data from "./Image";
+import Slider from "react-slick";
+
+
+constructor(props) {
+  super(props);
+  this.state = {
+    nav1: null,
+    nav2: null
+  };
+}
+
+componentDidMount() {
+  this.setState({
+    nav1: this.slider1,
+    nav2: this.slider2
+  });
+}
 
 const Modal = ({ outSection }) => {
-  //사진 클릭네이션
-  const [datas, setData] = useState(data);
-  const [getids, setGetid] = useState();
-  const [currItem, setCurrItem] = useState(datas[0]);
 
-  const onView = (id) => {
-    setCurrItem(datas.find((item) => item.id === id));
-  };
-
-  function Gallery({ datas, currItem, onView }) {
-    const { image } = currItem;
-
-    return (
-      <div className="modalcontainer" ref={outSection}>
-        <div className="modal">
-          <article className="modalbox">
-            <img src={image} />
-            <ul>
-              {datas.map((item) => (
-                <GallerysItem key={item.id} item={item} onView={onView} />
-              ))}
-            </ul>
-          </article>
-        </div>
+  return (
+    <div className="modalcontainer" ref={outSection}>
+      <div className="modal">
+        <article className="modalbox">
+          <div>
+            <h2>Slider Syncing (AsNavFor)</h2>
+            <h4>First Slider</h4>
+            <Slider
+            // asNavFor={this.state.nav2}
+            // ref={(slider) => (this.slider1 = slider)}
+            >
+              <div>
+                <h3>1</h3>
+              </div>
+              <div>
+                <h3>2</h3>
+              </div>
+              <div>
+                <h3>3</h3>
+              </div>
+              <div>
+                <h3>4</h3>
+              </div>
+              <div>
+                <h3>5</h3>
+              </div>
+              <div>
+                <h3>6</h3>
+              </div>
+            </Slider>
+            <h4>Second Slider</h4>
+            <Slider
+              // asNavFor={this.state.nav1}
+              // ref={(slider) => (this.slider2 = slider)}
+              slidesToShow={3}
+              swipeToSlide={true}
+              focusOnSelect={true}
+            >
+              <div>
+                <h3>1</h3>
+              </div>
+              <div>
+                <h3>2</h3>
+              </div>
+              <div>
+                <h3>3</h3>
+              </div>
+              <div>
+                <h3>4</h3>
+              </div>
+              <div>
+                <h3>5</h3>
+              </div>
+              <div>
+                <h3>6</h3>
+              </div>
+            </Slider>
+          </div>
+        </article>
       </div>
-    );
-  }
-
-  function GallerysItem({ item, onView }) {
-    const { image, id } = item;
-    return (
-      <li onClick={(e) => onView(id)}>
-        <img src={image} />
-      </li>
-    );
-  }
-  return <Gallery datas={datas} onView={onView} currItem={currItem} />;
+    </div>
+  );
 };
 
 export default Modal;
