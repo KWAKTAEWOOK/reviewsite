@@ -10,8 +10,9 @@ import { BACKEND_URL } from "../../../utils";
 import Slider from "react-slick";
 import "../../../Style/Detail/slick/slick.css";
 import "../../../Style/Detail/slick/slick-theme.css";
+import Modal from "../Modal";
 
-const CenterMode = ({ images }) => {
+const CenterMode = ({ images, modal, setModal }) => {
   //------------------------------------------------------------------------------------
   //이미지값 배열 뒤집는 로직
   const getimg = images.map((getimages) => getimages).reverse();
@@ -34,7 +35,7 @@ const CenterMode = ({ images }) => {
     customPaging: function (i) {
       const Click = () => {
         if (i === 4) {
-          console.log(i);
+          setModal(!modal);
         }
       };
       return (

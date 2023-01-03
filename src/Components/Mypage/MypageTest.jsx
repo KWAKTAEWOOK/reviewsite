@@ -93,6 +93,46 @@ const MypageTest = () => {
   //   });
   // }
 
+  //--------------------------------------------------------------------------
+  //이미지 업로드 로직
+  const [files, setImgFiles] = useState(() => []);
+  const [Image, setImage] = useState("/images/user.gnp");
+  const imageInput = useRef();
+  // 버튼클릭시 input태그에 클릭이벤트를 걸어준다.
+  const onCickImageUpload = () => {
+    imageInput.current.click();
+  };
+  const onImgfiles = (e) => {
+    if (e.target.files[0]) {
+      setImgFiles(e.target.files[0]);
+    } else {
+      //업로드 취소할 시
+      setImage(
+        "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+      );
+      return;
+    }
+  };
+
+  const formData = new FormData();
+  const post = async (e) => {
+    formData.append("files", files[0]);
+    if (window.confirm("등록하시겠습니까?"))
+      try {
+        const data = await axios({
+          url: `${BACKEND_URL}/user/create/imgpost`,
+          method: "POST",
+          data: formData,
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+        window.location.reload();
+      } catch (e) {
+        console.log(e);
+        alert("값 입력 실패");
+      }
+  };
   return (
     <div>
       <TopbarV2 />
@@ -114,20 +154,19 @@ const MypageTest = () => {
             <div className="MypageEdit_usernamebox_username MyPageEdit_box_content">{`${username}`}</div>
           </div>
           <div className="MypageEdit_profilepicturebox">
+            {/*input태그는 display:"none" 을 이용해 안보이게 숨겨준다.'*/}
             <input
-              className="MypageEdit_profilepicture_content"
               type="file"
-              // ref={inputRef}
-              // onChange={onUploadinImage}
-              // style={{ display: "none" }}
-              accept="image/*"
+              style={{ display: "none" }}
+              ref={imageInput}
+              onChange={onImgfiles}
             />
             <button
               className="MypageEgit_profilepicture_button"
               label="이미지 업로드"
-              //  onClick={onUploadinImageButtonClick}
+              onClick={onCickImageUpload}
             >
-              <span>파일 업로드</span>
+              <span> 이미지업로드</span>
             </button>
           </div>
           <div className="MypageEdit_nicknamebox">
