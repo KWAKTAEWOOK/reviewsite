@@ -1,14 +1,21 @@
-import React, { useEffect } from "react";
-import MyAllPlaceList from "./MyAllPlaceList";
+import axios from "axios";
+import React, { useState } from "react";
+import { BACKEND_URL } from "../../utils";
+import BookmarkOption from "./BookmarkOption";
 
-const SavePlaceMap = ({ bookmarkName, bookmarks, bookmarkX, bookmarkY }) => {
+const MyBookmarkPlaceList = ({ index, bookmarkName, bookmarks, bookmark }) => {
   const { kakao } = window;
+  const [mapName, setMapName] = useState();
+  const postId = bookmark?.postId;
+  const bookmarkId = bookmark.id;
+  const bookmarkNameId = bookmark.bookmarkName?.id;
 
-  const showMap = () => {
+  // 클릭이벤트
+  const clickLocation = () => {
     var mapContainer = document.getElementById("map");
 
     var mapOption = {
-      center: new kakao.maps.LatLng(bookmarkY, bookmarkX),
+      center: new kakao.maps.LatLng(bookmark.locationY, bookmark.locationX),
       level: 5,
     };
 
@@ -50,7 +57,6 @@ const SavePlaceMap = ({ bookmarkName, bookmarks, bookmarkX, bookmarkY }) => {
 
         marker.setMap(map);
 
-        // 마커 클릭시 보여지는 창 구현
         var iwContent = `<div style="min-width:250px; min-height:120px; padding:17px;">
         <div style="font-weight:bold; font-size:20px;">
         <a href="/detail/${name}/${id}"
@@ -84,38 +90,49 @@ const SavePlaceMap = ({ bookmarkName, bookmarks, bookmarkX, bookmarkY }) => {
     }
   };
 
-  // 저장된 북마크가 없을 때
-  const noBookmarkMap = () => {
-    var mapContainer = document.getElementById("map");
-
-    var mapOption = {
-      center: new kakao.maps.LatLng(33.450879, 126.56994),
-      level: 3,
-    };
-
-    var map = new window.kakao.maps.Map(mapContainer, mapOption);
+  const onChangeHandler = async (e) => {
+    const data = await axios({
+      url: `${BACKEND_URL}/bookmark/name/set/${bookmarkId}?nameId=${e.target.value}`,
+      method: "PATCH",
+    });
+    setMapName(e.target.value);
   };
 
-  useEffect(() => {
-    bookmarks.length !== 0 ? showMap() : noBookmarkMap();
-  });
+  // 북마크 삭제만
+  const deleteBookmark = async (e) => {
+    if (window.confirm("삭제하시겠습니까?")) {
+      await axios({
+        url: `${BACKEND_URL}/bookmark/delete/${postId}`,
+        method: "DELETE",
+      });
+      window.location.reload();
+    } else {
+      console.log(e);
+    }
+  };
 
   return (
-    <>
-      <div className="place_map" id="map"></div>
-      <div className="map_list">
-        {bookmarks.map((bookmark, index) => (
-          <MyAllPlaceList
-            key={index}
-            index={index}
-            bookmarkName={bookmarkName}
-            bookmarks={bookmarks}
-            bookmark={bookmark}
-          />
-        ))}
+    <div className="place_bmlist">
+      <div className="place_bmlist_title">
+        <span className="place_bmlist_index">{index + 1 + " "}</span>
+        <span className="clickLocation" onClick={clickLocation}>
+          {bookmark.postName}
+        </span>
       </div>
-    </>
+      <select
+        className="selectMark"
+        onChange={onChangeHandler}
+        defaultValue={bookmarkNameId ? bookmarkNameId : mapName}
+      >
+        {bookmarkName?.map((names, index) => (
+          <BookmarkOption names={names} key={index} />
+        ))}
+      </select>
+      <button className="place_bmlist_delete" onClick={deleteBookmark}>
+        삭제
+      </button>
+    </div>
   );
 };
 
-export default SavePlaceMap;
+export default MyBookmarkPlaceList;

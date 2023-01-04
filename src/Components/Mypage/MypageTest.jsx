@@ -5,9 +5,6 @@ import { useRecoilState } from "recoil";
 import { userState } from "../../recoil/user";
 import TopbarV2 from "../Main/TopbarV2";
 import "../../Style/Mypage/MypageTest.scss";
-import { useRef } from "react";
-import { useCallback } from "react";
-import { type } from "@testing-library/user-event/dist/type";
 
 const MypageTest = () => {
   const [user, setUser] = useRecoilState(userState);
@@ -217,7 +214,7 @@ const MypageTest = () => {
             <div className="MypageEdit_passwordbox_newpasswordbox_content MyPageEdit_box_content">
               <input
                 className="MypageEdit_passwordbox_newpasswordbox_input input_common_properties"
-                type="text"
+                type="password"
                 onChange={changePassword}
                 placeholder="비밀번호를 입력해주세요(8 - 12자리)"
               ></input>
@@ -228,7 +225,7 @@ const MypageTest = () => {
             <div className="MypageEdit_passwordbox_newpasswordbox2_content MyPageEdit_box_content">
               <input
                 className="MypageEdit_passwordbox_newpasswordbox2_input input_common_properties"
-                type="text"
+                type="password"
                 onChange={changePassword}
               ></input>
             </div>
@@ -241,7 +238,7 @@ const MypageTest = () => {
           </a>
           <button
             className="MypageEdit_confirm_button MyPageEdit_button_common_properties"
-            onClick={async (e) => {
+            onClick={async () => {
               if (window.confirm("수정하시겠습니까?")) {
                 try {
                   const data = await axios({
@@ -261,7 +258,7 @@ const MypageTest = () => {
                   window.location.href = "/main";
                 } catch (e) {
                   // e.text().then((msg) => alert(msg));
-                  // console.log(e);
+                  console.log(e);
                   alert("수정 실패");
                   // setPassword("");
                 }

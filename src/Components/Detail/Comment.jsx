@@ -3,8 +3,13 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { BACKEND_URL } from "../../utils";
 import "../../Style/Detail/Comment.scss";
+import { useRecoilState } from "recoil";
+import { userState } from "../../recoil/user";
 
 const Comment = ({ reviewlist, nickname, reviewRef }) => {
+  const [user, setUser] = useRecoilState(userState);
+
+  // console.log(user);
   const onSubmoit = (e) => {
     e.preventDefault(); //동작때마다 새로고침 중지
     if (window.confirm("삭제하시겠습니까?") == true) {
@@ -15,6 +20,7 @@ const Comment = ({ reviewlist, nickname, reviewRef }) => {
       console.log("취소되었습니다");
     }
   };
+
   const deletecontent = async (e) => {
     try {
       const data = await axios({
@@ -30,6 +36,7 @@ const Comment = ({ reviewlist, nickname, reviewRef }) => {
       alert("값 입력 실패");
     }
   };
+
   const get = async (e) => {
     try {
       const data = await axios({
@@ -126,7 +133,7 @@ const Comment = ({ reviewlist, nickname, reviewRef }) => {
           &nbsp;
           {reviewlist.createDate.substring(11, 16)}
         </div>
-        {nickname == reviewlist.nickname && (
+        {user?.id == reviewlist.user?.id && (
           <>
             <button className="textbut">
               <span onClick={toggleClick}>수정</span>
@@ -144,7 +151,7 @@ const Comment = ({ reviewlist, nickname, reviewRef }) => {
             <div className="userimg">
               <img className="usersimg" src="/images/user.png" alt="" />
             </div>
-            <div>{reviewlist.nickname}</div>
+            <div>{reviewlist.user?.nickname}</div>
           </div>
           <div className="contant">
             <div> {reviewlist.content}</div>

@@ -28,7 +28,7 @@ const MypageUserConfirm = () => {
     setting();
   }, []);
 
-  const loginUser = async (e) => {
+  const confimUser = async (e) => {
     e.preventDefault();
     try {
       const data = await axios({
@@ -44,12 +44,10 @@ const MypageUserConfirm = () => {
       });
       setUser(data.data);
       alert("본인 확인이 완료되었습니다.");
+      setPassword("");
       window.location.href = "/MypageTest";
-      console.log("잘됨 " + password);
     } catch (e) {
-      // console.log(e);
       alert("비밀번호를 확인하세요.");
-      console.log("틀림" + password);
       setPassword("");
     }
   };
@@ -57,7 +55,7 @@ const MypageUserConfirm = () => {
   return (
     <div>
       <TopbarV2 />
-      <form onSubmit={loginUser}>
+      <form onSubmit={confimUser}>
         <h2 className="MypageUserConfirmTest_Title">회원정보수정</h2>
         <div className="MypageUserConfirmTest_Container">
           <div className="MypageUserConfirmTest_Box">
@@ -66,16 +64,6 @@ const MypageUserConfirm = () => {
               {user && `${user.nickname}`} 님의 정보를 안전하게 보호하기 위해
               계정을 다시 한번 확인합니다.
             </h5>
-            {/* <div className="MypageUserConfirmTest_password_subject">아이디</div>
-            <input
-              className="MypageUserConfirmTest_password_content"
-              placeholder="${user.userid}"
-              type="text"
-              value={userid}
-              onChange={(e) => {
-                setUserid(e.target.value);
-              }}
-            /> */}
             <div className="MypageUserConfirmTest_password_subject">
               비밀번호
             </div>
