@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import { BACKEND_URL } from "../../utils";
+import { BACKEND_URL, LOCAL_URL } from "../../utils";
 import { useRecoilState } from "recoil";
 import { userState } from "../../recoil/user";
 import TopbarV2 from "../Main/TopbarV2";
@@ -232,7 +232,9 @@ const MypageTest = () => {
           </div>
           <a
             className="MypageEdit_cansel_button MyPageEdit_button_common_properties"
-            href="http://localhost:3000/main"
+            onClick={() => {
+              window.location.href = `${LOCAL_URL}/main`;
+            }}
           >
             취소
           </a>

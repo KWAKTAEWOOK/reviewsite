@@ -6,7 +6,7 @@ import Topbar from "./Topbar";
 import "../../Style/Main/Main.scss";
 import useGeolocation from "react-hook-geolocation";
 import axios from "axios";
-import { BACKEND_URL } from "../../utils";
+import { BACKEND_URL, LOCAL_URL } from "../../utils";
 
 const { kakao } = window;
 
@@ -49,7 +49,7 @@ const Main = ({
   };
 
   const onClickDetailDB = (placeDB) => {
-    window.location.href = `http://localhost:3000/Detail/${placeDB.place_name}/${placeDB.id}`;
+    window.location.href = `${LOCAL_URL}/Detail/${placeDB.place_name}/${placeDB.id}`;
     sessionStorage.setItem("detail", JSON.stringify(placeDB));
   };
 
