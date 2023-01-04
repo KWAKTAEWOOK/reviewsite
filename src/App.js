@@ -15,6 +15,7 @@ import MypageTest from "./Components/Mypage/MypageTest";
 import MypageUserConfirm from "./Components/Mypage/MypageUserConfirm";
 import MyPlace from "./Components/MyPlace/MyPlace";
 import Slick from "./Components/Detail/slick/CenterMode";
+import SelectMyPlace from "./Components/MyPlace/SelectMyPlace";
 
 const App = () => {
   const [inputText, setInputText] = useState("");
@@ -109,6 +110,9 @@ const App = () => {
             </Route>
             <Route path={"/myplace"} exact>
               <MyPlace />
+            </Route>
+            <Route path={"/myplace/:id"} exact>
+              <SelectMyPlace />
             </Route>
           </Switch>
         </BrowserRouter>

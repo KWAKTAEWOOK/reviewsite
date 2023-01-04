@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
-import MyAllPlaceList from "./MyAllPlaceList";
+import MyBookmarkPlaceList from "./MyBookmarkPlaceList";
 
-const SavePlaceMap = ({ bookmarkName, bookmarks, bookmarkX, bookmarkY }) => {
+const MyBookmarkPlace = ({ bookmarkName, bookmarks, bookmarkX, bookmarkY }) => {
+  const length = bookmarks.length;
   const { kakao } = window;
 
   const showMap = () => {
@@ -104,18 +105,24 @@ const SavePlaceMap = ({ bookmarkName, bookmarks, bookmarkX, bookmarkY }) => {
     <>
       <div className="place_map" id="map"></div>
       <div className="map_list">
-        {bookmarks.map((bookmark, index) => (
-          <MyAllPlaceList
-            key={index}
-            index={index}
-            bookmarkName={bookmarkName}
-            bookmarks={bookmarks}
-            bookmark={bookmark}
-          />
-        ))}
+        {bookmarks.length != 0 ? (
+          <>
+            {bookmarks.map((bookmark, index) => (
+              <MyBookmarkPlaceList
+                key={index}
+                index={index}
+                bookmarkName={bookmarkName}
+                bookmarks={bookmarks}
+                bookmark={bookmark}
+              />
+            ))}{" "}
+          </>
+        ) : (
+          <div className="notFoundBookmark">북마크가 없습니다.</div>
+        )}
       </div>
     </>
   );
 };
 
-export default SavePlaceMap;
+export default MyBookmarkPlace;

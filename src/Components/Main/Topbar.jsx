@@ -40,7 +40,7 @@ const Topbar = () => {
               <ul>
                 <li>
                   <TiThMenu className="TiThMenu" />
-                  <h3>&nbsp;&nbsp;메뉴</h3>
+                  <h3>메뉴</h3>
                 </li>
                 <ul>
                   <li>

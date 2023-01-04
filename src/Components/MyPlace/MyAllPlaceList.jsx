@@ -1,8 +1,14 @@
+import axios from "axios";
 import React, { useState } from "react";
+import { BACKEND_URL } from "../../utils";
+import BookmarkOption from "./BookmarkOption";
 
-const MyPlaceList = ({ index, bookmarkName, bookmarks, bookmark }) => {
+const MyAllPlaceList = ({ index, bookmarkName, bookmarks, bookmark }) => {
   const { kakao } = window;
   const [mapName, setMapName] = useState();
+  const postId = bookmark?.postId;
+  const bookmarkId = bookmark.id;
+  const bookmarkNameId = bookmark.bookmarkName?.id;
 
   // 클릭이벤트
   const clickLocation = () => {
@@ -51,7 +57,7 @@ const MyPlaceList = ({ index, bookmarkName, bookmarks, bookmark }) => {
 
         marker.setMap(map);
 
-        var iwContent = `<div style="min-width:250px; min-height:120px; paddin:17px;">
+        var iwContent = `<div style="min-width:250px; min-height:120px; padding:17px;">
         <div style="font-weight:bold; font-size:20px;">
         <a href="/detail/${name}/${id}"
         style="text-decoration:underline"
@@ -84,8 +90,25 @@ const MyPlaceList = ({ index, bookmarkName, bookmarks, bookmark }) => {
     }
   };
 
-  const onChangeHandler = (e) => {
+  const onChangeHandler = async (e) => {
+    const data = await axios({
+      url: `${BACKEND_URL}/bookmark/name/set/${bookmarkId}?nameId=${e.target.value}`,
+      method: "PATCH",
+    });
     setMapName(e.target.value);
+  };
+
+  // 북마크 삭제만
+  const deleteBookmark = async (e) => {
+    if (window.confirm("삭제하시겠습니까?")) {
+      await axios({
+        url: `${BACKEND_URL}/bookmark/delete/${postId}`,
+        method: "DELETE",
+      });
+      window.location.reload();
+    } else {
+      console.log(e);
+    }
   };
 
   return (
@@ -100,19 +123,18 @@ const MyPlaceList = ({ index, bookmarkName, bookmarks, bookmark }) => {
         <select
           className="selectMark"
           onChange={onChangeHandler}
-          value={mapName}
+          defaultValue={bookmarkNameId ? bookmarkNameId : mapName}
         >
-          <option value="none">북마크 이동</option>
           {bookmarkName.map((names, index) => (
-            <option key={index} value={names.bookmarkName}>
-              {names.bookmarkName}
-            </option>
+            <BookmarkOption names={names} key={index} />
           ))}
         </select>
-        <button className="place_bmlist_delete">삭제</button>
+        <button className="place_bmlist_delete" onClick={deleteBookmark}>
+          삭제
+        </button>
       </div>
     </>
   );
 };
 
-export default MyPlaceList;
+export default MyAllPlaceList;

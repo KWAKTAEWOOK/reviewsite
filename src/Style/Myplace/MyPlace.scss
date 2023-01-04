@@ -43,6 +43,7 @@
 .place_edit_btn2 {
   position: relative;
   left: 294px;
+  top: -22px;
 }
 .place_edit_btn:hover {
   color: black;
@@ -90,6 +91,14 @@
   position: relative;
   top: 4px;
   left: 1px;
+}
+.all_list {
+  position: relative;
+  font-family: "NanumSquareNeo-Variable";
+  left: 200px;
+}
+.all_list:hover {
+  font-weight: bold;
 }
 
 // 오른쪽에 보여지는 지도
@@ -173,4 +182,8 @@
 }
 .selectMark:focus {
   outline: none;
+}
+.notFoundBookmark {
+  position: relative;
+  top: 20px;
 }

@@ -7,29 +7,18 @@ import { useEffect } from "react";
 import { BACKEND_URL } from "../../utils";
 import axios from "axios";
 import MarkName from "./MarkName";
-import SavePlaceMap from "./SavePlaceMap";
+import MyBookmarkPlace from "./MyBookmarkPlace";
 
-const MyPlace = () => {
+const SelectMyPlace = () => {
   const [user, setUser] = useRecoilState(userState);
   const [bookmarks, setBookmarks] = useState([]);
   const [bookmarkX, setBookmarkX] = useState([]);
   const [bookmarkY, setBookmarkY] = useState([]);
   const [bookmarkName, setBookmarkName] = useState([]);
+  const [bookmarkByFolder, setBookmarkByFolder] = useState([]);
   const [name, setName] = useState("");
 
-  // 유저의 북마크 가져오기
-  useEffect(() => {
-    const getData = async (e) => {
-      const data = await axios({
-        url: `${BACKEND_URL}/bookmark/user?userId=${user?.id}`,
-        method: "GET",
-      });
-      setBookmarks(data.data);
-      setBookmarkX(data.data[0]?.locationX);
-      setBookmarkY(data.data[0]?.locationY);
-    };
-    getData();
-  }, []);
+  const para = document.location.href.split("myplace/");
 
   // 북마크 이름 생성
   const createBookmark = async (e) => {
@@ -59,6 +48,20 @@ const MyPlace = () => {
         method: "GET",
       });
       setBookmarkName(data.data);
+    };
+    getData();
+  }, []);
+
+  // 유저의 북마크 가져오기
+  useEffect(() => {
+    const getData = async (e) => {
+      const data = await axios({
+        url: `${BACKEND_URL}/bookmarkname/${parseInt(para[1])}`,
+        method: "GET",
+      });
+      setBookmarks(data.data.bookmark);
+      setBookmarkX(data.data.bookmark[0]?.locationX);
+      setBookmarkY(data.data.bookmark[0]?.locationY);
     };
     getData();
   }, []);
@@ -114,7 +117,7 @@ const MyPlace = () => {
           </div>
           <div className="right_fixed_menu">
             <div className="marked_map">
-              <SavePlaceMap
+              <MyBookmarkPlace
                 bookmarkName={bookmarkName}
                 bookmarks={bookmarks}
                 bookmarkX={bookmarkX}
@@ -128,4 +131,4 @@ const MyPlace = () => {
   );
 };
 
-export default MyPlace;
+export default SelectMyPlace;

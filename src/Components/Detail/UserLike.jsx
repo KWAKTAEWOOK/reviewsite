@@ -17,6 +17,7 @@ const UserLike = ({ detailData }) => {
   const [like, setLike] = useState(false);
   const [userLike, setUserLike] = useState("");
   const [userBookmark, setUserBookmark] = useState("");
+  const [saveBookmark, setSaveBookmark] = useState([]);
   const xData = detailData.x;
   const yData = detailData.y;
   const phone = detailData.phone;
@@ -51,7 +52,7 @@ const UserLike = ({ detailData }) => {
       try {
         e.preventDefault();
         const data = await axios({
-          url: `${BACKEND_URL}/heart?userId=${user.id}`,
+          url: `${BACKEND_URL}/heart?userId=${user?.id}`,
           method: "POST",
           data: {
             postid,
@@ -67,12 +68,24 @@ const UserLike = ({ detailData }) => {
     }
   };
 
+  // 북마크 폴더 가져오기
+  useEffect(() => {
+    const getData = async (e) => {
+      const data = await axios({
+        url: `${BACKEND_URL}/bookmarkname?userId=${user?.id}`,
+        method: "GET",
+      });
+      setSaveBookmark(data.data[0].id);
+    };
+    getData();
+  }, []);
+
   // 북마크 상태 표시
   useEffect(() => {
     const getData = async () => {
       try {
         const data = await axios({
-          url: `${BACKEND_URL}/bookmark/${id}?userId=${userid}`,
+          url: `${BACKEND_URL}/bookmark/${id}?userId=${user?.id}`,
           method: "GET",
         });
         setUserBookmark(data.data);
@@ -83,6 +96,7 @@ const UserLike = ({ detailData }) => {
     getData();
   }, []);
 
+  // 북마크 클릭 시 좋아요 / 취소
   const clickBookmark = async (e) => {
     if (!user) {
       alert("로그인 후 이용해주세요 😊");
@@ -90,7 +104,7 @@ const UserLike = ({ detailData }) => {
       try {
         e.preventDefault();
         const data = await axios({
-          url: `${BACKEND_URL}/bookmark/list?userId=${user.id}`,
+          url: `${BACKEND_URL}/bookmark/list?userId=${user.id}&nameId=${saveBookmark}`,
           method: "POST",
           data: {
             postId: postid,

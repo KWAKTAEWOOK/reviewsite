@@ -1,12 +1,4 @@
-import React, {
-  Component,
-  useRef,
-  useCallback,
-  useState,
-  useEffect,
-} from "react";
-import axios from "axios";
-import { BACKEND_URL } from "../../../utils";
+import React, { useRef, useCallback, useState } from "react";
 import Slider from "react-slick";
 import "../../../Style/Detail/slick/slick.css";
 import "../../../Style/Detail/slick/slick-theme.css";
