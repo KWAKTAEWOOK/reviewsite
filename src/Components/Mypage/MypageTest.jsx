@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { BACKEND_URL } from "../../utils";
 import { useRecoilState } from "recoil";
@@ -257,10 +257,9 @@ const MypageTest = () => {
                   alert("수정 성공!");
                   window.location.href = "/main";
                 } catch (e) {
-                  // e.text().then((msg) => alert(msg));
                   console.log(e);
                   alert("수정 실패");
-                  // setPassword("");
+                  setPassword("");
                 }
               }
             }}
