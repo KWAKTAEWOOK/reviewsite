@@ -17,7 +17,7 @@ const Comment = ({ reviewlist, nickname, reviewRef }) => {
       console.log("삭제가 완료되었습니다.");
     } else {
       // false는 취소버튼을 눌렀을 때, 취소됨
-      console.log("취소되었습니다");
+      console.log("취소되었습니다.");
     }
   };
 
