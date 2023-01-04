@@ -4,7 +4,7 @@ import "../../Style/Home/Home.scss";
 const Home = ({ onChange, inputText, setKeywords }) => {
   const homeSearchSubmit = (e) => {
     e.preventDefault();
-    window.location.href = "http://localhost:3000/main";
+    window.location.href = "/main";
   };
   const onClickHomeLogo = () => {
     sessionStorage.removeItem("search");

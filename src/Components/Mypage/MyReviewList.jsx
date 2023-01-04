@@ -1,4 +1,5 @@
 import React from "react";
+import { LOCAL_URL } from "../../utils";
 
 const MyReviewList = ({ index, comment }) => {
   const date = comment.createDate.split("T")[0];
@@ -13,7 +14,7 @@ const MyReviewList = ({ index, comment }) => {
           <th
             className="review_place_name"
             onClick={() => {
-              window.location.href = `http://localhost:3000/Detail/${name}/${id}`;
+              window.location.href = `${LOCAL_URL}/Detail/${name}/${id}`;
             }}
           >
             <p>{name}</p>
