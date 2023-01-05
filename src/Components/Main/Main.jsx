@@ -173,10 +173,10 @@ const Main = ({
 
     var marker = new kakao.maps.Marker(),
       infowindow = new kakao.maps.InfoWindow({ zindex: 1 });
-    searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+    searchAddrFromCoords(map.getCenter());
 
     kakao.maps.event.addListener(map, "idle", function () {
-      searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+      searchAddrFromCoords(map.getCenter());
     });
 
     function searchAddrFromCoords(coords, callback) {
@@ -187,18 +187,18 @@ const Main = ({
       geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
     }
 
-    function displayCenterInfo(result, status) {
-      if (status === kakao.maps.services.Status.OK) {
-        var infoDiv = document.getElementById("centerAddr");
+    // function displayCenterInfo(result, status) {
+    //   if (status === kakao.maps.services.Status.OK) {
+    //     var infoDiv = document.getElementById("centerAddr");
 
-        for (var i = 0; i < result.length; i++) {
-          if (result[i].region_type === "H") {
-            infoDiv.innerHTML = result[i].address_name;
-            break;
-          }
-        }
-      }
-    }
+    //     for (var i = 0; i < result.length; i++) {
+    //       if (result[i].region_type === "H") {
+    //         infoDiv.innerHTML = result[i].address_name;
+    //         break;
+    //       }
+    //     }
+    //   }
+    // }
 
     function placesSearchCB(data, status, pagination) {
       if (data.length === 0) {
@@ -314,7 +314,7 @@ const Main = ({
       <section>
         <div className="main">
           <div className="mainList">
-            <span id="centerAddr" className="TestCenter"></span>
+            {/* <span id="centerAddr" className="TestCenter"></span> */}
             <nav className={open ? "show" : "hide"}>
               <button
                 className="ShowAndHide"

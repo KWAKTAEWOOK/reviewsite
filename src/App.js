@@ -89,7 +89,6 @@ const App = () => {
             <Route path={"/MyReview"} exact>
               <MyReview />
             </Route>
-
             <Route path={"/help/"} exact>
               <Help />
             </Route>
