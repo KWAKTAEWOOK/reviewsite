@@ -283,7 +283,11 @@ const Main = ({
         infowindow.open(map, marker);
       });
     }
-  }, [place, lat, lng, imgAddress]);
+  }, [
+    place,
+    // lat, lng,
+    imgAddress,
+  ]);
   return (
     <>
       <Topbar />
