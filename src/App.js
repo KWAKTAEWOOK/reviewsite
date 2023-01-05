@@ -14,7 +14,6 @@ import LikePage from "./Components/Mypage/LikePage";
 import MypageTest from "./Components/Mypage/MypageTest";
 import MypageUserConfirm from "./Components/Mypage/MypageUserConfirm";
 import MyPlace from "./Components/MyPlace/MyPlace";
-import Slick from "./Components/Detail/slick/CenterMode";
 import SelectMyPlace from "./Components/MyPlace/SelectMyPlace";
 
 const App = () => {
