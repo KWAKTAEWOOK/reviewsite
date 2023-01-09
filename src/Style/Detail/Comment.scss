@@ -165,3 +165,39 @@ hr {
   width: 200px;
   height: 150px;
 }
+.nameContextMenu {
+  background: #000;
+  color: #fff;
+  padding: 0!important;
+  z-index: 9999;
+  padding: 6px 0!important;
+}
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  background-color: transparent;
+}
+tbody {
+  display: table-row-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+tr {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+.nameContextMenu td {
+  padding: 0!important;
+  border: 0!important;
+}
+.nameContextMenu a {
+  color: #fff;
+  font-size: 12px;
+  line-height: 20px;
+  display: block;
+  padding: 0 8px;
+}
+.nameContextMenu a:hover {
+  color: red;
+}
