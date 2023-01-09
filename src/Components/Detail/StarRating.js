@@ -112,7 +112,7 @@ const StarRating = () => {
       <div className="사용자">
         <div className="usercon">
           <div className="userimg">
-            <img className="usersimg" src="/images/페페.gif" alt="" />
+            <img className="usersimg" src={user.userimg} alt="" />
           </div>
           <div>{user && user.nickname}</div>
         </div>

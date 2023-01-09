@@ -193,9 +193,8 @@ const Detail = () => {
               </div>
               <div className="group left" ref={detailRef}>
                 <div>평점</div>
-                <div>주소</div>
-                <div>연락처</div>
-                <div>영업시간</div>
+                {detailData.road_address_name != "" ? <div>주소</div> : null}
+                {detailData.phone != "" ? <div>연락처</div> : null}
               </div>
               <div className="group right">
                 <div>
@@ -203,7 +202,6 @@ const Detail = () => {
                 </div>
                 <div>{detailData.road_address_name}</div>
                 <div>{detailData.phone}</div>
-                <div>11:00~21:00</div>
               </div>
               <UserLike detailData={detailData} />
             </div>

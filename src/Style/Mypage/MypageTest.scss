@@ -28,17 +28,24 @@
 }
 .MypageEdit_profilepicturebox {
   position: absolute;
-  width: 180px;
+  width: 200px;
   height: 180px;
   border: 1px solid black;
   top: -20px;
   right: 0;
-  border-radius: 50%;
+  display: block;
+  border-radius: 10%;
+}
+.MypageEdit_profilepicturebox > img {
+  width: 200px;
+  height: 180px;
+  border-radius: 10%;
+  object-fit: cover;
 }
 .MypageEgit_profilepicture_button {
   position: relative;
   width: 100%;
-  top: 190px;
+  top: 10px;
   ////////////////////////////////
   border: none;
   display: block;
@@ -65,7 +72,7 @@
   position: absolute;
   left: 0;
   top: 0;
-  height: 490%;
+  height: 550%;
   width: 140%;
   background: #78c7d2;
   -webkit-transition: all 0.5s ease-in-out;

@@ -87,7 +87,7 @@
   position: fixed;
   margin: 20px;
   display: block;
-  margin-top: -600px;
+  margin-top: -300px;
   margin-left: 90%;
   z-index: 50;
 }
