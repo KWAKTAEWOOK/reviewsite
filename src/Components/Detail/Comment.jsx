@@ -153,7 +153,9 @@ const Comment = ({ reviewlist, nickname, reviewRef }) => {
         <div className="사용자">
           <div className="usercon">
             <img className="userimg" src="/images/6.jpg" alt="" />
-            <div>{reviewlist.nickname}</div>
+            <div>{reviewlist.nickname}
+            <div class="nameContextMenu" style="position: absolute; top: 144px; left: 275px; display: block;"><table class="mbLayer"><tbody><tr><td id="sideViewRow_info"><a href="https://tv11.avsee.in/bbs/profile.php?mb_id=avavsee6974" rel="nofollow" onclick="win_profile(this.href); return false;">자기소개</a></td></tr><tr><td id="sideViewRow_memo"><a href="https://tv11.avsee.in/bbs/memo_form.php?me_recv_mb_id=avavsee6974" rel="nofollow" onclick="win_memo(this.href); return false;">쪽지보내기</a></td></tr><tr><td id="sideViewRow_mb_id"><a href="https://tv11.avsee.in/bbs/board.php?bo_table=community&amp;sca=&amp;sfl=mb_id,1&amp;stx=avavsee6974" rel="nofollow">게시물검색</a></td></tr><tr><td id="sideViewRow_mb_cid"><a href="https://tv11.avsee.in/bbs/board.php?bo_table=community&amp;sca=&amp;sfl=mb_id,0&amp;stx=avavsee6974" rel="nofollow">코멘트검색</a></td></tr><tr><td id="sideViewRow_new"><a href="https://tv11.avsee.in/bbs/new.php?mb_id=avavsee6974" rel="nofollow" class="link_new_page" onclick="check_goto_new(this.href, event);">전체게시물</a></td></tr></tbody></table></div>
+<div ></div></div>
           </div>
           <textarea
             className="editcontent"
