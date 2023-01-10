@@ -13,6 +13,7 @@ const MypageTest = () => {
   const [username, setUsername] = useState("");
   const [userid, setUserid] = useState("");
   const [password, setPassword] = useState("");
+  const [password2, setPassword2] = useState("");
   const [email, setEmail] = useState("");
 
   async function checkNickname() {
@@ -48,6 +49,7 @@ const MypageTest = () => {
     setUsername(user.username);
     setUserid(user.userid);
     setPassword(user.password);
+    setPassword2(user.password2);
     setEmail(user.email);
   }
 
@@ -61,6 +63,9 @@ const MypageTest = () => {
 
   function changePassword(e) {
     setPassword(e.target.value);
+  }
+  function changePassword2(e) {
+    setPassword2(e.target.value);
   }
 
   function changeEmail(e) {
@@ -242,7 +247,7 @@ const MypageTest = () => {
               <input
                 className="MypageEdit_passwordbox_newpasswordbox2_input input_common_properties"
                 type="password"
-                onChange={changePassword}
+                onChange={changePassword2}
               ></input>
             </div>
           </div>
@@ -257,6 +262,7 @@ const MypageTest = () => {
           <button
             className="MypageEdit_confirm_button MyPageEdit_button_common_properties"
             onClick={async () => {
+              if (password === password2) {
               if (window.confirm("수정하시겠습니까?")) {
                 formData.append("nickname", nickname);
                 formData.append("password", password);
@@ -273,12 +279,15 @@ const MypageTest = () => {
                   });
                   setUser(data.data);
                   alert("수정 성공!");
-                  window.location.href = "/main";
-                } catch (e) {
-                  console.log(e);
+catch (e) {
+                  console.log(e);                  window.location.href = "/main";
+                } 
                   alert("수정 실패");
                   setPassword("");
+
                 }
+              } else {
+                alert("비밀번호를 확인해 주십시오");
               }
             }}
           >
