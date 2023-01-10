@@ -12,7 +12,7 @@ const LikePage = () => {
   const [user, setUser] = useRecoilState(userState);
   const [userid, setUserid] = useState(user && user.id);
   const [likePosts, setLikePosts] = useState([]);
-
+  console.log(likePosts);
   useEffect(() => {
     const getData = async (e) => {
       const data = await axios({

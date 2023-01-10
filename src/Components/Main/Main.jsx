@@ -5,14 +5,12 @@ import LeftArrow from "../../Style/image/left-arrow.png";
 import Topbar from "./Topbar";
 import "../../Style/Main/Main.scss";
 import useGeolocation from "react-hook-geolocation";
-import axios from "axios";
-import { BACKEND_URL, LOCAL_URL } from "../../utils";
+import { LOCAL_URL } from "../../utils";
 
 const { kakao } = window;
 
 const Main = ({
   place,
-  setPlace,
   inputText,
   setInputText,
   onChange,
@@ -52,29 +50,6 @@ const Main = ({
     window.location.href = `${LOCAL_URL}/Detail/${placeDB.place_name}/${placeDB.id}`;
     sessionStorage.setItem("detail", JSON.stringify(placeDB));
   };
-
-  //장소 클릭 시 db에 id, 이름 저장
-  // const onClickDetailDB = async (placeDB) => {
-  //   try {
-  //     const data = await axios({
-  //       url: `${BACKEND_URL}/getDetail`,
-  //       method: "POST",
-  //       data: {
-  //         detail_id: placeDB.id,
-  //         detail_name: placeDB.place_name,
-  //         phone: placeDB.phone,
-  //         address: placeDB.road_address_name,
-  //         locationX: placeDB.x,
-  //         locationY: placeDB.y,
-  //       },
-  //     });
-  //     sessionStorage.setItem("detail", JSON.stringify(placeDB));
-  //     window.location.href = `http://localhost:3000/Detail/${placeDB.place_name}/${placeDB.id}`;
-  //   } catch (e) {
-  //     window.location.href = `http://localhost:3000/Detail/${placeDB.place_name}/${placeDB.id}`;
-  //     console.log(e);
-  //   }
-  // };
 
   const onClickSearch = () => {
     if (inputText) {
@@ -139,10 +114,10 @@ const Main = ({
     setArrow((arrow) => !arrow);
   };
 
-  const geolocation = useGeolocation();
+  // const geolocation = useGeolocation();
 
-  const lat = geolocation.latitude;
-  const lng = geolocation.longitude;
+  // const lat = geolocation.latitude;
+  // const lng = geolocation.longitude;
 
   const offset = (page - 1) * limit;
 
@@ -150,7 +125,8 @@ const Main = ({
     var mapContainer = document.getElementById("map");
 
     var mapOption = {
-      center: new kakao.maps.LatLng(lat, lng),
+      // center: new kakao.maps.LatLng(lat, lng),
+      center: new kakao.maps.LatLng(33.450701, 126.570667),
       level: 2,
     };
 
@@ -173,10 +149,10 @@ const Main = ({
 
     var marker = new kakao.maps.Marker(),
       infowindow = new kakao.maps.InfoWindow({ zindex: 1 });
-    searchAddrFromCoords(map.getCenter());
+    searchAddrFromCoords(map.getCenter(), displayCenterInfo);
 
     kakao.maps.event.addListener(map, "idle", function () {
-      searchAddrFromCoords(map.getCenter());
+      searchAddrFromCoords(map.getCenter(), displayCenterInfo);
     });
 
     function searchAddrFromCoords(coords, callback) {
@@ -187,18 +163,18 @@ const Main = ({
       geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
     }
 
-    // function displayCenterInfo(result, status) {
-    //   if (status === kakao.maps.services.Status.OK) {
-    //     var infoDiv = document.getElementById("centerAddr");
+    function displayCenterInfo(result, status) {
+      if (status === kakao.maps.services.Status.OK) {
+        var infoDiv = document.getElementById("centerAddr");
 
-    //     for (var i = 0; i < result.length; i++) {
-    //       if (result[i].region_type === "H") {
-    //         infoDiv.innerHTML = result[i].address_name;
-    //         break;
-    //       }
-    //     }
-    //   }
-    // }
+        for (var i = 0; i < result.length; i++) {
+          if (result[i].region_type === "H") {
+            infoDiv.innerHTML = result[i].address_name;
+            break;
+          }
+        }
+      }
+    }
 
     function placesSearchCB(data, status, pagination) {
       if (data.length === 0) {
@@ -307,14 +283,18 @@ const Main = ({
         infowindow.open(map, marker);
       });
     }
-  }, [place, lat, lng, imgAddress]);
+  }, [
+    place,
+    // lat, lng,
+    imgAddress,
+  ]);
   return (
     <>
       <Topbar />
       <section>
         <div className="main">
           <div className="mainList">
-            {/* <span id="centerAddr" className="TestCenter"></span> */}
+            <span id="centerAddr" className="TestCenter"></span>
             <nav className={open ? "show" : "hide"}>
               <button
                 className="ShowAndHide"

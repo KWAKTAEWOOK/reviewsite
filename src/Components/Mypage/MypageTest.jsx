@@ -97,28 +97,44 @@ const MypageTest = () => {
 
   //--------------------------------------------------------------------------
   //이미지 업로드 로직
-  const [files, setImgFiles] = useState(() => []);
-  const [Image, setImage] = useState("/images/user.gnp");
-  const imageInput = useRef();
+  const [imgFile, setImgFile] = useState("");
+  const [profileImg, setProfileImg] = useState("");
+  const imgRef = useRef();
+  const saveImgFile = (e) => {
+    const file = imgRef.current.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setImgFile(reader.result);
+    };
+    setProfileImg(e.target.files[0]);
+  };
+
   // 버튼클릭시 input태그에 클릭이벤트를 걸어준다.
   const onCickImageUpload = () => {
-    imageInput.current.click();
+    imgRef.current.click();
   };
-  const onImgfiles = (e) => {
-    if (e.target.files[0]) {
-      setImgFiles(e.target.files[0]);
-    } else {
-      //업로드 취소할 시
-      setImage(
-        "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-      );
-      return;
-    }
-  };
+  // const onImgfiles = (e) => {
+  //   if (e.target.files[0]) {
+  //     setImgFiles(e.target.files[0]);
+  //   } else {
+  //     //업로드 취소할 시
+  //     setImage(
+  //       "https://file-upload-ktw.s3.ap-northeast-2.amazonaws.com/user.png"
+  //     );
+  //     return;
+  //   }
+  // };
 
   const formData = new FormData();
   const post = async (e) => {
-    formData.append("files", files[0]);
+    formData.append("id", id);
+    formData.append("userid", userid);
+    formData.append("username", username);
+    formData.append("nickname", nickname);
+    formData.append("password", password);
+    formData.append("email", email);
+    formData.append("files", profileImg);
     if (window.confirm("등록하시겠습니까?"))
       try {
         const data = await axios({
@@ -156,12 +172,12 @@ const MypageTest = () => {
             <div className="MypageEdit_usernamebox_username MyPageEdit_box_content">{`${username}`}</div>
           </div>
           <div className="MypageEdit_profilepicturebox">
-            {/*input태그는 display:"none" 을 이용해 안보이게 숨겨준다.'*/}
+            <img src={imgFile ? imgFile : user.userimg} />
             <input
               type="file"
               style={{ display: "none" }}
-              ref={imageInput}
-              onChange={onImgfiles}
+              onChange={saveImgFile}
+              ref={imgRef}
             />
             <button
               className="MypageEgit_profilepicture_button"
@@ -247,28 +263,28 @@ const MypageTest = () => {
             className="MypageEdit_confirm_button MyPageEdit_button_common_properties"
             onClick={async () => {
               if (password === password2) {
-                if (window.confirm("수정하시겠습니까?")) {
-                  try {
-                    const data = await axios({
-                      url: `${BACKEND_URL}/user/editprofile`,
-                      method: "PUT",
-                      data: {
-                        id,
-                        userid,
-                        username,
-                        nickname,
-                        password,
-                        email,
-                      },
-                    });
-                    setUser(data.data);
-                    alert("수정 성공!");
-                    window.location.href = "/main";
-                  } catch (e) {
-                    console.log(e);
-                    alert("수정 실패");
-                    setPassword("");
-                  }
+              if (window.confirm("수정하시겠습니까?")) {
+                formData.append("nickname", nickname);
+                formData.append("password", password);
+                formData.append("email", email);
+                formData.append("files", profileImg);
+                try {
+                  const data = await axios({
+                    url: `${BACKEND_URL}/user/editprofile`,
+                    method: "PATCH",
+                    data: formData,
+                    headers: {
+                      "Content-Type": "multipart/form-data",
+                    },
+                  });
+                  setUser(data.data);
+                  alert("수정 성공!");
+catch (e) {
+                  console.log(e);                  window.location.href = "/main";
+                } 
+                  alert("수정 실패");
+                  setPassword("");
+
                 }
               } else {
                 alert("비밀번호를 확인해 주십시오");
