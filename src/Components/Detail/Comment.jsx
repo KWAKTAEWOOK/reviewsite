@@ -8,6 +8,7 @@ import { userState } from "../../recoil/user";
 
 const Comment = ({ reviewlist, nickname, reviewRef }) => {
   const [user, setUser] = useRecoilState(userState);
+  const [nicknameon, setNicknameon] = useState(false);
 
   // console.log(user);
   const onSubmoit = (e) => {
@@ -87,6 +88,49 @@ const Comment = ({ reviewlist, nickname, reviewRef }) => {
 
   return (
     <div ref={reviewRef} className="userdiv">
+      {nicknameon === true ? (
+        <div className={`nameContextMenu`}>
+          <table class="mbLayer">
+            <tbody>
+              <tr>
+                <td id="sideViewRow_info">
+                  <a href="" rel="nofollow" onclick="">
+                    자기소개
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td id="sideViewRow_memo">
+                  <a href="" rel="nofollow" onclick="">
+                    쪽지보내기
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td id="sideViewRow_mb_id">
+                  <a href="" rel="nofollow">
+                    게시물검색
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td id="sideViewRow_mb_cid">
+                  <a href="" rel="nofollow">
+                    코멘트검색
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td id="sideViewRow_new">
+                  <a href="" rel="nofollow" class="link_new_page" onclick="">
+                    전체게시물
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      ) : null}
       <div className="starcreatedate">
         {/* 별점 ---------------------------------- */}
         {Click == false && (
@@ -151,7 +195,13 @@ const Comment = ({ reviewlist, nickname, reviewRef }) => {
             <div className="userimg">
               <img className="usersimg" src="/images/user.png" alt="" />
             </div>
-            <div>{reviewlist.user?.nickname}</div>
+            <div
+              onClick={() => {
+                setNicknameon(true);
+              }}
+            >
+              {reviewlist.user?.nickname}
+            </div>
           </div>
           <div className="contant">
             <div> {reviewlist.content}</div>
@@ -164,10 +214,9 @@ const Comment = ({ reviewlist, nickname, reviewRef }) => {
             <div className="userimg">
               <img className="usersimg" src="/images/user.png" alt="" />
             </div>
-            <div>{reviewlist.nickname}
-              <div class="nameContextMenu" style="position: absolute; top: 144px; left: 275px; display: block;"><table class="mbLayer"><tbody><tr><td id="sideViewRow_info"><a href="https://tv11.avsee.in/bbs/profile.php?mb_id=avavsee6974" rel="nofollow" onclick="win_profile(this.href); return false;">자기소개</a></td></tr><tr><td id="sideViewRow_memo"><a href="https://tv11.avsee.in/bbs/memo_form.php?me_recv_mb_id=avavsee6974" rel="nofollow" onclick="win_memo(this.href); return false;">쪽지보내기</a></td></tr><tr><td id="sideViewRow_mb_id"><a href="https://tv11.avsee.in/bbs/board.php?bo_table=community&amp;sca=&amp;sfl=mb_id,1&amp;stx=avavsee6974" rel="nofollow">게시물검색</a></td></tr><tr><td id="sideViewRow_mb_cid"><a href="https://tv11.avsee.in/bbs/board.php?bo_table=community&amp;sca=&amp;sfl=mb_id,0&amp;stx=avavsee6974" rel="nofollow">코멘트검색</a></td></tr><tr><td id="sideViewRow_new"><a href="https://tv11.avsee.in/bbs/new.php?mb_id=avavsee6974" rel="nofollow" class="link_new_page" onclick="check_goto_new(this.href, event);">전체게시물</a></td></tr></tbody></table></div>
-<div ></div></div>
+            <div>{reviewlist.nickname}</div>
           </div>
+
           <textarea
             className="editcontent"
             cols="100"
