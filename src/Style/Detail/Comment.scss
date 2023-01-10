@@ -165,12 +165,17 @@ hr {
   width: 200px;
   height: 150px;
 }
+
 .nameContextMenu {
   background: #000;
   color: #fff;
-  padding: 0!important;
+  padding: 0;
   z-index: 9999;
-  padding: 6px 0!important;
+  padding: 6px 0;
+  left: 30%;
+  position: relative;
+  display: block;
+  overflow: visible;
 }
 table {
   border-spacing: 0;
@@ -188,8 +193,8 @@ tr {
   border-color: inherit;
 }
 .nameContextMenu td {
-  padding: 0!important;
-  border: 0!important;
+  padding: 0 !important;
+  border: 0 !important;
 }
 .nameContextMenu a {
   color: #fff;
