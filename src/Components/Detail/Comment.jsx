@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { BACKEND_URL } from "../../utils";
 import "../../Style/Detail/Comment.scss";
 import { useRecoilState } from "recoil";
@@ -80,7 +80,26 @@ const Comment = ({ reviewlist, nickname, reviewRef }) => {
   function setting() {
     setcontent(reviewlist.content);
   }
+  const outNickneme = useRef();
+  useEffect(() => {
+    const clickOutside = (e) => {
+      // 모달이 열려 있고 모달의 바깥쪽을 눌렀을 때 창 닫기
+      if (
+        nicknameon &&
+        outNickneme.current &&
+        !outNickneme.current.contains(e.target)
+      ) {
+        setNicknameon(false);
+      }
+    };
 
+    document.addEventListener("mousedown", clickOutside);
+
+    return () => {
+      // Cleanup the event listener
+      document.removeEventListener("mousedown", clickOutside);
+    };
+  }, [nicknameon]);
   useEffect(() => {
     setting();
     setRating(reviewlist.star);
@@ -88,50 +107,7 @@ const Comment = ({ reviewlist, nickname, reviewRef }) => {
 
   return (
     <div ref={reviewRef} className="userdiv">
-      {nicknameon === true ? (
-        <div className={`nameContextMenu`}>
-          <table class="mbLayer">
-            <tbody>
-              <tr>
-                <td id="sideViewRow_info">
-                  <a href="" rel="nofollow" onclick="">
-                    자기소개
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td id="sideViewRow_memo">
-                  <a href="" rel="nofollow" onclick="">
-                    쪽지보내기
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td id="sideViewRow_mb_id">
-                  <a href="" rel="nofollow">
-                    게시물검색
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td id="sideViewRow_mb_cid">
-                  <a href="" rel="nofollow">
-                    코멘트검색
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td id="sideViewRow_new">
-                  <a href="" rel="nofollow" class="link_new_page" onclick="">
-                    전체게시물
-                  </a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      ) : null}
-      <div className="starcreatedate">
+      <div className="starcreatedate" ref={outNickneme}>
         {/* 별점 ---------------------------------- */}
         {Click == false && (
           <div className="star-rating">
@@ -191,20 +167,57 @@ const Comment = ({ reviewlist, nickname, reviewRef }) => {
       </div>
       {Click == false && (
         <div className="사용자">
+          {nicknameon === true ? (
+            <div className={`nameContextMenu`}>
+              <table class="mbLayer">
+                <tbody>
+                  <tr>
+                    <td className="sideViewRow_mb_cid">
+                      <a href="" rel="nofollow">
+                        📚북마크
+                      </a>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td className="sideViewRow_mb_cid">
+                      <a href="" rel="nofollow">
+                        🧡찜목록
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="sideViewRow_new">
+                      <a
+                        href=""
+                        rel="nofollow"
+                        class="link_new_page"
+                        onclick=""
+                      >
+                        😶‍🌫️리뷰보기
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          ) : null}
           <div className="usercon">
             <div className="userimg">
               <img className="usersimg" src="/images/user.png" alt="" />
             </div>
-            <div
-              onClick={() => {
-                setNicknameon(true);
-              }}
-            >
-              {reviewlist.user?.nickname}
+            <div>
+              <span
+                onClick={() => {
+                  setNicknameon(true);
+                }}
+              >
+                {reviewlist.user?.nickname}
+              </span>
             </div>
           </div>
           <div className="contant">
-            <div> {reviewlist.content}</div>
+            <div>{reviewlist.content}</div>
           </div>
         </div>
       )}
