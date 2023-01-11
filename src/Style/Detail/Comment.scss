@@ -153,6 +153,7 @@ hr {
 }
 .사용자 {
   margin: 10px;
+  position: relative;
 }
 .userimg {
   display: block;
@@ -172,8 +173,9 @@ hr {
   padding: 0;
   z-index: 9999;
   padding: 6px 0;
-  left: 30%;
-  position: relative;
+  position: absolute;
+  left: 130px;
+  bottom: 00px;
   display: block;
   overflow: visible;
 }
@@ -198,7 +200,7 @@ tr {
 }
 .nameContextMenu a {
   color: #fff;
-  font-size: 12px;
+  font-size: 15px;
   line-height: 20px;
   display: block;
   padding: 0 8px;
