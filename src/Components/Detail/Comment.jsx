@@ -206,9 +206,9 @@ const Comment = ({ reviewlist, nickname, reviewRef }) => {
             <div className="userimg">
               <img className="usersimg" src={user.userImgUrl} alt="" />
             </div>
-            <div className="review_nick">{reviewlist.user?.nickname}</div>
             <div>
               <span
+                className="review_nick2"
                 onClick={() => {
                   setNicknameon(true);
                 }}
