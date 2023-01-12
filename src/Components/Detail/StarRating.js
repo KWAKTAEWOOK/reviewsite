@@ -7,7 +7,7 @@ import "../../Style/Detail/StarRating.css";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 
-const StarRating = () => {
+const StarRating = ({ getdata, reviewRef }) => {
   const { id } = useParams();
   const { place_name } = useParams();
   const [rating, setRating] = useState(0);
@@ -76,6 +76,7 @@ const StarRating = () => {
   const onContent = (e) => {
     setContent(e.target.value);
   };
+
   return (
     <div className="star_rate_wrap">
       <div className="star-rating">
@@ -113,7 +114,7 @@ const StarRating = () => {
       <div className="사용자">
         <div className="usercon">
           <div className="userimg">
-            <img className="usersimg" src={user?.userImgUrl} alt="" />
+            <img ref={reviewRef} className="usersimg" src={user?.userImgUrl} />
           </div>
           <div className="review_nick">{user?.nickname}</div>
         </div>
@@ -124,12 +125,7 @@ const StarRating = () => {
           rows="10"
         ></textarea>
       </div>
-      <div className="imgsee">
-        <div className="imgcons"></div>
-        <div className="imgcontent">
-          <img src="" alt="" />
-        </div>{" "}
-      </div>
+      <div className="imgsee" />
     </div>
   );
 };
