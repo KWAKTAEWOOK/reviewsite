@@ -1,5 +1,5 @@
 .findIdTemplate {
-  font-family: "HallymGothic-Regular";
+  font-family: "NanumSquareNeo-Variable";
   position: relative;
   top: 120px;
   width: 1000px;
@@ -35,7 +35,7 @@
 .findInput > div {
   position: relative;
   right: 530px;
-  bottom: 270px;
+  bottom: 260px;
   margin-bottom: 15px;
   text-align: right;
   input {
@@ -47,7 +47,7 @@
 }
 .findidImg {
   scale: 0.3;
-  top: -90px;
+  top: -110px;
   left: -145px;
 }
 .findBtn {
@@ -68,6 +68,7 @@
 }
 .changePwBtn {
   text-decoration: underline;
+  text-underline-offset: 3px;
   position: relative;
   display: inline-block;
   color: gray;

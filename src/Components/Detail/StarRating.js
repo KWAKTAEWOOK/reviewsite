@@ -68,15 +68,16 @@ const StarRating = () => {
       post();
     }
   };
+
   const onSubmit = (e) => {
     setFlies(e.target.files);
-    console.log(e.target.files);
   };
+
   const onContent = (e) => {
     setContent(e.target.value);
   };
   return (
-    <div>
+    <div className="star_rate_wrap">
       <div className="star-rating">
         평점 :　
         {[...Array(5)].map((star, index) => {
@@ -112,9 +113,9 @@ const StarRating = () => {
       <div className="사용자">
         <div className="usercon">
           <div className="userimg">
-            <img className="usersimg" src={user.userimg} alt="" />
+            <img className="usersimg" src={user?.userImgUrl} alt="" />
           </div>
-          <div>{user && user.nickname}</div>
+          <div className="review_nick">{user?.nickname}</div>
         </div>
         <textarea
           className="comment_textarea"

@@ -20,7 +20,6 @@ const MypageUserConfirm = () => {
     setNickname(user.nickname);
     setUsername(user.username);
     setUserid(user.userid);
-    setPassword(user.password);
     setEmail(user.email);
   }
 
@@ -35,6 +34,7 @@ const MypageUserConfirm = () => {
         url: `${BACKEND_URL}/user/UserConfirmPwd`,
         method: "POST",
         data: {
+          id,
           userid,
           password,
           nickname,
@@ -53,7 +53,7 @@ const MypageUserConfirm = () => {
   };
 
   return (
-    <div>
+    <div className="editProfilePage">
       <TopbarV2 />
       <form onSubmit={confimUser}>
         <h2 className="MypageUserConfirmTest_Title">회원정보수정</h2>
@@ -64,18 +64,20 @@ const MypageUserConfirm = () => {
               {user && `${user.nickname}`} 님의 정보를 안전하게 보호하기 위해
               계정을 다시 한번 확인합니다.
             </h5>
-            <div className="MypageUserConfirmTest_password_subject">
-              비밀번호
+            <div className="check_pw">
+              <div className="MypageUserConfirmTest_password_subject">
+                비밀번호
+              </div>
+              <input
+                className="MypageUserConfirmTest_password_content"
+                placeholder="비밀번호를 입력해주세요"
+                type="password"
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+              />
             </div>
-            <input
-              className="MypageUserConfirmTest_password_content"
-              placeholder="비밀번호를 입력해주세요"
-              type="password"
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-            />
             <div className="MypageUserConfirmTest_CheckBox">
               <a
                 className="MypageUserConfirmTest_Cansel_button MyPageUserConfirmTest_button_common_properties"

@@ -1,10 +1,19 @@
+.editProfilePage {
+  font-family: "NanumSquareNeo-Variable";
+  padding-top: 50px;
+}
+.editProfilePage input {
+  font-family: "NanumSquareNeo-Variable";
+}
+.editProfilePage button {
+  font-family: "NanumSquareNeo-Variable";
+}
 .MypageEditTitle {
   text-align: center;
   top: 130px;
   position: relative;
   font-size: 1.5rem;
 }
-
 .MypageEditBoxContainer {
   position: relative;
   top: 170px;
@@ -25,6 +34,7 @@
 }
 .MypageEdit_Common_Style {
   width: 280px;
+  margin-bottom: -5px;
 }
 .MypageEdit_profilepicturebox {
   position: absolute;
@@ -40,13 +50,13 @@
   width: 200px;
   height: 180px;
   border-radius: 10%;
+  // object-fit: contain;
   object-fit: cover;
 }
 .MypageEgit_profilepicture_button {
   position: relative;
   width: 100%;
   top: 10px;
-  ////////////////////////////////
   border: none;
   display: block;
   text-align: center;
@@ -106,6 +116,7 @@
 .MyPageEdit_box_content {
   position: relative;
   color: #999;
+  padding-bottom: 5px;
   border-bottom: 1px solid #f0f0f0;
 }
 
@@ -114,6 +125,7 @@
   width: 100%;
   border: 0;
   border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 5px;
   outline: none;
   size: 1rem;
 }
@@ -140,8 +152,8 @@
 .MypageEidit_deleteUser {
   position: relative;
   top: 110px;
-  font-size: 0.7rem;
-  color: red;
+  font-size: 0.8rem;
+  color: rgba(255, 0, 0, 0.87);
   padding: 1px;
   margin-left: 20px;
 }
@@ -149,7 +161,6 @@
 .MypageEdit_confirm_common_properties {
   display: inline-block;
   position: absolute;
-  top: -10px;
   margin-left: 430px;
   font-size: 0.8rem;
 }

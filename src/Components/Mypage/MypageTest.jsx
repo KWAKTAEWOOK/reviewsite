@@ -12,8 +12,10 @@ const MypageTest = () => {
   const [nickname, setNickname] = useState("");
   const [username, setUsername] = useState("");
   const [userid, setUserid] = useState("");
-  const [password, setPassword] = useState("");
+  const [password1, setPassword1] = useState("");
+  const [password2, setPassword2] = useState("");
   const [email, setEmail] = useState("");
+  const [files, setFiles] = useState([]);
 
   async function checkNickname() {
     const res = await axios
@@ -28,6 +30,7 @@ const MypageTest = () => {
       alert("사용가능한 별명입니다.");
     }
   }
+
   async function checkEmail() {
     const res = await axios
       .get(`${BACKEND_URL}/user/${email}/email`)
@@ -47,7 +50,6 @@ const MypageTest = () => {
     setNickname(user.nickname);
     setUsername(user.username);
     setUserid(user.userid);
-    setPassword(user.password);
     setEmail(user.email);
   }
 
@@ -60,41 +62,22 @@ const MypageTest = () => {
   }
 
   function changePassword(e) {
-    setPassword(e.target.value);
+    setPassword1(e.target.value);
+  }
+
+  function changePassword2(e) {
+    setPassword2(e.target.value);
   }
 
   function changeEmail(e) {
     setEmail(e.target.value);
   }
 
-  // const formData = new FormData();
-  // formData.append("file", data.file);
-  // formData.append(
-  //   "key",
-  //   new Blob([JSON.stringify(data.info)], {type: "application/json"})
-  // );
-  // try {
-  //   await axios
-  //   .post('${SERVER_URL}/something/endpoint', formData, {
-  //     headers: {
-  //       "X-AUTH-TOKEN": token,
-  //       "Content-Type": `multipart/form-data`,
-  //     },
-  //   })
-  //   .then((res) => console.log(res));
-  // } catch(e) {
-  //   dispatch({
-  //     type: type.WRITE_SALE_POST_FAILURE,
-  //     error: e,
-
-  //   });
-  // }
-
   //--------------------------------------------------------------------------
   //이미지 업로드 로직
   const [imgFile, setImgFile] = useState("");
-  const [profileImg, setProfileImg] = useState("");
   const imgRef = useRef();
+
   const saveImgFile = (e) => {
     const file = imgRef.current.files[0];
     const reader = new FileReader();
@@ -102,57 +85,84 @@ const MypageTest = () => {
     reader.onloadend = () => {
       setImgFile(reader.result);
     };
-    setProfileImg(e.target.files[0]);
+    setFiles(e.target.files[0]);
   };
 
   // 버튼클릭시 input태그에 클릭이벤트를 걸어준다.
   const onCickImageUpload = () => {
     imgRef.current.click();
   };
-  // const onImgfiles = (e) => {
-  //   if (e.target.files[0]) {
-  //     setImgFiles(e.target.files[0]);
-  //   } else {
-  //     //업로드 취소할 시
-  //     setImage(
-  //       "https://file-upload-ktw.s3.ap-northeast-2.amazonaws.com/user.png"
-  //     );
-  //     return;
-  //   }
-  // };
 
   const formData = new FormData();
-  const post = async (e) => {
-    formData.append("id", id);
-    formData.append("userid", userid);
-    formData.append("username", username);
-    formData.append("nickname", nickname);
-    formData.append("password", password);
-    formData.append("email", email);
-    formData.append("files", profileImg);
-    if (window.confirm("등록하시겠습니까?"))
+  const editProfile = async (e) => {
+    if (window.confirm("수정하시겠습니까?")) {
+      if (password1 != password2) {
+        alert("비밀번호가 일치하지않습니다.");
+        setPassword1("");
+        setPassword2("");
+        return;
+      }
+      if (!password1 || !password2) {
+        alert("비밀번호를 입력해주세요");
+        return;
+      }
+      formData.append("id", id);
+      formData.append("nickname", nickname);
+      formData.append("password1", password1);
+      formData.append("email", email);
+      formData.append("files", files);
       try {
         const data = await axios({
-          url: `${BACKEND_URL}/user/create/imgpost`,
-          method: "POST",
+          url: `${BACKEND_URL}/user/editprofile`,
+          method: "PATCH",
           data: formData,
           headers: {
             "Content-Type": "multipart/form-data",
           },
         });
-        window.location.reload();
+        setUser(data.data);
+        alert("수정되었습니다.");
+        window.location.href = "/main";
       } catch (e) {
         console.log(e);
-        alert("값 입력 실패");
+        alert("수정 실패");
+        setPassword1("");
+        setPassword2("");
       }
+    }
   };
+
+  const deleteUser = async (e) => {
+    if (
+      window.confirm(
+        "지금 탈퇴하시면 저장되어있는 모든 정보가 사라집니다.\n탈퇴하시겠습니까?"
+      )
+    ) {
+      e.preventDefault();
+      try {
+        const data = await axios({
+          url: `${BACKEND_URL}/user/delete/${id}`,
+          method: "DELETE",
+          data: {
+            id,
+          },
+        });
+        alert("탈퇴되었습니다.");
+        setUser(null);
+        window.location.href = "/main";
+      } catch (e) {
+        console.log(e);
+        alert("탈퇴 실패! 다시 시도해주세요.");
+      }
+    }
+  };
+
   return (
-    <div>
+    <div className="editProfilePage">
       <TopbarV2 />
       <h2 className="MypageEditTitle">회원정보수정</h2>
       <div className="MypageEditBoxContainer">
         <div className="MypageEditBox">
-          {/* <FontAwesomeIcon icon={faUserSecret} className="Usericon" /> */}
           <h3>기본정보 수정</h3>
           <div className="MypageEdit_userIdbox MypageEdit_Common_Style">
             <div className="MypageEdit_userIdbox_subject MyPageEdit_box_subject">
@@ -167,7 +177,7 @@ const MypageTest = () => {
             <div className="MypageEdit_usernamebox_username MyPageEdit_box_content">{`${username}`}</div>
           </div>
           <div className="MypageEdit_profilepicturebox">
-            <img src={imgFile ? imgFile : user.userimg} />
+            <img src={imgFile ? imgFile : user?.userImgUrl} />
             <input
               type="file"
               style={{ display: "none" }}
@@ -231,6 +241,7 @@ const MypageTest = () => {
               <input
                 className="MypageEdit_passwordbox_newpasswordbox_input input_common_properties"
                 type="password"
+                value={password1}
                 onChange={changePassword}
                 placeholder="비밀번호를 입력해주세요(8 - 12자리)"
               ></input>
@@ -242,7 +253,8 @@ const MypageTest = () => {
               <input
                 className="MypageEdit_passwordbox_newpasswordbox2_input input_common_properties"
                 type="password"
-                onChange={changePassword}
+                value={password2}
+                onChange={changePassword2}
               ></input>
             </div>
           </div>
@@ -256,57 +268,11 @@ const MypageTest = () => {
           </a>
           <button
             className="MypageEdit_confirm_button MyPageEdit_button_common_properties"
-            onClick={async () => {
-              if (window.confirm("수정하시겠습니까?")) {
-                formData.append("nickname", nickname);
-                formData.append("password", password);
-                formData.append("email", email);
-                formData.append("files", profileImg);
-                try {
-                  const data = await axios({
-                    url: `${BACKEND_URL}/user/editprofile`,
-                    method: "PATCH",
-                    data: formData,
-                    headers: {
-                      "Content-Type": "multipart/form-data",
-                    },
-                  });
-                  setUser(data.data);
-                  alert("수정 성공!");
-                  window.location.href = "/main";
-                } catch (e) {
-                  console.log(e);
-                  alert("수정 실패");
-                  setPassword("");
-                }
-              }
-            }}
+            onClick={editProfile}
           >
             수정
           </button>
-          <button
-            className="MypageEidit_deleteUser"
-            onClick={async (e) => {
-              if (window.confirm("탈퇴하시겠습니까? 😭")) {
-                e.preventDefault();
-                try {
-                  const data = await axios({
-                    url: `${BACKEND_URL}/user/delete/${id}`,
-                    method: "DELETE",
-                    data: {
-                      id,
-                    },
-                  });
-                  alert("탈퇴완료");
-                  setUser(null);
-                  window.location.href = "/main";
-                } catch (e) {
-                  console.log(e);
-                  alert("탈퇴 실패! 다시 시도해주세요.");
-                }
-              }
-            }}
-          >
+          <button className="MypageEidit_deleteUser" onClick={deleteUser}>
             회원탈퇴
           </button>
         </div>
