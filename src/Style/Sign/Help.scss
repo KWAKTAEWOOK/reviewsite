@@ -1,5 +1,5 @@
 .helpBackGround {
-  font-family: "MonoplexKR-Regular";
+  font-family: "NanumSquareNeo-Variable";
   position: absolute;
   min-height: 1200px;
   width: 100%;
@@ -15,7 +15,7 @@
 }
 .helpTemplate > div {
   position: relative;
-  border: 1px solid black;
+  border: 1px solid rgb(176, 176, 176);
   border-radius: 12px;
   display: inline-block;
   top: 150px;
@@ -26,14 +26,14 @@
   cursor: pointer;
 }
 .findId:hover {
-  background-color: rgba(130, 130, 148, 0.2);
+  background-color: rgba(137, 177, 210, 0.153);
   position: relative;
   top: 152px;
-  box-shadow: 2px 2px 0 rgb(0, 0, 0, 0.5);
+  box-shadow: 1.5px 1.5px 0 rgba(0, 0, 0, 0.199);
 }
 
 .findId:active {
-  background-color: rgba(85, 85, 105, 0.2);
+  background-color: rgba(137, 177, 210, 0.153);
   top: 155px;
 }
 

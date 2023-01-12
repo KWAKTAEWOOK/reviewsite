@@ -42,8 +42,10 @@
 .fileupload {
   margin-left: 30%;
 }
-.imgcons {
-}
 .imgsee {
   height: 50px;
+}
+
+.star_rate_wrap {
+  margin-bottom: -30px;
 }

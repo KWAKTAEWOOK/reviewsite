@@ -149,9 +149,9 @@ const Comment = ({ reviewlist, nickname, reviewRef }) => {
         <div className="사용자">
           <div className="usercon">
             <div className="userimg">
-              <img className="usersimg" src="/images/user.png" alt="" />
+              <img className="usersimg" src={user.userImgUrl} alt="" />
             </div>
-            <div>{reviewlist.user?.nickname}</div>
+            <div className="review_nick">{reviewlist.user?.nickname}</div>
           </div>
           <div className="contant">
             <div> {reviewlist.content}</div>

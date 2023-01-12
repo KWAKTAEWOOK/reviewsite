@@ -70,8 +70,7 @@ const MyPlace = () => {
         <div className="liketemplate">
           <div className="my_list_back">
             <p className="show_list_p">
-              👀 넌 어때 회원님들의 맛집 정보를 구경하고, 나의 리스트도
-              자랑해보세요!
+              👀 나의 맛집 정보를 저장하고 관리해보세요!
             </p>
             <p className="myList_list">
               📚 나의 북마크

@@ -19,7 +19,7 @@ const MyReviewList = ({ index, comment }) => {
           >
             <p>{name}</p>
           </th>
-          <th>{comment.content}</th>
+          <th className="comment">{comment.content}</th>
           <td>{date}</td>
           <td>{comment.star}</td>
         </tr>

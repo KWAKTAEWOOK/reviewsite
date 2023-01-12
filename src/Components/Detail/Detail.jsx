@@ -16,7 +16,6 @@ import UserLike from "./UserLike";
 import Comment from "./Comment";
 import Detailmap from "./Detailmap";
 import Modal from "./Modal";
-import GalleryBig from "./GalleryBig";
 import CenterMode from "./slick/CenterMode";
 const Detail = () => {
   //-------------------------------------------------------------------

@@ -40,10 +40,10 @@ const MyReview = () => {
           <h3 className="MyReview_title_div_h3">넌 어때?</h3>
         </div>
         <div className="MyReview_title_div2">
-          <h3 className="MyReview_title_div2_h3">내가 작성한 리뷰</h3>
+          <h3 className="MyReview_title_div2_h3">🍴 내가 작성한 리뷰</h3>
         </div>
         <div className="MyReview_body">
-          <div className="MyReview_search_con">
+          {/* <div className="MyReview_search_con">
             <div className="MyReview_search_box">
               <input
                 className="input_seach"
@@ -57,7 +57,7 @@ const MyReview = () => {
                 검색
               </button>
             </div>
-          </div>
+          </div> */}
           <div className="MyReview_subject_list">
             <table className="MyReview_table">
               <thead>
