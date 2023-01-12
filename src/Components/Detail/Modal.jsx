@@ -5,7 +5,6 @@ import "../../Style/Detail/slick/slick-theme.css";
 
 const Modal = ({ outSection, images }) => {
   const getimg = images.map((getimages) => getimages).reverse();
-  console.log(getimg);
   const [mainSlick, setMainSlick] = useState(null);
   const [pagingSlick, setPagingSlick] = useState(null);
   const mainSlickRef = useRef(null);
@@ -32,7 +31,7 @@ const Modal = ({ outSection, images }) => {
     swipeToSlide: true,
     focusOnSelect: true,
   };
-  console.log(getimg);
+
   const onClickPrev = useCallback((ref) => () => ref.current.slickPrev(), []);
   const onClickNext = useCallback((ref) => () => ref.current.slickNext(), []);
   return (

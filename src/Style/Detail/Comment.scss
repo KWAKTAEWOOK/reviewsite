@@ -7,7 +7,6 @@
   display: inline-block;
   margin-left: 30%;
   margin-top: 8px;
-  // border: 1px solid red;
 }
 
 // 수정 삭제 버튼
@@ -167,6 +166,10 @@ hr {
 }
 .review_nick2 {
   padding: 3px 0;
+  cursor: pointer;
+}
+.review_nick2:hover {
+  text-decoration: underline;
 }
 .nameContextMenu {
   background: #000;

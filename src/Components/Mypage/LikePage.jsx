@@ -12,7 +12,7 @@ const LikePage = () => {
   const [user, setUser] = useRecoilState(userState);
   const [userid, setUserid] = useState(user && user.id);
   const [likePosts, setLikePosts] = useState([]);
-  console.log(likePosts);
+
   useEffect(() => {
     const getData = async (e) => {
       const data = await axios({
@@ -23,18 +23,6 @@ const LikePage = () => {
     };
     getData();
   }, []);
-  // const getimg = async (e) => {
-  //   try {
-  //     const data = await axios({
-  //       url: `${BACKEND_URL}/answer/image?detailId=${id}`,
-  //       method: "GET",
-  //     });
-  //     setimages(data.data);
-  //   } catch (e) {
-  //     console.log(e);
-  //     alert("이미지 불러오기 실패");
-  //   }
-  // };
 
   return (
     <>

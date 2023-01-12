@@ -106,11 +106,21 @@ const MypageTest = () => {
         alert("비밀번호를 입력해주세요");
         return;
       }
+      if (files.size > 1048576) {
+        alert("이미지 사이즈가 1MB이하여야 합니다.");
+        return;
+      }
       formData.append("id", id);
+      formData.append("userid", userid);
+      formData.append("username", username);
       formData.append("nickname", nickname);
       formData.append("password1", password1);
       formData.append("email", email);
-      formData.append("files", files);
+      {
+        !imgFile
+          ? formData.append("userImgUrl", user.userImgUrl)
+          : formData.append("files", files);
+      }
       try {
         const data = await axios({
           url: `${BACKEND_URL}/user/editprofile`,
