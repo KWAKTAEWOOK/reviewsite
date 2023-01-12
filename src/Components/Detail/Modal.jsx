@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import data from "./Image";
 import Slider from "react-slick";
 import "../../Style/Detail/slick/slick.css";
 import "../../Style/Detail/slick/slick-theme.css";

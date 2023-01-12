@@ -153,6 +153,7 @@ hr {
 }
 .사용자 {
   margin: 10px;
+  position: relative;
 }
 .userimg {
   display: block;
@@ -166,4 +167,45 @@ hr {
 }
 .review_nick {
   padding: 4px 0;
+}
+.nameContextMenu {
+  background: #000;
+  color: #fff;
+  padding: 0;
+  z-index: 9999;
+  padding: 6px 0;
+  position: absolute;
+  left: 130px;
+  bottom: 00px;
+  display: block;
+  overflow: visible;
+}
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  background-color: transparent;
+}
+tbody {
+  display: table-row-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+tr {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+.nameContextMenu td {
+  padding: 0 !important;
+  border: 0 !important;
+}
+.nameContextMenu a {
+  color: #fff;
+  font-size: 15px;
+  line-height: 20px;
+  display: block;
+  padding: 0 8px;
+}
+.nameContextMenu a:hover {
+  color: red;
 }
