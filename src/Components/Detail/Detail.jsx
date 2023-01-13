@@ -100,7 +100,7 @@ const Detail = () => {
   const review = () =>
     reviewRef.current.scrollIntoView({
       behavior: "smooth",
-      block: "start",
+      block: "end",
     });
 
   //------------------------------------------------------------------
