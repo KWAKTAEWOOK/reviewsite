@@ -16,6 +16,8 @@ const StarRating = () => {
   const [content, setContent] = useState("");
   const [flies, setFlies] = useState([]);
 
+  console.log(user);
+
   //-----------------------------------------------
   const [nickname, setNickname] = useState("");
   const [Click, setClick] = useState(false);
@@ -113,7 +115,7 @@ const StarRating = () => {
       <div className="사용자">
         <div className="usercon">
           <div className="userimg">
-            <img className="usersimg" src={user.userimg} alt="" />
+            <img className="usersimg" src={user?.userImgUrl} alt="" />
           </div>
           <div>{user && user.nickname}</div>
         </div>

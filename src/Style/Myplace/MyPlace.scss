@@ -2,10 +2,10 @@
   position: relative;
   top: 250px;
   text-align: left;
-  left: 650px;
+  left: 550px;
 }
 .myList_list {
-  font-size: 20px;
+  font-size: 18px;
   position: relative;
   top: -140px;
 }
@@ -32,7 +32,7 @@
   font-family: "SUIT-Regular";
   position: relative;
   color: gray;
-  left: 270px;
+  left: 280px;
   top: -20px;
 }
 .place_edit_btn2 {
@@ -48,7 +48,7 @@
 }
 .cancel_btn {
   position: relative;
-  top: -42.5px;
+  top: -41px;
   left: 325px;
 }
 
@@ -116,7 +116,7 @@
   height: 400px;
 }
 .map_list {
-  width: 598px;
+  width: 498px;
   height: 350px;
   overflow-y: auto;
   border: 1px solid rgba(177, 177, 177, 0.795);
@@ -130,8 +130,8 @@
 
 // 지도 보여주기
 .place_map {
-  width: 600px;
-  height: 400px;
+  width: 500px;
+  height: 350px;
 }
 
 // 리스트

@@ -74,7 +74,6 @@ const Detail = () => {
       alert("이미지 불러오기 실패");
     }
   };
-  console.log(images);
   //-------------------------------------------
   // 스크롤 오브젝트 Ref
   const photosRef = useRef();
