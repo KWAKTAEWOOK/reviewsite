@@ -123,7 +123,7 @@ a {
   position: relative;
   text-align: center;
   height: 0px;
-  margin-top: 216px;
+  margin-top: 218px;
   margin-left: 400px;
 }
 .username {
@@ -142,19 +142,27 @@ a {
 .username_span:hover {
   color: #000000;
 }
+.now_location {
+  position: relative;
+  margin-top: -208px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  left: 50vw;
+  width: 800px;
+  z-index: 999;
+}
 .BiCurrentLocation {
-  position: absolute;
+  position: relative;
   width: 28px;
   height: 28px;
   color: rgba(243, 243, 243, 0.8);
 }
-.now_location {
+.TestCenter {
+  z-index: 999;
+  margin-left: 8px;
   position: relative;
-  // text-align: center;
-  margin-top: -210px;
-  margin-left: 300px;
+  font-size: 1rem;
+  color: rgba(243, 243, 243, 0.8);
+  display: inline-block;
 }
-// .CenterAddr {
-//   color: red;
-//   z-index: 99;
-// }

@@ -30,6 +30,8 @@ const Topbar = () => {
     setSignUpModal(false);
   };
 
+  var cemtervv = document.getElementById("centerAddr");
+
   return (
     <>
       <div className="backbar">
@@ -125,6 +127,7 @@ const Topbar = () => {
           </p>
           <div className="now_location">
             <BiCurrentLocation className="BiCurrentLocation" />
+            <span id="centerAddr" className="TestCenter"></span>
           </div>
         </div>
       </div>
