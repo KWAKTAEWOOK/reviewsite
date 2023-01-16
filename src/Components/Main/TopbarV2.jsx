@@ -11,6 +11,8 @@ const Topbar = () => {
   const [modal, setModal] = useState(false);
   const [signUpModal, setSignUpModal] = useState(false);
 
+  const logo = "/images/sitelogo.png";
+
   const openModal = () => {
     setModal(true);
   };
@@ -32,34 +34,40 @@ const Topbar = () => {
       <div className="backbar">
         <div className="menuBar">
           <div className="siteLogo">
-            <a href="/">넌 어때?</a>
+            <img
+              className="siteLogo"
+              onClick={() => {
+                window.location.href = "/";
+              }}
+              src={logo}
+            />
           </div>
           <div className="menuList">
             <div className="menu1">
               <ul>
-                <li>
+                <li className="menu1_li">
                   <TiThMenu className="TiThMenu" />
-                  <h3>메뉴</h3>
+                  <h3 className="menu_h3">메뉴</h3>
                 </li>
                 <ul>
                   <li>
-                    <a href="/main">메인페이지</a>
-                  </li>
-                  <li>
-                    <a href="/myplace">🔰 MY PLACE</a>
-                  </li>
-                  <li>
-                    <a href="/likePage">내가 찜한 가게</a>
+                    <a href="/main">🌍 메인페이지</a>
                   </li>
                   {user && (
-                    <li>
-                      <a href="/MyReview">내가 작성한 리뷰</a>
-                    </li>
-                  )}
-                  {user && (
-                    <li>
-                      <a href="/MypageUserConfirm">마이페이지</a>
-                    </li>
+                    <>
+                      <li>
+                        <a href="/myplace">🔰 MY PLACE</a>
+                      </li>
+                      <li>
+                        <a href="/likePage">💖 내가 찜한 가게</a>
+                      </li>
+                      <li>
+                        <a href="/MyReview">📝 내가 작성한 리뷰</a>
+                      </li>
+                      <li>
+                        <a href="/MypageUserConfirm">🙋🏻‍♀️ 마이페이지</a>
+                      </li>
+                    </>
                   )}
                   {user && user.userRole === "ADMIN" ? (
                     <li>
@@ -91,8 +99,8 @@ const Topbar = () => {
                   {user && "로그아웃"}
                 </h3>
               </div>
-              <div className="signUpBtn">
-                <h3 onClick={openModal2}>{!user && "회원가입"}</h3>
+              <div className="loginBtn signUpBtn">
+                {!user && <h3 onClick={openModal2}>회원가입</h3>}
                 <div className="openModal">
                   {signUpModal ? (
                     <SignUp openModal={openModal} closeModal2={closeModal2} />
@@ -101,12 +109,19 @@ const Topbar = () => {
               </div>
             </div>
           </div>
-          <div className="username">
-            <a href="/MypageUserConfirm">{user && `${user.nickname}`}</a>
-          </div>
-          <div className="username usernameback">
+        </div>
+        <div className="show_user">
+          <p className="username">
+            <span
+              className="username_span"
+              onClick={() => {
+                window.location.href = "/MypageUserConfirm";
+              }}
+            >
+              {user && `${user.nickname}`}
+            </span>
             {user && "님 환영합니다."}
-          </div>
+          </p>
         </div>
       </div>
     </>
