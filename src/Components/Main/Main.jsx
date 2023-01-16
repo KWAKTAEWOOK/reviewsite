@@ -4,7 +4,6 @@ import RightArrow from "../../Style/image/right-arrow.png";
 import LeftArrow from "../../Style/image/left-arrow.png";
 import Topbar from "./Topbar";
 import "../../Style/Main/Main.scss";
-import useGeolocation from "react-hook-geolocation";
 import { LOCAL_URL } from "../../utils";
 
 const { kakao } = window;
@@ -164,9 +163,9 @@ const Main = ({
       geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);
     }
 
-    function searchDetailAddrFromCoords(coords, callback) {
-      geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
-    }
+    // function searchDetailAddrFromCoords(coords, callback) {
+    //   geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
+    // }
 
     function displayCenterInfo(result, status) {
       if (status === kakao.maps.services.Status.OK) {
@@ -303,7 +302,6 @@ const Main = ({
                     <select
                       name="category"
                       className="category"
-                      defaultValue="all"
                       onChange={onChangeCategory}
                     >
                       <option value="all">전체</option>
@@ -316,7 +314,6 @@ const Main = ({
                       type="text"
                       placeholder="장소, 주소 검색"
                       value={inputText}
-                      defaultValue={sessionStorage.getItem("search")}
                       onChange={onChange}
                       onKeyDown={(e) => {
                         if (e.keyCode === 13) onClickSearch();
@@ -348,8 +345,9 @@ const Main = ({
                     </div>
                     <div className=".search_data_box">
                       {keywords.map(({ id, text, date }) => (
-                        <section className="TopSearchData">
+                        <section className="TopSearchData" key={id}>
                           <div
+                            key={id}
                             className="SearchDataText"
                             onClick={() => {
                               onClickSearchData(text);
@@ -378,18 +376,18 @@ const Main = ({
                     {Places.slice(offset, offset + limit).map((item, i) => (
                       <ul
                         className="menulist"
-                        key={i}
+                        key={item.id}
                         onClick={() => {
                           onClickDetailDB(item);
                         }}
                       >
                         <li className="searchInfoList">
-                          <a href="#!" className="searchInfoName">
+                          <span href="#!" className="searchInfoName">
                             {item.place_name}
-                          </a>
-                          <li className="searchInfoCategory">
+                          </span>
+                          <span className="searchInfoCategory">
                             {item.category_name}
-                          </li>
+                          </span>
                           <div className="menuSublist">
                             {item.road_address_name ? (
                               <div className="searchInfoAddress">
@@ -401,7 +399,9 @@ const Main = ({
                               </span>
                             )}
                             {item.phone ? (
-                              <li className="searchInfoPhone">{item.phone}</li>
+                              <span className="searchInfoPhone">
+                                {item.phone}
+                              </span>
                             ) : null}
                           </div>
                         </li>
