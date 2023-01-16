@@ -1,5 +1,6 @@
 /*global kakao*/
 import React, { useState, useEffect, useRef } from "react";
+
 import "../../Style/Detail/img.css";
 import "../../Style/Main/Main.scss";
 import TopbarV2 from "../Main/TopbarV2";
@@ -73,7 +74,7 @@ const Detail = () => {
       alert("이미지 불러오기 실패");
     }
   };
-
+  console.log(images);
   //-------------------------------------------
   // 스크롤 오브젝트 Ref
   const photosRef = useRef();
@@ -99,7 +100,7 @@ const Detail = () => {
   const review = () =>
     reviewRef.current.scrollIntoView({
       behavior: "smooth",
-      block: "end",
+      block: "start",
     });
 
   //------------------------------------------------------------------
@@ -152,6 +153,7 @@ const Detail = () => {
       <TopbarV2 />
       {modal === true ? (
         <div
+          className="zin"
           onClick={(e) => {
             if (outSection.current == e.target) {
               setModal(false);
@@ -204,7 +206,7 @@ const Detail = () => {
               <UserLike detailData={detailData} />
             </div>
             <Detailmap place_name={place_name} mappgRef={mappgRef} />
-            {user && <StarRating getdata={getdata} reviewRef={reviewRef} />}
+            {user && <StarRating />}
             <br />
             <div className="detail_comment">
               <p>🦾 댓글달기</p>

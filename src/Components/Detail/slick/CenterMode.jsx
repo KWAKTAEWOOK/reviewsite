@@ -53,13 +53,9 @@ const CenterMode = ({ images, modal, setModal }) => {
         })}
       </Slider>
       <>
-        <button className="PrevButton" onClick={previous}>
-          <span className="hidden">이전</span>
-        </button>
+        <button className="PrevButton" onClick={previous}></button>
 
-        <button className="NextButton" onClick={next}>
-          <span className="hidden">다음</span>
-        </button>
+        <button className="NextButton" onClick={next}></button>
       </>
     </div>
   );

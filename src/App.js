@@ -15,6 +15,8 @@ import MypageTest from "./Components/Mypage/MypageTest";
 import MypageUserConfirm from "./Components/Mypage/MypageUserConfirm";
 import MyPlace from "./Components/MyPlace/MyPlace";
 import SelectMyPlace from "./Components/MyPlace/SelectMyPlace";
+import YouReview from "./Components/Mypage/YouReview";
+import YouPlace from "./Components/YouPlace/YouPlace";
 
 const App = () => {
   const [inputText, setInputText] = useState("");
@@ -88,6 +90,9 @@ const App = () => {
             <Route path={"/MyReview"} exact>
               <MyReview />
             </Route>
+            <Route path={`/YouReview/:id`} exact>
+              <YouReview />
+            </Route>
             <Route path={"/help/"} exact>
               <Help />
             </Route>
@@ -108,6 +113,9 @@ const App = () => {
             </Route>
             <Route path={"/myplace"} exact>
               <MyPlace />
+            </Route>
+            <Route path={"/youplace"} exact>
+              <YouPlace />
             </Route>
             <Route path={"/myplace/:id"} exact>
               <SelectMyPlace />

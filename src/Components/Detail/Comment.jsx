@@ -6,17 +6,19 @@ import "../../Style/Detail/Comment.scss";
 import { useRecoilState } from "recoil";
 import { userState } from "../../recoil/user";
 
-const Comment = ({ reviewlist, reviewRef }) => {
+const Comment = ({ reviewlist, nickname, reviewRef }) => {
   const [user, setUser] = useRecoilState(userState);
   const [nicknameon, setNicknameon] = useState(false);
 
+  // console.log(user);
   const onSubmoit = (e) => {
-    e.preventDefault();
+    e.preventDefault(); //동작때마다 새로고침 중지
     if (window.confirm("삭제하시겠습니까?") == true) {
       deletecontent();
-      alert("삭제가 완료되었습니다.");
+      console.log("삭제가 완료되었습니다.");
     } else {
-      alert("취소되었습니다.");
+      // false는 취소버튼을 눌렀을 때, 취소됨
+      console.log("취소되었습니다.");
     }
   };
 
@@ -52,31 +54,29 @@ const Comment = ({ reviewlist, reviewRef }) => {
       alert("값 입력 실패");
     }
   };
-
   const [Click, setClick] = useState(false);
-
   const toggleClick = () => {
     if (Click == true) {
       setClick((Click) => !Click); // on,off 개념 boolean
+      console.log(rating, content, reviewlist.id);
       if (window.confirm("수정하시겠습니까?") == true) {
         get();
-        alert("수정 완료되었습니다.");
+        console.log("수정 완료되었습니다.");
       } else {
         // false는 취소버튼을 눌렀을 때, 취소됨
-        alert("취소되었습니다");
+        console.log("취소되었습니다");
       }
     } else if (Click == false) {
       setClick((Click) => !Click);
     }
+    console.log(Click);
   };
-
   //-----------------------------------------------
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
   const [content, setcontent] = useState("");
-
   // --------------------------------------------
-  //수정버튼 눌렀을때 글상자에 원본 내용 나오게
+  //수정버튼 눌럿을때 글상자에 원본 내용 나오게
   function setting() {
     setcontent(reviewlist.content);
   }
@@ -96,6 +96,7 @@ const Comment = ({ reviewlist, reviewRef }) => {
     document.addEventListener("mousedown", clickOutside);
 
     return () => {
+      // Cleanup the event listener
       document.removeEventListener("mousedown", clickOutside);
     };
   }, [nicknameon]);
@@ -105,8 +106,8 @@ const Comment = ({ reviewlist, reviewRef }) => {
   }, []);
 
   return (
-    <div ref={reviewlist && reviewRef} className="userdiv">
-      <div className="starcreatedate" ref={outNickneme}>
+    <div ref={reviewRef} className="userdiv">
+      <div className="starcreatedate">
         {/* 별점 ---------------------------------- */}
         {Click == false && (
           <div className="star-rating">
@@ -167,12 +168,14 @@ const Comment = ({ reviewlist, reviewRef }) => {
       {Click == false && (
         <div className="사용자">
           {nicknameon === true ? (
-            <div className={`nameContextMenu`}>
+            <div className="nameContextMenu" ref={outNickneme}>
               <table class="mbLayer">
                 <tbody>
                   <tr>
                     <td className="sideViewRow_mb_cid">
-                      <a href="" rel="nofollow">
+                      <a
+                        href={`http://localhost:3000/youplace/${reviewlist.user.nickname}`}
+                      >
                         📚북마크
                       </a>
                     </td>
@@ -180,18 +183,15 @@ const Comment = ({ reviewlist, reviewRef }) => {
 
                   <tr>
                     <td className="sideViewRow_mb_cid">
-                      <a href="" rel="nofollow">
-                        🧡찜목록
-                      </a>
+                      <a href="">🧡찜목록</a>
                     </td>
                   </tr>
                   <tr>
                     <td className="sideViewRow_new">
                       <a
-                        href=""
+                        href={`http://localhost:3000/YouReview/${reviewlist.user.nickname}`}
                         rel="nofollow"
                         class="link_new_page"
-                        onclick=""
                       >
                         😶‍🌫️리뷰보기
                       </a>
@@ -203,11 +203,10 @@ const Comment = ({ reviewlist, reviewRef }) => {
           ) : null}
           <div className="usercon">
             <div className="userimg">
-              <img className="usersimg" src={reviewlist.user?.imgUrl} alt="" />
+              <img className="usersimg" src="/images/user.png" alt="" />
             </div>
             <div>
               <span
-                className="review_nick2"
                 onClick={() => {
                   setNicknameon(true);
                 }}
