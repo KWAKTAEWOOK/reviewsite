@@ -18,7 +18,7 @@ const SelectMyPlace = () => {
   const [bookmarkByFolder, setBookmarkByFolder] = useState([]);
   const [name, setName] = useState("");
 
-  const para = document.location.href.split("myplace/");
+  const para = document.location.href.split("/");
 
   // 북마크 이름 생성
   const createBookmark = async (e) => {
@@ -54,14 +54,15 @@ const SelectMyPlace = () => {
 
   // 유저의 북마크 가져오기
   useEffect(() => {
-    const getData = async (e) => {
+    const getData = async () => {
       const data = await axios({
-        url: `${BACKEND_URL}/bookmarkname/${parseInt(para[1])}`,
+        url: `${BACKEND_URL}/bookmark/data/${parseInt(para[5])}`,
         method: "GET",
       });
-      setBookmarks(data.data.bookmark);
-      setBookmarkX(data.data.bookmark[0]?.locationX);
-      setBookmarkY(data.data.bookmark[0]?.locationY);
+      setBookmarks(data.data);
+      setBookmarkX(data.data[0]?.locationX);
+      setBookmarkY(data.data[0]?.locationY);
+      console.log(data.data);
     };
     getData();
   }, []);
