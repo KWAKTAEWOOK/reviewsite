@@ -1,4 +1,5 @@
 .searchNull {
+  font-family: "Noto Sans KR", sans-serif;
   text-align: center;
   width: 250px;
   font-size: 25px;
@@ -10,10 +11,11 @@
   transform: translateX(-50%);
 }
 .main {
-  position: relative;
+  justify-content: space-between;
+  position: absolute;
   display: block;
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
+  min-width: 100vw;
   overflow: hidden;
 }
 .mainList {
@@ -51,6 +53,7 @@
   margin-top: 15px;
 }
 .searchInput {
+  font-family: "Noto Sans KR", sans-serif;
   max-width: 190px;
   height: 100%;
   margin-left: 50px;
@@ -74,12 +77,12 @@
 }
 .category {
   position: relative;
-  font-family: "MonoplexKR-Regular";
+  font-family: "Noto Sans KR", sans-serif;
   border: 0px;
   left: 30px;
   width: 90px;
   height: 30px;
-  font-size: 18px;
+  font-size: 16px;
 }
 .search_List {
   position: relative;
@@ -117,31 +120,29 @@
 .menulist {
   height: auto;
   overflow: hidden;
-  // border-bottom: 1px solid gray;
 }
 .searchInfoList {
+  font-family: "Noto Sans KR", sans-serif;
   display: block;
   flex-direction: column;
   position: relative;
   overflow: hidden;
   height: auto;
-  font-weight: bold;
   padding: 10px;
-  color: rgb(42, 42, 114);
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid gray;
   left: -5px;
+  color: rgba(57, 57, 57, 0.975);
 }
 .searchInfoName {
   position: relative;
   display: block;
-  font-family: "MonoplexKR-Regular";
   height: 30px;
   left: 30px;
   font-size: 1.2rem;
+  font-weight: bold;
   width: 350px;
   margin-top: 5px;
   word-break: keep-all;
-  color: rgb(46, 46, 202);
 }
 .menulist img {
   position: relative;
@@ -303,6 +304,7 @@
   opacity: 0.2;
 }
 .TopSearchHeader {
+  font-family: "NanumSquareNeo-Variable";
   margin: auto;
   margin-top: 10px;
   width: 400px;
@@ -317,12 +319,14 @@
   color: grey;
 }
 .TopSearchData {
+  font-family: "NanumSquareNeo-Variable";
   margin: auto;
   margin-top: 10px;
   width: 400px;
   height: 30px;
 }
 .SearchDataText {
+  font-family: "NanumSquareNeo-Variable";
   position: relative;
   width: 300px;
   margin-top: 1px;
@@ -331,6 +335,7 @@
   margin-left: 0px;
 }
 .SearchDataDelete {
+  font-family: "NanumSquareNeo-Variable";
   display: inline-block;
   position: relative;
   width: 30px;
@@ -345,6 +350,7 @@
 .SearchDataDate {
   display: inline-block;
   position: relative;
+  font-size: 14px;
   width: 70px;
   opacity: 0.5;
   margin-top: 1px;

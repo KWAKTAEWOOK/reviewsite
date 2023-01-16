@@ -307,7 +307,6 @@ const Main = ({
                   alt="slidebt"
                 />
               </button>
-
               <div className="searchMenu">
                 <div className="searchBtn">
                   <form className="searchBtn_in">
@@ -357,7 +356,7 @@ const Main = ({
                       </div>
                       <div className="TopSearchLine" />
                     </div>
-                    <div>
+                    <div className=".search_data_box">
                       {keywords.map(({ id, text, date }) => (
                         <section className="TopSearchData">
                           <div

@@ -1,6 +1,5 @@
 /*global kakao*/
 import React, { useState, useEffect, useRef } from "react";
-
 import "../../Style/Detail/img.css";
 import "../../Style/Main/Main.scss";
 import TopbarV2 from "../Main/TopbarV2";
