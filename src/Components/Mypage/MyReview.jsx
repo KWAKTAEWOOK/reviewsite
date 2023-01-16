@@ -36,28 +36,7 @@ const MyReview = () => {
     <>
       <TopbarV2 />
       <div className="MyReview_con">
-        <div className="MyReview_title_div">
-          <h3 className="MyReview_title_div_h3">넌 어때?</h3>
-        </div>
-        <div className="MyReview_title_div2">
-          <h3 className="MyReview_title_div2_h3">🍴 내가 작성한 리뷰</h3>
-        </div>
         <div className="MyReview_body">
-          {/* <div className="MyReview_search_con">
-            <div className="MyReview_search_box">
-              <input
-                className="input_seach"
-                size={10}
-                type="text"
-                value={search_word}
-                onChange={onChange}
-                placeholder="검색어를 입력해주세요."
-              ></input>
-              <button type="submit" className="button_search">
-                검색
-              </button>
-            </div>
-          </div> */}
           <div className="MyReview_subject_list">
             <table className="MyReview_table">
               <thead>

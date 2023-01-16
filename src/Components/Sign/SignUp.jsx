@@ -240,7 +240,7 @@ const SignUp = ({ openModal, closeModal2 }) => {
                   중복확인
                 </button>
               </div>
-              <button type="submit" className="signUpButton">
+              <button type="submit" className="signUpButton signUpButton2">
                 가입하기
               </button>
             </form>

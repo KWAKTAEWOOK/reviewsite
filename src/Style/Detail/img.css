@@ -94,8 +94,10 @@
 .NavGroup > button {
   display: block;
   margin: 20px 0px;
-  font-family: OTEnjoystoriesBA;
-  font-size: 2rem;
+  /* font-family: "Noto Sans KR", sans-serif; */
+  font-family: "NanumSquareNeo-Variable";
+  font-size: 1.5rem;
+  letter-spacing: -1.2px;
   min-width: 100px;
 }
 .NavGroup > button:hover {

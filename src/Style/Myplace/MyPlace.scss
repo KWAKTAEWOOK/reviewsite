@@ -1,13 +1,8 @@
 .my_list_back {
   position: relative;
-  top: 10px;
+  top: 250px;
   text-align: left;
-  left: 100px;
-}
-.show_list_p {
-  font-size: 22px;
-  margin-top: 200px;
-  color: rrgb(114, 114, 114);
+  left: 650px;
 }
 .myList_list {
   font-size: 20px;
@@ -101,15 +96,22 @@
   font-weight: bold;
 }
 
-// 오른쪽에 보여지는 지도
-.right_fixed_menu {
+// 왼쪽에 보여지는 지도
+.left_fixed_menu {
   position: absolute;
-  top: -60px;
-  left: 570px;
-  width: 600px;
-  min-height: 650px;
+  left: 10px;
+  width: 500px;
+  min-height: 550px;
+}
+.show_list_p {
+  position: absolute;
+  top: 0px;
+  font-size: 20px;
+  color: black;
 }
 .marked_map {
+  position: relative;
+  top: 100px;
   width: 500px;
   height: 400px;
 }

@@ -29,15 +29,15 @@
   left: 10px;
   top: 5px;
   height: 68px;
-  font-size: 1.7rem;
   font-weight: bold;
 }
 .signUpLogo > p {
   display: inline-block;
   position: relative;
-  left: 10px;
-  top: -10px;
-  color: rgb(22, 56, 141);
+  font-size: 1.5rem;
+  left: 12px;
+  top: 0px;
+  color: #ff7300d7;
 }
 .signUpP {
   border: 1px solid white;
@@ -53,14 +53,14 @@
     margin-top: 5px;
     margin-right: 20px;
     border: 0;
-    border-bottom: 1.5px solid rgb(0, 0, 0);
+    border-bottom: 1.5px solid rgb(104, 100, 100);
   }
   input:focus {
     outline: none;
   }
 }
 .confirm {
-  font-family: "MonoplexKR-Regular";
+  font-family: "NanumSquareNeo-Variable";
   display: inline-block;
   position: absolute;
   background-color: rgba(72, 72, 140, 0);
@@ -77,18 +77,27 @@
   position: relative;
   text-align: left;
   margin-bottom: 15px;
-  color: black;
+  color: rgb(71, 71, 71);
 }
 .signUpButton {
-  font-family: "MonoplexKR-Regular";
+  font-family: "NanumSquareNeo-Variable";
   position: relative;
   font-size: 16px;
   top: 15px;
   width: 150px;
   height: 50px;
   cursor: pointer;
-  border: 0.5px solid gray;
+  border: 0.5px solid rgb(165, 165, 165);
   border-radius: 5px;
+}
+.signUpButton:hover {
+  background-color: #ff7300d7;
+  border: 1px solid white;
+  color: white;
+}
+.signUpButton2 {
+  top: 30px;
+  position: relative;
 }
 .loginButton {
   position: relative;
@@ -97,6 +106,7 @@
   cursor: pointer;
   top: -10px;
   right: 200px;
+  text-underline-offset: 4px;
 }
 .loginButton:hover {
   font-weight: bolder;
