@@ -27,6 +27,7 @@ const MyPlace = () => {
       setBookmarks(data.data);
       setBookmarkX(data.data[0]?.locationX);
       setBookmarkY(data.data[0]?.locationY);
+      console.log(data.data);
     };
     getData();
   }, []);

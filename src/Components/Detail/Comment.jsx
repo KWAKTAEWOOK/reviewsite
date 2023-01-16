@@ -174,7 +174,7 @@ const Comment = ({ reviewlist, nickname, reviewRef }) => {
                   <tr>
                     <td className="sideViewRow_mb_cid">
                       <a
-                        href={`http://localhost:3000/youplace/${reviewlist.user.nickname}`}
+                        href={`http://localhost:3000/youplace/${reviewlist.user.nickname}/${reviewlist.user.id}`}
                       >
                         📚북마크
                       </a>

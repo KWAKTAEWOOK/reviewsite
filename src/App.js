@@ -117,7 +117,7 @@ const App = () => {
             <Route path={"/youplace"} exact>
               <YouPlace />
             </Route>
-            <Route path={"/myplace/:id"} exact>
+            <Route path={"/youplace/:nickname/:userid"} exact>
               <SelectMyPlace />
             </Route>
           </Switch>
