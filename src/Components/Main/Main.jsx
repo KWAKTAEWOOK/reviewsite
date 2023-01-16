@@ -30,8 +30,13 @@ const Main = ({
   const [limit, setLimit] = useState(100);
   const [open, setOpen] = useState(true);
   const [arrow, setArrow] = useState(true);
+  const [selectID, setSelectID] = useState("");
   const [searchNull, setSearchNull] = useState("");
   const [imgAddress, setImgAddress] = useState("");
+
+  const onClickselect = (place) => {
+    setSelectID(place.id);
+  };
 
   const onClickSearchData = (text) => {
     setInputText(text);
@@ -234,13 +239,13 @@ const Main = ({
 
     function displayMarker(place) {
       if (place.category_group_code === "FD6") {
-        setImgAddress("https://i.imgur.com/J4YtIyK.png");
+        setImgAddress("https://i.imgur.com/x0m2Wcs.png");
       } else if (place.category_group_code === "CE7") {
-        setImgAddress("https://i.imgur.com/jkiEdF1.png");
+        setImgAddress("https://i.imgur.com/lGxngA8.png");
       } else if (place.category_group_code === "CS2") {
-        setImgAddress("https://i.imgur.com/RPJ6WIA.png");
+        setImgAddress("https://i.imgur.com/4M49ZCN.png");
       } else {
-        setImgAddress("https://i.imgur.com/ICPDozz.png");
+        setImgAddress("https://i.imgur.com/zSNDtIv.png");
       }
       let marker = new kakao.maps.Marker({
         map: map,
@@ -250,34 +255,21 @@ const Main = ({
 
       kakao.maps.event.addListener(marker, "click", function () {
         infowindow.setContent(
-          '<div class="customoverlay">' +
-            '<div class="customoverlayBack">' +
-            `<div class="customoverlayPlaceName">` +
-            '<span clss="customoverlayEtc">' +
-            "[ " +
-            "</span>" +
+          `<div class="customoverlay" onClick=${onClickselect(place)}>` +
+            ' <div class="customoverlayBack">' +
+            `   <a href="http://localhost:3000/Detail/${place.place_name}/${place.id}" class="customoverlayPlaceName">` +
             place.place_name +
-            '<span clss="customoverlayEtc">' +
-            " ]" +
-            "</span>" +
-            `<a href="#!" >` +
-            "  →" +
+            '<span class="customLink">' +
+            ">" +
             "</a>" +
-            "</div>" +
-            '<img src="https://ldb-phinf.pstatic.net/20211228_153/1640684993923s9vPb_JPEG/KakaoTalk_20211228_093917446_03.jpg" alt="0" class="customoverlayImg"/>' +
-            '<div class="customoverlayCategory">' +
+            "   </span>" +
+            '   <span class="customoverlayCategory">' +
             place.category_name +
-            "</div>" +
-            '<div class="customoverlayAddress">' +
+            "   </span>" +
+            '   <span class="customoverlayAddress">' +
             place.road_address_name +
-            "</div>" +
-            '<div clss="customoverlayPhone">' +
-            '<span class="customoverlayEtc">' +
-            "☎ " +
-            "</span>" +
-            place.phone +
-            "</div>" +
-            "</div>" +
+            "   </span>" +
+            " </div>" +
             "</div>"
         );
         infowindow.open(map, marker);
@@ -288,14 +280,12 @@ const Main = ({
     // lat, lng,
     imgAddress,
   ]);
-
   return (
     <>
       <Topbar />
       <section>
         <div className="main">
           <div className="mainList">
-            <span id="centerAddr" className="TestCenter"></span>
             <nav className={open ? "show" : "hide"}>
               <button
                 className="ShowAndHide"
@@ -410,7 +400,9 @@ const Main = ({
                                 {item.address_name}
                               </span>
                             )}
-                            <li className="searchInfoPhone">{item.phone}</li>
+                            {item.phone ? (
+                              <li className="searchInfoPhone">{item.phone}</li>
+                            ) : null}
                           </div>
                         </li>
                       </ul>

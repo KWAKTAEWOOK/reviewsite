@@ -141,7 +141,6 @@
   font-size: 1.2rem;
   font-weight: bold;
   width: 350px;
-  margin-top: 5px;
   word-break: keep-all;
 }
 .menulist img {
@@ -356,76 +355,64 @@
   margin-top: 1px;
 }
 .customoverlay {
-  width: auto;
-  height: 100%;
-  overflow: hidden;
-  background-color: transparent;
-}
-.customoverlayBack {
-  width: 300px;
-  height: 100%;
-  overflow: hidden;
   position: relative;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  background-color: #34447a;
-  border: 10px solid #7786b3;
-  padding: 15px 25px 15px 25px;
-  font-size: 15px;
-  color: white;
-}
-.customoverlayPlaceName {
   width: auto;
   height: auto;
-  overflow: hidden;
-  position: relative;
-  font-weight: bold;
-  margin-bottom: 15px;
+  border: 2px solid #ff7300d7;
+  background-color: #ffffff;
+  padding: 12px 20px 12px 20px;
+  box-shadow: 2px 2px 5px grey;
+  line-height: 20px;
+  outline: none;
 }
-.customoverlayImg {
-  width: 250px;
-  height: 150px;
-  border: 5px solid white;
+.customoverlayBack {
+  position: relative;
+  min-width: 168px;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: space-between;
+  color: black;
+}
+.customoverlayPlaceName {
+  position: relative;
+  display: flex;
+  font-weight: bold;
+  width: auto;
+  height: auto;
+  white-space: nowrap;
+  font-size: 16px;
+  color: black;
+  cursor: pointer;
 }
 .customoverlayCategory {
   width: auto;
   height: auto;
-  overflow: hidden;
   position: relative;
-  font-size: 13px;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  opacity: 0.7;
+  font-size: 8px;
+  color: #b6b6b6;
+  display: inline-block;
+  padding-top: 4px;
 }
 .customoverlayAddress {
   position: relative;
-  margin-bottom: 5px;
+  font-size: 12px;
   width: auto;
   height: auto;
-  overflow: hidden;
+  display: inline-block;
+  word-wrap: normal;
 }
-.customoverlayPhone {
-  position: relative;
-  width: auto;
-  height: auto;
-  overflow: hidden;
-}
-.customoverlayEtc {
-  width: auto;
-  height: auto;
-  overflow: hidden;
-  position: relative;
+.customLink {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: #ff7300d7;
+  border-radius: 50%;
+  text-align: center;
   font-weight: bold;
-  top: -1px;
-}
-.TestCenter {
-  z-index: 9999999;
-  position: absolute;
-  font-size: 1rem;
-  color: rgba(243, 243, 243, 0.8);
-  width: 300px;
-  margin-top: -61px;
-  margin-left: 1200px;
+  color: white;
+  font-size: 16px;
+  line-height: 16px;
+  position: relative;
+  margin-left: 4px;
 }
