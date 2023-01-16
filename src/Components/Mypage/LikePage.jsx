@@ -30,7 +30,7 @@ const LikePage = () => {
       <div className="likebackground">
         <div className="liketemplate">
           <div className="like_wrap">
-            <p>✨ 내가 찜한 가게 ✨</p>
+            <p>💖 내가 찜한 가게</p>
             {user ? (
               likePosts.length != 0 ? (
                 <div className="like_post_map">
