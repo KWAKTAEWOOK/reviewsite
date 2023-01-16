@@ -7,7 +7,7 @@ import "../../Style/Detail/StarRating.css";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 
-const StarRating = ({ getdata, reviewRef }) => {
+const StarRating = () => {
   const { id } = useParams();
   const { place_name } = useParams();
   const [rating, setRating] = useState(0);
@@ -68,17 +68,16 @@ const StarRating = ({ getdata, reviewRef }) => {
       post();
     }
   };
-
   const onSubmit = (e) => {
     setFlies(e.target.files);
+    console.log(e.target.files);
   };
-
   const onContent = (e) => {
     setContent(e.target.value);
+    console.log(content);
   };
-
   return (
-    <div className="star_rate_wrap">
+    <div>
       <div className="star-rating">
         평점 :　
         {[...Array(5)].map((star, index) => {
@@ -114,18 +113,23 @@ const StarRating = ({ getdata, reviewRef }) => {
       <div className="사용자">
         <div className="usercon">
           <div className="userimg">
-            <img ref={reviewRef} className="usersimg" src={user?.userImgUrl} />
+            <img className="usersimg" src={user.userimg} alt="" />
           </div>
-          <div className="review_nick">{user?.nickname}</div>
+          <div>{user && user.nickname}</div>
         </div>
         <textarea
           className="comment_textarea"
           onChange={onContent}
-          cols="100"
+          cols="50"
           rows="10"
         ></textarea>
       </div>
-      <div className="imgsee" />
+      <div className="imgsee">
+        <div className="imgcons"></div>
+        <div className="imgcontent">
+          <img src="" alt="" />
+        </div>{" "}
+      </div>
     </div>
   );
 };

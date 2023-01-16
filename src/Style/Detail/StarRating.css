@@ -23,7 +23,7 @@
 .plugin {
   vertical-align: middle;
   position: relative;
-  margin-left: 11%;
+  margin-left: 6%;
   bottom: -1px;
 }
 .buttt {
@@ -40,7 +40,7 @@
   font-family: "NanumSquareNeo-Variable";
 }
 .fileupload {
-  margin-left: 30%;
+  margin-left: 10%;
 }
 .imgsee {
   height: 50px;

@@ -5,7 +5,7 @@
 .createDate {
   text-align: right;
   display: inline-block;
-  margin-left: 30%;
+  margin-left: 15%;
   margin-top: 8px;
 }
 
@@ -68,7 +68,7 @@
 .userdiv {
   border-top: rgba(74, 77, 63, 0.3) 1.5px solid;
   margin-bottom: 10px;
-  width: 1010px;
+  width: 700px;
   border-radius: 10px;
 }
 .detail_comment {
@@ -87,12 +87,12 @@
 .userimg {
   display: inline-block;
   height: 150px;
-  width: 200px;
+  width: 145px;
   position: relative;
 }
 .사용자 > textarea {
   position: relative;
-  margin-left: 30px;
+  margin-left: 10px;
 }
 .사용자 > .usercon {
   display: inline-block;
@@ -121,7 +121,9 @@
 .사용자 {
   display: inline-flex;
   width: 100%;
-  height: auto;
+  height: 150px;
+  margin: 10px;
+  position: relative;
 }
 textarea {
   width: 740px;
@@ -147,22 +149,19 @@ hr {
   background-color: rgb(233, 233, 233);
   display: block;
   padding: 10px;
-  min-height: 174px;
+
   margin-left: 30px;
 }
-.사용자 {
-  margin: 10px;
-  position: relative;
-}
+
 .userimg {
   display: block;
-  width: 200px;
-  height: 150px;
+  width: 150px;
+  height: 120px;
 }
 .userimg > img {
   object-fit: contain;
-  width: 200px;
-  height: 150px;
+  width: 150px;
+  height: 130px;
 }
 .review_nick2 {
   padding: 3px 0;

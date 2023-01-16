@@ -6,50 +6,13 @@
   margin-top: 30px;
 }
 .wrap {
-  width: 1000px;
+  width: 700px;
   margin: 0px auto;
   display: flex;
   position: relative;
-  margin-top: 110px;
+  margin-top: 45px;
 }
-.wrap .left {
-  width: 600px;
-}
-.wrap .left > img {
-  vertical-align: top;
-  width: 1000px;
-  height: 700px;
-  margin-top: 110px;
-}
-.wrap .left ul {
-  display: flex;
-  flex-wrap: wrap;
-  width: 1000px;
-}
-.wrap .left ul li {
-  width: 200px;
-}
-.wrap .left ul li img {
-  width: 200px;
-  vertical-align: top;
-  height: 130px;
-}
-.wrap .right {
-  width: 400px;
-  background: beige;
-  padding: 30px;
-}
-.wrap .right h3 {
-  font-size: 30px;
-  margin-bottom: 20px;
-}
-.wrap .right p {
-  font-size: 20px;
-}
-.wrap .desc {
-  position: absolute;
-  display: inline-block;
-}
+
 .body1 {
   display: flex;
   justify-content: center;
@@ -58,7 +21,7 @@
 .Box {
   text-align: center;
   border-radius: 5%;
-  width: 1000px;
+  width: 700px;
   height: auto;
   background-color: white;
   display: block;
@@ -128,7 +91,7 @@
 .rode_api1 {
   position: relative;
   left: 25px;
-  width: 950px;
+  width: 700px;
   height: 450px;
 }
 .maptext {
@@ -170,7 +133,7 @@ li > img:hover {
   margin-bottom: 12vh;
 }
 .magin-side {
-  width: 1000px;
+  width: 700px;
 }
 /*modal*/
 
@@ -193,12 +156,16 @@ li > img:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  max-width: 1000px;
+  max-width: 700px;
   width: auto;
   align-items: center;
   justify-content: center;
+  z-index: 99999;
 }
-
+.zin {
+  position: relative;
+  z-index: 100001;
+}
 .Viewmore {
   background-color: black;
 }
@@ -236,6 +203,7 @@ li > img:hover {
   height: 400px;
   object-fit: cover;
   top: 0;
+  z-index: 90000;
 }
 
 textarea {
