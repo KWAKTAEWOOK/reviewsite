@@ -12,25 +12,24 @@
 }
 .main {
   justify-content: space-between;
-  position: absolute;
+  position: relative;
   display: block;
   min-height: 100vh;
   min-width: 100vw;
-  overflow: hidden;
 }
 .mainList {
   position: absolute;
-  display: inline-flex;
-  margin-top: 110px;
-  height: 100%;
+  display: flex;
+  padding-top: 110px;
+  height: auto;
+  overflow: hidden;
   min-width: 100%;
-  min-height: 100%;
-  max-height: 100%;
+  min-height: auto;
 }
 
 .searchMenu {
   background-color: white;
-  height: 100vh;
+  height: auto;
   width: 430px;
   position: relative;
   display: flex;
@@ -47,9 +46,6 @@
 }
 .searchBtn_in {
   position: relative;
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
   margin-top: 15px;
 }
 .searchInput {
@@ -89,18 +85,18 @@
   background-color: white;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 78.4vh;
   width: 430px;
   box-shadow: 2px 2px 5px rgb(209, 209, 209);
 }
 .search_List_fixed {
   display: inline-block;
-  height: calc(100% - 140px);
   top: 0;
   width: 430px;
+  height: auto;
   overflow-x: hidden;
-  overflow-y: scroll;
-  position: absolute;
+
+  position: relative;
   bottom: 0;
 }
 .search_List_fixed::-webkit-scrollbar {
@@ -119,14 +115,13 @@
 }
 .menulist {
   height: auto;
-  overflow: hidden;
+  width: auto;
 }
 .searchInfoList {
   font-family: "Noto Sans KR", sans-serif;
   display: block;
   flex-direction: column;
   position: relative;
-  overflow: hidden;
   height: auto;
   padding: 10px;
   border-bottom: 1px solid gray;
@@ -178,9 +173,8 @@
 .paginationPos {
   width: 430px;
   position: relative;
-  height: 50px;
+  height: 30px;
   background-color: white;
-  margin-top: -200px;
   border-top: 0.5px solid rgb(209, 209, 209);
 }
 .searchPagination {
@@ -206,7 +200,6 @@
   border-left: 1px solid gray;
   width: 100vw;
   height: 100vh;
-  // margin-left: -460px;
   z-index: 0;
 }
 .ShowAndHide {
@@ -262,8 +255,8 @@
   border-radius: 10px;
 }
 .TopSearchDataList {
-  overflow-x: hidden;
-  overflow-y: scroll;
+  // overflow-x: hidden;
+  // overflow-y: scroll;
   width: 426px;
   min-height: 100px;
   max-height: 300px;

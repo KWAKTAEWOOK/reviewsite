@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { useState, useEffect } from "react";
 import useGeolocation from "react-hook-geolocation";
 import { useParams } from "react-router-dom";
@@ -13,6 +12,11 @@ export default function KakaoSearchDB(search2) {
   const lat = geolocation.latitude;
   const lng = geolocation.longitude;
   const { id } = useParams();
+  const [selectID, setSelectID] = useState("");
+
+  const onClickselect = (place) => {
+    setSelectID(place.id);
+  };
 
   useEffect(() => {
     var mapContainer = document.getElementById("map");
@@ -66,13 +70,13 @@ export default function KakaoSearchDB(search2) {
 
     function displayMarker(place2) {
       if (place2.category_group_code === "FD6") {
-        setImgAddress("https://i.imgur.com/J4YtIyK.png");
+        setImgAddress("https://i.imgur.com/x0m2Wcs.png");
       } else if (place2.category_group_code === "CE7") {
-        setImgAddress("https://i.imgur.com/jkiEdF1.png");
+        setImgAddress("https://i.imgur.com/lGxngA8.png");
       } else if (place2.category_group_code === "CS2") {
-        setImgAddress("https://i.imgur.com/RPJ6WIA.png");
+        setImgAddress("https://i.imgur.com/4M49ZCN.png");
       } else {
-        setImgAddress("https://i.imgur.com/ICPDozz.png");
+        setImgAddress("https://i.imgur.com/zSNDtIv.png");
       }
       let marker = new kakao.maps.Marker({
         map: map,
@@ -82,34 +86,21 @@ export default function KakaoSearchDB(search2) {
 
       kakao.maps.event.addListener(marker, "click", function () {
         infowindow.setContent(
-          '<div class="customoverlay">' +
-            '<div class="customoverlayBack">' +
-            `<div class="customoverlayPlaceName">` +
-            '<span clss="customoverlayEtc">' +
-            "[ " +
-            "</span>" +
+          `<div class="customoverlay" onClick=${onClickselect(place2)}>` +
+            ' <div class="customoverlayBack">' +
+            `   <a href="http://localhost:3000/Detail/${place2.place_name}/${place2.id}" class="customoverlayPlaceName">` +
             place2.place_name +
-            '<span clss="customoverlayEtc">' +
-            " ]" +
-            "</span>" +
-            `<a href="#!" >` +
-            "  →" +
+            '<span class="customLink">' +
+            ">" +
             "</a>" +
-            "</div>" +
-            '<img src="https://ldb-phinf.pstatic.net/20211228_153/1640684993923s9vPb_JPEG/KakaoTalk_20211228_093917446_03.jpg" alt="0" class="customoverlayImg"/>' +
-            '<div class="customoverlayCategory">' +
+            "   </span>" +
+            '   <span class="customoverlayCategory">' +
             place2.category_name +
-            "</div>" +
-            '<div class="customoverlayAddress">' +
+            "   </span>" +
+            '   <span class="customoverlayAddress">' +
             place2.road_address_name +
-            "</div>" +
-            '<div clss="customoverlayPhone">' +
-            '<span class="customoverlayEtc">' +
-            "☎ " +
-            "</span>" +
-            place2.phone +
-            "</div>" +
-            "</div>" +
+            "   </span>" +
+            " </div>" +
             "</div>"
         );
         infowindow.open(map, marker);
