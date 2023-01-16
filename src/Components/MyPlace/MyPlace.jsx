@@ -68,10 +68,20 @@ const MyPlace = () => {
       <TopbarV2 />
       <div className="likebackground">
         <div className="liketemplate">
-          <div className="my_list_back">
+          <div className="left_fixed_menu">
             <p className="show_list_p">
               👀 나의 맛집 정보를 저장하고 관리해보세요!
             </p>
+            <div className="marked_map">
+              <SavePlaceMap
+                bookmarkName={bookmarkName}
+                bookmarks={bookmarks}
+                bookmarkX={bookmarkX}
+                bookmarkY={bookmarkY}
+              />
+            </div>
+          </div>
+          <div className="my_list_back">
             <p className="myList_list">
               📚 나의 북마크
               <button
@@ -109,16 +119,6 @@ const MyPlace = () => {
                   <button className="myList_addBtn"> + </button>
                 </form>
               </div>
-            </div>
-          </div>
-          <div className="right_fixed_menu">
-            <div className="marked_map">
-              <SavePlaceMap
-                bookmarkName={bookmarkName}
-                bookmarks={bookmarks}
-                bookmarkX={bookmarkX}
-                bookmarkY={bookmarkY}
-              />
             </div>
           </div>
         </div>

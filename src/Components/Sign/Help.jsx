@@ -17,7 +17,7 @@ const Help = () => {
             }}
           >
             <div>
-              <img className="idImg" src={faceId} alt="" />
+              <img className="idImg" src={faceId} />
               <p>아이디 찾기</p>
             </div>
           </div>
@@ -28,7 +28,7 @@ const Help = () => {
             }}
           >
             <div>
-              <img className="idImg lockImg" src={password} alt="" />
+              <img className="idImg lockImg" src={password} />
               <p>비밀번호 변경하기</p>
             </div>
           </div>

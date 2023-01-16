@@ -12,59 +12,6 @@
   text-align: center;
   margin: 0 auto;
 }
-// .home_logo {
-//   position: relative;
-//   font-family: "Noto Sans KR", sans-serif;
-//   // font-family: "OTEnjoystoriesBA";
-//   font-size: 5rem;
-//   top: 35%;
-//   left: 40%;
-//   // color: rgb(247, 250, 255);
-//   input:focus {
-//     outline: none;
-//   }
-// }
-// .home_logo > a {
-//   position: relative;
-//   left: 10px;
-//   top: -10px;
-// }
-// .HomeInput {
-//   position: absolute;
-//   width: 450px;
-//   height: 80px;
-//   top: 90px;
-//   left: -130px;
-//   font-size: 17px;
-//   border-radius: 10px;
-//   border: 2px solid gray;
-// }
-// .HomeInput::placeholder {
-//   width: 430px;
-//   height: 50px;
-//   top: 15px;
-//   font-size: 17px;
-// }
-// .home_logo > img {
-//   position: absolute;
-//   width: 60px;
-//   left: -70px;
-// }
-// .home_btn {
-//   position: absolute;
-//   top: 200px;
-//   height: 30px;
-//   background-color: rgb(255, 255, 255);
-//   border: 0.1px solid rgba(172, 171, 171, 0.336);
-//   cursor: pointer;
-// }
-// .HomeSearchbt {
-//   display: none;
-//   width: 30px;
-//   height: 30px;
-//   z-index: 9;
-// }
-
 .home_main_p {
   position: relative;
   letter-spacing: -0.5px;
@@ -74,7 +21,6 @@
   color: rgba(0, 0, 0, 0.822);
 }
 .home_main_span {
-  // color: rgb(239, 46, 78);
   color: #ff9100;
   font-weight: bold;
 }
