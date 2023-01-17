@@ -113,7 +113,7 @@ const StarRating = () => {
       <div className="사용자">
         <div className="usercon">
           <div className="userimg">
-            <img className="usersimg" src={user?.userImgUrl} alt="" />
+            <img className="usersimg" src={user.userImgUrl} alt="" />
           </div>
           <div>{user && user.nickname}</div>
         </div>

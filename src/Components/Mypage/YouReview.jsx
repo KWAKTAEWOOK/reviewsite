@@ -38,14 +38,8 @@ const MyReview = () => {
     <>
       <TopbarV2 />
       <div className="MyReview_con">
-        <div className="MyReview_title_div">
-          <h3 className="MyReview_title_div_h3">넌 어때?</h3>
-        </div>
-        <div className="MyReview_title_div2">
-          <h3 className="MyReview_title_div2_h3">
-            {params.id}님이 작성한 리뷰
-          </h3>
-        </div>
+        <div className="MyReview_title_div"></div>
+        <div className="MyReview_title_div2"></div>
         <div className="MyReview_body">
           <div className="MyReview_search_con">
             <div className="MyReview_search_box">

@@ -6,9 +6,9 @@ import { useRecoilState } from "recoil";
 import { useEffect } from "react";
 import { BACKEND_URL } from "../../utils";
 import axios from "axios";
-import MarkName from "../MyPlace/MarkName";
 import SavePlaceMap from "../MyPlace/SavePlaceMap";
 import { useParams } from "react-router-dom";
+import Makname from "./Makname";
 
 const YouPlace = () => {
   const [user, setUser] = useRecoilState(userState);
@@ -87,7 +87,7 @@ const YouPlace = () => {
             </p>
             <div className="showMyList">
               {bookmarkName.map((markname, index) => (
-                <MarkName
+                <Makname
                   key={index}
                   markname={markname}
                   bookmarkName={bookmarkName}

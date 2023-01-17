@@ -18,6 +18,7 @@ const UserLike = ({ detailData }) => {
   const [userLike, setUserLike] = useState("");
   const [userBookmark, setUserBookmark] = useState("");
   const [saveBookmark, setSaveBookmark] = useState([]);
+  const params = useParams();
   const xData = detailData.x;
   const yData = detailData.y;
   const phone = detailData.phone;
@@ -52,7 +53,7 @@ const UserLike = ({ detailData }) => {
       try {
         e.preventDefault();
         const data = await axios({
-          url: `${BACKEND_URL}/heart?userId=${user?.id}`,
+          url: `${BACKEND_URL}/heart?userId=${user?.id}&detailId=${params.id}`,
           method: "POST",
           data: {
             postid,
