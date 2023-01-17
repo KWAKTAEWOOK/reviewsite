@@ -1,8 +1,9 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { BiChevronDownCircle } from "react-icons/bi";
 import { BACKEND_URL } from "../../utils";
 
-const MarkName = ({ markname }) => {
+const MarkName = ({ markname, userUrl, user }) => {
   const [edit, setEdit] = useState(false);
   const [name, setName] = useState(markname?.bookmarkName);
   const [editName, setEditName] = useState(markname?.bookmarkName);
@@ -81,25 +82,29 @@ const MarkName = ({ markname }) => {
             <div
               className="place_list"
               onClick={() => {
-                window.location.href = `/myplace/${nameId}`;
+                window.location.href = `/myplace/choice/${userUrl}/${nameId}`;
               }}
             >
               - {name}
             </div>
-            <button
-              className="place_edit_btn"
-              onClick={() => {
-                setEdit(true);
-              }}
-            >
-              이름수정
-            </button>
-            <button
-              className="place_edit_btn place_del_btn"
-              onClick={deleteFolder}
-            >
-              삭제
-            </button>
+            {user.id === userUrl ? (
+              <>
+                <button
+                  className="place_edit_btn"
+                  onClick={() => {
+                    setEdit(true);
+                  }}
+                >
+                  이름수정
+                </button>
+                <button
+                  className="place_edit_btn place_del_btn"
+                  onClick={deleteFolder}
+                >
+                  삭제
+                </button>
+              </>
+            ) : null}
           </>
         )}
       </div>

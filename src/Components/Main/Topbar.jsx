@@ -30,8 +30,6 @@ const Topbar = () => {
     setSignUpModal(false);
   };
 
-  var cemtervv = document.getElementById("centerAddr");
-
   return (
     <>
       <div className="backbar">
@@ -43,6 +41,7 @@ const Topbar = () => {
                 window.location.href = "/";
               }}
               src={logo}
+              alt="logo"
             />
           </div>
           <div className="menuList">
@@ -59,7 +58,7 @@ const Topbar = () => {
                   {user && (
                     <>
                       <li>
-                        <a href="/myplace">🔰 MY PLACE</a>
+                        <a href={`/myplace/${user.id}`}>🔰 MY PLACE</a>
                       </li>
                       <li>
                         <a href="/likePage">💖 내가 찜한 가게</a>

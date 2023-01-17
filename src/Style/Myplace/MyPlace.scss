@@ -138,12 +138,13 @@
 .place_bmlist {
   border-bottom: 1px solid rgba(177, 177, 177, 0.795);
   height: 65px;
+  font-size: 12px;
 }
 .place_bmlist_title {
   position: relative;
   text-align: left;
   margin-left: 10px;
-  top: 20px;
+  top: 25px;
 }
 .place_bmlist_index {
   margin-right: 10px;
@@ -158,8 +159,9 @@
 .place_bmlist_delete {
   font-family: "NanumSquareNeo-Variable";
   position: relative;
-  left: 200px;
-  margin-top: 5px;
+  left: 140px;
+  font-size: 12px;
+  top: 6px;
 }
 .place_bmlist_delete:hover {
   font-weight: bold;
@@ -178,9 +180,11 @@
 .selectMark {
   font-family: "NanumSquareNeo-Variable";
   position: relative;
-  left: 150px;
+  left: 100px;
   width: 140px;
   height: 25px;
+  top: 6px;
+  font-size: 12px;
 }
 .selectMark:focus {
   outline: none;

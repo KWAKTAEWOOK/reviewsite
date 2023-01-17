@@ -1,7 +1,14 @@
 import React, { useEffect } from "react";
 import MyBookmarkPlaceList from "./MyBookmarkPlaceList";
 
-const MyBookmarkPlace = ({ bookmarkName, bookmarks, bookmarkX, bookmarkY }) => {
+const MyBookmarkPlace = ({
+  bookmarkName,
+  bookmarks,
+  bookmarkX,
+  bookmarkY,
+  user,
+  userUrl,
+}) => {
   const length = bookmarks.length;
   const { kakao } = window;
 
@@ -114,8 +121,10 @@ const MyBookmarkPlace = ({ bookmarkName, bookmarks, bookmarkX, bookmarkY }) => {
                 bookmarkName={bookmarkName}
                 bookmarks={bookmarks}
                 bookmark={bookmark}
+                user={user}
+                userUrl={userUrl}
               />
-            ))}{" "}
+            ))}
           </>
         ) : (
           <div className="notFoundBookmark">북마크가 없습니다.</div>

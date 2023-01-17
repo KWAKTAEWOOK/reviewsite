@@ -111,13 +111,10 @@ const App = () => {
             <Route path={"/MypageUserConfirm"} exact>
               <MypageUserConfirm />
             </Route>
-            <Route path={"/myplace"} exact>
+            <Route path={"/myplace/:id"} exact>
               <MyPlace />
             </Route>
-            <Route path={"/youplace"} exact>
-              <YouPlace />
-            </Route>
-            <Route path={"/youplace/:nickname/:userid"} exact>
+            <Route path={"/myplace/choice/:userid/:id/"} exact>
               <SelectMyPlace />
             </Route>
           </Switch>

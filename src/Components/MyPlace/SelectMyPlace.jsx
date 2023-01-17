@@ -17,8 +17,12 @@ const SelectMyPlace = () => {
   const [bookmarkName, setBookmarkName] = useState([]);
   const [bookmarkByFolder, setBookmarkByFolder] = useState([]);
   const [name, setName] = useState("");
+  const [userUrl, setUserUrl] = useState(0);
 
   const para = document.location.href.split("/");
+
+  console.log(user);
+  console.log("para", para);
 
   // 북마크 이름 생성
   const createBookmark = async (e) => {
@@ -31,7 +35,7 @@ const SelectMyPlace = () => {
       e.preventDefault();
     } else {
       const data = await axios({
-        url: `${BACKEND_URL}/bookmarkname?userId=${user?.id}`,
+        url: `${BACKEND_URL}/bookmarkname?userId=${parseInt(para[5])}`,
         method: "POST",
         data: {
           bookmarkName: name,
@@ -44,25 +48,25 @@ const SelectMyPlace = () => {
   useEffect(() => {
     const getData = async (e) => {
       const data = await axios({
-        url: `${BACKEND_URL}/bookmarkname?userId=${user?.id}`,
+        url: `${BACKEND_URL}/bookmarkname?userId=${parseInt(para[5])}`,
         method: "GET",
       });
       setBookmarkName(data.data);
+      setUserUrl(parseInt(para[5]));
     };
     getData();
   }, []);
 
   // 유저의 북마크 가져오기
   useEffect(() => {
-    const getData = async () => {
+    const getData = async (e) => {
       const data = await axios({
-        url: `${BACKEND_URL}/bookmark/data/${parseInt(para[5])}`,
+        url: `${BACKEND_URL}/bookmarkname/${parseInt(para[6])}`,
         method: "GET",
       });
-      setBookmarks(data.data);
-      setBookmarkX(data.data[0]?.locationX);
-      setBookmarkY(data.data[0]?.locationY);
-      console.log(data.data);
+      setBookmarks(data.data.bookmark);
+      setBookmarkX(data.data.bookmark[0]?.locationX);
+      setBookmarkY(data.data.bookmark[0]?.locationY);
     };
     getData();
   }, []);
@@ -82,6 +86,8 @@ const SelectMyPlace = () => {
                 bookmarks={bookmarks}
                 bookmarkX={bookmarkX}
                 bookmarkY={bookmarkY}
+                userUrl={userUrl}
+                user={user}
               />
             </div>
           </div>
@@ -91,7 +97,7 @@ const SelectMyPlace = () => {
               <button
                 className="all_list"
                 onClick={() => {
-                  window.location.href = "/myplace";
+                  window.location.href = `/myplace/${userUrl}`;
                 }}
               >
                 전체보기
@@ -106,23 +112,27 @@ const SelectMyPlace = () => {
                   bookmarks={bookmarks}
                   bookmarkX={bookmarkX}
                   bookmarkY={bookmarkY}
+                  userUrl={userUrl}
+                  user={user}
                 />
               ))}
-              <div className="myList_add">
-                <p className="add_list">➕ 추가하기 </p>
-                <form onSubmit={createBookmark}>
-                  <input
-                    className="myList_listname_input"
-                    type="text"
-                    placeholder="10자 이내로 작성해주세요."
-                    value={name}
-                    onChange={(e) => {
-                      setName(e.target.value);
-                    }}
-                  />
-                  <button className="myList_addBtn"> + </button>
-                </form>
-              </div>
+              {user.id === userUrl ? (
+                <div className="myList_add">
+                  <p className="add_list">➕ 추가하기 </p>
+                  <form onSubmit={createBookmark}>
+                    <input
+                      className="myList_listname_input"
+                      type="text"
+                      placeholder="10자 이내로 작성해주세요."
+                      value={name}
+                      onChange={(e) => {
+                        setName(e.target.value);
+                      }}
+                    />
+                    <button className="myList_addBtn"> + </button>
+                  </form>
+                </div>
+              ) : null}
             </div>
           </div>
         </div>
