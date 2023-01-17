@@ -1,15 +1,23 @@
+import userEvent from "@testing-library/user-event";
 import axios from "axios";
 import React, { useState } from "react";
 import { BACKEND_URL } from "../../utils";
 import BookmarkOption from "./BookmarkOption";
 
-const MyBookmarkPlaceList = ({ index, bookmarkName, bookmarks, bookmark }) => {
+const MyBookmarkPlaceList = ({
+  index,
+  bookmarkName,
+  bookmarks,
+  bookmark,
+  user,
+  userUrl,
+}) => {
   const { kakao } = window;
   const [mapName, setMapName] = useState();
   const postId = bookmark?.postId;
   const bookmarkId = bookmark.id;
   const bookmarkNameId = bookmark.bookmarkName?.id;
-
+  console.log("lsat", userUrl);
   // 클릭이벤트
   const clickLocation = () => {
     var mapContainer = document.getElementById("map");
@@ -128,9 +136,11 @@ const MyBookmarkPlaceList = ({ index, bookmarkName, bookmarks, bookmark }) => {
           <BookmarkOption names={names} key={index} />
         ))}
       </select>
-      <button className="place_bmlist_delete" onClick={deleteBookmark}>
-        삭제
-      </button>
+      {user.id === userUrl ? (
+        <button className="place_bmlist_delete" onClick={deleteBookmark}>
+          삭제
+        </button>
+      ) : null}
     </div>
   );
 };

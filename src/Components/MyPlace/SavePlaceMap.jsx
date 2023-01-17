@@ -1,7 +1,14 @@
 import React, { useEffect } from "react";
 import MyAllPlaceList from "./MyAllPlaceList";
 
-const SavePlaceMap = ({ bookmarkName, bookmarks, bookmarkX, bookmarkY }) => {
+const SavePlaceMap = ({
+  bookmarkName,
+  bookmarks,
+  bookmarkX,
+  bookmarkY,
+  userUrl,
+  user,
+}) => {
   const { kakao } = window;
 
   const showMap = () => {
@@ -111,6 +118,8 @@ const SavePlaceMap = ({ bookmarkName, bookmarks, bookmarkX, bookmarkY }) => {
             bookmarkName={bookmarkName}
             bookmarks={bookmarks}
             bookmark={bookmark}
+            userUrl={userUrl}
+            user={user}
           />
         ))}
       </div>

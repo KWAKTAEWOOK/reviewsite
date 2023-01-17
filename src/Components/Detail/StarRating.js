@@ -16,8 +16,6 @@ const StarRating = () => {
   const [content, setContent] = useState("");
   const [flies, setFlies] = useState([]);
 
-  console.log(user);
-
   //-----------------------------------------------
   const [nickname, setNickname] = useState("");
   const [Click, setClick] = useState(false);

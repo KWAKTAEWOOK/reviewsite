@@ -5,12 +5,13 @@ import { useRecoilState } from "recoil";
 import { userState } from "../../recoil/user";
 import Login from "../Sign/Login";
 import SignUp from "../Sign/SignUp";
+import { useHistory } from "react-router-dom";
 
 const Topbar = () => {
   const [user, setUser] = useRecoilState(userState);
   const [modal, setModal] = useState(false);
   const [signUpModal, setSignUpModal] = useState(false);
-
+  const history = useHistory();
   const logo = "/images/sitelogo.png";
 
   const openModal = () => {
@@ -40,6 +41,7 @@ const Topbar = () => {
                 window.location.href = "/";
               }}
               src={logo}
+              alt="logo"
             />
           </div>
           <div className="menuList">
@@ -56,7 +58,7 @@ const Topbar = () => {
                   {user && (
                     <>
                       <li>
-                        <a href="/myplace">🔰 MY PLACE</a>
+                        <a href={`/myplace/${user.id}`}>🔰 MY PLACE</a>
                       </li>
                       <li>
                         <a href="/likePage">💖 내가 찜한 가게</a>

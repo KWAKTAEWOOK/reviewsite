@@ -3,12 +3,19 @@ import React, { useState } from "react";
 import { BACKEND_URL } from "../../utils";
 import BookmarkOption from "./BookmarkOption";
 
-const MyAllPlaceList = ({ index, bookmarkName, bookmarks, bookmark }) => {
+const MyAllPlaceList = ({
+  index,
+  bookmarkName,
+  bookmarks,
+  bookmark,
+  userUrl,
+  user,
+}) => {
   const { kakao } = window;
   const [mapName, setMapName] = useState();
   const postId = bookmark?.postId;
   const bookmarkId = bookmark.id;
-  const bookmarkNameId = bookmark.bookmarkName?.id;
+  const bookmarkNameId = bookmark.bookmarkName.id;
 
   // 클릭이벤트
   const clickLocation = () => {
@@ -123,15 +130,19 @@ const MyAllPlaceList = ({ index, bookmarkName, bookmarks, bookmark }) => {
         <select
           className="selectMark"
           onChange={onChangeHandler}
-          defaultValue={bookmarkNameId ? bookmarkNameId : mapName}
+          defaultValue={
+            bookmark.bookmarkName.id ? bookmark.bookmarkName.id : mapName
+          }
         >
           {bookmarkName.map((names, index) => (
             <BookmarkOption names={names} key={index} />
           ))}
         </select>
-        <button className="place_bmlist_delete" onClick={deleteBookmark}>
-          삭제
-        </button>
+        {user.id === userUrl ? (
+          <button className="place_bmlist_delete" onClick={deleteBookmark}>
+            삭제
+          </button>
+        ) : null}
       </div>
     </>
   );

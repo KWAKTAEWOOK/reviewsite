@@ -9,11 +9,12 @@ import { userState } from "../../recoil/user";
 const Comment = ({ reviewlist, nickname, reviewRef }) => {
   const [user, setUser] = useRecoilState(userState);
   const [nicknameon, setNicknameon] = useState(false);
+  const [selectNickname, setSelectNickname] = useState("");
 
-  // console.log(user);
+  console.log("선택", selectNickname);
   const onSubmoit = (e) => {
     e.preventDefault(); //동작때마다 새로고침 중지
-    if (window.confirm("삭제하시겠습니까?") == true) {
+    if (window.confirm("삭제하시겠습니까?") === true) {
       deletecontent();
       console.log("삭제가 완료되었습니다.");
     } else {
@@ -24,7 +25,7 @@ const Comment = ({ reviewlist, nickname, reviewRef }) => {
 
   const deletecontent = async (e) => {
     try {
-      const data = await axios({
+      await axios({
         url: `${BACKEND_URL}/delete/${reviewlist.id}`,
         method: "DELETE",
         params: {
@@ -40,7 +41,7 @@ const Comment = ({ reviewlist, nickname, reviewRef }) => {
 
   const get = async (e) => {
     try {
-      const data = await axios({
+      await axios({
         url: `${BACKEND_URL}/update/content`,
         method: "PATCH",
         data: {
@@ -56,17 +57,17 @@ const Comment = ({ reviewlist, nickname, reviewRef }) => {
   };
   const [Click, setClick] = useState(false);
   const toggleClick = () => {
-    if (Click == true) {
+    if (Click === true) {
       setClick((Click) => !Click); // on,off 개념 boolean
       console.log(rating, content, reviewlist.id);
-      if (window.confirm("수정하시겠습니까?") == true) {
+      if (window.confirm("수정하시겠습니까?") === true) {
         get();
         console.log("수정 완료되었습니다.");
       } else {
         // false는 취소버튼을 눌렀을 때, 취소됨
         console.log("취소되었습니다");
       }
-    } else if (Click == false) {
+    } else if (Click === false) {
       setClick((Click) => !Click);
     }
     console.log(Click);
@@ -100,6 +101,7 @@ const Comment = ({ reviewlist, nickname, reviewRef }) => {
       document.removeEventListener("mousedown", clickOutside);
     };
   }, [nicknameon]);
+
   useEffect(() => {
     setting();
     setRating(reviewlist.star);
@@ -109,7 +111,7 @@ const Comment = ({ reviewlist, nickname, reviewRef }) => {
     <div ref={reviewRef} className="userdiv">
       <div className="starcreatedate">
         {/* 별점 ---------------------------------- */}
-        {Click == false && (
+        {Click === false && (
           <div className="star-rating">
             평점 :　
             {[...Array(5)].map((star, index) => {
@@ -126,7 +128,7 @@ const Comment = ({ reviewlist, nickname, reviewRef }) => {
             })}
           </div>
         )}
-        {Click == true && (
+        {Click === true && (
           <div className="star-rating">
             평점 :　
             {[...Array(5)].map((star, index) => {
@@ -153,7 +155,7 @@ const Comment = ({ reviewlist, nickname, reviewRef }) => {
           &nbsp;
           {reviewlist.createDate.substring(11, 16)}
         </div>
-        {user?.id == reviewlist.user?.id && (
+        {user?.id === reviewlist.user?.id && (
           <>
             <button className="textbut">
               <span onClick={toggleClick}>수정</span>
@@ -165,16 +167,16 @@ const Comment = ({ reviewlist, nickname, reviewRef }) => {
         )}
         {/* 리뷰 content--------------------------------- */}
       </div>
-      {Click == false && (
+      {Click === false && (
         <div className="사용자">
           {nicknameon === true ? (
             <div className="nameContextMenu" ref={outNickneme}>
-              <table class="mbLayer">
+              <table className="mbLayer">
                 <tbody>
                   <tr>
                     <td className="sideViewRow_mb_cid">
                       <a
-                        href={`http://localhost:3000/youplace/${reviewlist.user.nickname}/${reviewlist.user.id}`}
+                        href={`http://localhost:3000/myplace/${selectNickname}`}
                       >
                         📚북마크
                       </a>
@@ -183,7 +185,7 @@ const Comment = ({ reviewlist, nickname, reviewRef }) => {
 
                   <tr>
                     <td className="sideViewRow_mb_cid">
-                      <a href="">🧡찜목록</a>
+                      <a href="#!">🧡찜목록</a>
                     </td>
                   </tr>
                   <tr>
@@ -203,12 +205,17 @@ const Comment = ({ reviewlist, nickname, reviewRef }) => {
           ) : null}
           <div className="usercon">
             <div className="userimg">
-              <img className="usersimg" src={user?.userImgUrl} />
+              <img
+                className="usersimg"
+                src={user?.userImgUrl}
+                alt="UserImage"
+              />
             </div>
             <div>
               <span
                 onClick={() => {
                   setNicknameon(true);
+                  setSelectNickname(reviewlist.user?.id);
                 }}
               >
                 {reviewlist.user?.nickname}
@@ -220,7 +227,7 @@ const Comment = ({ reviewlist, nickname, reviewRef }) => {
           </div>
         </div>
       )}
-      {Click == true && (
+      {Click === true && (
         <div className="사용자">
           <div className="usercon">
             <div className="userimg">
