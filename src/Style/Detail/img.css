@@ -90,7 +90,6 @@
 
 .rode_api1 {
   position: relative;
-  left: 25px;
   width: 700px;
   height: 450px;
 }
@@ -212,13 +211,13 @@ textarea {
 .noimg {
   position: relative;
   margin-bottom: -80px;
-  width: 1000px;
+  width: 700px;
   height: 600px;
   top: 100px;
 }
 .noimg > img {
   display: block;
-  width: 800px;
+  width: 700px;
   height: 500px;
   margin: auto;
 }

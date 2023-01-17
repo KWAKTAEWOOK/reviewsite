@@ -4,12 +4,13 @@ import { LOCAL_URL } from "../../utils";
 const LikePageList = ({ likePost }) => {
   const id = likePost.postid;
   const name = likePost.postName;
+  const img = likePost.img;
 
   return (
     <>
       <div className="postList_wrap">
         <img
-          src="/images/pizza.JPG"
+          src={img}
           alt=""
           className="post_photo"
           onClick={() => {

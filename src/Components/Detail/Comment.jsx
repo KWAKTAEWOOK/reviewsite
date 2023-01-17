@@ -130,7 +130,7 @@ const Comment = ({ reviewlist, nickname, reviewRef }) => {
         )}
         {Click === true && (
           <div className="star-rating">
-            평점 :　
+            평점 :
             {[...Array(5)].map((star, index) => {
               index += 1;
               return (
@@ -185,7 +185,11 @@ const Comment = ({ reviewlist, nickname, reviewRef }) => {
 
                   <tr>
                     <td className="sideViewRow_mb_cid">
-                      <a href="#!">🧡찜목록</a>
+                      <a
+                        href={`http://localhost:3000/YourLikePage/${reviewlist.user.nickname}`}
+                      >
+                        🧡찜목록
+                      </a>
                     </td>
                   </tr>
                   <tr>
@@ -205,11 +209,7 @@ const Comment = ({ reviewlist, nickname, reviewRef }) => {
           ) : null}
           <div className="usercon">
             <div className="userimg">
-              <img
-                className="usersimg"
-                src={user?.userImgUrl}
-                alt="UserImage"
-              />
+              <img className="usersimg" src={reviewlist.user.imgUrl} alt="" />
             </div>
             <div>
               <span
@@ -231,7 +231,7 @@ const Comment = ({ reviewlist, nickname, reviewRef }) => {
         <div className="사용자">
           <div className="usercon">
             <div className="userimg">
-              <img className="usersimg" src="/images/user.png" alt="" />
+              <img className="usersimg" src={reviewlist.user?.imgUrl} alt="" />
             </div>
             <div>{reviewlist.nickname}</div>
           </div>

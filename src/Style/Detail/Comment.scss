@@ -72,7 +72,6 @@
   border-radius: 10px;
 }
 .detail_comment {
-  margin-bottom: 200px;
   margin-top: -40px;
 }
 .detail_comment p {
@@ -101,7 +100,7 @@
   display: inline-block;
 }
 .usercon {
-  width: 200px;
+  width: 215px;
   max-height: 200px;
   border-radius: 15px;
   border: 2px solid rgb(233, 233, 233);
@@ -114,15 +113,12 @@
   justify-content: center;
   margin-top: 5px;
 }
-.usercon > img {
-  object-fit: cover;
-}
 
 .사용자 {
   display: inline-flex;
   width: 100%;
-  height: 150px;
-  margin: 10px;
+  height: 155px;
+  // margin: 10px 10px 0 10px;
   position: relative;
 }
 textarea {
@@ -150,7 +146,7 @@ hr {
   display: block;
   padding: 10px;
 
-  margin-left: 30px;
+  margin-left: 10px;
 }
 
 .userimg {
@@ -159,7 +155,7 @@ hr {
   height: 120px;
 }
 .userimg > img {
-  object-fit: contain;
+  object-fit: cover;
   width: 150px;
   height: 130px;
 }

@@ -17,6 +17,7 @@ import MyPlace from "./Components/MyPlace/MyPlace";
 import SelectMyPlace from "./Components/MyPlace/SelectMyPlace";
 import YouReview from "./Components/Mypage/YouReview";
 import YouPlace from "./Components/YouPlace/YouPlace";
+import YourLikePage from "./Components/Mypage/YourLikePage";
 
 const App = () => {
   const [inputText, setInputText] = useState("");
@@ -105,6 +106,9 @@ const App = () => {
             <Route path={"/likePage"} exact>
               <LikePage />
             </Route>
+            <Route path={"/yourlikePage/:id"} exact>
+              <YourLikePage />
+            </Route>
             <Route path={"/mypagetest"} exact>
               <MypageTest />
             </Route>
@@ -114,7 +118,11 @@ const App = () => {
             <Route path={"/myplace/:id"} exact>
               <MyPlace />
             </Route>
-            <Route path={"/myplace/choice/:userid/:id/"} exact>
+
+            <Route path={"/youplace:id"} exact>
+              <YouPlace />
+            </Route>
+            <Route path={"/youplace/:nickname/:userid"} exact>
               <SelectMyPlace />
             </Route>
           </Switch>
