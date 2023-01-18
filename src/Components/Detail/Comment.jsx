@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useState, useEffect, useRef } from "react";
-import { BACKEND_URL } from "../../utils";
+import { BACKEND_URL, LOCAL_URL } from "../../utils";
 import "../../Style/Detail/Comment.scss";
 import { useRecoilState } from "recoil";
 import { userState } from "../../recoil/user";
@@ -166,9 +166,7 @@ const Comment = ({ reviewlist, nickname, reviewRef }) => {
                 <tbody>
                   <tr>
                     <td className="sideViewRow_mb_cid">
-                      <a
-                        href={`http://localhost:3000/myplace/${selectNickname}`}
-                      >
+                      <a href={`${LOCAL_URL}}/myplace/${selectNickname}`}>
                         📚 북마크
                       </a>
                     </td>
@@ -177,7 +175,7 @@ const Comment = ({ reviewlist, nickname, reviewRef }) => {
                   <tr>
                     <td className="sideViewRow_mb_cid">
                       <a
-                        href={`http://localhost:3000/YourLikePage/${reviewlist.user.nickname}`}
+                        href={`${LOCAL_URL}/YourLikePage/${reviewlist.user.nickname}`}
                       >
                         🧡 찜목록
                       </a>
@@ -186,7 +184,7 @@ const Comment = ({ reviewlist, nickname, reviewRef }) => {
                   <tr>
                     <td className="sideViewRow_new">
                       <a
-                        href={`http://localhost:3000/YouReview/${reviewlist.user.nickname}`}
+                        href={`${LOCAL_URL}/YouReview/${reviewlist.user.nickname}`}
                         rel="nofollow"
                         class="link_new_page"
                       >

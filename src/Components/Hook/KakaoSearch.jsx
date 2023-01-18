@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import useGeolocation from "react-hook-geolocation";
 import { useParams } from "react-router-dom";
+import { LOCAL_URL } from "../../utils";
 
 const { kakao } = window;
 
@@ -88,7 +89,7 @@ export default function KakaoSearchDB(search2) {
         infowindow.setContent(
           `<div class="customoverlay" onClick=${onClickselect(place2)}>` +
             ' <div class="customoverlayBack">' +
-            `   <a href="http://localhost:3000/Detail/${place2.place_name}/${place2.id}" class="customoverlayPlaceName">` +
+            `   <a href="${LOCAL_URL}/Detail/${place2.place_name}/${place2.id}" class="customoverlayPlaceName">` +
             place2.place_name +
             '<span class="customLink">' +
             ">" +
