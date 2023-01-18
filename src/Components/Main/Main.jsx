@@ -256,7 +256,7 @@ const Main = ({
         infowindow.setContent(
           `<div class="customoverlay" onClick=${onClickselect(place)}>` +
             ' <div class="customoverlayBack">' +
-            `   <a href="http://localhost:3000/Detail/${place.place_name}/${place.id}" class="customoverlayPlaceName">` +
+            `   <a href="${LOCAL_URL}/Detail/${place.place_name}/${place.id}" class="customoverlayPlaceName">` +
             place.place_name +
             '<span class="customLink">' +
             ">" +
