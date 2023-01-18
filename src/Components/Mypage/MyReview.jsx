@@ -21,7 +21,7 @@ const MyReview = () => {
     const getData = async (e) => {
       try {
         const data = await axios({
-          url: `${BACKEND_URL}/comment/user?userId=${user.id}`,
+          url: `${BACKEND_URL}/comment/user?userId=${user?.id}`,
           method: "GET",
         });
         setComments(data.data);

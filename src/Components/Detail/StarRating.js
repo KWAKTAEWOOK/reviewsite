@@ -70,11 +70,9 @@ const StarRating = () => {
   };
   const onSubmit = (e) => {
     setFlies(e.target.files);
-    console.log(e.target.files);
   };
   const onContent = (e) => {
     setContent(e.target.value);
-    console.log(content);
   };
   return (
     <div>

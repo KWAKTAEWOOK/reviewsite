@@ -17,7 +17,6 @@ const MyBookmarkPlaceList = ({
   const postId = bookmark?.postId;
   const bookmarkId = bookmark.id;
   const bookmarkNameId = bookmark.bookmarkName?.id;
-  console.log("lsat", userUrl);
   // 클릭이벤트
   const clickLocation = () => {
     var mapContainer = document.getElementById("map");
@@ -136,7 +135,7 @@ const MyBookmarkPlaceList = ({
           <BookmarkOption names={names} key={index} />
         ))}
       </select>
-      {user.id === userUrl ? (
+      {user?.id === userUrl ? (
         <button className="place_bmlist_delete" onClick={deleteBookmark}>
           삭제
         </button>

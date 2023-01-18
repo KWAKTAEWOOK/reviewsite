@@ -11,7 +11,7 @@ import { useParams } from "react-router-dom";
 
 const YourLikePage = () => {
   const [user, setUser] = useRecoilState(userState);
-  const [userid, setUserid] = useState(user && user.id);
+  const [userid, setUserid] = useState(user && user?.id);
   const [likePosts, setLikePosts] = useState([]);
   const params = useParams();
   useEffect(() => {

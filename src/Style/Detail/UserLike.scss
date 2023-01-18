@@ -8,12 +8,15 @@ button {
   overflow: visible;
   cursor: pointer;
 }
-
+.detail_like_wrap {
+  position: absolute;
+  width: 1000px;
+  margin-top: 20px;
+}
 // 찜하기 아이콘
 .like_icon {
   display: inline-block;
   position: relative;
-  top: 150px;
   left: 110px;
 }
 .liketext > div {
@@ -46,7 +49,6 @@ button {
 .bookmark_icon {
   display: inline-block;
   position: relative;
-  top: 151px;
   left: 140px;
 }
 .bookMark {

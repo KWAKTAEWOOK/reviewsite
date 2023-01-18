@@ -20,9 +20,7 @@
 }
 .Box {
   text-align: center;
-  border-radius: 5%;
-  width: 700px;
-  height: auto;
+  min-width: 700px;
   background-color: white;
   display: block;
   margin: 200px auto 200px auto;
@@ -45,7 +43,9 @@
   margin-left: 15px;
   color: gray;
 }
-
+.maps_info {
+  margin-top: -20px;
+}
 .NavGroup {
   position: fixed;
   margin: 20px;
@@ -77,7 +77,7 @@
 }
 .left {
   text-align: right;
-  margin-right: 2%;
+  margin-right: 20px;
 }
 .right {
   text-align: left;
@@ -87,7 +87,6 @@
   margin-bottom: 20px;
   margin-right: 10px;
 }
-
 .rode_api1 {
   position: relative;
   width: 700px;
@@ -209,11 +208,10 @@ textarea {
   resize: none;
 }
 .noimg {
-  position: relative;
-  margin-bottom: -80px;
+  margin-bottom: -200px;
   width: 700px;
   height: 600px;
-  top: 100px;
+  margin-top: 140px;
 }
 .noimg > img {
   display: block;

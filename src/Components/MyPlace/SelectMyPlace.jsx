@@ -21,9 +21,6 @@ const SelectMyPlace = () => {
 
   const para = document.location.href.split("/");
 
-  console.log(user);
-  console.log("para", para);
-
   // 북마크 이름 생성
   const createBookmark = async (e) => {
     if (name.length === 0) {
@@ -77,9 +74,7 @@ const SelectMyPlace = () => {
       <div className="likebackground">
         <div className="liketemplate">
           <div className="left_fixed_menu">
-            <p className="show_list_p">
-              👀 나의 맛집 정보를 저장하고 관리해보세요!
-            </p>
+            <p className="show_list_p">👀 맛집 정보를 저장하고 관리해보세요!</p>
             <div className="marked_map">
               <MyBookmarkPlace
                 bookmarkName={bookmarkName}
@@ -93,7 +88,11 @@ const SelectMyPlace = () => {
           </div>
           <div className="my_list_back">
             <p className="myList_list">
-              📚 나의 북마크
+              {/* {user?.id === parseInt(para[1]) ? ( */}
+              <span>📚 북마크</span>
+              {/* ) : (
+                <span>📚 {bookmarks[0]?.user?.nickname} 님의 북마크</span>
+              )} */}
               <button
                 className="all_list"
                 onClick={() => {
@@ -116,7 +115,7 @@ const SelectMyPlace = () => {
                   user={user}
                 />
               ))}
-              {user.id === userUrl ? (
+              {user?.id === userUrl ? (
                 <div className="myList_add">
                   <p className="add_list">➕ 추가하기 </p>
                   <form onSubmit={createBookmark}>
