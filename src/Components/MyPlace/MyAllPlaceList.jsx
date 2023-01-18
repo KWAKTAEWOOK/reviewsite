@@ -138,7 +138,7 @@ const MyAllPlaceList = ({
             <BookmarkOption names={names} key={index} />
           ))}
         </select>
-        {user.id === userUrl ? (
+        {user?.id === userUrl ? (
           <button className="place_bmlist_delete" onClick={deleteBookmark}>
             삭제
           </button>

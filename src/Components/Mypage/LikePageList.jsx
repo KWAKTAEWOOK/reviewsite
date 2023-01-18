@@ -11,7 +11,6 @@ const LikePageList = ({ likePost }) => {
       <div className="postList_wrap">
         <img
           src={img}
-          alt=""
           className="post_photo"
           onClick={() => {
             window.location.href = `${LOCAL_URL}/Detail/${name}/${id}`;

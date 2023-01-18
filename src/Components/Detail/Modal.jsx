@@ -5,7 +5,6 @@ import "../../Style/Detail/slick/slick-theme.css";
 
 const Modal = ({ outSection, images }) => {
   const getimg = images.map((getimages) => getimages).reverse();
-
   const [mainSlick, setMainSlick] = useState(null);
   const [pagingSlick, setPagingSlick] = useState(null);
   const mainSlickRef = useRef(null);
@@ -36,33 +35,33 @@ const Modal = ({ outSection, images }) => {
   };
   const onClickPrev = useCallback((ref) => () => ref.current.slickPrev(), []);
   const onClickNext = useCallback((ref) => () => ref.current.slickNext(), []);
+
   return (
     <div className="modalcontainer" ref={outSection}>
       <div className="modal">
         <article className="modalbox">
           <div>
             <Slider ref={mainSlickRef} asNavFor={pagingSlick} {...mainSettings}>
-              {getimg.map((v) => {
+              {getimg.map((review) => {
                 return (
                   <div className="SlickItems">
-                    <img src={v.imgUrl} />
+                    <img src={review.imgUrl} />
                   </div>
                 );
               })}
             </Slider>
-
             <Slider
               ref={pagingSlickRef}
               asNavFor={mainSlick}
               {...pagingSettings}
-              slidesToShow={getimg.length < 7 ? 5 : 7}
+              // slidesToShow={getimg.length < 7 ? 5 : 7}
               swipeToSlide={true}
               focusOnSelect={true}
             >
-              {getimg.map((v) => {
+              {getimg.map((review) => {
                 return (
                   <div className="PagingAnchor">
-                    <img src={v.imgUrl} />
+                    <img src={review.imgUrl} />
                   </div>
                 );
               })}
@@ -76,11 +75,23 @@ const Modal = ({ outSection, images }) => {
           slidesToShow={1}
           swipeToSlide={false}
         >
-          {getimg.map((v) => {
+          {getimg.map((review) => {
+            const answerDate = review?.answer.createDate;
+            const date = answerDate.split("T");
+
             return (
               <div className="vbox">
-                <div>닉네임 : {v.nickname}</div>
-                <span> 리뷰 내용 :{v.content}</span>
+                <img
+                  className="modal_userImg"
+                  src={review.answer?.user.imgUrl}
+                />
+                <div className="vbox_review">
+                  <p className="review_nickname">{review.answer?.nickname}</p>
+                  <p className="review_date">{date[0]}</p>
+                  <p className="review_contents">
+                    리뷰 : {review.answer?.content}
+                  </p>
+                </div>
               </div>
             );
           })}

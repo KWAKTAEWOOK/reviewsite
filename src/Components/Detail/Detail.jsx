@@ -59,6 +59,7 @@ const Detail = () => {
     getimg();
     get();
   }, []);
+
   //-------------------------------------------------
   const [images, setimages] = useState(() => []);
 
@@ -169,18 +170,16 @@ const Detail = () => {
           )}
           {images.length === 0 ? (
             <div className="noimg">
-              <img src="/images/noimg_fac.gif" alt="" />
+              <img src="/images/noImage.png" />
             </div>
           ) : null}
         </div>
         <nav className="styled__TopNav-sc-1tkfz70-1 eUocsG">
-          <div>
-            <div className="NavGroup">
-              <button onClick={photos}>사진</button>
-              <button onClick={detail}>상세정보</button>
-              <button onClick={mappg}>지도/위치</button>
-              <button onClick={review}>리뷰</button>
-            </div>
+          <div className="NavGroup">
+            <button onClick={photos}>사진</button>
+            <button onClick={detail}>상세정보</button>
+            <button onClick={mappg}>지도/위치</button>
+            <button onClick={review}>리뷰</button>
           </div>
         </nav>
         <div className="body1">
@@ -190,17 +189,17 @@ const Detail = () => {
                 <div className="cafe">{place_name}</div>
                 <div className="Foods">{keystr}</div>
               </div>
-              <div className="group left" ref={detailRef}>
-                <div>평점</div>
-                {detailData.road_address_name != "" ? <div>주소</div> : null}
-                {detailData.phone != "" ? <div>연락처</div> : null}
-              </div>
-              <div className="group right">
-                <div>
-                  <StarRate />
+              <div className="maps_info">
+                <div className="group left" ref={detailRef}>
+                  <div>평점</div>
+                  {detailData.road_address_name != "" ? <div>주소</div> : null}
+                  {detailData.phone != "" ? <div>연락처</div> : null}
                 </div>
-                <div>{detailData.road_address_name}</div>
-                <div>{detailData.phone}</div>
+                <div className="group right">
+                  <StarRate />
+                  <div>{detailData.road_address_name}</div>
+                  <div>{detailData.phone}</div>
+                </div>
               </div>
               <UserLike detailData={detailData} />
             </div>
@@ -208,7 +207,7 @@ const Detail = () => {
             {user && <StarRating />}
             <br />
             <div className="detail_comment">
-              <p>🦾 댓글달기</p>
+              <p>😎 댓글달기</p>
               {reversedgetdata.map((reviewlist, index) => (
                 <Comment
                   reviewlist={reviewlist}

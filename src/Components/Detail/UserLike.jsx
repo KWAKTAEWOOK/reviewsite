@@ -125,30 +125,32 @@ const UserLike = ({ detailData }) => {
 
   return (
     <>
-      <div className="like_icon">
-        <div className="like_icon_div">
-          <button onClick={likeClick} className="iconbut">
-            <img
-              className={userLike ? "HeartImg" : "EmptyHeartImg"}
-              src={userLike ? EmptyHeartImg : HeartImg}
-            />
-          </button>
+      <div className="detail_like_wrap">
+        <div className="like_icon">
+          <div className="like_icon_div">
+            <button onClick={likeClick} className="iconbut">
+              <img
+                className={userLike ? "HeartImg" : "EmptyHeartImg"}
+                src={userLike ? EmptyHeartImg : HeartImg}
+              />
+            </button>
+          </div>
+          <div className="liketext">
+            <div>찜하기</div>
+          </div>
         </div>
-        <div className="liketext">
-          <div>찜하기</div>
-        </div>
-      </div>
-      <div className="bookmark_icon">
-        <div className="bookmark_div">
-          <button onClick={clickBookmark} className="iconbut">
-            <img
-              className={userBookmark ? "bookMark" : "EmptyBookMark"}
-              src={userBookmark ? BookMark : EmptyBookMark}
-            />
-          </button>
-        </div>
-        <div className="savetext">
-          <div className="save_text_bar">저장하기</div>
+        <div className="bookmark_icon">
+          <div className="bookmark_div">
+            <button onClick={clickBookmark} className="iconbut">
+              <img
+                className={userBookmark ? "bookMark" : "EmptyBookMark"}
+                src={userBookmark ? BookMark : EmptyBookMark}
+              />
+            </button>
+          </div>
+          <div className="savetext">
+            <div className="save_text_bar">저장하기</div>
+          </div>
         </div>
       </div>
     </>

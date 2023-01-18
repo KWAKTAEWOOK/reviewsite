@@ -87,7 +87,7 @@ const MarkName = ({ markname, userUrl, user }) => {
             >
               - {name}
             </div>
-            {user.id === userUrl ? (
+            {user?.id === userUrl ? (
               <>
                 <button
                   className="place_edit_btn"

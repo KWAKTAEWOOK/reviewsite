@@ -11,15 +11,12 @@ const Comment = ({ reviewlist, nickname, reviewRef }) => {
   const [nicknameon, setNicknameon] = useState(false);
   const [selectNickname, setSelectNickname] = useState("");
 
-  console.log("선택", selectNickname);
   const onSubmoit = (e) => {
     e.preventDefault(); //동작때마다 새로고침 중지
     if (window.confirm("삭제하시겠습니까?") === true) {
       deletecontent();
-      console.log("삭제가 완료되었습니다.");
     } else {
-      // false는 취소버튼을 눌렀을 때, 취소됨
-      console.log("취소되었습니다.");
+      console.log(e);
     }
   };
 
@@ -59,18 +56,12 @@ const Comment = ({ reviewlist, nickname, reviewRef }) => {
   const toggleClick = () => {
     if (Click === true) {
       setClick((Click) => !Click); // on,off 개념 boolean
-      console.log(rating, content, reviewlist.id);
       if (window.confirm("수정하시겠습니까?") === true) {
         get();
-        console.log("수정 완료되었습니다.");
-      } else {
-        // false는 취소버튼을 눌렀을 때, 취소됨
-        console.log("취소되었습니다");
       }
     } else if (Click === false) {
       setClick((Click) => !Click);
     }
-    console.log(Click);
   };
   //-----------------------------------------------
   const [rating, setRating] = useState(0);
@@ -178,7 +169,7 @@ const Comment = ({ reviewlist, nickname, reviewRef }) => {
                       <a
                         href={`http://localhost:3000/myplace/${selectNickname}`}
                       >
-                        📚북마크
+                        📚 북마크
                       </a>
                     </td>
                   </tr>
@@ -188,7 +179,7 @@ const Comment = ({ reviewlist, nickname, reviewRef }) => {
                       <a
                         href={`http://localhost:3000/YourLikePage/${reviewlist.user.nickname}`}
                       >
-                        🧡찜목록
+                        🧡 찜목록
                       </a>
                     </td>
                   </tr>
@@ -199,7 +190,7 @@ const Comment = ({ reviewlist, nickname, reviewRef }) => {
                         rel="nofollow"
                         class="link_new_page"
                       >
-                        😶‍🌫️리뷰보기
+                        😶 리뷰보기
                       </a>
                     </td>
                   </tr>
@@ -211,8 +202,9 @@ const Comment = ({ reviewlist, nickname, reviewRef }) => {
             <div className="userimg">
               <img className="usersimg" src={reviewlist.user.imgUrl} alt="" />
             </div>
-            <div>
+            <div className="userReview">
               <span
+                className="review_nick2"
                 onClick={() => {
                   setNicknameon(true);
                   setSelectNickname(reviewlist.user?.id);
