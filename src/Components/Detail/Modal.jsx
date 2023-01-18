@@ -76,8 +76,10 @@ const Modal = ({ outSection, images }) => {
           swipeToSlide={false}
         >
           {getimg.map((review) => {
-            const answerDate = review?.answer.createDate;
+            const answerDate = review?.answer?.createDate;
             const date = answerDate.split("T");
+
+            console.log(review);
 
             return (
               <div className="vbox">

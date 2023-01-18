@@ -8,28 +8,12 @@
 }
 .home {
   position: relative;
-  padding-top: 200px;
+  padding-top: 100px;
   text-align: center;
   margin: 0 auto;
 }
-.home_main_p {
-  position: relative;
-  letter-spacing: -0.5px;
-  font-size: 28px;
-  top: -80px;
-  left: -40px;
-  color: rgba(0, 0, 0, 0.822);
-}
-.home_main_span {
-  color: #ff9100;
-  font-weight: bold;
-}
-.home_logo_p {
-  position: relative;
-  font-size: 68px;
-  font-weight: bold;
-  top: -144px;
-  left: 128px;
+.home_logo {
+  width: 450px;
 }
 .home_logo_span {
   font-size: 128px;
@@ -38,11 +22,12 @@
   position: relative;
   font-family: "Pretendard-Regular";
   font-size: 16px;
-  top: -262px;
+  top: 24px;
   width: 500px;
-  height: 52px;
+  height: 50px;
   border-radius: 10px;
   border: 2px solid #ffb554;
+  padding: 5px 5px;
 }
 .HomeInput:focus {
   outline: none;
@@ -50,12 +35,12 @@
 .HomeSearchbt {
   position: relative;
   left: -20px;
-  top: -128px;
+  top: 16px;
   width: 28px;
   height: 28px;
   filter: invert(63%) sepia(82%) saturate(4163%) hue-rotate(0deg)
     brightness(102%) contrast(105%);
 }
-.main_image {
-  margin-top: -280px;
-}
+// .main_image {
+// margin-top: -280px;
+// }

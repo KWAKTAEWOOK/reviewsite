@@ -8,19 +8,13 @@ const Home = ({ onChange, inputText, setKeywords }) => {
   };
 
   const searchIcon = "/images/search.png";
-  const mainPicture = "/images/The Munchies Family Style.png";
+  const mainPicture = "/images/Food Logo.svg";
+  const logo = "/images/Group 2.svg";
   return (
     <>
       <div className="home_body">
         <div className="home">
-          <div className="home_main_p">
-            니가 알고싶은 <span className="home_main_span">리뷰</span>, 여기 다
-            있어!
-            <p className="home_logo_p">
-              넌 어때 <span className="home_logo_span">?</span>
-            </p>
-          </div>
-
+          <img className="home_logo" src={logo} />
           <form onSubmit={homeSearchSubmit}>
             <input
               className="HomeInput"
