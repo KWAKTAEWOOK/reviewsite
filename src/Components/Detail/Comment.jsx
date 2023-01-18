@@ -166,7 +166,7 @@ const Comment = ({ reviewlist, nickname, reviewRef }) => {
                 <tbody>
                   <tr>
                     <td className="sideViewRow_mb_cid">
-                      <a href={`${LOCAL_URL}}/myplace/${selectNickname}`}>
+                      <a href={`${LOCAL_URL}/myplace/${selectNickname}`}>
                         📚 북마크
                       </a>
                     </td>

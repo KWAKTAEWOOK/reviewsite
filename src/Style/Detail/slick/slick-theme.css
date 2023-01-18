@@ -196,7 +196,7 @@
 }
 .PagingAnchor > img {
   width: 100px;
-  height: 100%;
+  height: 75px;
 }
 .Paging {
   display: inline-block;
