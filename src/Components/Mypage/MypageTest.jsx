@@ -96,7 +96,7 @@ const MypageTest = () => {
   const formData = new FormData();
   const editProfile = async (e) => {
     if (window.confirm("수정하시겠습니까?")) {
-      if (password1 != password2) {
+      if (password1 !== password2) {
         alert("비밀번호가 일치하지않습니다.");
         setPassword1("");
         setPassword2("");

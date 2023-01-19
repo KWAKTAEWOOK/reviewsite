@@ -15,7 +15,6 @@ const SelectMyPlace = () => {
   const [bookmarkX, setBookmarkX] = useState([]);
   const [bookmarkY, setBookmarkY] = useState([]);
   const [bookmarkName, setBookmarkName] = useState([]);
-  const [bookmarkByFolder, setBookmarkByFolder] = useState([]);
   const [name, setName] = useState("");
   const [userUrl, setUserUrl] = useState(0);
 
@@ -24,12 +23,14 @@ const SelectMyPlace = () => {
   // 북마크 이름 생성
   const createBookmark = async (e) => {
     if (name.length === 0) {
-      alert("이름을 입력해주세요.");
+      alert("폴더 이름을 작성해주세요.");
       e.preventDefault();
+      return;
     }
     if (name.length > 9) {
       alert("10자 이내로 작성해주세요.");
       e.preventDefault();
+      return;
     } else {
       const data = await axios({
         url: `${BACKEND_URL}/bookmarkname?userId=${parseInt(para[5])}`,

@@ -10,19 +10,22 @@ const Home = ({ onChange, inputText, setKeywords }) => {
   const searchIcon = "/images/search.png";
   const mainPicture = "/images/Food Logo.svg";
   const logo = "/images/Group 2.svg";
+
   return (
     <>
       <div className="home_body">
         <div className="home">
           <img className="home_logo" src={logo} />
           <form onSubmit={homeSearchSubmit}>
-            <input
-              className="HomeInput"
-              type="text"
-              value={inputText}
-              placeholder="음식점 이름 또는 주소를 입력해주세요."
-              onChange={onChange}
-            />
+            <div className="HomeInput">
+              <input
+                className="text_input"
+                type="text"
+                value={inputText}
+                placeholder="음식점 이름 또는 주소를 입력해주세요."
+                onChange={onChange}
+              />
+            </div>
             <button className="HomeSearchbt" type="submit">
               <img className="HomeSearchbt" src={searchIcon} alt="bt" />
             </button>
