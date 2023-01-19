@@ -113,17 +113,21 @@ const Topbar = () => {
           </div>
         </div>
         <div className="show_user">
-          <p className="username">
-            <span
-              className="username_span"
-              onClick={() => {
-                window.location.href = "/MypageUserConfirm";
-              }}
-            >
-              {user && `${user.nickname}`}
-            </span>
-            {user && "님 환영합니다."}
-          </p>
+          {user?.username && (
+            <>
+              <p className="username">
+                <span
+                  className="username_span"
+                  onClick={() => {
+                    window.location.href = "/MypageUserConfirm";
+                  }}
+                >
+                  {user && `${user.nickname}`}
+                </span>
+                {user && "님 환영합니다."}
+              </p>
+            </>
+          )}
         </div>
       </div>
     </>

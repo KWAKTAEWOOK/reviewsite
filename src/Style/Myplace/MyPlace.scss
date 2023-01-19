@@ -69,6 +69,7 @@
   height: 50px;
   font-size: 15.5px;
   margin-left: 1.5px;
+  padding: 0 10px;
 }
 .myList_listname_input:focus {
   outline: none;
@@ -138,7 +139,7 @@
 .place_bmlist {
   border-bottom: 1px solid rgba(177, 177, 177, 0.795);
   height: 65px;
-  font-size: 12px;
+  font-size: 15px;
 }
 .place_bmlist_title {
   position: relative;
@@ -188,6 +189,10 @@
 }
 .selectMark:focus {
   outline: none;
+}
+.selectMark2 {
+  position: relative;
+  left: 140px;
 }
 .notFoundBookmark {
   position: relative;

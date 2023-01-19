@@ -115,7 +115,7 @@ const SelectMyPlace = () => {
                   user={user}
                 />
               ))}
-              {user?.id === userUrl ? (
+              {user?.id === userUrl && (
                 <div className="myList_add">
                   <p className="add_list">➕ 추가하기 </p>
                   <form onSubmit={createBookmark}>
@@ -131,7 +131,7 @@ const SelectMyPlace = () => {
                     <button className="myList_addBtn"> + </button>
                   </form>
                 </div>
-              ) : null}
+              )}
             </div>
           </div>
         </div>

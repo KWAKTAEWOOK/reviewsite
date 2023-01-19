@@ -268,21 +268,23 @@ const MypageTest = () => {
               ></input>
             </div>
           </div>
-          <a
-            className="MypageEdit_cansel_button MyPageEdit_button_common_properties"
-            onClick={() => {
-              window.location.href = `${LOCAL_URL}/main`;
-            }}
-          >
-            취소
-          </a>
-          <button
-            className="MypageEdit_confirm_button MyPageEdit_button_common_properties"
-            onClick={editProfile}
-          >
-            수정
-          </button>
-          <button className="MypageEidit_deleteUser" onClick={deleteUser}>
+          <div className="edit_button">
+            <button
+              className="MypageEdit_cansel_button MyPageEdit_button_common_properties"
+              onClick={() => {
+                window.location.href = `${LOCAL_URL}/main`;
+              }}
+            >
+              취소
+            </button>
+            <button
+              className="MypageEdit_confirm_button MyPageEdit_button_common_properties"
+              onClick={editProfile}
+            >
+              수정
+            </button>
+          </div>
+          <button className="MypageEdit_deleteUser" onClick={deleteUser}>
             회원탈퇴
           </button>
         </div>

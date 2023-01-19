@@ -74,18 +74,18 @@ const Login = ({ closeModal, openModal2 }) => {
               <button type="submit" className="signUpButton">
                 로그인
               </button>
+              <button
+                className="signUpButton loginButton2"
+                onClick={() => {
+                  closeModal();
+                  openModal2();
+                }}
+              >
+                회원가입하기
+              </button>
             </form>
             <div
-              className="loginButton loginButton2"
-              onClick={() => {
-                closeModal();
-                openModal2();
-              }}
-            >
-              회원가입하기
-            </div>
-            <div
-              className="loginButton idSearchBtn"
+              className="idSearchBtn"
               onClick={() => {
                 window.location.href = "/help";
               }}

@@ -11,7 +11,7 @@ const MarkName = ({ markname, userUrl, user }) => {
 
   // 북마크 폴더 이름 수정
   const updateName = (e) => {
-    if (name.length > 10) {
+    if (editName.length > 10) {
       e.preventDefault();
       alert("10자 이내로 작성해주세요.");
       return;

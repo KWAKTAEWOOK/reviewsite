@@ -100,16 +100,10 @@
   position: relative;
 }
 .loginButton {
-  position: relative;
   display: inline-block;
-  text-decoration: underline;
-  cursor: pointer;
-  top: -10px;
-  right: 200px;
-  text-underline-offset: 4px;
-}
-.loginButton:hover {
-  font-weight: bolder;
+  position: relative;
+  right: 10px;
+  top: 30px;
 }
 .alert {
   font-size: 12px;

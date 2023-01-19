@@ -126,20 +126,33 @@ const MyBookmarkPlaceList = ({
           {bookmark.postName}
         </span>
       </div>
-      <select
-        className="selectMark"
-        onChange={onChangeHandler}
-        defaultValue={bookmarkNameId ? bookmarkNameId : mapName}
-      >
-        {bookmarkName?.map((names, index) => (
-          <BookmarkOption names={names} key={index} />
-        ))}
-      </select>
       {user?.id === userUrl ? (
-        <button className="place_bmlist_delete" onClick={deleteBookmark}>
-          삭제
-        </button>
-      ) : null}
+        <>
+          <select
+            className="selectMark"
+            onChange={onChangeHandler}
+            defaultValue={
+              bookmark.bookmarkName.id ? bookmark.bookmarkName.id : mapName
+            }
+          >
+            {bookmarkName.map((names, index) => (
+              <BookmarkOption names={names} key={index} />
+            ))}
+          </select>
+          <button className="place_bmlist_delete" onClick={deleteBookmark}>
+            삭제
+          </button>
+        </>
+      ) : (
+        <select
+          className="selectMark selectMark2"
+          defaultValue={bookmark?.bookmarkName?.id}
+        >
+          <option value={bookmark?.bookmarkName?.id}>
+            {bookmark?.bookmarkName?.bookmarkName}
+          </option>
+        </select>
+      )}
     </div>
   );
 };
