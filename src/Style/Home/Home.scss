@@ -20,22 +20,32 @@
 }
 .HomeInput {
   position: relative;
-  font-family: "Pretendard-Regular";
-  font-size: 16px;
   top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
   width: 500px;
   height: 50px;
   border-radius: 10px;
   border: 2px solid #ffb554;
+}
+.text_input {
+  font-family: "Pretendard-Regular";
+  position: relative;
+  font-size: 16px;
+  width: 444px;
+  height: 28px;
+  top: 6px;
+  left: -16px;
+  border: 0px;
   padding: 5px 5px;
 }
-.HomeInput:focus {
+.text_input:focus {
   outline: none;
 }
 .HomeSearchbt {
   position: relative;
-  left: -20px;
-  top: 16px;
+  top: -8px;
+  left: 114px;
   width: 28px;
   height: 28px;
   filter: invert(63%) sepia(82%) saturate(4163%) hue-rotate(0deg)

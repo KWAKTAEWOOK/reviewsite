@@ -100,7 +100,7 @@ const Detail = () => {
   const review = () =>
     reviewRef.current.scrollIntoView({
       behavior: "smooth",
-      block: "start",
+      block: "end",
     });
 
   //------------------------------------------------------------------
@@ -204,7 +204,7 @@ const Detail = () => {
               <UserLike detailData={detailData} />
             </div>
             <Detailmap place_name={place_name} mappgRef={mappgRef} />
-            {user && <StarRating />}
+            {user && <StarRating reviewRef={reviewRef} />}
             <br />
             <div className="detail_comment">
               <p>😎 댓글달기</p>

@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { BiChevronDownCircle } from "react-icons/bi";
 import { BACKEND_URL } from "../../utils";
 
 const MarkName = ({ markname, userUrl, user }) => {
