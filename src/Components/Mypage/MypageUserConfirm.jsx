@@ -91,13 +91,13 @@ const MypageUserConfirm = () => {
               >
                 확인
               </button>
-              <a
-                className="MypageUserConfirmTest_FindByPassword"
-                href="help/findPw"
-              >
-                비밀번호찾기
-              </a>
             </div>
+            <a
+              className="MypageUserConfirmTest_FindByPassword"
+              href="help/findPw"
+            >
+              비밀번호 재설정
+            </a>
           </div>
         </div>
       </form>

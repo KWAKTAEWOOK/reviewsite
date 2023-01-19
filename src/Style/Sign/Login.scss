@@ -17,18 +17,27 @@
   top: 250px;
   border-radius: 12px;
   width: 480px;
-  height: 270px;
+  height: 280px;
   background-color: white;
   cursor: default;
 }
 .loginButton2 {
-  left: -130px;
+  position: relative;
+  right: 10px;
 }
 .idSearchBtn {
-  position: absolute;
-  left: 160px;
+  position: relative;
+  top: 24px;
+  left: 420px;
   text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
 }
+.idSearchBtn:hover {
+  font-weight: bold;
+  color: #ff7300d7;
+}
+
 @keyframes modal-show {
   from {
     opacity: 0;

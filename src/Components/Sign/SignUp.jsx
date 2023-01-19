@@ -49,11 +49,7 @@ const SignUp = ({ openModal, closeModal2 }) => {
 
     if (res.data === true) {
       alert("중복된 이메일입니다.");
-    }
-    //  else if (chkEmail(email) === false) {
-    //   alert("이메일 형식이 유효하지않습니다.");
-    // }
-    else {
+    } else {
       alert("사용가능한 이메일입니다.");
     }
   }
@@ -240,19 +236,19 @@ const SignUp = ({ openModal, closeModal2 }) => {
                   중복확인
                 </button>
               </div>
+              <button
+                className="signUpButton loginButton"
+                onClick={() => {
+                  closeModal2();
+                  openModal();
+                }}
+              >
+                로그인하기
+              </button>
               <button type="submit" className="signUpButton signUpButton2">
                 가입하기
               </button>
             </form>
-            <div
-              className="loginButton"
-              onClick={() => {
-                closeModal2();
-                openModal();
-              }}
-            >
-              로그인하기
-            </div>
           </div>
         </div>
       </div>

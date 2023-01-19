@@ -148,16 +148,19 @@
   font-weight: bold;
   font-size: 1rem;
 }
-
-.MypageEidit_deleteUser {
+.edit_button {
   position: relative;
-  top: 110px;
-  font-size: 0.8rem;
-  color: rgba(255, 0, 0, 0.87);
-  padding: 1px;
-  margin-left: 20px;
+  left: 50px;
 }
-
+.MypageEdit_deleteUser {
+  position: relative;
+  font-size: 0.9rem;
+  top: 120px;
+  left: 224px;
+}
+.MypageEdit_deleteUser:hover {
+  font-weight: bold;
+}
 .MypageEdit_confirm_common_properties {
   display: inline-block;
   position: absolute;

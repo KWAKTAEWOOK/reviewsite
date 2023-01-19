@@ -16,7 +16,6 @@ import MypageUserConfirm from "./Components/Mypage/MypageUserConfirm";
 import MyPlace from "./Components/MyPlace/MyPlace";
 import SelectMyPlace from "./Components/MyPlace/SelectMyPlace";
 import YouReview from "./Components/Mypage/YouReview";
-import YouPlace from "./Components/YouPlace/YouPlace";
 import YourLikePage from "./Components/Mypage/YourLikePage";
 
 const App = () => {
@@ -117,9 +116,6 @@ const App = () => {
             </Route>
             <Route path={"/myplace/:id"} exact>
               <MyPlace />
-            </Route>
-            <Route path={"/youplace:id"} exact>
-              <YouPlace />
             </Route>
             <Route path={"/myplace/choice/:url/:id"} exact>
               <SelectMyPlace />
